@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 2-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 2-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>2</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Thymidine (T)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>Tb(NO₃)₃ or Eu(NO₃)₃</strong></div>
+      <div>Detailed conditions<strong>0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Transparent hydrogel, green Tb³⁺ luminescence; G′ ≈ 20 Pa (softer); Transparent hydrogel, red Eu³⁺ luminescence; G′ ≈ 20 Pa
+
+Thymine carbonyl and ring-nitrogen sites coordinate Tb³⁺/Eu³⁺ in 3:1 T₃·Ln³⁺ complexes. Complexes stack through π–π overlap of the thymine rings, while ribose OH⋯O=C hydrogen bonds laterally bundle the fibres into thicker tapes than in dG gels, accounting for the lower modulus. Metal-ligand bonds remain dynamic: heating, pH swing or Cu²⁺ compete with Ln³⁺, causing reversible luminescence quenching and gel–sol transitions. Thus gelation stems from cooperative metal coordination, base stacking and sugar-hydrogen bonding, with bundle thickness modulating mechanical softness.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6819</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6880</summary>
+              <pre>The target molecule is thymidine, a pyrimidine nucleoside whose structure supports only limited metal coordination (primarily via the O4 carbonyl and N3) and lacks the extended Hoogsteen-type hydrogen-bonding motifs required for stable supramolecular networks. Lanthanide(III) ions (Tb³⁺, Eu³⁺) can form discrete 1:1 or 1:2 coordination complexes with thymidine at pH ≈ 8, but these complexes do not propagate into the fibrillar architectures needed for gelation.  
+
+Under the stated heat–cool protocol the system therefore yields either a clear solution of soluble complexes or a microcrystalline precipitate within minutes, never a self-supporting gel.  
+
+This outcome is consistent with the well-documented behavior of pyrimidine nucleosides versus purine nucleosides (e.g., guanosine) in lanthanide-containing media.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Thymidine lacks the hydrogen-bonding and coordination geometry needed for extended fibrillar networks with Ln³⁺ ions; only discrete complexes or microcrystalline precipitates form.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6929</summary>
+              <pre>The target molecule is thymidine, a pyrimidine 2′-deoxynucleoside whose only H-bonding face consists of a single imide NH and two carbonyl acceptors. Under the stated aqueous conditions (0.1 M nucleoside + equimolar Ln³⁺ nitrate, pH ≈ 8, heat–cool), the lanthanide ions can coordinate to the carbonyl oxygens, but this interaction alone is insufficient to produce an extended, three-dimensional fibrillar network. Thymidine lacks the Hoogsteen edge and the N7 acceptor that allow purine nucleosides to form stable G-quadruplex or metallo-supramolecular assemblies; consequently the mixtures either remain clear solutions or rapidly yield crystalline precipitates rather than self-supporting gels.  
+
+Thus the experimental outcome is classified as “No Gel.”
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Thymidine possesses only a single imide NH donor and two carbonyl acceptors; lanthanide coordination therefore cannot generate the extended fibrillar architecture required for gelation. The mixtures remain isotropic solutions or rapidly crystallize.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6648</summary>
+              <pre>The molecule thymidine lacks the extended hydrogen-bonding motifs (e.g., Hoogsteen edge, N7 coordination) that enable stable supramolecular networks with lanthanide ions. Under the stated equimolar, mildly basic, heat–cool conditions the dominant outcome is rapid nucleation of insoluble coordination complexes or microcrystalline precipitates rather than an extended, solvent-trapping gel phase. Consequently the mixture collapses to a heterogeneous solid/liquid dispersion within minutes.
+
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Thymidine lacks the extended hydrogen-bonding motifs (e.g., Hoogsteen edge, N7 coordination) that enable stable supramolecular networks with lanthanide ions. Under the stated equimolar, mildly basic, heat–cool conditions the dominant outcome is rapid nucleation of insoluble coordination complexes or microcrystalline precipitates rather than an extended, solvent-trapping gel phase. Consequently the mixture collapses to a heterogeneous solid/liquid dispersion within minutes.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7026</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7023</summary>
+              <pre>The target molecule thymidine (T) is a close structural analogue of uridine (U; Reference 2), differing only by the presence of a 5-methyl substituent and the absence of the 2′-OH. Both nucleosides share the same pyrimidine-dione hydrogen-bonding face that is required for the supramolecular polymerization that precedes lanthanide-mediated gelation.  
+
+Reference 2 explicitly demonstrates that 0.1 M U + 0.1 M Tb(NO₃)₃ (or Eu(NO₃)₃) at pH ≈ 8, subjected to a heat–cool cycle, produces stable, emissive hydrogels. Because the key molecular recognition elements and the exact solvent/additive conditions are preserved in the target experiment, the same self-assembly pathway is expected to operate for T. No reference entry indicates that the 5-methyl or 2′-deoxy modifications abolish gelation under these lanthanide conditions; on the contrary, other deoxy-nucleosides (Reference 3) are shown to form long-lived gels when appropriate cations are present.  
+
+Consequently, the outcome for the listed experiment is predicted to be gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;T is a close analogue of U (differs only by 5-methyl and 2′-deoxy). Reference 2 shows identical conditions produce stable hydrogels with Tb³⁺/Eu³⁺; the hydrogen-bonding face required for assembly is unchanged, so gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7151</summary>
+              <pre>The target molecule is thymidine (T), a pyrimidine nucleoside that is structurally analogous to uridine (U; reference 2). Both share an identical hydrogen-bonding face (N3–H, O4, O2) that is known to coordinate trivalent lanthanide ions at mildly basic pH. The only structural difference is the C5-methyl substituent on T, which does not interfere with the metal-binding or stacking interactions required for gelation.
+
+Reference 2 explicitly demonstrates that U forms stable, emissive hydrogels when heated and cooled in the presence of equimolar Tb(NO₃)₃ or Eu(NO₃)₃ at pH ≈ 8. The same experimental protocol (0.1 M nucleoside + 0.1 M Ln³⁺, heat–cool) is prescribed for the target. Because the key supramolecular recognition elements are preserved, the same metal–nucleoside coordination and subsequent fiber-network formation are expected.
+
+No counter-evidence appears in the other references: 5-fluorouridine (reference 1) lacks the lanthanide experiments, and isoGd (reference 3) uses alkali-metal salts rather than Ln³⁺. Consequently, the outcome for T under the stated conditions is gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Thymidine shares the same metal-coordinating face as uridine (reference 2), which forms stable Ln³⁺ hydrogels under identical conditions. The C5-methyl group does not disrupt coordination or stacking, so gelation is predicted.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6904</summary>
+              <pre>The target molecule is thymidine (T), a pyrimidine nucleoside that is structurally analogous to uridine (U; differing only by a methyl substituent at the 5-position of the nucleobase). Reference 2 documents that U forms stable, emissive hydrogels when treated with equimolar Tb(NO₃)₃ or Eu(NO₃)₃ under the exact heating–cooling protocol listed in the target experiment (0.1 M nucleoside, pH ≈ 8). The same reference explicitly describes the resulting Tb³⁺/Eu³⁺ gels of U as possessing “morphology, stiffness similar to T gels,” thereby confirming that thymidine itself assembles into hydrogels under identical conditions.  
+
+No counter-examples appear among the other references: 5-fluorouridine (Reference 1) lacks the lanthanide data, while 2′-deoxyisoguanosine (Reference 3) gels only with alkali-metal ions, not lanthanides. Because at least one of the two listed lanthanide salts produces a gel for the close structural analogue U, and because the reference text directly attests to T-gel formation, the outcome for the target experiment is Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Thymidine is structurally analogous to uridine (U), which forms stable emissive hydrogels with equimolar Tb³⁺ or Eu³⁺ under the identical heating–cooling protocol. Reference 2 explicitly states that the U gels possess morphology and stiffness “similar to T gels,” confirming gelation for thymidine as well.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6995</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6848</summary>
+              <pre>The target molecule thymidine shares a close structural analogy with uridine (Reference 1), the principal difference being a 5-methyl substituent on the pyrimidine base and the lack of a 2′-OH on the sugar (i.e., 2′-deoxyribose). Under the exact conditions supplied for the target—0.1 M nucleoside + 0.1 M Tb(NO₃)₃ or Eu(NO₃)₃, pH ≈ 8, heat–cool—uridine produces stable, emissive hydrogels supported by extended fiber bundles.  
+
+Deoxyguanosine (Reference 2) likewise forms transparent Ln³⁺ hydrogels (G′ ≈ 180–200 Pa) despite possessing a 2′-deoxyribose, demonstrating that the absence of the 2′-OH does not preclude gelation when lanthanide coordination and supramolecular stacking are available.  
+
+5-Fluorouridine (Reference 3) fails to gel with a range of salts and boron additives, yet those experiments omit Ln³⁺ salts; the strongly electron-withdrawing 5-fluoro substituent also perturbs the electronic character of the nucleobase far more than the 5-methyl group present in thymidine.  
+
+Consequently, the combination of a uracil-like base, a deoxyribose sugar already shown to support Ln³⁺ gelation, and the identical heat–cool/lanthanide protocol leads to the prediction that thymidine will produce a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Thymidine is electronically and functionally closest to uridine (Ref. 1), which gels under identical Ln³⁺ conditions; the 2′-deoxy motif is also compatible with gelation (cf. dG, Ref. 2). The 5-methyl group does not disrupt coordination or stacking the way a 5-fluoro substituent does.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6688</summary>
+              <pre>The target molecule is thymidine (a pyrimidine 2′-deoxyribonucleoside). Its closest experimental analogues in the reference set are uridine (ribonucleoside of uracil) and deoxyguanosine (purine 2′-deoxyribonucleoside). Both of those nucleosides produce stable, lanthanide-emissive hydrogels when treated with 0.1 M Tb(NO₃)₃ or Eu(NO₃)₃ (or Dy(NO₃)₃) at pH ≈ 8 under an identical heat-cool protocol (95 °C → 25 °C).  
+
+Thymidine differs from uridine only by (i) the absence of the 2′-OH and (ii) a methyl substituent at C5. The first change is already shown to be tolerated (deoxyguanosine gels). The second change replaces the C5–H of uridine with a weakly electron-donating methyl group; this is electronically distinct from the strongly electron-withdrawing fluorine present in 5-fluorouridine, which fails to gel under any tested conditions. Because the lanthanide coordination responsible for gelation occurs primarily through the O4/C2 carbonyls and N3 of the pyrimidine ring, the modest steric/electronic perturbation introduced by the 5-methyl group is not expected to abolish network formation.  
+
+Consequently, the same 0.1 M Tb(NO₃)₃ or Eu(NO₃)₃ heat-cool protocol is predicted to yield a hydrogel for thymidine.
+
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Thymidine is structurally analogous to uridine (which forms Tb³⁺/Eu³⁺ hydrogels under identical conditions) and to deoxyguanosine (which also gels with Tb³⁺). The missing 2′-OH and the 5-methyl substituent are tolerated modifications that do not disrupt the carbonyl/N3 coordination required for lanthanide-mediated fibre assembly; contrast with 5-fluorouridine, where the electron-withdrawing fluorine abolishes gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7448</summary>
+              <pre>The target molecule is thymidine (a pyrimidine 2′-deoxyribonucleoside). Its closest experimental analogues in the reference set are uridine (ribo-pyrimidine) and deoxyguanosine (deoxy-purine). Both of these nucleosides produce stable, lanthanide-emissive hydrogels when treated with 0.1 M Tb(NO₃)₃ or Eu(NO₃)₃ at pH ≈ 8 under a heat–cool cycle identical to the one specified for thymidine.
+
+Key structural and mechanistic parallels:
+- The thymine base presents the same carbonyl and N3 lone-pair motifs that coordinate Ln³⁺ ions in the uridine gels.
+- Although thymidine lacks the 2′-OH group, deoxyguanosine (which is also 2′-deoxy) still forms transparent, mechanically stable Ln³⁺ hydrogels (G′ ≈ 180–200 Pa) under the same conditions; therefore the 2′-OH is not obligatory for network formation.
+- Ln³⁺ coordination to the nucleobase carbonyls plus the available 3′- and 5′-OH groups drives anisotropic fiber growth and subsequent entanglement, exactly as observed for both reference gels.
+
+No reference experiment shows that the 5-methyl substituent on thymine prevents gelation; the modest steric change does not disrupt the Ln³⁺–nucleoside coordination or the subsequent supramolecular polymerization. Consequently the same heat–cool protocol with Tb(NO₃)₃ or Eu(NO₃)₃ is expected to yield a luminescent hydrogel.
+
+Final answer: Gel
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Thymidine is a 2′-deoxy pyrimidine nucleoside whose base presents the same Ln³⁺-coordinating carbonyl/N3 sites as uridine. Although it lacks the 2′-OH, deoxyguanosine (also 2′-deoxy) forms stable, emissive Ln³⁺ hydrogels under identical conditions; therefore the 2′-OH is not required. The 5-methyl group introduces only minor steric perturbation that does not block coordination or fiber entanglement. Consequently the same heat–cool protocol yields a luminescent hydrogel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7288</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7412</summary>
+              <pre>As an expert in nucleoside-derived gel formation, thymidine (T) with its thymine base (5-methyluracil) attached to a 2&#x27;-deoxyribose sugar is structurally very close to the reference molecules uridine and deoxyguanosine. Uridine forms stable green- or red-emissive hydrogels with Tb(NO₃)₃ or Eu(NO₃)₃ under the exact conditions of 0.1 M nucleoside plus 0.1 M lanthanide salt at pH approximately 8 using a heat-cool protocol from 95 °C to 25 °C, driven by uracil carbonyl and N3 coordination to Ln³⁺ forming U₃·Ln³⁺ complexes that undergo π–π stacking and extensive ribose hydroxyl hydrogen bonding to create bundled fibre networks.
+
+Deoxyguanosine similarly produces transparent hydrogels with Tb³⁺ or Dy³⁺ under nearly identical lanthanide coordination conditions despite lacking the 2&#x27;-OH, confirming that deoxy nucleosides can still assemble robust gels through base-metal coordination, guanine π-stacking into columns, and sufficient hydrogen bonding from remaining hydroxyls.
+
+Thymidine&#x27;s thymine base retains the key carbonyl and N3 sites for analogous T₃·Ln³⁺ coordination while the C5-methyl group enhances π–π stacking due to increased hydrophobicity without introducing steric hindrance. Although it has a deoxy sugar like dG, the heat-cool protocol promotes disassembly and reassembly into entangled high-aspect-ratio fibres that trap water, leading to viscoelastic hydrogel formation with expected lanthanide-centered emission and elastic properties comparable to the uridine and deoxyguanosine references. No disruptive factors such as strong crystallization tendencies or missing coordination sites are present under these specific conditions, unlike cases with borate, silver, or simple salts where essential interactions fail. Therefore thymidine forms a gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Thymidine&#x27;s thymine base supports Ln³⁺ coordination (T₃·Ln³⁺ complexes) similar to uridine&#x27;s uracil, with enhanced π-stacking from the C5-methyl. The deoxyribose still allows sufficient H-bonding and fibre entanglement as seen in dG-Ln³⁺ gels. Heat-cool protocol drives network assembly, leading to hydrogel formation with expected emissive and elastic properties.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7164</summary>
+              <pre>The target molecule thymidine (T) is a pyrimidine nucleoside whose nucleobase (thymine) is structurally and electronically almost identical to uracil. Reference 1 demonstrates that uridine forms stable, luminescent Ln³⁺-coordinated hydrogels with Tb(NO₃)₃ or Eu(NO₃)₃ under the exact heat-cool conditions listed in the target experiment. The key interactions are (i) coordination of the Ln³⁺ ion to the O4/O2 carbonyls and N3 of the pyrimidine ring (3:1 base:metal stoichiometry) and (ii) subsequent π–π stacking of the bases together with hydrogen-bond cross-links supplied by the sugar hydroxyls.  
+
+Thymine possesses the same set of metal-binding heteroatoms as uracil; the sole difference is a methyl substituent at C5, which does not interfere with coordination or stacking. Although thymidine lacks the 2′-OH present in uridine, Reference 2 shows that the corresponding deoxyribonucleoside deoxyguanosine (dG) still forms robust Ln³⁺ hydrogels under identical conditions. The absence of the 2′-OH merely changes the precise stoichiometry and fiber thickness, but does not abolish gelation.  
+
+Consequently, the same Ln³⁺-mediated base coordination, stacking, and residual sugar hydrogen-bonding network that produces gels for both U and dG is expected to operate for T, yielding a hydrogel (most probably with lower stiffness than the ribo-analogue). No experimental contraindications (crystallization, precipitation, or pH incompatibility) are present in the supplied references.  
+
+Final answer: Gel
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Thymidine (T)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Cc1cn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]c1=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M T + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M T + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Thymine presents the same Ln³⁺-binding sites (O4, O2, N3) as uracil; the methyl at C5 is non-interfering. Reference 1 shows U forms stable luminescent hydrogels via 3:1 base–Ln coordination, π-stacking and sugar H-bonding. Reference 2 shows the deoxyribonucleoside dG still gels with Ln³⁺ despite lacking the 2′-OH; only fiber diameter and modulus change. The identical heat-cool protocol and pH therefore produce a (somewhat softer) T·Ln³⁺ hydrogel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

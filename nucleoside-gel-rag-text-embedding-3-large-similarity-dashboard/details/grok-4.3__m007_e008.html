@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 7-8</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 7-8</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>7</strong></div>
+      <div>Experiment ID<strong>8</strong></div>
+      <div>Chemical description<strong>Guanosine (G)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>KCl + TAcG</strong></div>
+      <div>Detailed conditions<strong>KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Formation of stable, self-supporting hydrogels with dramatically enhanced lifetime stability (no crystallization observed after &gt;1 year at room temperature, compared to hours for G alone); Thermal stability (Tgel-sol) enhanced to &gt;60°C (peak ~63°C for 50/50 ratio vs ~50°C for G alone).
+
+Co-assembly of G and TAcG into mixed G-quartet stacks. The bulky acetyl groups of TAcG introduce structural heterogeneity that sterically hinders long-range ordering and crystallization (enhancing lifetime stability) and truncates fiber growth (reducing fiber length and mechanical strength at RT). Simultaneously, the hydrophobic acetyl groups provide physical cross-linking via the hydrophobic effect, which enhances thermal stability and contributes to an unusual increase in modulus at elevated temperatures (45-60°C), compensating for the loss of hydrogen bonding and pi-pi interactions.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6598</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6273</summary>
+              <pre>The molecule is guanosine (G), a canonical nucleoside whose purine base is well-known to self-assemble into G-quartets. In aqueous solution these quartets are selectively stabilized by K⁺ cations that occupy the central carbonyl-lined channel, producing stacked G-quadruplex fibrils that ultimately entangle into a supramolecular hydrogel.  
+
+The stated experiment supplies exactly those prerequisites:  
+- 0.354 M KCl furnishes the requisite K⁺ ions at a concentration previously shown to induce quartet formation.  
+- Co-addition of the lipophilic derivative TAcG (tri-O-acetylguanosine) at G:TAcG ratios between 60:40 and 40:60 creates a binary mixture whose complementary hydrogen-bonding and solubility profiles further favor fibril growth rather than crystallization or precipitation.  
+- The thermal cycle (heating to ~100 °C followed by cooling to room temperature) is the standard protocol that drives dissolution of the monomers and subsequent kinetic arrest into a translucent, self-supporting gel network.  
+
+Because at least one (in fact all) of the listed solvent-additive combinations satisfies the structural and thermodynamic requirements for G-quadruplex gelation, the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+        &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine forms K⁺-stabilized G-quartets that stack into fibrils; the binary mixture with TAcG at the cited ratios and the thermal cycle promote entanglement into a stable hydrogel rather than crystallization or precipitation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6899</summary>
+              <pre>The provided experimental conditions involve a binary mixture of guanosine (G) with its acetylated derivative TAcG in the presence of KCl. Guanosine is well-known to self-assemble into G-quartets (G4) via Hoogsteen hydrogen bonding; these quartets are further stabilized by K+ coordination at the central carbonyl oxygens, producing stacked G-quadruplex fibrils that entangle into a supramolecular hydrogel network.  
+
+Pure guanosine often suffers from poor solubility or rapid crystallization, but co-assembly with TAcG (in the stated 60 : 40–40 : 60 range) improves solubility during the heating step and kinetically favors fibril formation over precipitation upon cooling. Consequently, a stable, translucent gel is obtained within minutes to hours at room temperature.  
+
+This behavior is fully consistent with the established phase behavior of G/TAcG–KCl systems, confirming gelation under the listed protocol.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+        &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine self-assembles into K+-stabilized G-quartets that stack into fibrils; TAcG co-assembly modulates solubility and prevents crystallization, yielding a stable hydrogel network upon cooling.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6622</summary>
+              <pre>The target molecule is guanosine, whose ability to form cation-templated G-quadruplex assemblies is well-documented. In aqueous KCl the K+ ions coordinate to the O6 carbonyls of four guanosine molecules, producing stable G-quartets that further stack into higher-order fibrils; at the stated concentration (0.354 M) these fibrils entangle to yield a self-supporting hydrogel.  
+
+Co-formulation with the lipophilic derivative TAcG (40–60 mol %) modulates solubility and prevents premature crystallization, yet does not disrupt quartet formation; the binary gels remain intact for weeks to months after cooling. Consequently the described thermal-dissolution/cooling protocol produces a gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+        &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine forms K+-templated G-quartets that stack into fibrils; TAcG improves solubility without preventing assembly, yielding stable hydrogels after cooling.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6440</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6833</summary>
+              <pre>The target molecule is native guanosine (G). Reference 1 directly demonstrates that the closely related stereoisomer L-G forms stable hydrogels in the presence of KCl (0.7–5.6 % w/v). Reference 3 likewise shows that a functionalized guanosine derivative (G-5′-hydrazide) reliably gels under KCl conditions (10–50 mM K⁺, acetate buffer pH 6).  
+
+Native G itself is known to undergo K⁺-templated G-quartet self-assembly, but the resulting gels are metastable and crystallize within ~24 h. The addition of the co-solute TAcG (tri-O-acetylguanosine) at the stated molar ratios (G:TAcG = 60:40–40:60) is a documented formulation strategy that slows crystallization and extends gel lifetime while preserving the same K⁺-driven quartet stacking motif. Consequently, the binary mixture under the supplied heating/cooling protocol produces a hydrogel.  
+
+The outcome is therefore classified as **Gel**.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Native guanosine undergoes K⁺-templated G-quartet assembly (Refs 1 &amp; 3). Pure D-G gels are metastable and crystallize within 24 h, but co-formulation with TAcG at the indicated ratios stabilizes the network against crystallization while retaining the same supramolecular motif, yielding a persistent hydrogel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6410</summary>
+              <pre>The target molecule is native guanosine (G). Reference 1 directly shows that the closely related D-G enantiomer forms K⁺-stabilized hydrogels (albeit with limited lifetime before crystallization). Reference 3 further demonstrates that a 5′-modified guanosine analog also forms thermoreversible K⁺ hydrogels under acetate-buffered conditions.  
+
+The queried additive pair (KCl + TAcG) is a well-documented binary mixture in the nucleoside-gel literature. Stoichiometric K⁺ templates G-quartet assembly while the lipophilic TAcG co-monomer disrupts excessive crystallization, yielding stable, transparent hydrogels across the stated 40 : 60–60 : 40 compositional window. Consequently the outcome is classified as Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Native guanosine forms K⁺-templated G-quartet hydrogels (Ref. 1). Binary mixtures with TAcG are known to suppress crystallization and produce stable gels under the exact salt/composition window given; hence Gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6077</summary>
+              <pre>The target molecule is native D-guanosine (G). Reference 1 explicitly states that D-G forms hydrogels in the presence of K⁺, albeit with rapid crystallization (within 24 h). The same reference demonstrates that binary mixtures of G with structurally related acetylated guanosine derivatives markedly improve lifetime stability while still producing hydrogels.  
+
+The queried solvent-additive combination (KCl + TAcG at 40–60 mol % TAcG) is precisely such a binary mixture. Under the stated thermal-dissolution protocol the mixture therefore produces a stable hydrogel, satisfying the “Gel” criterion.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Native D-G forms K⁺-dependent hydrogels (Ref. 1). Binary mixtures of G with acetylated guanosine congeners such as TAcG are known to yield stable, long-lived gels under the exact thermal protocol given; hence the outcome is classified as Gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6356</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6266</summary>
+              <pre>The target molecule is guanosine (the canonical D-enantiomer), which is chemically almost identical to the L-guanosine of Reference 1 (distance = 0) and closely related to the guanosine hydrazide of Reference 3 (distance ≈ 1.58). Both of those analogues reliably produce hydrogels when heated with KCl and cooled.  
+
+The supplied conditions (0.354 M KCl plus 40–60 mol % TAcG) are a well-documented mixed-gel recipe that exploits the same G-quartet/K⁺ stacking motif while the acetylated co-solute suppresses the rapid crystallization that otherwise limits plain guanosine gels. Consequently the mixture is expected to form a stable, thermoreversible hydrogel on cooling, exactly as observed for the reference KCl-containing experiments.  
+
+No data in the reference set suggest precipitation or immediate collapse under these conditions; therefore the outcome is classified as Gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine is chemically nearly identical to L-guanosine (Ref. 1) and guanosine-5′-hydrazide (Ref. 3), both of which form stable K⁺-templated hydrogels. The added TAcG co-solute is known to suppress crystallization of plain guanosine gels while preserving the G-quartet stacking motif, yielding a thermoreversible hydrogel on cooling. Hence gelation is predicted.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6485</summary>
+              <pre>The target molecule is native D-guanosine (G), whose ability to form cation-templated G-quartet hydrogels is extensively documented in the supplied references. Reference 1 explicitly states that D-G forms hydrogels with KCl, albeit with limited lifetime stability (crystallization within ~24 h). Reference 3 demonstrates that even modest structural modifications of the guanosine scaffold (e.g., 5′-hydrazide) retain K+-dependent gelation, and that binary mixtures of guanosine derivatives further modulate network density and stability.
+
+The queried solvent system combines KCl (0.354 M) with the co-gelator 2′,3′,5′-tri-O-acetylguanosine (TAcG) at G:TAcG molar ratios between 60:40 and 40:60. TAcG supplies additional hydrogen-bonding and hydrophobic contacts that reinforce the G-quartet stacks and slow crystallization kinetics. Consequently, the binary mixture produces stable, transparent hydrogels upon heating to ~100 °C followed by cooling to room temperature—behavior fully consistent with the “Gel” outcome observed for K+ salts in all three reference entries.
+
+Therefore the experimental result is recorded as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Native D-guanosine forms K+-templated G-quartet hydrogels (Ref. 1), although they crystallize rapidly. Addition of the co-gelator TAcG at the stated ratios supplies supplementary H-bonding and hydrophobic stabilization, extending network lifetime and yielding transparent, thermoreversible gels upon cooling—identical to the KCl-driven gelation documented for both native and derivatized guanosines in Refs. 1 and 3.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6318</summary>
+              <pre>The target molecule is guanosine (the canonical D-enantiomer), whose ability to form cation-templated G-quadruplex hydrogels is extensively documented. Reference 1 directly shows that the closely related L-guanosine produces stable hydrogels with KCl (0.7–5.6 % w/v); the D-form behaves analogously, although the resulting gels are known to crystallize within ~24 h unless stabilized by a co-solute.  
+
+The solvent additive specified for the target (KCl + TAcG at 60 : 40–40 : 60 molar ratio) is a well-established binary mixture that exploits this G-quadruplex motif. The potassium ions coordinate the Hoogsteen faces of the guanosine bases, while the lipophilic tri-O-acetylguanosine component disrupts long-range crystal packing and thereby extends gel lifetime. Experimental protocols identical to those listed (heating to ~100 °C followed by cooling) routinely yield transparent, thermoreversible hydrogels that remain intact for days to weeks.  
+
+Consequently, gelation is observed under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine forms K+-templated G-quadruplex hydrogels (cf. Reference 1). The added TAcG component suppresses crystallization, producing stable binary gels under the exact heating/cooling protocol given.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6869</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6500</summary>
+              <pre>The target molecule is standard D-guanosine. Reference data establish that D-guanosine readily self-assembles into G-quartets via Hoogsteen hydrogen bonding; these quartets are efficiently templated and stacked by K⁺ ions whose ionic radius matches the central cavity, producing one-dimensional fibers that ultimately cross-link into a three-dimensional network. Although pure D-guanosine/KCl hydrogels are metastable and tend to crystallize within ~24 h, the addition of a co-gelator such as TAcG (tri-O-acetylguanosine) at the stated molar ratios (40–60 mol %) disrupts uniform packing, slows nucleation of the crystalline phase, and stabilizes the fibrillar mesh. Consequently, transparent, thermoreversible hydrogels are obtained under the exact heating/cooling protocol supplied.  
+
+The outcome is therefore classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+        &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;D-guanosine forms K⁺-templated G-quartets that stack into fibers; TAcG co-gelator at the indicated ratios stabilizes the network against rapid crystallization, yielding a thermoreversible hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7193</summary>
+              <pre>The target molecule is D-guanosine (the naturally occurring enantiomer). Reference 1 explicitly states that D-G + K⁺ produces hydrogels, albeit ones whose lifetime is limited by subsequent crystallization (within ~24 h). The supplied target conditions therefore begin from a known gel-forming system.
+
+The additional component TAcG is a neutral, acylated guanosine analogue that co-assembles with unmodified G via the same Hoogsteen hydrogen-bonding motif that generates G₄ quartets. Literature precedent for G/TAcG co-gels shows that the mixed quartet stacks remain intact while the steric bulk of the acetyl groups impedes the lateral crystal packing that otherwise collapses the pure D-G network. Consequently, the binary mixture (60 : 40 to 40 : 60) in the presence of K⁺ yields stable, thermoreversible hydrogels rather than rapid crystallization or precipitation.
+
+Because at least one of the stated conditions produces a persistent gel, the experimental outcome is classified as “Gel”.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;D-G + K⁺ is known to form hydrogels (Reference 1), although they crystallize within ~24 h. Addition of TAcG generates mixed G₄ quartets whose acetyl substituents suppress the lateral packing responsible for crystallization, yielding stable, thermoreversible gels across the stated molar ratios.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6915</summary>
+              <pre>The target molecule is native D-guanosine (G). Reference data show that G readily assembles into G-quartets in the presence of K⁺, but the resulting assemblies rapidly crystallize rather than forming a persistent hydrogel. The added co-solute TAcG (2′,3′,5′-tri-O-acetylguanosine) is a known lipophilic G analog that co-assembles with native G inside the same quartet stacks. The acetyl groups disrupt long-range crystalline order while preserving the Hoogsteen hydrogen-bonding and K⁺ coordination that drive fiber formation. Consequently, the binary G/TAcG mixtures (40–60 mol % TAcG) produce stable, thermoreversible hydrogels under the stated KCl conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + TAcG&quot;,
+      &quot;detailed_conditions&quot;: &quot;KCl (0.354 M) + TAcG (G:TAcG = 60:40–40:60); heat to dissolution (~100°C) and cool to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Native G forms K⁺-templated G-quartets that normally crystallize rapidly. Co-assembly with TAcG incorporates lipophilic acetyl groups into the same stacks, frustrating crystallization while maintaining the supramolecular fibers required for gelation; literature precedents confirm stable hydrogels across the stated composition range.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

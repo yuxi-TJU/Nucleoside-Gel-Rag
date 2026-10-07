@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 55-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 55-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>55</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>N₄-decanoyl-2&#x27;-deoxycytidine</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>H₂O</strong></div>
+      <div>Detailed conditions<strong>Pure water.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">No gelation
+
+Reduced acyl chain length decreases lipophilicity and impacts the solubility-driven self-assembly process.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4877</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.4742</summary>
+              <pre>The molecule N₄-decanoyl-2&#x27;-deoxycytidine is an amphiphilic nucleoside derivative. Its structure combines a hydrophobic decanoyl (C10) acyl chain with the polar 2&#x27;-deoxycytidine headgroup (containing multiple H-bond donors/acceptors from the ribose OH groups and nucleobase). In pure water this balance promotes spontaneous self-assembly: the hydrophobic tails cluster via the hydrophobic effect while the nucleobases engage in Watson–Crick-type H-bonding and π–π stacking. The resulting anisotropic nanofibers entangle to form a three-dimensional network that immobilizes water, producing a hydrogel.
+
+Because gelation occurs on laboratory timescales (minutes to hours) under these conditions, the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C10 chain self-assembles in water via hydrophobic effect, nucleobase H-bonding and π-stacking to yield an entangled nanofiber network that immobilizes solvent.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.4781</summary>
+              <pre>The molecule N₄-decanoyl-2′-deoxycytidine is an amphiphilic nucleolipid featuring a hydrophobic C10 alkyl tail covalently attached to the nucleobase and a hydrophilic 2′-deoxyribose head-group. In pure water this balance is sufficient to drive spontaneous self-assembly: the alkyl chains cluster via hydrophobic effect while the nucleobases and sugar moieties form an extended hydrogen-bonding network. The resulting supramolecular fibers entangle to produce a three-dimensional matrix that immobilizes bulk solvent, yielding a stable hydrogel. Consequently the outcome under the stated conditions is recorded as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleolipid with C10 tail; hydrophobic effect plus nucleobase/sugar H-bonding drives fiber formation and hydrogelation in water.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5109</summary>
+              <pre>The molecule N₄-decanoyl-2&#x27;-deoxycytidine is an amphiphilic nucleoside derivative. Its long C10 alkyl chain supplies the hydrophobic driving force for self-assembly in aqueous media, while the nucleobase (cytosine) and the free 3&#x27;/5&#x27;-OH groups of the deoxyribose provide complementary hydrogen-bonding sites. In pure water these two forces are balanced such that the molecules organize into high-aspect-ratio fibrils that entangle into a three-dimensional network, producing a stable hydrogel.  
+
+No competing crystallization or precipitation pathways are expected under the stated conditions, because the chain length (C10) lies within the range previously shown to favor gelation rather than macroscopic phase separation for this structural class. Consequently the system is predicted to form a gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic balance between the C10 acyl chain and the H-bonding nucleoside/sugar moieties enables fibrillar self-assembly and hydrogel formation in water.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5474</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5302</summary>
+              <pre>The provided reference data show a clear dependence of gelation behavior in pure water on acyl chain length for this class of N₄-acyl-2′-deoxycytidine derivatives. The C8 homologue forms a stable, self-supporting hydrogel under the exact conditions given for the target molecule. In contrast, both the C12 and C14 homologues fail to gel in pure water and instead remain as sols or precipitates.  
+
+The target C10 chain length lies between these two regimes but is substantially closer to the non-gelling C12/C14 compounds in terms of hydrophobicity and packing propensity. Consequently, the molecule is expected to exhibit the same outcome as the C12 and C14 analogues (no gel formation) rather than the shorter C8 case.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Chain-length trend in the references shows gelation in pure water only for the C8 derivative; C12 and C14 analogues produce no gel. The C10 target is hydrophobically closer to the non-gelling C12/C14 compounds and is therefore predicted to remain a sol.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5693</summary>
+              <pre>The provided reference data show a clear dependence of gelation behavior in pure water on the length of the N₄-acyl chain. The C8 derivative forms a stable, self-supporting hydrogel in pure water, whereas both the C12 and C14 analogues produce only solutions or precipitates (no gel) under identical conditions.  
+
+The target molecule possesses a C10 acyl chain. Its molecular graph (and therefore its physicochemical properties that govern self-assembly) lies between the C8 and C12 cases but is appreciably closer to the C12 structure, as quantified by the reported chemical distances (0.48 to C12 versus 0.68 to C8). Consequently, the packing and solubility balance required for gelation in pure water is not achieved, mirroring the behavior of the C12 and C14 homologues.  
+
+Thus the prediction for the single experimental condition supplied (pure water) is No Gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Chain-length trend in the reference set shows gelation in pure water only for the C8 acyl derivative; the C12 and C14 analogues give no gel. The target C10 chain is structurally closer to C12 (chemical distance 0.48 vs 0.68), placing it outside the gel-forming window.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5426</summary>
+              <pre>The provided reference data show a clear trend based on acyl chain length for gelation behavior in pure water. The C8 derivative forms a stable hydrogel under the specified conditions (heating to dissolution followed by cooling). By contrast, both the C12 and C14 derivatives fail to gel and remain soluble or precipitate.  
+
+The target molecule possesses a C10 acyl chain, placing it between the C8 (gel-forming) and C12 (non-gel-forming) cases. Because the chemical distance to the nearest non-gelating analogue (C12) is substantially smaller than the distance to the gelating C8 analogue, and because gelation in pure water is lost once the chain exceeds eight carbons, the target is predicted to behave like the C12/C14 compounds.  
+
+Thus, under the exact conditions given for the target (pure water, 0.5 % w/v), no self-supporting gel is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Chain-length trend in pure water shows gelation only for the C8 analogue; C12 and C14 analogues do not gel. Target C10 chain is closer to C12 (chemical distance 0.48) than to C8 (distance 0.68) and therefore follows the non-gelating behavior.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5457</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5630</summary>
+              <pre>The target molecule features a C10 acyl chain (decanoyl), placing it structurally between the C8 analog (which forms a stable hydrogel in pure water) and the C12/C14 analogs (which show no gelation in pure water). Gelation in this family of amphiphilic nucleosides is governed by a narrow solubility window: the molecule must be sufficiently hydrophobic to drive self-assembly into fibers yet still soluble enough under the heating/cooling protocol to avoid immediate precipitation or crystallization.  
+
+The C8 derivative sits comfortably inside this window and therefore gels readily in H₂O. Extending the chain by only two carbons (C10) already shifts the balance toward lower aqueous solubility. The C12 and C14 derivatives, only two or four carbons longer still, lie outside the window and produce no gel in pure water; they require an ethanol co-solvent to restore the necessary solubility-gelation balance. Because the C10 chain length is closer to the non-gelling C12 species and exceeds the demonstrated optimum for pure-water gelation, the target is expected to behave analogously to the C12/C14 compounds: it will either remain insoluble or will crystallize/precipitate before a self-supporting network can form.
+
+Consequently, under the stated conditions (pure water, 0.5 % w/v, heat-cool), the outcome is No Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;C10 chain length exceeds the solubility optimum shown by the C8 gelator and approaches the non-gelling C12/C14 species; pure water therefore leads to precipitation or crystallization rather than network formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5284</summary>
+              <pre>The target molecule features a decanoyl (C10) acyl chain attached at N4 of 2&#x27;-deoxycytidine. This places it structurally between the C8 and C12 analogues in the reference set.  
+
+Gelation in pure water for this class of amphiphilic nucleosides requires a precise hydrophilic–hydrophobic balance that permits complete thermal dissolution followed by ordered self-assembly upon cooling. The C8 derivative satisfies this balance and forms a transparent, self-supporting hydrogel. Extending the chain by only two carbons (C10) measurably increases hydrophobicity, lowering aqueous solubility at the concentrations and heating conditions employed. Consequently, the molecule either fails to dissolve fully or aggregates into precipitates/crystals rather than a percolating fibrillar network. This behavior is already documented for the still longer C12 and C14 homologues, both of which explicitly return “No Gel” in pure water.  
+
+Because the C10 chain length lies beyond the narrow window that supports gelation in the absence of a cosolvent, the outcome in neat H₂O is predicted to be identical to that of the C12/C14 compounds.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The C10 acyl chain increases hydrophobicity relative to the C8 analogue that gels in water; solubility is therefore insufficient for the dissolution–self-assembly sequence required for hydrogelation. This mirrors the explicit &#x27;No Gel&#x27; outcomes recorded for the C12 and C14 homologues under identical pure-water conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5636</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5663</summary>
+              <pre>The provided reference data show a clear trend based on acyl chain length for this exact class of 2&#x27;-deoxycytidine derivatives (all possessing the same sugar with exactly two free hydroxyl groups).  
+
+- The C8 homologue gels readily in pure water because its lipophilicity (clog P ≈ 1.44) supplies the precise solubility–hydrophobicity balance needed for nucleation-and-growth of an entangled fibrillar network.  
+- Increasing the chain to C12 (clog P ≈ 3.55) or C14 (clog P ≈ 4.61) shifts the molecule too far toward hydrophobicity; self-assembly is no longer spontaneous in pure water and an organic co-solvent is required to restore the necessary solubility window.  
+
+The target molecule bears a C10 chain and therefore occupies an intermediate lipophilicity (estimated clog P ≈ 2.5). This value lies closer to the non-gelling C12/C14 regime than to the optimal C8 case. Consequently, the solubility-driven self-assembly required for hydrogelation does not occur in neat water.  
+
+Final answer: No Gel  
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;C8 homologue gels in water (optimal clog P ≈ 1.44). C12 and C14 homologues do not (clog P 3.55–4.61). The C10 target has intermediate lipophilicity that lies outside the narrow solubility window needed for spontaneous fibril formation in neat water.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5619</summary>
+              <pre>The target molecule features a C10 acyl chain on the N₄ position of 2&#x27;-deoxycytidine (exactly two sugar hydroxyl groups).  
+
+Reference data establish a clear chain-length dependence for gelation in pure water:  
+- C8 (ref 2) produces a stable, self-supporting hydrogel because the modest lipophilicity (clog P ≈ 1.44) together with the two hydroxyl groups supplies the precise solubility/hydrogen-bonding balance required for nucleation-and-growth fiber formation.  
+- C12 (ref 1) and C14 (ref 3) fail to gel in pure water; their higher lipophilicity (clog P 3.55–4.61) drives insufficient aqueous solubility, so the self-assembly equilibrium is never reached.  
+
+A C10 chain lies between these limits but is already sufficiently longer than the documented optimum (C8). Consequently its lipophilicity exceeds the narrow window that permits gelation in neat water, and the molecule is therefore predicted to remain soluble or to precipitate rather than to form a gel.  
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Chain-length trend shows only the C8 analogue gels in neat water; C10 is already too lipophilic (estimated clog P ~2.5) for the required solubility-driven nucleation, matching the No-Gel behavior of C12/C14.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5626</summary>
+              <pre>The target molecule (C10 acyl chain) is structurally intermediate between the C8 and C12 analogues in the reference set.  
+
+- The C8 derivative forms a stable hydrogel in pure water because its lipophilicity (clog P ≈ 1.44) and the two sugar hydroxyl groups together produce the precise solubility–hydrogen-bonding balance needed for nucleation-driven fiber entanglement.  
+- Extending the chain to C12 raises lipophilicity (clog P ≈ 3.55) enough that the same balance is lost in pure water; only the addition of ethanol co-solvent restores gelation.  
+- The C10 chain (estimated clog P ≈ 2.5) lies on the high-lipophilicity side of this threshold. Consequently, the molecule remains insufficiently soluble in neat water for the required self-assembly pathway, exactly as observed for the C12 and C14 homologues.  
+
+Thus the outcome in pure water is predicted to be “No Gel.”
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;N₄-decanoyl-2&#x27;-deoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The C10 chain increases lipophilicity beyond the narrow window that permits nucleation and fiber entanglement in neat water (optimal only for the C8 analogue). Consequently the molecule behaves like the C12/C14 homologues and fails to gel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

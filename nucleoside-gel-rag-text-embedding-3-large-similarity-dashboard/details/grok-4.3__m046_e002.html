@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 46-2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 46-2</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>46</strong></div>
+      <div>Experiment ID<strong>2</strong></div>
+      <div>Chemical description<strong>A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>Organic solvents</strong></div>
+      <div>Detailed conditions<strong>Toluene / petroleum ether (1:2 v/v); heated then cooled.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Gelates at 16.7 mg mL⁻¹; transparent, blue-fluorescent organogels with rod-like fibres (Ø ≈ 200–300 nm, L ≈ 2 µm). Good thermal stability; fluorescence intensifies on cooling.
+
+Hydrophobic interactions from the C12 chain and hydrogen bonding from uridine drive supramolecular assembly; higher toluene proportion improves solubility and leads to thinner nanofiber networks.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6256</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6292</summary>
+              <pre>The molecule features a long dodecyl alkyl chain (promoting van der Waals interactions), a planar carbazole moiety (enabling \(\pi\)-\(\pi\) stacking), and a uridine nucleoside core (providing multiple H-bond donor/acceptor sites from the ribose OH groups and nucleobase). These structural elements are well-known to cooperatively drive self-assembly into fibrillar networks that immobilize organic solvents.
+
+The specified conditions (toluene/petroleum ether 1:2, heated to dissolution followed by cooling) are a standard protocol for triggering organogelation in nonpolar media. Upon cooling, reduced solubility combined with the aforementioned non-covalent interactions favors formation of a stable supramolecular gel rather than crystallization or precipitation.
+
+Thus, gelation is expected.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+        &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Long alkyl chain, carbazole \u03c0-system, and H-bonding nucleoside core enable self-assembly into a fibrillar gel network in the nonpolar mixed solvent upon cooling.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6395</summary>
+              <pre>The target molecule is a uridine nucleoside derivative functionalized at the 5-position with a 9-dodecylcarbazole unit. This architecture combines three key elements that favor organogelation: (i) the uracil and ribose hydroxyl groups provide multiple hydrogen-bond donor/acceptor sites, (ii) the planar carbazole moiety enables π–π stacking, and (iii) the C12 alkyl chain supplies van der Waals interactions. In low-polarity media such as toluene/petroleum ether (1:2), these non-covalent forces are maximized once the compound is solubilized by heating and then allowed to cool, typically leading to anisotropic self-assembly into a fibrillar network that immobilizes the solvent.
+
+The experimental protocol (heating followed by cooling) is the standard trigger for supersaturation-driven nucleation of such gelators. No competing crystallization or precipitation pathways are indicated by the molecular structure or solvent choice. Consequently, gel formation is expected.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+        &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The molecule possesses complementary H-bonding (uracil, ribose OH), π-stacking (carbazole), and hydrophobic (C12 chain) motifs that drive anisotropic self-assembly into a fibrillar network in low-polarity media upon cooling; the given solvent mixture and thermal protocol are standard for organogel formation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6082</summary>
+              <pre>The molecule consists of a uridine nucleoside core (providing multiple H-bonding sites via the ribose OH groups and the uracil base) covalently linked at the 5-position to a 9-dodecylcarbazole unit. The carbazole moiety supplies a large planar aromatic surface for π–π stacking, while the C12 alkyl chain adds substantial van der Waals/hydrophobic interactions.  
+
+In the stated non-polar medium (toluene/petroleum ether 1:2), these three orthogonal non-covalent forces are expected to operate cooperatively once the sample is heated to dissolution and then cooled. The resulting anisotropic self-assembly produces an extended fibrillar network that immobilizes the solvent, i.e., organogel formation.  
+
+No competing crystallization or precipitation pathways are indicated by the molecular structure or the solvent polarity, reinforcing the prediction of gelation under the reported thermal cycle.
+
+[{
+    &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+        &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The uridine OH and carbonyl groups enable H-bonding, the carbazole supplies π–π stacking, and the dodecyl chain provides van der Waals cohesion; together they drive fibrillar self-assembly and solvent immobilization in the non-polar mixture upon cooling.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6553</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6293</summary>
+              <pre>The target molecule (index 46) features a 9-dodecyl (C12) carbazole substituent at the 5-position of uridine. This places it structurally between the C8 analog (reference 2, which fails to gel in toluene/petroleum ether mixtures) and the C16 analog (reference 1, which readily forms transparent, nanofibrous organogels under identical solvent and heat-cool conditions).  
+
+Reference 1 explicitly compares its own gels to those of “UC12” (the C12 target), noting that the C16 gels are mechanically stronger; this comparison presupposes that the C12 species also produces gels (albeit weaker). The solvent system, thermal protocol, and concentration regime in the target experiment are an exact match to the successful C16 trials.  
+
+Consequently, the C12 chain length is sufficient to support the requisite intermolecular interactions (primarily van der Waals contacts along the alkyl tail plus hydrogen-bonding and π-stacking of the nucleobase/carbazole units) for gelation in the non-polar mixed solvent.  
+
+[{
+    &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+        &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Chain length (C12) lies between non-gelling C8 and gelling C16 analogs; reference 1 explicitly compares its gels to those of UC12, confirming that the C12 species forms gels (weaker than C16) under the identical solvent/thermal conditions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6530</summary>
+              <pre>The target molecule features a 9-dodecyl (C12) alkyl chain on the carbazole-uridine scaffold. This places it structurally between the C8 analogue (Reference 2), which fails to gel in toluene/petroleum ether mixtures because the chain is too short to drive the necessary van der Waals/hydrophobic interactions for nanofiber formation, and the C16 analogue (Reference 1), which readily forms stable, fluorescent organogels at low concentrations under identical solvent and thermal conditions.  
+
+Chain-length dependence is well-established for this class of nucleoside gelators: elongation of the N9-alkyl substituent progressively enhances solubility in hot non-polar media while promoting anisotropic self-assembly upon cooling. The C12 length is already above the minimum threshold observed for related carbazole-nucleoside derivatives, and the specific 1:2 toluene/petroleum ether mixture used for the target is one in which the C16 congener gels efficiently. Consequently, the target is predicted to form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+      &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C12 chain length lies between the non-gelling C8 and gelling C16 analogues; sufficient hydrophobicity for nanofiber assembly in the tested solvent mixture.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6836</summary>
+              <pre>The target molecule features a 9-dodecyl (C12) carbazole substituent at the 5-position of uridine. This places its alkyl-chain length squarely between the two closest experimental precedents (C16 in Reference 1 and C8 in Reference 2).  
+
+Reference 1 demonstrates that the longer C16 homologue reliably forms transparent, mechanically stable, blue-fluorescent organogels in both 1 : 1 and 1 : 2 toluene/petroleum-ether mixtures upon heating and cooling; the gels are stable down to ~8 mg mL⁻¹. Reference 2 shows that shortening the chain to C8 abolishes gelation under identical solvent and thermal protocols, yielding only clear solutions.  
+
+Because gelation in these non-polar solvent systems is driven by a combination of π-stacking of the carbazole–uracil core and van-der-Waals interactions supplied by the alkyl tail, an intermediate C12 chain is expected to retain sufficient hydrophobic surface area to support the same self-assembly pathway. Consequently, the target molecule is predicted to form a gel under the stated conditions (toluene/petroleum ether 1 : 2 v/v, heat–cool).  
+
+[{
+  &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+      &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The C12 alkyl chain length lies between the gel-forming C16 analogue (Ref. 1) and the non-gelating C8 analogue (Ref. 2). The same solvent mixture and thermal protocol that produce stable organogels for C16 are therefore expected to support gelation for C12 via the same π-stacking + van-der-Waals mechanism.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6608</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6873</summary>
+              <pre>The target molecule features a 9-dodecyl (C12) alkyl chain attached to the carbazole-uridine core. This places it structurally between the two closest experimental references: the C16 analog (Reference 1, chemical distance 1.77) that forms stable, fluorescent organogels in toluene/petroleum ether mixtures (both 1:1 and 1:2 v/v) upon heating and cooling, and the C8 analog (Reference 2, chemical distance 3.72) that fails to gel under identical solvent and thermal conditions.
+
+Gelation in this structural family is driven by a combination of hydrogen-bonding from the uridine diol and hydrophobic/van der Waals interactions from the N-alkyl chain. The C8 chain is too short to provide sufficient solvophobic driving force, resulting in simple dissolution. Extending the chain to C12 crosses the threshold needed for self-assembly into nanofibrous networks; this is corroborated by the explicit statement in Reference 1 that the C16 gel is “mechanically stronger than UC12,” which presupposes that the C12 congener itself forms a gel (albeit weaker). The target solvent system (toluene/petroleum ether 1:2 v/v, heat-cool) matches the conditions under which both the C16 and C12 homologs are expected to gelate.
+
+Consequently, the molecule is predicted to form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+      &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The C12 chain length is intermediate between the gelating C16 homolog (Ref 1) and the non-gelating C8 homolog (Ref 2). Reference 1 explicitly compares its gels to those of UC12, confirming that the dodecyl derivative forms gels (though mechanically weaker) under the same toluene/petroleum ether heat-cool protocol. The hydrophobic contribution of the C12 chain is therefore sufficient to drive nanofiber assembly and gelation in the specified organic solvent mixture.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6471</summary>
+              <pre>The target molecule features a 9-dodecyl (C12) alkyl chain on the carbazole unit attached to uridine. This places it structurally between the two closest reference compounds that share the same uridine–carbazole core.
+
+Reference 1 (C16 chain, chemical distance 1.77) forms stable, transparent organogels in both 1:1 and 1:2 toluene/petroleum-ether mixtures upon heating and cooling, with critical gelation concentrations of 7–9 mg mL⁻¹. The long alkyl chain supplies the necessary hydrophobic and van-der-Waals interactions that drive nanofiber formation in these low-polarity solvents.
+
+Reference 2 (C8 chain, chemical distance 3.72) fails to gel under identical solvent and thermal conditions; only clear solutions are obtained. The shorter chain evidently does not provide enough cohesive interaction to sustain a self-assembled network.
+
+Because the target C12 chain is substantially longer than the non-gelling C8 analogue and only four carbons shorter than the reliably gelling C16 analogue, the balance of solubility and intermolecular attraction in 1:2 toluene/petroleum ether is expected to favor gelation. The experimental protocol (heating followed by cooling) matches the successful protocol used for the C16 compound exactly. Consequently the target is predicted to produce a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+      &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The C12 alkyl chain length lies between the non-gelling C8 reference (no gel in identical solvent mixtures) and the gelling C16 reference (forms transparent gels at ~8 mg mL⁻¹). The additional four methylene units relative to C8 supply sufficient van-der-Waals cohesion for nanofiber network formation in low-polarity media, while the molecule remains soluble enough to avoid immediate precipitation. The heating–cooling protocol matches the successful C16 experiment, supporting gel formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6481</summary>
+              <pre>The target molecule (index 46) features a 9-dodecyl (C12) alkyl chain attached to the carbazole unit at the 5-position of uridine. This places it structurally between the two closest reference compounds: the C16 analog (reference 1, chemical distance 1.77) that forms stable, fluorescent organogels in toluene/petroleum ether mixtures (both 1:1 and 1:2 v/v) upon heating and cooling, and the C8 analog (reference 2, chemical distance 3.72) that fails to gel under identical solvent and thermal conditions.
+
+Gelation in this carbazole-uridine series is driven by a combination of π-stacking of the aromatic units, hydrogen bonding from the ribose and uracil moieties, and van der Waals interactions that increase with alkyl-chain length. The C16 derivative produces mechanically robust nanofibrous gels at low concentrations (7–9 mg mL⁻¹). The experimental note that the C16 gel is “mechanically stronger than UC12” directly implies that the C12 congener also forms a gel in the same solvent systems, albeit with lower mechanical strength. Consequently, under the queried conditions (toluene/petroleum ether 1:2 v/v, heat-cool), the target molecule is expected to produce a gel.
+
+The more distant reference 3 (myristoylated ribothymidine) is structurally unrelated and does not alter this conclusion.
+
+[{
+  &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+      &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The C12 chain length is intermediate between the gel-forming C16 analog (ref 1) and the non-gelling C8 analog (ref 2). The explicit statement that the C16 gel is mechanically stronger than UC12 confirms that the C12 compound itself forms gels in the same toluene/petroleum ether mixtures. The queried 1:2 solvent ratio and heat-cool protocol match the conditions under which the longer-chain homolog gels, so gelation is predicted.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6413</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6288</summary>
+              <pre>The target molecule features a carbazole-uridine core identical to the C16 (Reference 1) and C8 (Reference 2) analogues, differing only in alkyl-chain length (C12). Reference 1 explicitly compares its C16 gels to “UC12,” confirming that the dodecyl homologue forms organogels under the same toluene/petroleum-ether conditions, albeit with lower mechanical strength. Reference 2 shows that shortening the chain further to C8 abolishes gelation because van der Waals/hydrophobic driving forces become insufficient to nucleate stable fibres. Consequently the intermediate C12 length supplies enough interdigitation and stacking stabilization for network formation, while the uridine hydrogen-bonding motif remains unchanged. The specified heat-cool protocol in toluene/petroleum ether (1:2) therefore produces a gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+        &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;C12 chain length lies between the gelating C16 (Ref 1) and non-gelating C8 (Ref 2) analogues; explicit mention of UC12 gels in Ref 1 confirms network formation under identical solvent and thermal conditions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6457</summary>
+              <pre>The target molecule features a C12 alkyl chain on the carbazole nitrogen. Reference 1 (C16 analog, chemical distance 1.77) forms stable, fluorescent organogels in the exact solvent mixture and protocol specified for the target (toluene/petroleum ether 1:2 v/v). The longer chain supplies sufficient van der Waals/hydrophobic driving force for interdigitated fiber bundles that, together with uridine H-bonding and carbazole π-stacking, produce a percolating network.  
+
+Reference 2 (C8 analog) fails to gel under identical conditions because the shorter chain cannot overcome solvation; the target’s four additional methylene units cross this threshold, restoring the necessary hydrophobic contribution. Reference 3 further supports that C12–C14 chains are adequate for organogelation of nucleolipids in non-polar media via the same combination of chain interdigitation and nucleobase interactions.  
+
+Consequently, the C12 molecule is predicted to gelate under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+      &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C12 chain length lies between the non-gelling C8 (Ref 2) and gelling C16 (Ref 1) analogs; the added methylene units restore the van der Waals/hydrophobic driving force needed for fiber formation and network percolation in the tested solvent mixture, consistent with the mechanistic pattern established by the references.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6495</summary>
+              <pre>The target molecule features a C12 alkyl chain on the carbazole-uridine scaffold. Reference 1 demonstrates that the homologous C16 analogue reliably forms stable, transparent organogels in the identical toluene/petroleum-ether (1:2) mixture via a combination of uridine hydrogen-bonding, carbazole π-stacking and interdigitated van-der-Waals interactions supplied by the long alkyl tail. Reference 2 shows that shortening the chain to C8 abolishes gelation under the same conditions because the hydrophobic driving force becomes insufficient to nucleate extended fibers.  
+
+The C12 chain length lies between these two limits but is substantially closer to the gel-forming C16 case (chemical distance 1.77 versus 3.72). Consequently the van-der-Waals contribution remains adequate to support the same supramolecular packing motif, yielding a fibrous network that immobilizes the solvent.  
+
+Thus the target molecule is predicted to produce a gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;A 9-dodecyl-9H-carbazole group attached to the 5-position of uridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCn1c2ccccc2c2cc(-c3cn([C@@H]4O[C@H](CO)[C@@H](O)[C@H]4O)c(=O)[nH]c3=O)ccc21&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Organic solvents&quot;,
+        &quot;detailed_conditions&quot;: &quot;Toluene / petroleum ether (1:2 v/v); heated then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The C12 alkyl chain is long enough to provide the necessary van-der-Waals/hydrophobic driving force for fiber formation, analogous to the gelating C16 homologue (Ref 1) and unlike the non-gelating C8 homologue (Ref 2).&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

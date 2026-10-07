@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 44-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 44-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>44</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Guanosine-5′-monophosphate (GMP)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>KCl</strong></div>
+      <div>Detailed conditions<strong>2 wt % GMP in water with 0.5 equiv KCl; heat–cool.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Remains a clear solution; no hydrogel or precipitation.
+
+The phosphate group renders GMP highly soluble, so π-stacking interactions are too weak relative to solvation to drive G₄ fibre formation; high solubility therefore prevents the development of a percolating network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6222</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6391</summary>
+              <pre>The provided conditions match well-established literature on GMP self-assembly: in aqueous solution, GMP readily forms G-quartets that are stabilized by K+ ions (via coordination to the O6 carbonyls of guanine). These quartets then stack into columnar aggregates that entangle to produce a transparent, self-supporting hydrogel. The protocol (2 wt % GMP + 0.5 equiv KCl, heat–cool) is a classic trigger for this process; gelation typically occurs within minutes to hours upon cooling and is stable for weeks. No precipitation or crystallization is expected under these stoichiometric and thermal conditions.
+
+Thus the outcome is Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;GMP forms K+-stabilized G-quartets that stack into fibers and produce a hydrogel under the stated heat–cool conditions.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6097</summary>
+              <pre>GMP is known to self-assemble into G-quadruplexes that further organize into fibrillar networks capable of immobilizing water. The supplied conditions (2 wt % GMP + 0.5 equiv KCl, heat–cool) are a classic protocol that triggers this K+-templated gelation; therefore a stable hydrogel is obtained.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;GMP is well-known to form hydrogels in the presence of potassium ions due to the formation of G-quadruplex structures that further assemble into fibers trapping water. The heat-cool method with 0.5 equiv KCl at 2 wt% is a standard condition for gelation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6178</summary>
+              <pre>Guanosine-5′-monophosphate (GMP) is well-documented to undergo K+-templated self-assembly into G-quadruplex stacks that further entangle into a supramolecular hydrogel network. The supplied conditions (2 wt % GMP, 0.5 equiv KCl, heat–cool) are the classic protocol that triggers this process, producing a stable, thermoreversible gel within minutes to hours. Consequently the outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;GMP is known to form transparent, thermoreversible hydrogels via K+-stabilized G-quadruplex assembly under precisely these conditions.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6489</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6405</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP), a guanine-based nucleotide monophosphate. Guanine nucleosides/nucleotides are well-known to self-assemble into stable G-quadruplex structures (G-quartets) that produce hydrogels; this process is strongly promoted by alkali-metal cations, especially K⁺, which coordinate within the quartet channel.  
+
+Reference 3 (2′-O-methylguanosine) demonstrates that a closely related guanosine derivative forms a gel with KCl under essentially identical salt and concentration regimes. In contrast, the non-guanine analogue in Reference 1 (IMP) does not gel with KCl, underscoring the requirement for the guanine 2-amino and 6-oxo pattern. Reference 2 further illustrates that guanine-containing nucleosides gel only when an appropriate stabilizing cation or additive is present.  
+
+The supplied conditions (2 wt % GMP + 0.5 equiv KCl, heat–cool) therefore match the established K⁺-driven G-quadruplex gelation pathway, leading to the prediction of gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP contains the guanine motif required for K⁺-stabilized G-quartet assembly; analogous guanosine derivatives (Ref. 3) gel under the same salt conditions, whereas the non-guanine IMP (Ref. 1) does not.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6530</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP), a purine nucleoside monophosphate whose gelation behavior is governed by its ability to self-assemble into G-quadruplex stacks. These stacks are selectively stabilized by K⁺ cations that occupy the central channel between G-quartets; the resulting columnar aggregates further entangle into a sample-spanning hydrogel network.
+
+Reference 3 (2′-O-methylguanosine) demonstrates that a closely related guanosine derivative forms a gel at 50 mM in the presence of 0.2 M KCl under heat–cool conditions, while the same nucleoside remains soluble in NaCl or pure water. The structural analogy is direct: both molecules possess the guanine base required for Hoogsteen quartet formation, and the 5′-phosphate of GMP does not disrupt this motif. In contrast, Reference 1 (IMP) lacks the 2-amino group that reinforces quartet hydrogen bonding and therefore fails to gel with KCl, underscoring the guanine-specific requirement.
+
+The experimental protocol supplied for GMP (2 wt % ≈ 55 mM, 0.5 equiv KCl, heat–cool) matches the concentration and thermal regime used in Reference 3. Consequently, K⁺-templated G-quadruplex assembly is expected, producing a stable hydrogel.
+
+Final answer: Gel
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;GMP possesses an intact guanine base that forms K⁺-stabilized G-quadruplex stacks; Reference 3 shows that the closely analogous 2′-O-methylguanosine gels under identical KCl/heat–cool conditions, whereas IMP (Reference 1) lacking the 2-amino group does not. The supplied protocol therefore yields a stable hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6532</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP). GMP is a canonical guanine-based nucleotide whose purine ring system readily self-assembles into G-quartets; these quartets are selectively stabilized by K⁺ ions that occupy the central carbonyl-lined channel. The experimental conditions supplied (2 wt % GMP + 0.5 equiv KCl, heat–cool) are precisely those known to drive quartet stacking and subsequent hydrogelation.
+
+This behavior is corroborated by the reference data set:
+- Reference 3 (2′-O-methylguanosine) forms a gel under identical KCl conditions, confirming that a guanine nucleoside scaffold gels with K⁺.
+- Reference 1 (IMP) lacks the exocyclic 2-amino group required for stable G-quartet hydrogen bonding and therefore does not gel with KCl, underscoring the guanine-specific requirement that is satisfied by the target GMP.
+
+Consequently, under the stated solvent-additive and thermal protocol, GMP is predicted to produce a self-supporting gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP contains the guanine motif that forms K⁺-stabilized G-quartets; the supplied KCl/heat–cool protocol therefore drives hydrogelation, consistent with the gelation observed for the structurally related 2′-O-methylguanosine (Ref. 3) under identical KCl conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6745</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6664</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP), a purine nucleoside monophosphate whose guanine base is capable of forming Hoogsteen-paired G-quartets. These quartets are known to stack into columnar assemblies that produce hydrogels when the correct monovalent cation is present to coordinate the O6 carbonyls at the quartet center.
+
+Reference structures bracket the behavior of GMP:
+- Inosine-5′-monophosphate (chemical distance 2.56) lacks the exocyclic 2-amino group required for stable quartet formation; consequently it remains soluble in KCl and never gels.
+- 2′-O-Methylguanosine (chemical distance 4.03) retains the guanine base and gels readily with KCl under heat–cool conditions, confirming that the guanine motif plus potassium is sufficient for gelation even when the sugar is modestly modified.
+
+The experimental protocol supplied for GMP (2 wt % in water + 0.5 equiv KCl, heat–cool) exactly matches the conditions under which G-quartet hydrogels are routinely obtained. The potassium ion concentration is adequate to stabilize the quartets, and the heat–cool cycle promotes nucleation of the stacked assemblies. Therefore gelation is expected.
+
+Final answer: Gel
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP possesses an intact guanine base that forms K+-stabilized G-quartets. These quartets stack into fibers that produce a hydrogel under the stated heat–cool protocol. This is corroborated by the gelation of the structurally related 2′-O-methylguanosine with KCl and by the well-documented quartet-forming propensity of 5′-GMP itself.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6711</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP), a canonical guanine nucleotide whose purine ring, Watson–Crick edge and Hoogsteen edge are all intact. These structural features enable the well-documented self-assembly of G-quartets that are selectively stabilized by K⁺ ions. Once formed, the quartets stack into columnar aggregates that readily produce a self-supporting hydrogel at the modest concentration (2 wt %) and salt stoichiometry (0.5 equiv KCl) given in the query; the heat–cool cycle simply accelerates nucleation of the same network.
+
+This behavior is fully consistent with the closest experimental precedents:
+- 2′-O-methylguanosine (chemical distance 4.03) forms a gel under identical KCl conditions but not with NaCl, confirming the K⁺ selectivity of guanine-based quartet stacking.
+- Inosine-5′-monophosphate (chemical distance 2.56), which lacks the 2-amino group required for stable Hoogsteen pairing, fails to gel with KCl, underscoring that the guanine-specific hydrogen-bonding pattern present in the target is decisive.
+
+No competing additives (borate, Ag⁺, etc.) are present that would divert the molecule into non-gelating complexes. Consequently the system is predicted to produce a stable gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP possesses an intact guanine base that forms K⁺-stabilized G-quartets; these quartets stack into fibers that produce a hydrogel at 2 wt % with 0.5 equiv KCl after a heat–cool cycle. This matches the KCl-induced gelation observed for the close analogue 2′-O-methylguanosine and contrasts with the non-gelling IMP reference that lacks the 2-amino group required for Hoogsteen pairing.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6859</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP), a purine nucleoside monophosphate whose guanine base presents the canonical Watson–Crick and Hoogsteen faces required for G-quartet assembly. G-quartets are known to stack into higher-order fibrils that produce hydrogels when the appropriate monovalent cation (especially K⁺) is present to coordinate the O6 carbonyls at the quartet center.
+
+Comparison with the supplied references supports gelation under the stated conditions:
+- Reference 1 (inosine 5′-monophosphate) lacks the exocyclic 2-amino group that participates in the Hoogsteen hydrogen-bonding pattern of a G-quartet; consequently it remains soluble with KCl.  
+- Reference 3 (2′-O-methylguanosine) contains an intact guanine and forms a gel with 0.2 M KCl at 50 mM nucleoside concentration, demonstrating that the guanine–K⁺ combination is sufficient for network formation.  
+- The target GMP possesses both the guanine heterocycle and a 5′-phosphate; the phosphate increases aqueous solubility yet does not preclude quartet stacking once K⁺ is added. The experimental protocol (2 wt % GMP + 0.5 equiv KCl, heat–cool) supplies both the requisite cation and a thermal cycle that favors nucleation of stacked quartets, exactly analogous to the successful KCl trial in Reference 3.
+
+Therefore the mixture is predicted to produce a self-supporting gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP contains an intact guanine capable of forming K⁺-stabilized G-quartets. Reference 3 shows that a closely related guanosine derivative gels with KCl under comparable concentration and thermal cycling; the 2-amino group absent in the non-gelling inosine analogue (Reference 1) is present here, enabling Hoogsteen hydrogen bonding and fibrillar network formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6626</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6776</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP), a purine ribonucleotide that is structurally closest to the 2′-O-methylguanosine reference (chemical distance ≈ 4.0). That reference forms a stable gel when KCl is added at comparable concentration and under heat–cool conditions, because the K⁺ cation templates G-quartet stacking and subsequent fiber entanglement.  
+
+GMP itself contains the same guanine hydrogen-bonding face and an anionic 5′-phosphate; the phosphate does not prevent quartet formation and can even assist fiber cross-linking. Literature precedent and direct analogy therefore predict that 2 wt % GMP + 0.5 equiv KCl will likewise produce a self-supporting hydrogel after a heat–cool cycle.  
+
+(The inosine-5′-monophosphate reference fails to gel with KCl because it lacks the 2-amino group required for stable G-quartets; that structural difference is absent here.)
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP shares the guanine quartet-forming motif with 2′-O-methylguanosine, which gels under KCl/heat–cool conditions. K⁺ templating produces G-quartets that entangle into a hydrogel; the 5′-phosphate does not disrupt this process.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6679</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP), a canonical purine nucleotide whose self-assembly behavior is well-documented in the supramolecular gel literature. GMP readily forms stacked G-quartet macrocycles; these quartets are selectively stabilized by K⁺ coordination to the O6 carbonyls, producing one-dimensional columns that further entangle into a sample-spanning fibrillar network.  
+
+The supplied experimental condition (2 wt % GMP + 0.5 equiv KCl, heat–cool) supplies precisely the monovalent cation and thermal history required for this pathway. Consequently, a transparent, self-supporting hydrogel is expected within minutes to hours after cooling.  
+
+This prediction is reinforced by the closest structural analogue in the reference set (2′-O-methylguanosine, Ref. 3), which gels under identical KCl conditions, while the hypoxanthine congener (IMP, Ref. 1) does not—underscoring the decisive role of the guanine exocyclic amino group and O6 acceptor pattern that are both present in GMP.  
+
+Thus the outcome is recorded as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP forms K⁺-stabilized G-quartet columns that produce a fibrillar hydrogel; the supplied salt and thermal cycle match the established gelation protocol. The guanine-specific H-bonding pattern (absent in IMP) explains why KCl succeeds here but fails for the hypoxanthine reference.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6422</summary>
+              <pre>The target molecule is guanosine-5′-monophosphate (GMP). GMP is structurally analogous to the inosine 5′-monophosphate reference (chemical distance 2.56), differing only by the presence of the exocyclic 2-amino group on the purine ring. This seemingly minor change enables the well-documented self-assembly of G-quartets, which are further stabilized by K⁺ coordination at the O6 carbonyls.  
+
+The supplied experimental condition (2 wt % GMP + 0.5 equiv KCl, heat–cool) is the classic protocol that triggers K⁺-templated G-quadruplex hydrogelation. The same KCl additive produces a gel with the structurally related 2′-O-methylguanosine reference, reinforcing that the guanine motif plus K⁺ reliably drives gelation. In contrast, the inosine reference lacks the 2-amino group and therefore fails to gel under identical KCl conditions, highlighting the decisive role of the guanine-specific quartet motif.  
+
+Consequently, GMP is predicted to form a stable gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-monophosphate (GMP)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % GMP in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;GMP forms K⁺-stabilized G-quartet hydrogels under the stated conditions; the 2-amino group absent in IMP enables this assembly, consistent with known GMP gelation behavior and the 2′-O-methylguanosine reference.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

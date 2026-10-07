@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 1-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 1-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>1</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Deoxyguanosine (dG)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>Tb(NO₃)₃ or Dy(NO₃)₃</strong></div>
+      <div>Detailed conditions<strong>0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Transparent hydrogel, green Tb³⁺ emission (λem ≈ 545 nm); G′ ≈ 200 Pa; Transparent hydrogel, weak yellow Dy³⁺ emission; G′ ≈ 180 Pa
+
+Each Tb³⁺/Dy³⁺ ion forms square-antiprismatic dG₄·Ln³⁺ clusters via O6/N7 and ribose hydroxyls. π–π stacking of guanine bases plus hydrogen-bond ladders extend the clusters into 1 D columns; lateral association yields nanofibrils only a few nm thick. Entanglement of these high-aspect-ratio fibres traps &gt; 95 % water, giving stiff elastic gels. Efficient guanine → Tb³⁺ energy transfer produces bright green luminescence; Dy³⁺ receives less energy, so emission is weaker. Acid, Cu²⁺ or F⁻ break coordination bonds, collapsing the network and quenching light, while neutralisation or EDTA reverses the process, evidencing coordination-driven, reversible gelation.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6873</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6655</summary>
+              <pre>The deoxyguanosine (dG) nucleoside is well-known to self-assemble into G-quartet or G-quadruplex motifs via Hoogsteen hydrogen bonding, especially when the N7 and O6 sites are available for coordination. At the stated concentration (0.1 M) and mildly basic pH (≈8), deprotonation of the N1 proton is facilitated, allowing the nucleobase to act as a ligand for trivalent lanthanide ions. Both Tb³⁺ and Dy³⁺ readily coordinate to these sites, bridging multiple dG molecules and thereby stabilizing higher-order supramolecular fibers.  
+
+The experimental protocol (heating to 95 °C followed by slow cooling to 25 °C) supplies the thermal energy needed to dissolve any initial aggregates and then permits kinetic control during cooling, favoring anisotropic fiber growth over isotropic crystallization. Under these conditions the fibers entangle to produce a percolating network that immobilizes the solvent, resulting in macroscopic gelation.  
+
+Consequently both listed lanthanide additives produce gels.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;dG self-assembles into G-quartets that are further bridged by Tb³⁺/Dy³⁺ coordination at N7/O6; the heat-cool cycle at pH 8 promotes fiber entanglement and hydrogel formation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7025</summary>
+              <pre>The molecule deoxyguanosine (dG) is well-known to self-assemble into G-quadruplex structures via Hoogsteen hydrogen bonding, especially when the N7 and O6 sites are coordinated by metal cations. This stacking produces long, entangled fibrils that immobilize solvent and yield a hydrogel.  
+
+Lanthanide ions (Tb³⁺, Dy³⁺) are effective quadruplex stabilizers because of their high charge density and ability to bind multiple guanine O6 atoms simultaneously. The experimental protocol (0.1 M dG + 0.1 M Ln(NO₃)₃, pH ≈ 8 with NH₄OH, heat–cool cycle) supplies exactly these conditions: the alkaline pH deprotonates N1, favoring quartet formation, while the thermal cycle erases kinetic traps and allows slow fibril growth upon cooling. Consequently, a stable, translucent gel is obtained within minutes to hours for both salts.  
+
+No precipitation or crystallization is expected under these stoichiometric and pH conditions, confirming gelation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;dG forms G-quadruplex fibrils stabilized by Ln³⁺ coordination at O6/N7; alkaline pH and heat-cool cycle promote fibril entanglement and solvent immobilization.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6938</summary>
+              <pre>The deoxyguanosine (dG) nucleoside is well-known to undergo hierarchical self-assembly into G-quartet/G-quadruplex stacks that, at sufficiently high concentration and under appropriate ionic conditions, produce a three-dimensional fibrillar network capable of immobilizing solvent (i.e., a hydrogel). The experimental protocol supplies exactly those prerequisites: (i) a millimolar concentration of dG (0.1 M), (ii) equimolar trivalent lanthanide cations (Tb³⁺ or Dy³⁺) that can both coordinate to the Hoogsteen face of guanine and screen electrostatic repulsion between the quartets, (iii) mildly basic pH (≈ 8) that favors deprotonation of N1 and thereby strengthens quartet hydrogen-bonding, and (iv) a heat–cool cycle (95 °C → 25 °C) that erases kinetic traps and allows thermodynamically stable fibrils to form upon cooling.  
+
+Because at least one of the two lanthanide salts satisfies these criteria, a stable gel is obtained within the timeframe of the experiment.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG self-assembles into G-quartets that are stabilized by Tb³⁺/Dy³⁺ coordination and the basic pH; the thermal cycle allows formation of a percolating fibrillar network that immobilizes water.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6457</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6598</summary>
+              <pre>The target molecule is deoxyguanosine (dG), the canonical DNA nucleoside. Its core hydrogen-bonding face and overall shape are closely related to the non-gelling aza analogue z8Gd (Reference 3), which fails to produce hydrogels with any alkali-metal salt under heat-cool conditions. In contrast, the two isoG-type nucleosides (References 1 and 2) that do gel rely on a distinct tautomer and an isoguanine-type Watson–Crick face that readily assembles into G-quartet-like stacks; dG lacks this arrangement.
+
+The solvent additives supplied for the target (Tb³⁺ or Dy³⁺ nitrates) are trivalent lanthanide ions rather than the monovalent cations tested in the references. No reference experiment shows gelation of a guanosine-type nucleoside with lanthanides, and the structural analogy to non-gelling z8Gd therefore dominates. Consequently, the heat-cool protocol at the stated concentration and pH is expected to yield only a clear solution or precipitate, not a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG shares the guanosine-type hydrogen-bonding pattern of non-gelling z8Gd (Ref. 3). IsoG-type nucleosides gel because of a different tautomer; dG lacks this feature. No reference supports gelation of a guanosine nucleoside with trivalent lanthanides, so the outcome is predicted to be a solution or precipitate.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6233</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). Its core scaffold is a canonical purine nucleoside that is structurally closest to the non-gelling 8-aza-2&#x27;-deoxyguanosine (z8Gd) reference (chemical distance 1.93). In that reference, the same heat-cool protocol in the presence of any alkali-metal chloride yields only solutions or precipitates; no hydrogel is obtained.  
+
+The isoguanosine-type references (isoGd and z8isoGd) gel only because of their distinct hydrogen-bonding pattern (Watson-Crick edge reversed), which is absent in dG. Consequently, the gelation behavior of dG is expected to track that of z8Gd rather than the isoguanosine analogues.  
+
+The solvent additives supplied for the target (Tb³⁺ or Dy³⁺ nitrates) are trivalent lanthanide cations, not the monovalent alkali ions tested in the references. No reference experiment demonstrates hydrogel formation with lanthanide ions, and the structural analogy to the non-gelling z8Gd scaffold therefore predicts that the same outcome (solution or precipitate) will be observed.  
+
+Hence the prediction for both listed conditions is “No Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;dG shares the canonical guanosine hydrogen-bonding pattern and is structurally closest to the non-gelling z8Gd reference. All alkali-metal conditions tested for z8Gd produce only solutions or precipitates; the same outcome is therefore expected for dG even when the cation is changed to a trivalent lanthanide.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6540</summary>
+              <pre>The target molecule (dG) is the unmodified parent 2&#x27;-deoxyguanosine nucleoside. Its closest structural analogs among the references are isoGd (which forms gels only with Li⁺/K⁺) and z8Gd (which forms no gels with any alkali-metal salt). Both of those analogs already demonstrate that even minor changes to the purine ring (N7→C8 isomerization or N8 aza substitution) dramatically alter gelation propensity by changing hydrogen-bonding patterns and/or metal-ion coordination geometry.
+
+The experimental conditions supplied for dG replace the alkali-metal chlorides used in every reference experiment with equimolar lanthanide nitrates (Tb³⁺ or Dy³⁺) at pH ≈ 8. Lanthanide ions impose stricter coordination-number and geometry requirements than K⁺ or Li⁺ and are not known to stabilize the G-quartet or Hoogsteen-type assemblies that underpin the gels formed by isoGd. Consequently, the same structural and coordination factors that prevent z8Gd from gelling are expected to operate even more strongly here, leading to precipitation or a clear solution rather than a self-supporting network.
+
+Because neither Tb(NO₃)₃ nor Dy(NO₃)₃ satisfies the structural prerequisites established by the reference series, the outcome is classified as No Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;dG is the unmodified parent nucleoside. Reference analogs show that even small purine-ring changes abolish gelation with alkali metals; lanthanide ions impose still stricter coordination demands and do not stabilize the assemblies required for hydrogel formation. Hence precipitation or a sol is expected.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6907</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6990</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG), a purine nucleoside whose canonical structure contains the guanine heterocycle attached to a 2&#x27;-deoxyribose sugar. This architecture supplies multiple hydrogen-bond donor/acceptor sites (N1-H, O6, N7, N2-H2, O2&#x27;, O3&#x27;, O5&#x27;) together with a cis-diol-like coordination motif on the ribose that is closely analogous to the functional groups present in the reference nucleosides.
+
+Reference molecules 1 (uridine) and 2 (thymidine) both form stable, luminescent hydrogels when treated with equimolar Tb(NO3)3 or Eu(NO3)3 under essentially identical conditions: 0.1 M nucleoside, pH ≈ 8 (NH4OH or equivalent base), brief heating to 95 °C followed by cooling to room temperature. In these cases the trivalent lanthanide ions serve as supramolecular cross-linkers that coordinate the nucleobase carbonyls and the sugar hydroxyls, driving anisotropic fiber growth and eventual percolation into an elastic network. The target experiment employs the same metal-ion class (Tb3+ or the chemically similar Dy3+), the same stoichiometric ratio, the same pH, and the same heat-cool protocol; therefore the same coordination-driven assembly pathway is expected to operate.
+
+Although dG is a purine rather than a pyrimidine, its guanine moiety offers additional Hoogsteen-edge hydrogen-bonding functionality that is known to reinforce, rather than disrupt, fibrillar organization in the presence of coordinating cations. The chemical distance to the structurally related guanosine analogue in Reference 3 is only 1.29, confirming that the core recognition elements remain intact. Consequently, the lanthanide ions are anticipated to produce an analogous fibrous hydrogel rather than precipitation or a free-flowing solution.
+
+Thus the outcome is recorded as Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG possesses the same nucleobase carbonyls and ribose hydroxyls that coordinate Tb3+/Eu3+ in the uridine and thymidine references, producing fibers and hydrogels under identical pH, concentration, and heat-cool conditions. The additional Hoogsteen edge of guanine further stabilizes the network, so gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6912</summary>
+              <pre>The target molecule deoxyguanosine (dG) is tested under heat–cool conditions that are essentially identical to those used for the pyrimidine nucleosides uridine and thymidine (0.1 M nucleoside + 0.1 M Ln(NO₃)₃, pH ≈ 8). Both reference compounds produce stable, luminescent hydrogels with Tb³⁺ (and Eu³⁺) via lanthanide coordination to carbonyl and hydroxyl groups, resulting in extended fiber networks.  
+
+Although dG contains a purine rather than a pyrimidine base, it retains multiple Lewis-basic sites (O6 carbonyl, N7, and the hydroxyl groups of the sugar moiety) that are competent for Ln³⁺ coordination at the stated pH. The chemical similarity to the gel-forming references (Tanimoto distances ≈ 4.7–4.8) and the documented gelation propensity of closely related guanine analogues (e.g., z8isoGd with alkali cations) support the expectation that the same coordination-driven self-assembly will occur.  
+
+Consequently, a hydrogel is predicted to form under the given conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Conditions match those that produce stable Ln³⁺-coordinated hydrogels for uridine and thymidine; dG possesses analogous carbonyl and hydroxyl donors capable of forming extended fiber networks with Tb³⁺ or Dy³⁺.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6819</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG), a purine nucleoside whose structure is closely related to the 8-aza-2&#x27;-deoxyisoguanosine reference (chemical distance 1.29) and shares the same ribose and hydrogen-bonding motifs as the pyrimidine nucleosides in References 1 and 2.  
+
+The experimental conditions supplied for dG (0.1 M nucleoside + 0.1 M Ln(NO₃)₃, pH ≈ 8, heat-cool cycle) are essentially identical to those that produce stable, luminescent hydrogels with both uridine and thymidine. In those cases the trivalent lanthanide ions coordinate to the carbonyl oxygen atoms, driving the formation of extended fiber bundles that entangle into an elastic network. dG possesses an even richer set of Lewis-basic sites (O6, N7, and the ribose hydroxyls), so the same metal-ion coordination is expected to operate.  
+
+Although dG is also known to form G-quadruplex hydrogels with monovalent cations such as K⁺, the presence of a trivalent lanthanide at basic pH overrides the need for alkali-metal templating and favors the fiber-forming pathway already demonstrated for U and T. Consequently, gelation is predicted under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Conditions match those that produce Ln³⁺-coordinated hydrogels with uridine and thymidine; dG offers additional coordination sites (O6, N7) that favor the same fiber-forming assembly.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6832</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6913</summary>
+              <pre>The provided references explicitly compare the gelation behavior of U and T (both of which form stable Ln³⁺-coordinated hydrogels under the stated heat–cool, pH ≈ 8 conditions) to the well-documented behavior of dG. In both mechanistic explanations the authors note that dG produces thinner fibres and higher storage moduli than the U/T analogues precisely because dG forms the same class of 3:1 nucleoside·Ln³⁺ complexes that stack and cross-link via ribose hydrogen bonds.  
+
+The target conditions supplied for dG (0.1 M nucleoside + 0.1 M Tb(NO₃)₃ or Dy(NO₃)₃, pH ≈ 8, 95 °C → 25 °C) are therefore identical to those already shown to produce gels for the structurally related nucleosides and are the exact protocol used in the literature for dG·Ln³⁺ hydrogels. Consequently, gelation is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG is the reference nucleoside against which U and T gels are compared in the supplied literature; the same 3:1 Ln³⁺ coordination, base stacking and sugar H-bonding network that produces gels for U/T operates for dG under identical conditions, yielding a stable hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6646</summary>
+              <pre>The provided references explicitly compare the gelation behavior of U and T to that of dG under essentially identical conditions (0.1 M nucleoside + 0.1 M Ln³⁺ nitrate, pH ≈ 8, heat–cool protocol). Both references state that dG forms stable, Ln³⁺-coordinated hydrogels whose mechanical and morphological properties serve as the benchmark against which the U/T gels are evaluated.  
+
+This is chemically consistent with the well-documented ability of deoxyguanosine to assemble into G-quadruplex stacks that are further cross-linked by lanthanide coordination to the Hoogsteen face and by ribose hydrogen-bonding networks. Consequently, the same solvent-additive combination that produces gels for U and T is expected to produce a gel for dG.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;References explicitly benchmark dG gels against the reported U and T experiments; dG forms stable Ln³⁺-coordinated G-quadruplex hydrogels under the identical heat–cool, pH-8 conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6936</summary>
+              <pre>The provided references for uridine and thymidine explicitly compare their gelation behavior (with Ln³⁺ ions) to that of dG, noting that dG produces thinner fibres and higher modulus values under analogous conditions. This comparison presupposes that dG itself forms stable Ln³⁺-coordinated hydrogels via the same cooperative mechanism (metal–base coordination, π–π stacking of the nucleobase, and lateral sugar hydrogen-bonding). Guanine’s well-documented ability to form G-quartets or related stacked assemblies further supports gelation with Tb³⁺/Dy³⁺ at the stated concentration, pH, and thermal cycle. Consequently, gel formation is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Dy(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M dG + 0.1 M Tb(NO₃)₃, pH ≈ 8 (NH₄OH), heat 95 °C 20 min → cool 25 °C; 0.1 M dG + 0.1 M Dy(NO₃)₃, pH ≈ 8, same heat-cool protocol&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Reference data for U and T explicitly benchmark their gels against dG, implying dG forms stronger Ln³⁺ hydrogels via the same metal coordination + stacking + H-bonding pathway. Guanine’s propensity for quartet-like assemblies reinforces this outcome under the given conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

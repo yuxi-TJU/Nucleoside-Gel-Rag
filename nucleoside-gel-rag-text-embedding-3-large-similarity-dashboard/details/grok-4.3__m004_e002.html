@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 4-2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 4-2</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>4</strong></div>
+      <div>Experiment ID<strong>2</strong></div>
+      <div>Chemical description<strong>Isoguanosine (isoG)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>NaCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Stable transparent hydrogels; G′ about 15 × higher than guanosine gels; lifetime up to 3 months.
+
+Na⁺ ions coordinate with isoG assemblies, stabilizing hydrogen-bonded isoG quartets or pentaplexes. These supramolecular units stack into interconnected helical fibers, creating a stable three-dimensional gel network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6872</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6916</summary>
+              <pre>The molecule isoguanosine (isoG) is a well-documented nucleoside gelator whose self-assembly is driven by the formation of hydrogen-bonded isoG quartets (or higher-order octamers) that are further stabilized by alkali-metal cation coordination. In the presence of Na⁺ the quartets stack into extended nanofibers that ultimately produce a self-supporting hydrogel.  
+
+The stated experimental protocol (1.4 mg/100 µL isoG in 0.2 M NaCl, heated to ~80 °C and cooled to room temperature across a broad pH window) exactly matches literature conditions under which isoG reliably forms a translucent, thermoreversible gel within minutes to hours. No precipitation or crystallization is observed under these ionic-strength and temperature conditions; therefore the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoG self-assembles into Na⁺-stabilized quartets that stack into nanofibers, producing a stable hydrogel under the given heating-cooling protocol in 0.2 M NaCl.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6840</summary>
+              <pre>The provided conditions match well-established experimental protocols for isoguanosine self-assembly. IsoG is known to form stable Hoogsteen-type tetramers (isoG4) that are selectively templated and stabilized by Na+ cations; these tetramers further stack into higher-order nanofibers that produce a translucent, self-supporting hydrogel.  
+
+The stated concentration (14 mg mL⁻¹ ≈ 50 mM), heating–cooling cycle, and presence of 0.2 M NaCl (or PBS) fall squarely inside the reported gelation window (pH 3–10). No competing crystallization or precipitation pathways dominate under these conditions, so macroscopic gelation occurs within minutes to hours after cooling to room temperature.
+
+**Final answer**  
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;IsoG forms Na+-templated isoG4 tetramers that stack into nanofibers, producing a stable hydrogel under the exact concentration, heating–cooling protocol, and ionic strength given.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6860</summary>
+              <pre>The provided conditions match well-established behavior for isoguanosine: the nucleobase presents a complementary hydrogen-bonding pattern that enables self-assembly into tetrameric or higher-order stacks, which are further stabilized by alkali-metal cations (here Na⁺ from 0.2 M NaCl). Upon brief heating to ~80 °C the compound dissolves; slow cooling to room temperature allows these supramolecular aggregates to percolate into a three-dimensional fibrillar network that immobilizes the solvent, producing a stable hydrogel across the stated pH window (including PBS). No precipitation or crystallization is observed under these ionic-strength and temperature conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Isoguanosine self-assembles into cation-stabilized tetramers that form a percolating fibrillar network, yielding a stable hydrogel upon cooling in 0.2 M NaCl.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6413</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6549</summary>
+              <pre>The provided references show that guanosine (structurally closest analog to isoG) forms only transient hydrogels in NaCl that rapidly collapse or disintegrate; the same pattern holds for 8-hydroxyguanosine in NaCl. IsoG is not expected to deviate from this behavior, because Na⁺ does not furnish the coordination geometry or stability needed for persistent isoG-quartet or isoG-pentamer networks under the stated conditions (heat-cool, pH 3–10). Consequently the outcome is classified as No Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine (Chem. Dist. 1.41) and 8-hydroxyguanosine both yield only transient assemblies in NaCl that collapse within minutes; Na⁺ lacks the coordination geometry required for stable isoG-quartet/pentamer networks, so the same rapid loss of integrity is predicted.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6262</summary>
+              <pre>The target molecule (isoguanosine) is a close structural isomer of guanosine (chemical distance 1.405658). Guanosine itself forms only transient, unstable hydrogels in 0.2 M NaCl that collapse within minutes; the same outcome is observed for the related nucleoside 8-hydroxyguanosine under identical salt conditions. Because the experimental protocol supplied for isoguanosine is essentially identical to the guanosine/NaCl trial that produced rapid collapse, the same negative result is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Isoguanosine is a close structural isomer of guanosine. Guanosine itself yields only transient hydrogels in 0.2 M NaCl that collapse within minutes; the identical salt condition and concentration protocol applied to the closely related nucleoside 8-hydroxyguanosine likewise produces no stable gel. Consequently isoguanosine is predicted to behave analogously and fail to form a persistent gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6427</summary>
+              <pre>The provided experimental references focus on guanosine and close structural analogs (L-guanosine, 8-hydroxyguanosine). In all cases, NaCl (0.2 M) produces either no gel or only a transient hydrogel that collapses within minutes; stable gels require K+ or borate additives instead. Isoguanosine is a regioisomer of guanosine and therefore shares the same core hydrogen-bonding motif and solubility profile. The supplied conditions (1.4 mg/100 µL isoG in 0.2 M NaCl, heat-cool) are identical to those that fail for guanosine, so the same outcome is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;NaCl fails to stabilize gels for guanosine itself and for 8-hydroxyguanosine under identical concentration/salt conditions; only transient hydrogels that collapse within minutes are observed. Isoguanosine shares the same core scaffold and would therefore behave analogously, producing no stable gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7186</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7158</summary>
+              <pre>The target molecule is isoguanosine (isoG), a close constitutional isomer of guanosine. Its hydrogen-bonding face is inverted relative to guanosine, which alters the preferred self-assembly motif from K+-templated G-quartets to Na+-templated isoG-quartets (or pentameric assemblies).  
+
+Reference 1 shows that native guanosine in 0.2 M NaCl produces only a transient hydrogel that collapses within minutes; the same concentration and thermal protocol with KCl yields a longer-lived (but still metastable) gel. Reference 2 likewise reports that a related guanosine analogue fails to gel in NaCl. In contrast, Reference 3 demonstrates that a guanosine derivative bearing a 5′-hydrazide substituent forms stable, thermoreversible hydrogels with Na+ (as well as K+ and NH4+), confirming that modest structural changes can switch cation selectivity and gel lifetime.  
+
+Because isoG’s altered Hoogsteen edge inherently favors Na+ coordination, the same 1.4 mg/100 µL, 0.2 M NaCl, heat-cool protocol that fails for guanosine is expected to produce a self-supporting hydrogel for isoG. The broad pH window (3–10, including PBS) further supports network formation, as isoG-quartet stacking remains intact across this range. Consequently the outcome is recorded as “Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG’s inverted H-bonding pattern enables Na+-templated quartets/pentamers that are stable under the stated conditions, in contrast to the rapid collapse seen for native guanosine in NaCl (Ref. 1). Analogous nucleoside derivatives (Ref. 3) gel with Na+, supporting the prediction.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7214</summary>
+              <pre>The target molecule is isoguanosine (isoG), an isomer of guanosine whose nucleobase presents a transposed pattern of H-bond donor/acceptor groups (2-oxo-6-amino instead of 2-amino-6-oxo). This seemingly modest constitutional change alters both the preferred Hoogsteen edge and the cation-binding geometry of the resulting assemblies.  
+
+Reference 1 (guanosine itself, chemical distance 1.41) shows that NaCl alone yields only transient hydrogels that collapse within minutes; stable gels require either K+ or a co-gelator/borate additive. Reference 2 (8-hydroxyguanosine) likewise reports “No Gel” with NaCl. Reference 3 (guanosine-5′-hydrazide) does form gels with Na+, but that molecule carries an additional hydrazide moiety that supplies extra H-bonding capacity and is therefore less directly comparable.  
+
+Because isoG can satisfy its H-bonding valences through a distinct, Na+-templated octameric motif (rather than the K+-selective G-quartet), the same 0.2 M NaCl medium that fails for guanosine supports long-lived fibrillar networks for isoG. The experimental protocol given (1.4 mg/100 µL, heat-cool from ~80 °C, pH 3–10 including PBS) matches conditions under which isoG is known to produce self-supporting, thermoreversible hydrogels that remain intact for hours to days. Consequently the outcome is classified as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Although guanosine (closest reference) yields only transient, rapidly collapsing hydrogels in NaCl, the transposed donor/acceptor pattern of isoG enables a distinct Na+-templated octameric assembly. This motif supports stable, self-supporting fibrillar networks under the stated heat-cool conditions, producing thermoreversible hydrogels that persist for hours to days rather than minutes.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6832</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.6734</summary>
+              <pre>The target molecule is isoguanosine (isoG), an isomer of guanosine whose canonical structure differs only by transposition of the exocyclic NH₂ and C=O groups on the purine ring. This places it at a chemical distance of only 1.41 from guanosine itself (Reference 1), while the distances to the other two reference nucleosides are substantially larger. Consequently, the gelation behavior of isoG is expected to track most closely with that of unmodified guanosine.
+
+Reference 1 documents an extensive set of experiments performed on guanosine under essentially identical conditions to those specified for the target (1.4 mg per 100 µL nucleoside in 0.2 M NaCl, heat-cool protocol). In every case the outcome is “No Gel”: an initially viscous dispersion collapses within minutes to a precipitate or fluid because Na⁺-templated isoG-quartet (or G-quartet) stacks organize into flat, ribbon-like aggregates that lack the lateral cross-links needed for a persistent three-dimensional network. The same NaCl condition applied to 8-hydroxyguanosine (Reference 2) likewise yields no stable gel. Although guanosine-5′-hydrazide (Reference 3) does gel with NaCl, the hydrazide substituent introduces additional hydrogen-bonding sites and markedly alters solubility; isoG lacks this modification and therefore cannot be expected to benefit from the same stabilization.
+
+Because the solvent, additive concentration, thermal protocol, and nucleoside loading match the guanosine/NaCl experiments that consistently produce transient or nonexistent gels, the prediction for isoG follows directly: the assemblies that form are insufficiently cross-linked and the system fails to maintain a self-supporting hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG lies only 1.41 chemical distance units from guanosine. Under the exact NaCl/heat-cool conditions reported for guanosine, the latter forms only transient, ribbon-like aggregates that collapse within minutes; the same outcome is therefore expected for isoG. The additional reference cases with NaCl (8-hydroxyguanosine, guanosine hydrazide) reinforce that Na⁺ alone does not furnish a stable, cross-linked network for this structural class unless further stabilizing substituents are present, which isoG lacks.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6931</summary>
+              <pre>The target molecule is isoguanosine (isoG), an isomer of guanosine that differs only in the placement of the exocyclic amino and carbonyl groups on the purine ring. This places it at a chemical distance of only 1.405 from guanosine itself, whose behavior with NaCl is therefore the most relevant reference.
+
+Guanosine in 0.2 M NaCl (identical concentration and heat-cool protocol) produces only a transient hydrogel that collapses within minutes. The mechanistic explanation given is that Na⁺ can template G-quartets, yet the resulting ribbon-like aggregates lack sufficient lateral cross-links to maintain a percolating three-dimensional network; the material therefore loses mechanical integrity rapidly. Because isoG differs from guanosine by only a single tautomer-like rearrangement, the same hydrogen-bonding pattern and ribbon-forming tendency are preserved. Consequently, Na⁺-templated isoG assemblies are likewise expected to be only transiently stable and to collapse on the same short time scale.
+
+Supporting observations from the other references reinforce this conclusion:
+- 8-Hydroxyguanosine (chemically farther from isoG) also fails to gel in NaCl.
+- Only molecules bearing additional stabilizing substituents (e.g., the hydrazide group) or different additives (K⁺, borate) produce durable gels; isoG lacks these features under the stated NaCl conditions.
+
+Thus the outcome for the supplied experiment is No Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M NaCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG is a close structural isomer of guanosine (chemical distance 1.405). Guanosine under identical NaCl conditions forms only transient ribbons that collapse within minutes because Na⁺-templated quartets lack sufficient lateral cross-linking. The same ribbon-forming propensity and limited network connectivity are retained in isoG, so the hydrogel is likewise mechanically unstable and disintegrates rapidly. No stabilizing substituents or alternative additives (K⁺, borate) are present to alter this outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

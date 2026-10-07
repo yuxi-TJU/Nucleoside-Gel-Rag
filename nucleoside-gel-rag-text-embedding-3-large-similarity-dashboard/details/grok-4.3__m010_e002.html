@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 10-2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 10-2</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>10</strong></div>
+      <div>Experiment ID<strong>2</strong></div>
+      <div>Chemical description<strong>2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>PBS</strong></div>
+      <div>Detailed conditions<strong>1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Switching from water to PBS does not disrupt the supramolecular structure; gels stable above 38 °C.
+
+Double NH₂ groups on the 2,6-diaminopurine base form Hoogsteen-type pairs, while the 2′-F participates in strong H···F hydrogen bonds. Water molecules bridge adjacent base pairs, generating an extended, ‘water-reinforced’ H-bond network. Together with π–π stacking of purine rings, these interactions produce tightly packed fibrous bundles whose dense cross-links give the gel its exceptionally high modulus, longevity and rapid self-healing behaviour.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6750</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6579</summary>
+              <pre>The molecule 2-amino-2′-fluoro-2′-deoxyadenosine contains a 2,6-diaminopurine base that is capable of Watson–Crick and Hoogsteen-type hydrogen bonding, together with a 2′-fluoro substituent that locks the ribose in a C3′-endo conformation. These features promote stacking and directional intermolecular contacts once the compound is supersaturated.  
+
+When a 1.7–5 wt % suspension in PBS is heated, the nucleoside dissolves completely because the thermal energy disrupts the lattice interactions. Upon cooling to 25 °C the solution becomes supersaturated; the combination of hydrogen-bond donors/acceptors on the base, the hydrophobic fluorine atom, and the physiological ionic strength supplied by PBS drives rapid self-assembly into a fibrillar network that immobilizes the solvent.  
+
+Consequently the system meets the operational definition of gel formation (stable, non-flowing material obtained within hours).  
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;PBS&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The 2,6-diaminopurine motif supplies complementary H-bonding faces while the 2′-F substituent biases the sugar pucker toward C3′-endo, favoring π-stacking. PBS provides the ionic strength that screens electrostatic repulsion and stabilizes the resulting fibrillar network. Cooling a heated solution therefore produces a stable hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6628</summary>
+              <pre>The molecule 2-FA is a 2,6-diaminopurine nucleoside bearing a 2′-fluoro substituent on the ribose. The pair of exocyclic amino groups enables an extended hydrogen-bonding pattern (including Watson–Crick and Hoogsteen faces) that is known to support the formation of stacked, fibrillar assemblies in water. The 2′-fluoro substituent locks the sugar in a C3′-endo conformation, further pre-organizing the nucleoside for intermolecular contacts and reducing solubility at room temperature.  
+
+When a 1.7–5 wt % suspension in PBS is heated, the compound dissolves completely; subsequent cooling to 25 °C allows the supersaturated solution to nucleate one-dimensional aggregates that ultimately percolate into a self-supporting hydrogel. PBS provides physiological ionic strength that screens electrostatic repulsions between the polar nucleosides, accelerating network formation. These combined structural and procedural factors therefore produce a stable gel on the experimental time scale.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;PBS&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Extended H-bonding from the 2,6-diamino-purine and C3′-endo bias from 2′-F favor fibrillar assembly; cooling from a hot PBS solution yields a percolating hydrogel network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7045</summary>
+              <pre>The molecule 2-FA possesses a 2,6-diaminopurine nucleobase that supplies an unusually high density of complementary hydrogen-bond donor/acceptor sites (N1, N3, N7, 2-NH₂, 6-NH₂). These sites enable the formation of extended, tape-like or helical assemblies that are further reinforced by the 2′-fluoro substituent, which both rigidifies the sugar pucker and introduces a weak C–H···F contact. In PBS the ionic strength screens electrostatic repulsion while the ribose 3′- and 5′-OH groups remain available for additional inter-stack hydrogen bonds.  
+
+When a 1.7–5 wt % suspension is heated, the aggregates dissociate into a clear solution; subsequent cooling to 25 °C allows rapid re-assembly into anisotropic fibers whose entanglement produces a self-supporting hydrogel. This concentration window and thermal protocol are well within the range documented for related diaminopurine nucleosides, confirming that gelation occurs on the laboratory time scale.
+
+Final answer: Gel
+
+[{
+    &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;PBS&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Multiple H-bonding sites on the 2,6-diaminopurine base plus the rigidifying 2′-F substituent promote anisotropic fiber formation; PBS ionic strength aids assembly, and the stated thermal cycle plus concentration range are standard for nucleoside hydrogelation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6101</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6182</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the reference compounds 2-DA and 2-RA (differing only by substitution of F for H or OH at the 2′-position of the ribose). All three share the same 2-aminoadenine nucleobase and are tested under essentially identical conditions (1.7–5 wt % in PBS or water, heat–cool protocol).  
+
+The references consistently show that this nucleobase/sugar combination remains fully soluble and produces no hydrogel; the 2′-F substitution does not introduce new supramolecular interactions capable of overcoming that behavior. The third reference (NH₂G) further supports that even modest nucleoside modifications fail to induce gelation under aqueous salt conditions.  
+
+Consequently, 2-FA is predicted to remain a clear solution with no macroscopic gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;PBS&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Target is a 2′-fluoro analog of non-gelling references 2-DA/2-RA tested under identical PBS heat–cool conditions; the single-atom change does not enable the supramolecular interactions needed for gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6043</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the reference compounds 2-DA and 2-RA (differing only by the presence of a 2′-fluoro substituent rather than H or OH). All three molecules share the same 2,6-diaminopurine nucleobase and ribose-derived scaffold, which governs the key intermolecular interactions (Watson–Crick-type H-bonding, π-stacking) required for hydrogelation.  
+
+The experimental conditions supplied for 2-FA (1.7–5 wt % in PBS, heat–cool) are essentially identical to those used for 2-DA and 2-RA, both of which remained clear solutions with no macroscopic gel observed. The 5′-amino-guanosine reference likewise failed to gel under aqueous salt conditions, instead precipitating. Introduction of the electronegative fluorine atom at C2′ is not expected to create new supramolecular contacts sufficient to overcome the solubility and packing limitations already documented for the deoxy and ribo congeners.  
+
+Consequently, 2-FA is predicted to remain soluble and not form a gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;PBS&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Structurally analogous to non-gelling references 2-DA and 2-RA under identical PBS heat–cool conditions; fluorine substitution does not introduce new interactions capable of driving gelation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6077</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the non-gelling references 2-RA and 2-DA (differing only by substitution of F for OH or H at the 2′ position of the ribose). All three compounds share the same 2-aminoadenine nucleobase and similar overall polarity/hydrogen-bonding patterns. The experimental conditions (PBS, 1.7–5 wt %, heat–cool) are essentially identical to those already shown to produce only clear solutions with no macroscopic hydrogel for the reference compounds. The 2′-F substitution does not introduce any new supramolecular interactions (e.g., additional H-bond donors or strong hydrophobic driving forces) that would be expected to overcome the solubility observed for the deoxy and ribo analogs. Consequently, the target is predicted to remain a free-flowing solution.
+
+[{
+    &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;PBS&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Structurally analogous to non-gelling 2-RA/2-DA references under identical PBS heat–cool conditions; 2′-F substitution does not add new gel-promoting interactions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6491</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6362</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the two adenosine derivatives in References 1 and 2. Both of those compounds lack the hydrogen-bonding pattern or conformational bias required for self-assembly into a fibrillar hydrogel network; they remain fully soluble under identical thermal protocols in water or PBS. Replacing the 2′-OH with fluorine (a modest steric/electronic perturbation that does not introduce new H-bond donors or restore the canonical ribose pucker needed for stacking) does not overcome this limitation. PBS itself supplies no additional templating cations (contrast with KCl-driven guanosine gels), so the same heat–cool cycle that failed for the deoxy and ribo congeners is also expected to leave 2-FA as a clear solution.
+
+Consequently the experimental outcome is “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;PBS&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally closest references (2-DA and 2-RA) remain soluble under identical PBS/heat–cool conditions; the 2′-F substitution does not restore the H-bonding or stacking geometry required for hydrogelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6501</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the two nearest reference compounds (2-DA at chemical distance 2.50 and 2-RA at chemical distance 2.62). Both references contain the same 2-aminopurine nucleobase and differ from the target only at the 2′-position of the ribose (H in 2-DA, OH in 2-RA, F in the target).  
+
+Under essentially identical conditions (1.7–5 wt % in water or PBS, heat–cool protocol), both reference nucleosides remain fully soluble and produce no macroscopic hydrogel. The 2′-fluoro substituent is isosteric with a hydroxyl yet lacks the hydrogen-bond-donor capability of the OH group; it therefore cannot restore the intermolecular contacts that are already insufficient for gelation in 2-RA. In addition, the electronegative fluorine favors a C3′-endo sugar pucker that further disfavors the stacking geometry observed in known purine hydrogels.  
+
+Consequently, the same heat–cool treatment in PBS is expected to yield only a clear solution that does not gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;PBS&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally closest references (2-DA, 2-RA) show no gelation under identical PBS/heat-cool conditions. The 2′-F substitution removes a key H-bond donor while preserving the overall nucleoside scaffold, preventing the supramolecular assembly required for hydrogel formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6610</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the two most relevant references (2-DA and 2-RA), differing only by the substituent at the 2′-position of the ribose (F versus H or OH). Both reference compounds were explicitly tested under nearly identical conditions (1.7–5 wt % in PBS or water, heat–cool protocol) and produced only clear solutions with no macroscopic hydrogel.  
+
+The 2-aminoadenine nucleobase itself does not appear to support the extended hydrogen-bonded networks or stacking motifs required for gelation in the absence of a guanine-type N7/O6 donor–acceptor pattern. Introduction of the 2′-fluoro substituent alters sugar pucker and may modestly change solubility or dipole interactions, but these changes are insufficient to overcome the lack of gel-promoting functionality already demonstrated by the deoxy and ribo congeners. PBS, which supplies monovalent cations, likewise does not induce assembly for this scaffold (contrast with K+-dependent guanosine gels).  
+
+Consequently, the experimental outcome for 2-FA under the stated PBS conditions is predicted to be the same as its nearest neighbors.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;PBS&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Target is a 2′-fluoro analog of 2-DA (ref 1) and 2-RA (ref 2), both of which remain soluble and fail to gel under essentially identical PBS/heat–cool conditions. The 2-aminoadenine base lacks the H-bonding pattern needed for self-assembly into hydrogels; the 2′-F substitution does not compensate for this deficiency.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6685</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6488</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the non-gelling references 2-DA (deoxy) and 2-RA (ribo). All three share the same 2,6-diaminopurine base capable of Hoogsteen-type pairing and stacking, yet none of them produce a space-filling fibrous network under aqueous or PBS conditions.  
+
+The 2′-fluoro substituent replaces the 2′-OH of 2-RA (which forms intramolecular H-bonds that leave the sugar overly solvated) and the 2′-H of 2-DA (which leaves the sugar too hydrophilic for fiber cross-linking). Although fluorine can act as a weak H-bond acceptor and biases the sugar pucker toward C3′-endo, it supplies neither an additional H-bond donor nor the steric/electronic features needed to reduce solvation enough for stable inter-fiber cross-links. Consequently, the molecule remains fully soluble after the heat–cool cycle and does not assemble into a hydrogel.  
+
+This conclusion is reinforced by the experimental outcomes reported for the two nearest chemical neighbors (both “No Gel” at 1.7–5 wt % in PBS), indicating that the 2′-fluoro modification does not cross the threshold required for gelation.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;PBS&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;2-FA is structurally intermediate between the non-gelling deoxy (2-DA) and ribo (2-RA) analogs. The 2′-F substituent neither supplies an extra H-bond donor nor sufficiently reduces sugar solvation to enable fiber cross-linking, so the molecule remains a clear solution after the heat–cool cycle.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6737</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of the two reference 2-aminoadenosine nucleosides (chemical distances 2.50–2.62). Both references remain fully soluble and fail to produce a space-filling fibrous network under essentially identical conditions (1.7–5 wt % in water or PBS, heat–cool).  
+
+The mechanistic reasons given for the references are (i) insufficient inter-fiber hydrogen-bond cross-links once the nucleobases have stacked and (ii) excessive solvation or unproductive intramolecular hydrogen bonding around the 2′-position that prevents the bound-water-reinforced network from forming. Replacing the 2′-OH or 2′-H with fluorine does not overcome either limitation: fluorine does not furnish an additional hydrogen-bond donor, does not materially improve fiber cross-linking, and leaves the ribose still sufficiently hydrophilic to remain solvated. Consequently the same solubility-without-gelation outcome is expected in PBS.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;PBS&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally and functionally analogous to the non-gelling 2-DA and 2-RA references; the 2′-F substituent neither supplies an extra H-bond donor for fiber cross-linking nor sufficiently reduces ribose solvation, so the system remains a clear solution.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6831</summary>
+              <pre>The target molecule (2-FA) is a close structural analog of reference 1 (2-DA), differing only by substitution of the 2′-position with fluorine rather than hydrogen. Both compounds share the same 2,6-diaminopurine base capable of Hoogsteen pairing and the same overall nucleoside scaffold.  
+
+Reference 1 demonstrates that even when Hoogsteen pairing occurs, the resulting stacked fibers remain too highly solvated at the sugar moiety to cross-link into a percolating network; the outcome is a clear solution rather than a gel under essentially identical conditions (1.7–5 wt % in PBS, heat–cool). The 2′-fluoro substituent does not introduce an additional hydrogen-bond donor and only marginally alters hydrophilicity relative to the 2′-deoxy case, so the same solvation barrier persists.  
+
+Reference 2 (2-RA) further illustrates that an intact 2′-OH leads to intramolecular hydrogen bonding and excessive solvation, again preventing gelation. Replacing that OH with F removes the donor entirely and therefore cannot overcome the network-formation deficit already documented for the deoxy analog.  
+
+Consequently, under the stated PBS conditions the molecule is expected to remain a free-flowing solution without macroscopic gelation.
+
+[{
+    &quot;chemical_description&quot;: &quot;2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3F)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;PBS&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in PBS; heat to dissolve, then cool to 25 °C.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Structurally analogous to 2-DA (ref 1), which fails to gel in PBS because stacked Hoogsteen-paired fibers remain too solvated at the sugar to cross-link. The 2′-F substitution neither adds a hydrogen-bond donor nor sufficiently reduces solvation relative to the 2′-deoxy case, so the same barrier to network formation applies.&quot;
+        }]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

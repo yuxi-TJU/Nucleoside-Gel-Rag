@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "data_file": "max0_and_max3_descriptor_morgan_source_records.csv.gz",
+  "record_count": 23310,
+  "strategy_record_counts": {
+    "S0": 3330,
+    "S1": 3330,
+    "S2": 3330,
+    "S3": 3330,
+    "S1_1": 3330,
+    "S2_1": 3330,
+    "S3_1": 3330
+  },
+  "compressed_bytes": 17483982,
+  "compressed_sha256": "5fab72da958d249b4309921e3d830a49d962e67216bd3890e13b86df2c14f513",
+  "source_models": [
+    "grok-4.3",
+    "deepseek-v3.2-think",
+    "gemini-3.1-flash-lite",
+    "gpt-4o",
+    "llama-4-scout"
+  ],
+  "rounds": [
+    1,
+    2,
+    3
+  ],
+  "samples_per_round": 222,
+  "strategies": [
+    {
+      "strategy": "S0",
+      "retrieval_family": "baseline",
+      "max_k": 0,
+      "folder_suffix": "rag_baseline_outputs"
+    },
+    {
+      "strategy": "S1",
+      "retrieval_family": "physicochemical-descriptor",
+      "max_k": 3,
+      "folder_suffix": "rag_descriptor_masked_outputs"
+    },
+    {
+      "strategy": "S2",
+      "retrieval_family": "physicochemical-descriptor",
+      "max_k": 3,
+      "folder_suffix": "rag_descriptor_conditions_masked_outputs"
+    },
+    {
+      "strategy": "S3",
+      "retrieval_family": "physicochemical-descriptor",
+      "max_k": 3,
+      "folder_suffix": "rag_descriptor_conditions_outputs"
+    },
+    {
+      "strategy": "S1_1",
+      "retrieval_family": "morgan-fingerprint",
+      "max_k": 3,
+      "folder_suffix": "rag_tanimoto_masked_outputs"
+    },
+    {
+      "strategy": "S2_1",
+      "retrieval_family": "morgan-fingerprint",
+      "max_k": 3,
+      "folder_suffix": "rag_tanimoto_conditions_masked_outputs"
+    },
+    {
+      "strategy": "S3_1",
+      "retrieval_family": "morgan-fingerprint",
+      "max_k": 3,
+      "folder_suffix": "rag_tanimoto_conditions_outputs"
+    }
+  ],
+  "columns": [
+    "source_model",
+    "retrieval_family",
+    "strategy",
+    "max_k",
+    "round",
+    "molecule_id",
+    "experiment_id",
+    "chemical_description",
+    "canonical_smiles",
+    "solvent_additive",
+    "detailed_conditions",
+    "expected_result",
+    "detailed_results",
+    "mechanistic_explanation",
+    "reference_text",
+    "output_text",
+    "prediction_json",
+    "source_relative_directory",
+    "output_text_sha256",
+    "prediction_json_sha256"
+  ],
+  "notes": {
+    "S0": "Shared Max-0 baseline for descriptor and Morgan comparisons.",
+    "reference_text": "detailed_results followed by mechanistic_explanation, separated by one blank line when both exist."
+  }
+}

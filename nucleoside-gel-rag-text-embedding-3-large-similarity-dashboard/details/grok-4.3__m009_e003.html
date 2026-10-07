@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 9-3</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 9-3</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>9</strong></div>
+      <div>Experiment ID<strong>3</strong></div>
+      <div>Chemical description<strong>8-Aza-2′-deoxyguanosine (z8Gd)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>NaCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Does not form hydrogels in aqueous solutions of alkali metal ions.
+
+Replacing N8 with nitrogen diminishes N⁷ basicity, disrupting Hoogsteen hydrogen-bonding required for quartet stacking in water. In the solid state, water is removed and z8Gd can form tetrad columns that curl into nanotubes, but in aqueous media hydrogen-bond competition prevents the cross-linked network necessary for gelation.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6324</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6446</summary>
+              <pre>The molecule 8-aza-2′-deoxyguanosine retains the Watson–Crick and Hoogsteen hydrogen-bonding faces of native deoxyguanosine. Consequently it is able to form planar G-quartet assemblies that are further stabilized by coordination to alkali-metal cations. Under the stated conditions (1.4 mg/100 µL in 0.2 M aqueous NaCl, heat–cool cycle) the Na⁺ ions template quartet stacking, producing a self-supporting fibrillar network that manifests macroscopically as a hydrogel.  
+
+No competing crystallization or rapid precipitation pathways are expected at this concentration and ionic strength; the system therefore gels rather than collapses.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;8-Aza-2′-deoxyguanosine retains the Hoogsteen face of dG and forms Na⁺-templated G-quartets that produce a fibrillar hydrogel network upon a heat–cool cycle.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6386</summary>
+              <pre>The molecule 8-aza-2′-deoxyguanosine is a close structural analog of 2′-deoxyguanosine. Like its parent nucleoside, it retains the Hoogsteen-edge hydrogen-bonding pattern required to assemble G-quartets. In aqueous solution the presence of alkali-metal cations (here 0.2 M Na⁺) stabilizes these quartets by coordination to the O6 carbonyls, and the resulting stacked G-quadruplex columns readily entangle into a self-supporting hydrogel network.  
+
+The experimental protocol (14 mg mL⁻¹, heat–cool cycle) is the standard condition used to trigger supersaturation and subsequent nucleation of the quadruplex fibers. Under these conditions the fibers form within minutes to hours and produce a translucent, thermoreversible gel. No rapid precipitation or crystallization is expected at this moderate ionic strength and concentration.
+
+Consequently the outcome is recorded as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;8-Aza-dG retains the Hoogsteen face needed for G-quartet formation; Na⁺ stabilizes the quartets, and the heat-cool protocol at 14 mg mL⁻¹ produces an entangled quadruplex hydrogel.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6142</summary>
+              <pre>The molecule 8-aza-2′-deoxyguanosine is a close structural analogue of 2′-deoxyguanosine that retains the Hoogsteen edge required for G-quartet formation. In aqueous solution the nucleoside therefore self-assembles into stacked G-quadruplex columns once monovalent cations (here Na⁺) are supplied to stabilize the central ion channel.  
+
+The experimental protocol (14 mg mL⁻¹ nucleoside, 0.2 M NaCl, heat–cool cycle) supplies both the necessary concentration and the ionic strength that drive this hierarchical assembly. The heat–cool step dissolves any kinetic aggregates and allows the system to reach the thermodynamically favored gel state upon cooling. Consequently the mixture is expected to produce a self-supporting hydrogel rather than crystals or a precipitate.
+
+Final answer: Gel
+
+[{
+    &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The nucleoside retains the Hoogsteen face needed for G-quartet formation; Na⁺ ions supplied by 0.2 M NaCl stabilize the central ion channel of stacked quartets, and the heat–cool cycle at 14 mg mL⁻¹ promotes formation of a self-supporting hydrogel.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6406</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6412</summary>
+              <pre>The target molecule (z8Gd) is a close structural analog of dG (chemical distance 1.93), differing only by an 8-aza substitution in the nucleobase. All three reference nucleosides (dG, z8isoGd, and isoGd) fail to produce hydrogels in the presence of NaCl under heat-cool protocols that are essentially identical to the target conditions; they either remain solutions or form precipitates/crystals.  
+
+Na⁺ is known to be a poor templating cation for G-quartet or related assemblies in this structural class, whereas K⁺ (and sometimes Li⁺) can stabilize gels. The 8-aza modification does not alter this selectivity pattern, as evidenced by the NaCl results for the even more closely related aza-isoguanosine (z8isoGd).  
+
+Consequently, the target system is predicted to remain a non-viscous solution or to crystallize rather than form a stable hydrogel.
+
+[{
+    &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;All reference nucleosides (dG, z8isoGd, isoGd) give No Gel with NaCl under identical heat-cool conditions; Na⁺ does not template stable assemblies, and the 8-aza substitution does not change this selectivity.&quot;
+        }]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6238</summary>
+              <pre>The target molecule (z8Gd) is a close structural analog of deoxyguanosine (dG), differing only by an 8-aza substitution in the nucleobase. Reference data for dG show that NaCl consistently fails to produce a hydrogel; the system instead crystallizes or remains a non-viscous solution under heat-cool protocols identical to those specified for the target.  
+
+The same NaCl outcome (no gel) is observed for the two more distant but still related nucleosides (z8isoGd and isoGd). No reference experiment indicates that an 8-aza modification switches NaCl behavior from “no gel” to “gel.”  
+
+Consequently, the target + NaCl experiment is predicted to remain a solution or precipitate rather than a stable hydrogel.
+
+[{
+    &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Closest reference (dG) and all other nucleosides tested with NaCl produce crystallization or a non-viscous solution; the 8-aza substitution does not alter this NaCl outcome.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6568</summary>
+              <pre>The target molecule z8Gd is a close structural analog of dG (chemical distance 1.93), differing only by an 8-aza substitution on the purine ring. All three reference nucleosides (dG, isoGd, and z8isoGd) share the same experimental outcome with NaCl: they fail to produce a stable hydrogel and instead remain as solutions or form precipitates/crystals. This is consistent with the well-known selectivity of G-quartet (or G-quartet-like) assembly for K⁺ over Na⁺; Na⁺ does not stabilize the requisite stacked tetramers at the concentrations and heat-cool protocols employed.
+
+Because the target experiment uses exactly the same solvent (0.2 M NaCl) and heat-cool protocol that produced “No Gel” in every reference case, the prediction for z8Gd follows the same pattern.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All reference nucleosides (dG, isoGd, z8isoGd) fail to gel in 0.2 M NaCl under identical heat-cool conditions; Na⁺ does not stabilize the G-quartet stacks required for hydrogelation. z8Gd is structurally closest to dG, reinforcing the same outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6628</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6491</summary>
+              <pre>The target molecule (z8Gd) is a close structural analog of deoxyguanosine (dG), differing only by an 8-aza substitution in the purine ring. Reference data for dG show that NaCl produces crystallization rather than a stable hydrogel under heat-cool conditions identical to those specified for the target. The same NaCl outcome (precipitation or non-viscous solution) is observed for the more distant but still related analogs 8-aza-2′-deoxyisoguanosine and 2′-deoxyisoguanosine.  
+
+These nucleosides form hydrogels via cation-templated quartet or ribbon assemblies; Na⁺ is insufficiently stabilizing for the modified guanine cores, whereas K⁺ (and sometimes Li⁺) succeeds. Consequently, the target in 0.2 M NaCl is predicted to remain a solution or to crystallize/precipitate instead of yielding a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;z8Gd is closest to dG (distance 1.93), which crystallizes in NaCl under identical heat-cool conditions. Related aza- and iso-guanosine analogs likewise fail to gel in NaCl, producing only solutions or precipitates. The 8-aza guanine core requires K⁺ (or certain other cations) for stable quartet-type assemblies; Na⁺ does not support hydrogel formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6679</summary>
+              <pre>The target molecule (z8Gd) is an 8-aza analogue of deoxyguanosine. All three reference compounds that share the closest structural and functional features (standard dG, isoGd, and the 8-aza-isoguanosine derivative z8isoGd) were tested under essentially identical conditions (1.4 mg/100 µL nucleoside, 0.2 M NaCl, heat-cool cycle). In every case the outcome was the same: the system either remained a free-flowing solution or produced only crystalline/precipitated material; no stable hydrogel formed.  
+
+This pattern is chemically consistent with the known cation selectivity of guanosine-quartet-based gels. Na⁺ is a poorer stabilizer of the requisite stacked G-quartets than K⁺ (or Li⁺ in the iso series), so gelation fails. Introduction of the 8-aza nitrogen does not reverse this selectivity; the closest 8-aza reference (z8isoGd) likewise shows no gelation in NaCl. Consequently, z8Gd is predicted to behave identically under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All structurally related references (dG, isoGd, z8isoGd) fail to gel in 0.2 M NaCl under the same heat-cool protocol; they either crystallize or remain solutions. Na⁺ is a weaker G-quartet stabilizer than K⁺ (or Li⁺ for iso derivatives), and the 8-aza substitution does not invert this selectivity. Hence z8Gd is expected to yield the same non-gelling outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6713</summary>
+              <pre>The target molecule z8Gd is a close structural analog of dG (chemical distance ~1.93), differing only by an 8-aza substitution in the purine ring. All three reference nucleosides (dG, isoGd, and z8isoGd) were explicitly tested under essentially identical heat-cool protocols in 0.2 M NaCl. In every case the outcome was the same: the system either remained a free-flowing solution or produced only crystalline/precipitated material; no stable hydrogel formed.  
+
+This pattern is chemically expected. Guanosine-type gelation relies on G-quartet (or expanded-quartet) stacking that is strongly stabilized by K⁺ (or, in the case of isoGd, by Li⁺). Na⁺ provides far weaker coordination to the O6/N7 sites and therefore does not drive the requisite supramolecular polymerization. The 8-aza modification alters the electronics of the Hoogsteen face modestly but does not invert the well-established cation selectivity; hence the same NaCl result is predicted for z8Gd.  
+
+Consequently the experimental outcome for the requested condition is “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;z8Gd is the closest analog to dG (distance 1.93). All three reference compounds (dG, isoGd, z8isoGd) were tested under identical 0.2 M NaCl heat-cool conditions and uniformly failed to gel, yielding only solutions or precipitates. Na⁺ does not stabilize the G-quartet stacks required for hydrogelation, and the 8-aza substitution does not reverse this cation selectivity.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6674</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6731</summary>
+              <pre>The target molecule (z8Gd) is a close structural analogue of dG (differing only by an 8-aza substitution on the purine ring). Reference data for dG show that NaCl produces only crystalline precipitates rather than a hydrogel, because the Na⁺ radius and coordination geometry do not stabilize the requisite G₄-quartet stacks; the same outcome is observed for the even more closely related 8-aza derivative z8isoGd. The 8-aza modification does not alter the fundamental inability of Na⁺ to template an extended fibrillar network, so the molecule is likewise expected to crystallize or precipitate under the stated heat-cool conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na⁺ ions lack the optimal size/charge density to template stable G₄-quartet or pentad stacks of z8Gd. Reference experiments on the nearly identical scaffolds dG and z8isoGd demonstrate that NaCl therefore drives crystallization or precipitation rather than formation of an entangled nanofibrillar hydrogel network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6737</summary>
+              <pre>The target molecule (z8Gd) is a close structural analogue of dG (chemical distance 1.93), differing only by the 8-aza substitution on the purine ring. Both molecules share the same guanine-type hydrogen-bonding pattern and 2′-deoxyribose. In dG, Na⁺ ions promote ordered crystalline packing rather than the disordered, high-aspect-ratio nanofibrils needed for gelation; the same outcome is observed for the more distant 8-aza analogue z8isoGd (NaCl yields only precipitate or solution).  
+
+Because the 8-aza modification does not alter the ion-size selectivity of the guanine quartet (K⁺ remains optimal; Na⁺ is too small), the same crystallization pathway is expected for z8Gd + NaCl. Consequently the system remains a free-flowing solution or forms microcrystals instead of a percolating hydrogel network.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na⁺ ions are too small to template stable guanine-quartet stacks in 8-azaguanine derivatives; the molecule therefore follows the crystallization pathway documented for both dG and z8isoGd under identical NaCl conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6553</summary>
+              <pre>The target molecule z8Gd is a close structural analogue of dG (differing only by N8 substitution) and of z8isoGd (differing by the position of the exocyclic amino/carbonyl groups). All three reference nucleosides fail to produce hydrogels in the presence of NaCl under heat-cool conditions identical to those specified for the target.  
+
+Na⁺ lacks the ionic radius and coordination geometry needed to template stable G₄ or related quartets/pentads in these scaffolds; the resulting assemblies therefore remain too weakly associated to form a percolating nanofibrillar network and instead remain soluble or crystallize. The 8-aza modification does not alter this selectivity, as evidenced by the identical “No Gel” outcome for z8isoGd/NaCl. Consequently the target experiment is also predicted to yield no hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyguanosine (z8Gd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nnn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8Gd in H₂O with 0.2 M NaCl; heat-cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na⁺ cannot template stable quartets/pentads in dG-type or 8-aza-dG-type nucleosides; reference experiments with dG, isoGd and z8isoGd under identical NaCl/heat-cool conditions all produce solutions or precipitates rather than gels. The 8-aza substitution does not change this ion selectivity, so z8Gd/NaCl is likewise expected to remain non-gelled.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

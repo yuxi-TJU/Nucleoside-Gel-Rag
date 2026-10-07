@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 7-10</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 7-10</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>7</strong></div>
+      <div>Experiment ID<strong>10</strong></div>
+      <div>Chemical description<strong>Guanosine (G)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>KB(OH)₄</strong></div>
+      <div>Detailed conditions<strong>36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Insufficient borate; incomplete nucleoside dissolution; no stable network.
+
+Less than 0.5 equiv leads to incomplete dissolution of guanosine. Deviations from this ratio disrupt the balance between monoester and diester formation, undermining gel stability.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5931</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6138</summary>
+              <pre>The molecule in question is guanosine, a canonical ribonucleoside whose cis-1,2-diol moiety on the ribose sugar is well-known to condense reversibly with borate anions to produce anionic guanosine-borate (GB) diester complexes. These complexes, in turn, self-assemble in the presence of K⁺ into G-quadruplex-based hydrogels via Hoogsteen hydrogen-bonding and π–π stacking.  
+
+Under the stated conditions (36 mM guanosine + sub-stoichiometric KB(OH)₄ in water, heated to 90 °C and cooled), the borate concentration is sufficient to generate a population of GB diesters. Even at &lt;0.5 equiv the equilibrium still furnishes enough anionic cross-links to drive quadruplex formation and subsequent gelation upon cooling. The modest concentration (≈1 wt %) lies within the documented range for GB hydrogelation, and the thermal cycle ensures dissolution followed by kinetically controlled network assembly.  
+
+Consequently the mixture forms a stable hydrogel.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine condenses with borate to form anionic GB diesters that template K⁺-stabilized G-quadruplexes; even sub-stoichiometric KB(OH)₄ supplies enough cross-links for hydrogelation upon cooling.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5601</summary>
+              <pre>The target molecule is guanosine, whose ribose cis-diol and Hoogsteen edge enable well-documented self-assembly. In aqueous solution containing sub-stoichiometric KB(OH)₄, borate esters reversibly cross-link the 2′,3′-diols while K⁺ ions template G-quartets; the resulting supramolecular network produces a translucent hydrogel upon cooling from 90 °C. Because gelation occurs within hours under the stated concentration and heating–cooling protocol, the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Borate esters cross-link ribose diols while K⁺ stabilizes G-quartets, producing a hydrogel on cooling.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6054</summary>
+              <pre>The target molecule is guanosine, a canonical nucleoside whose purine base is well-known to self-assemble into G-quartets. In aqueous solution these quartets stack into G-quadruplex fibrils that, at sufficient concentration and with appropriate cationic stabilization, produce a sample-spanning hydrogel.  
+
+The stated experiment supplies 36 mM guanosine together with sub-stoichiometric KB(OH)₄ (&lt; 0.5 equiv). The borate anion reversibly esterifies the 2′,3′-cis-diol of ribose, generating anionic guanosine–borate complexes; the accompanying K⁺ ions then coordinate the O6 carbonyls of the quartets, furnishing the electrostatic glue that locks the fibrils into a three-dimensional network. Heating to 90 °C fully dissolves the solid, after which slow cooling allows the quartets to nucleate and elongate before macroscopic phase separation can occur.  
+
+Because the K⁺ concentration remains above the threshold needed for quartet stabilization and the total guanosine concentration lies well within the established gelation window for guanosine–borate systems, a translucent, self-supporting hydrogel is obtained within hours. Consequently the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine self-assembles into G-quartets that are stabilized by K⁺ coordination; borate esterification of the ribose diol supplies additional anionic cross-links. At 36 mM and &lt;0.5 equiv KB(OH)₄ the system lies inside the known hydrogelation regime, yielding a stable gel on cooling.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5896</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6083</summary>
+              <pre>The target molecule is the canonical D-guanosine nucleoside. Reference 1 demonstrates that its enantiomer (L-guanosine) reliably forms stable hydrogels both with KCl (providing K⁺ cations that template G-quartets) and with NaB(OH)₄ (providing borate anions that form reversible borate esters with the ribose cis-diols). The KB(OH)₄ additive in the target experiment simultaneously supplies both of these gel-promoting species (K⁺ and borate) under essentially identical heating/cooling conditions.  
+
+Because the core recognition motifs (G-quartet stacking + borate ester cross-links) remain intact and the concentration regime (36 mM) lies well within the range shown to gel in Reference 1, gelation is expected. (The modest stoichiometry of borate, &lt;0.5 equiv, is still sufficient to produce a percolating network, as documented for related guanosine–borate systems.)
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine forms G-quartets templated by K⁺ and is further cross-linked by borate–diol esters; both interactions are present in KB(OH)₄ and are known to produce stable hydrogels for the closely related L-guanosine (Ref. 1).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5883</summary>
+              <pre>The target molecule is the canonical D-guanosine nucleoside. Its structure is essentially identical to the L-Guanosine entry in Reference 1 (only the absolute configuration at the ribose stereocenters differs). Reference 1 explicitly demonstrates that L-Guanosine produces stable hydrogels when combined with a borate salt (NaB(OH)₄).  
+
+The solvent additive supplied for the target (KB(OH)₄, &lt; 0.5 equiv) is chemically analogous: it supplies both the borate anion required for reversible cis-diol complexation and a monovalent cation (K⁺) that further stabilizes G-quartet stacking. Literature precedent for guanosine–borate hydrogels (including mixtures of guanosine with sub-stoichiometric KB(OH)₄) shows that transparent, thermoreversible gels form under precisely these heating–cooling conditions.  
+
+No counter-indication appears in the reference set; the only “No Gel” result (Reference 3) occurs at high pH with a chemically modified hydrazide derivative and is therefore not applicable. Consequently the target is predicted to produce a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;D-Guanosine is the enantiomer of the L-Guanosine shown in Reference 1, which forms stable hydrogels with NaB(OH)₄. KB(OH)₄ supplies the same borate anion for reversible 2′,3′-diol complexation plus K⁺ for G-quartet stabilization; the heating–cooling protocol matches published guanosine–borate gelation conditions. No reference data contradict gel formation under these conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5721</summary>
+              <pre>The target molecule is guanosine (the naturally occurring D-enantiomer). Reference 1 demonstrates that the closely related L-guanosine readily forms stable hydrogels both with K⁺ salts and with borate salts (NaB(OH)₄). The target experiment employs KB(OH)₄, which supplies both the K⁺ cation and the borate anion in a single reagent. Borate is known to reversibly esterify the cis-2′,3′-diol of the ribose moiety, thereby generating the anionic guanosine–borate complexes that, together with K⁺ coordination, drive G-quartet stacking and subsequent hydrogelation.  
+
+Because the chemical identity of the nucleoside is essentially identical to the reference compounds and the additive furnishes the exact combination of ions shown to promote gelation, hydrogel formation is expected under the stated heating–cooling protocol.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine forms stable hydrogels with borate salts (as shown for L-G with NaB(OH)₄) because borate esters the ribose diol and, together with K⁺, templates G-quartet assembly. KB(OH)₄ supplies both ions, so gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6090</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5945</summary>
+              <pre>The target molecule is unmodified guanosine, the core scaffold shared by all three reference compounds. References 1 and 3 (8-hydroxyguanosine and 8-aminoguanosine) both produce stable gels when treated with KB(OH)₄ (or the closely related NaB(OH)₄) under essentially identical thermal protocols and comparable nucleoside concentrations; the same borate salts likewise induce gelation in reference 2.  
+
+The underlying mechanism is formation of anionic guanosine–borate diester complexes that, in the presence of K⁺, further assemble into K⁺-stabilized G-quartets and higher-order hydrogel networks. Because the target molecule retains both the cis-1,2-diol of the ribose and the Hoogsteen face of the guanine base, the same borate–K⁺ synergy is expected to operate. The stated conditions (36 mM guanosine + sub-stoichiometric KB(OH)₄, heat–cool cycle) fall squarely inside the concentration and stoichiometry window shown to be gel-forming for the reference compounds.  
+
+Consequently, gelation is predicted.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine retains the ribose cis-diol and guanine Hoogsteen edge required for borate diester formation and subsequent K⁺-templated G-quartet assembly. References 1 and 3 gel under identical borate/K⁺ conditions; reference 2 also gels with KB(OH)₄. The given concentration and sub-stoichiometric KB(OH)₄ therefore produce a stable hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6167</summary>
+              <pre>The target molecule is unmodified guanosine, the parent scaffold of all three reference compounds. Guanosine is known to form stable G-quartet assemblies that can produce hydrogels when the quartets are further cross-linked and solubilized by borate esters. KB(OH)₄ supplies both the borate anion (which reversibly esterifies the cis-2′,3′-diol) and the K⁺ cation (which templates the G-quartets).  
+
+This combination is directly analogous to the conditions that produce gels for 8-hydroxyguanosine (Ref. 1) and 8-aminoguanosine (Ref. 3) at comparable nucleoside concentrations and borate stoichiometry. Although the target concentration (36 mM) is modestly lower than the 50–100 mM range used in the references, the same borate-mediated solubilization and K⁺-driven quartet stacking operate, and literature precedent confirms hydrogel formation for guanosine itself under these exact conditions.  
+
+Consequently, a gel is expected.  
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Unmodified guanosine forms G-quartets that are solubilized and cross-linked by borate esters; K⁺ templates the quartets. This matches the borate/K⁺ conditions that produce gels in Refs. 1–3, so gelation is predicted.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6159</summary>
+              <pre>The target molecule is unmodified guanosine, the core scaffold shared by all three reference compounds. References 1 and 3 demonstrate that 8-position substitution is not required for borate-mediated gelation; both molecules produce stable gels with KB(OH)₄ (0.5 equiv) under essentially identical heating/cooling protocols. Reference 2 further shows that the unmodified ribose cis-diol is sufficient for borate ester cross-linking when K⁺ is present.  
+
+KB(OH)₄ simultaneously supplies (i) borate anions that reversibly esterify the 2′,3′-diol and (ii) K⁺ ions that template G-quartet stacking. These two orthogonal non-covalent interactions together generate the fibrillar network required for macroscopic gelation. The stated concentration (36 mM) and sub-stoichiometric borate loading (&lt;0.5 equiv) fall within the range that has been shown to produce gels for the reference nucleosides; the slightly lower concentration is offset by the higher intrinsic propensity of unsubstituted guanosine to form G-quartets.  
+
+Consequently, the target system is predicted to form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Unmodified guanosine shares the same ribose cis-diol and Hoogsteen face as the three reference nucleosides. KB(OH)₄ supplies both borate (for reversible 2′,3′-ester cross-links) and K⁺ (for G-quartet templating). These dual interactions produce the fibrillar hydrogel network observed for the chemically closest analogues under nearly identical conditions; the modest concentration difference (36 mM vs. 50–100 mM) is offset by the higher intrinsic G-quartet propensity of the parent scaffold.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5983</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5941</summary>
+              <pre>The target molecule is unmodified guanosine, whose structure and hydrogen-bonding pattern are the direct parent of the three reference nucleosides (chemical distances 1.63–1.81). All three references form stable gels when a borate salt (NaB(OH)₄ or KB(OH)₄) is added at sub-stoichiometric levels; the borate anion reversibly esterifies the cis-2′,3′-diol, thereby extending the nucleobase into a fibrillar network that is further stabilized by G-quartet stacking.  
+
+The supplied experimental condition (36 mM guanosine + &lt;0.5 equiv KB(OH)₄, heated then cooled) is essentially identical to the borate conditions that produced gels in References 1 and 3. Consequently the same borate-mediated mechanism is expected to operate, leading to gelation.  
+
+No counter-evidence appears in the reference set: plain water or simple alkali-metal salts alone do not induce gelation for this scaffold, but the presence of the borate anion is decisive.  
+
+Final answer: Gel
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine is the parent scaffold of the three reference nucleosides. All three references gel with sub-stoichiometric KB(OH)₄/NaB(OH)₄ because borate reversibly cross-links the cis-2′,3′-diol and thereby stabilizes G-quartet fibers. The supplied condition matches those borate experiments exactly; therefore gelation is predicted.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5895</summary>
+              <pre>The target molecule is guanosine itself (the parent nucleoside of all three reference structures). All three references are close structural analogs (8-substituted or 2′-substituted guanosines) that form stable hydrogels when KB(OH)₄ (or the related NaB(OH)₄) is added at sub-stoichiometric levels. The mechanistic basis is the same in each case: the borate anion transiently esterifies the ribose cis-diol, while the accompanying K⁺ ions template G-quartet stacking; together these interactions produce an extended, percolating fibrillar network.
+
+The supplied experimental conditions (36 mM guanosine + &lt;0.5 equiv KB(OH)₄, heat–cool cycle) are essentially identical to those that produced gels for the three reference compounds. Consequently the same borate-mediated/K⁺-templated assembly pathway is expected to operate, yielding a gel rather than a precipitate or solution.
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine is the parent structure of the three reference analogs, all of which gel with KB(OH)₄ via borate–diol esterification plus K⁺-templated G-quartet stacking. The supplied concentration, stoichiometry and thermal cycle match the conditions that produced gels for the references; therefore gelation is predicted.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6112</summary>
+              <pre>The target molecule is unmodified guanosine, whose structure is nearly identical to the three reference compounds (differing only by the absence of the 8-OH, 8-NH₂ or 2′-NH₂ substituents). All three references form stable gels when a borate source (NaB(OH)₄ or KB(OH)₄) is added at sub-stoichiometric levels; the borate anion reversibly esterifies the cis-1,2-diol of the ribose, thereby templating G-quartet formation and subsequent hydrogelation.  
+
+The experimental conditions supplied for the target (36 mM guanosine + &lt;0.5 equiv KB(OH)₄, heat-cool cycle) match exactly the borate-mediated protocol that produces gels in References 1–3. Consequently the same borate-ester/G-quartet mechanism is expected to operate, leading to gelation.  
+
+No counter-indication is present: the concentration is within the range used for the references, the additive is the same potassium borate salt, and plain guanosine is known to be competent for K⁺-stabilized G-quartet assembly once the ribose diols are transiently linked by borate.
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM G + KB(OH)₄ (&lt; 0.5 equiv) in water; heated to 90 °C then cooled.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine is structurally analogous to the three reference nucleosides that all gel with sub-stoichiometric KB(OH)₄/NaB(OH)₄. The borate anion forms reversible esters with the ribose cis-diol, thereby promoting G-quartet stacking and hydrogelation under the supplied heat-cool conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

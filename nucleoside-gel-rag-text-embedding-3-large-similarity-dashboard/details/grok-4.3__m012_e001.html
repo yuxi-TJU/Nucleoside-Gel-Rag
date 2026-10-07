@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 12-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 12-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>12</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>2′-deoxy-2-aminoadenosine (2-DA)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>H₂O</strong></div>
+      <div>Detailed conditions<strong>1.7–5.0 wt % in H₂O or PBS, thermal treatment.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Remains a clear solution; no macroscopic gel observed.
+
+Although bases can form hogustin pairs, hydrogen bonds are not sufficient. The sugar therefore stays highly hydrated and the stacked fibres fail to cross-link into a space-filling network, preventing gelation under the tested conditions.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5537</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5406</summary>
+              <pre>The molecule 2-DA features an adenine-like nucleobase with an additional exocyclic amino group at C2. This creates an expanded set of complementary hydrogen-bond donor/acceptor sites (N1, N3, N6, N2) that readily support Watson–Crick and Hoogsteen base-pairing motifs. In aqueous media these interactions, together with the hydrophobic surface of the purine ring, drive one-dimensional stacking into nanofibers; the 2′-deoxyribose moiety supplies additional hydroxyl groups that further stabilize the fibers through inter-sugar hydrogen bonds and water bridging.  
+
+At the stated concentrations (1.7–5 wt %) the nucleoside is above the critical gelation threshold reported for closely related deoxyadenosine derivatives. Thermal treatment (heating to dissolution followed by cooling) supplies the kinetic energy needed to break any metastable aggregates and allows the system to reach the thermodynamically favored fibrillar network upon cooling. PBS does not disrupt this process because the ionic strength remains compatible with the hydrogen-bonded assemblies.  
+
+Consequently, a self-supporting hydrogel is formed.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Multiple H-bonding sites on the 2,6-diaminopurine base enable Watson–Crick/Hoogsteen pairing and π-stacking; the deoxyribose OH groups further stabilize aqueous nanofibers. At 1.7–5 wt % the concentration exceeds the critical gelation threshold, and thermal cycling produces a stable hydrogel network.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5787</summary>
+              <pre>The molecule 2′-deoxy-2-aminoadenosine possesses an extended hydrogen-bonding face (multiple exocyclic NH₂ groups plus ring nitrogens) together with a hydrophobic deoxyribose moiety. These features enable the formation of extended, tape-like or helical assemblies that are further stabilized by π–π stacking of the nucleobases. In aqueous media (pure water or PBS) at concentrations of 1.7–5 wt %, the balance between these non-covalent interactions and the hydrophobic effect is sufficient to produce a percolating fibrillar network upon cooling from a thermally dissolved state. Consequently, a self-supporting hydrogel is obtained within hours (or, at the lower concentration limit, within days).  
+
+No rapid precipitation, crystallization, or collapse is expected under the stated thermal protocol, confirming gelation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Multiple H-bond donor/acceptor sites on the 2,6-diaminopurine base enable formation of extended supramolecular tapes or helices that are reinforced by base stacking; the deoxyribose provides an appropriate hydrophobic/hydrophilic balance. In water or PBS at the indicated concentrations, cooling from a hot solution therefore produces a stable fibrillar hydrogel network.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5419</summary>
+              <pre>The nucleoside 2-DA features an expanded purine base with multiple H-bond donor/acceptor sites (N1, N3, N7, 2-NH₂, 6-NH₂) together with the ribose 3′-OH and 5′-CH₂OH groups. These functionalities enable directional intermolecular hydrogen bonding and π-stacking that drive anisotropic self-assembly into high-aspect-ratio fibers.  
+
+Under the stated conditions (1.7–5 wt % in water or PBS, followed by a heating–cooling cycle), the thermal energy first disrupts any crystalline aggregates, producing a homogeneous supersaturated solution. Upon cooling, the directional non-covalent interactions rapidly re-form, yielding an entangled fibrillar network that immobilizes the solvent and produces a stable hydrogel.  
+
+Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Multiple H-bonding sites on the 2,6-diaminopurine base plus the sugar hydroxyls enable fiber formation; thermal cycling produces a stable aqueous hydrogel at the indicated concentrations.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4885</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5082</summary>
+              <pre>The target molecule (2-DA) is a close structural analog of reference molecule 1 (2-FA). Both share the same 2,6-diaminopurine nucleobase and 2′-deoxyribose sugar; the only difference is replacement of the 2′-fluoro substituent in 2-FA by a simple 2′-hydrogen in 2-DA.  
+
+Reference 1 demonstrates that 2-FA forms robust, transparent, thermo-reversible hydrogels in pure water (1.7–5 wt %, heat–cool protocol) with high storage moduli, self-healing behavior, and long-term stability. Because the key supramolecular recognition elements (Watson–Crick and Hoogsteen faces of the nucleobase, plus the 3′- and 5′-OH groups) remain intact in 2-DA, the same non-covalent interactions that drive hydrogelation of 2-FA are expected to operate for 2-DA under identical solvent and thermal conditions.  
+
+No counter-examples appear among the other references that would preclude gelation: the salt-dependent behavior of dG or z8isoGd is irrelevant here because the target experiment uses neat water. Consequently, 2-DA is predicted to produce a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;2-DA is a near-isostructural analog of 2-FA (reference 1), differing only by replacement of the 2′-F with 2′-H. The nucleobase hydrogen-bonding faces and sugar hydroxyl groups that drive hydrogelation of 2-FA in pure water remain unchanged; therefore the same supramolecular assembly pathway is expected to operate under identical conditions, yielding a stable hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.4671</summary>
+              <pre>The target molecule (2-DA) is a close structural analog of reference molecule 1 (2-FA), differing only by the absence of the 2′-fluoro substituent on the ribose ring. Both share the same nucleobase (2,6-diaminopurine) and the same overall substitution pattern that enables Hoogsteen-type hydrogen-bonded quartet assembly and subsequent fiber formation. Reference 1 explicitly demonstrates that this scaffold produces robust, transparent, thermo-reversible hydrogels in pure water at 1.7–5 wt % after a simple heat–cool cycle—the exact concentration range and protocol listed for the target.  
+
+Because the key supramolecular recognition elements remain intact and the solvent conditions match those that succeed for 2-FA, the target is expected to behave identically.  
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;2-DA is a deoxy analog of the gel-forming 2-FA scaffold; the nucleobase and hydrogen-bonding pattern required for quartet/fiber assembly are preserved, and the solvent/thermal protocol matches the successful 2-FA conditions in Reference 1.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.4903</summary>
+              <pre>The target molecule (2-DA) is a close structural analog of reference molecule 1 (2-FA), differing only by the absence of the 2′-fluoro substituent on the ribose ring. Both share the key 2,6-diaminopurine nucleobase that enables the characteristic Hoogsteen-type hydrogen-bonded quartet assembly responsible for hydrogelation.  
+
+Reference 1 explicitly demonstrates that 2-FA forms robust, transparent, thermo-reversible hydrogels in pure water (1.7–5 wt %, heat–cool protocol) with high storage moduli and long-term stability. Because the 2′-F atom is not required for quartet formation or fiber entanglement—its primary role is conformational pre-organization—the unsubstituted 2-DA is expected to exhibit the same supramolecular behavior under identical conditions.  
+
+No counter-examples appear among the other references that would suggest precipitation or crystallization for this scaffold in neat water; salt-dependent behavior (references 2 and 3) is irrelevant here because the solvent additive is H₂O.  
+
+Consequently, 2-DA is predicted to produce a stable hydrogel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;2-DA is the direct des-fluoro analog of reference 1 (2-FA), which forms stable hydrogels in water under essentially identical conditions. The 2,6-diaminopurine motif that drives quartet assembly is preserved, and the missing 2′-F substituent is not essential for gelation.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5299</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5535</summary>
+              <pre>The target molecule (2-DA) is a close structural analog of the non-gelling reference 2-RA (2-aminoadenosine), differing only by removal of the 2′-OH group to produce the canonical 2′-deoxyribose sugar. Reference 2-RA remains fully soluble under identical concentration and thermal protocols (1.7–5.0 wt % in H₂O or PBS) and never assembles into a hydrogel.  
+
+The sole gelling example among the references (2-FA) succeeds only because the 2′-fluoro substituent enforces a distinct sugar pucker and supplies a unique H-bond acceptor pattern that stabilizes the supramolecular nucleobase stacks and fibrillar network. Replacing that fluorine with a simple 2′-methylene (as in 2-DA) removes both the conformational bias and the fluorine-specific interactions, returning the molecule to the soluble, non-assembling regime observed for 2-RA.  
+
+Consequently, under the stated conditions the target is expected to dissolve completely or, at best, to precipitate as microcrystalline aggregates—neither outcome satisfies the definition of gel formation.  
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule lacks the 2′-F substituent that enables gelation in 2-FA; its 2′-deoxy configuration is closer to the fully soluble, non-gelling 2-RA under identical conditions, so no stable hydrogel network forms.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5059</summary>
+              <pre>The target molecule (2-DA) is a 2-aminoadenosine derivative that differs from the reference compounds primarily at the 2′-position of the ribose sugar. Reference 1 (2-FA) forms stable, thermo-reversible hydrogels in both water and PBS under the exact concentration and thermal protocol given for the target; the 2′-fluoro substituent is known to bias the sugar pucker toward the C3′-endo conformation and to strengthen the hydrogen-bonding network that drives self-assembly. Reference 2 (2-RA), which retains a 2′-OH, remains fully soluble and produces no gel under identical conditions, indicating that an unmodified hydroxyl at the 2′-position is insufficient to stabilize the requisite supramolecular fibers.  
+
+The target (2-DA) replaces the 2′-position with a simple hydrogen (i.e., a standard 2′-deoxyribose), removing both the electronegative fluorine and the hydrogen-bonding OH. This structural change eliminates the conformational bias and the additional non-covalent contacts that enable gelation in 2-FA while preserving the same solubility profile seen for 2-RA. Consequently, the molecule is expected to dissolve completely rather than to assemble into a hydrogel network.  
+
+The same conclusion holds for the PBS condition: the ionic strength of PBS does not rescue gelation when the critical 2′-substituent is absent.  
+
+Final answer: No Gel
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The target lacks the 2′-fluoro substituent present in the gel-forming reference 2-FA. Without this electronegative group the sugar pucker and hydrogen-bonding pattern required for fiber formation are lost, producing behavior analogous to the soluble, non-gelling 2-RA (2′-OH). The molecule therefore remains fully dissolved under the stated heat-cool protocol in either water or PBS.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5302</summary>
+              <pre>The target molecule (2-DA) is a close structural analog of the two most relevant references, differing only in the substituent at the 2′-position of the ribose ring. Reference 1 (2-FA) contains a fluorine atom at C2′ and forms stable, transparent, thermo-reversible hydrogels in both water and PBS under essentially identical concentration and thermal protocols (1.7–5 wt %, heat–cool). Reference 2 (2-RA) replaces that fluorine with a hydroxyl group and shows no gelation; the compound remains fully soluble.  
+
+The target lacks any heteroatom substituent at C2′ (i.e., it is the 2′-deoxy derivative). Because the 2′-fluoro atom is demonstrably required for the specific hydrogen-bonding pattern and sugar pucker that drive the supramolecular fiber formation in this nucleoside family, its absence is expected to abolish gelation. The resulting behavior is therefore analogous to that of 2-RA: the molecule dissolves completely and does not produce a hydrogel.
+
+Consequently, under the stated conditions the target yields “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The target differs from gel-forming 2-FA only by replacement of the 2′-F with H. Reference 2-RA (2′-OH) already fails to gel under identical conditions; removal of the 2′-heteroatom substituent eliminates the interactions required for fiber formation, so the molecule remains fully soluble.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5334</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5411</summary>
+              <pre>The target molecule (2-DA) shares the 2,6-diaminopurine nucleobase with the gel-forming reference 2-FA, which enables Hoogsteen-type base pairing and π–π stacking. However, the 2′ position carries only a hydrogen atom rather than the fluorine substituent present in 2-FA.  
+
+The mechanistic description supplied for 2-FA explicitly credits the 2′-F atom with forming strong H···F contacts that, together with water bridges, generate the extended “water-reinforced” hydrogen-bond network required for fiber formation and gelation. Removal of this fluorine (i.e., replacement by H) eliminates those contacts.  
+
+The closest structural analogue lacking a 2′-fluorine is 2-RA (reference 2), which bears a 2′-OH instead. That molecule fails to gel because the 2′-OH promotes intramolecular hydrogen bonds and excessive solvation, preventing the intermolecular water-bridged network. Although 2-DA lacks the 2′-OH, it likewise lacks any 2′-substituent capable of participating in the intermolecular H-bonding motif that stabilizes the gel; the resulting balance of interactions is therefore insufficient for cooperative fiber assembly.  
+
+Consequently, under the stated thermal protocol in water (or PBS), 2-DA remains fully soluble and does not produce a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule possesses the 2,6-diaminopurine motif needed for base pairing, yet lacks the 2′-F atom that supplies the critical intermolecular H···F contacts and water-bridging network demonstrated for the gel-forming analogue 2-FA. Without this substituent the intermolecular interactions are insufficient to drive fiber formation, analogous to the non-gelling behaviour of 2-RA.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5257</summary>
+              <pre>The target molecule (2-DA) is a close structural analogue of the gel-forming reference 2-FA (chemical distance 2.50), sharing the same 2,6-diaminopurine nucleobase that enables Hoogsteen-type pairing and water-bridged intermolecular H-bond networks. However, the 2′-position is now unsubstituted (CH₂ instead of CHF).  
+
+The mechanistic description supplied for 2-FA explicitly credits the 2′-fluorine with forming strong H···F contacts that reinforce the water-bridged fibrous network and produce the exceptionally high storage modulus. Removal of this fluorine eliminates those contacts. In the absence of any compensating interaction (the 2′-OH present in the non-gelling 2-RA analogue is also missing), the hydrophilic–hydrophobic balance required for cooperative fiber formation is lost. Consequently, the molecule remains fully soluble under the stated thermal protocol and does not produce a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2-aminoadenosine (2-DA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@H]3C[C@H](O)[C@@H](CO)O3)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, thermal treatment.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 2,6-diaminopurine base is capable of Hoogsteen pairing, yet the absence of the 2′-F substituent (present in the closest gelling analogue 2-FA) removes the key H···F contacts that stabilize the water-reinforced fibrous network. Without this interaction the molecule remains fully soluble and does not assemble into a hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>deepseek-v3.2-think | 11-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>deepseek-v3.2-think | 11-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>11</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>2-aminoadenosine (2-RA)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>H₂O</strong></div>
+      <div>Detailed conditions<strong>1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Fully soluble; no hydrogel formation.
+
+2′-OH makes molecules tend to form more intramolecular hydrogen bonds (such as O2′-H2′···O3′), leaving no extra hydrogen donor to bring water molecules into the hydrophilic regions. The weaker stacking combined with excessive solvation of the ribose prevents formation of the bound-water-reinforced fibrous network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5188</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5181</summary>
+              <pre>Based on my expertise in nucleoside-derived gel formation, I have analyzed the potential of 2-aminoadenosine (2-RA) to form a gel under the specified conditions. Below is my detailed reasoning, followed by the required JSON output.
+
+### Analysis of 2-Aminoadenosine (2-RA) for Gel Formation
+
+**Molecule Characteristics:**  
+2-Aminoadenosine is a nucleoside derivative consisting of an adenine base modified with an additional amino group at the 2-position, attached to a ribose sugar. The canonical SMILES &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot; indicates multiple hydrogen bond donors and acceptors (from the 2-amino group, other amino groups, hydroxyl groups on the ribose, and nitrogen atoms in the base) and an aromatic adenine ring. These features are conducive to self-assembly via hydrogen bonding, π-π stacking, and hydrophobic interactions, which are key drivers for gelation in nucleoside-based systems.
+
+**Conditions Evaluation:**  
+The conditions specified are a concentration range of 1.7–5.0 wt % in either H₂O or PBS (phosphate-buffered saline), using a heat–cool protocol. This protocol typically involves heating to dissolve the compound, followed by cooling to promote self-assembly into a gel network. The concentration range is within typical thresholds for hydrogel formation, where sufficient molecular interactions can occur to form a percolating network. Water and PBS are common solvents for hydrogels; PBS may introduce ions that could modulate interactions by screening charges or affecting solubility, but nucleoside derivatives often gel in both environments due to their ability to form stable networks through non-covalent bonds.
+
+**Gelation Potential:**  
+From known literature on nucleoside gelation, adenosine derivatives have demonstrated gel-forming abilities in aqueous solutions, especially when modified with functional groups that enhance intermolecular interactions. The 2-amino group in 2-aminoadenosine significantly increases hydrogen bonding capacity compared to unmodified adenosine, which favors the formation of fibrous or network structures upon cooling. The heat–cool protocol is effective for such systems, as heating disrupts aggregates, allowing homogeneous dispersion, and cooling kinetics can lead to controlled self-assembly into a gel state rather than rapid precipitation or crystallization. In PBS, the buffered ions might stabilize the gel by reducing electrostatic repulsion, if any, but given the molecule&#x27;s likely neutral or near-neutral charge at pH 7.4 (pKa of 2-amino group ~5-6), gelation is still expected.
+
+**Conclusion:**  
+Considering the molecular structure and the conditions, 2-aminoadenosine is highly likely to form a gel in H₂O or PBS at 1.7–5.0 wt % via the heat–cool protocol. The gel would form within hours upon cooling, as the self-assembly process is driven by robust non-covalent interactions. There is no indication from general principles that it would dissolve, precipitate, or crystallize rapidly (within minutes), so the result is classified as &quot;Gel&quot;.
+
+### JSON Output
+
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;2-aminoadenosine possesses enhanced hydrogen bonding capability due to the 2-amino group on the adenine base, along with hydroxyl groups from the ribose sugar, facilitating self-assembly into a three-dimensional network in aqueous environments. The heat–cool protocol allows for complete dissolution upon heating and controlled aggregation upon cooling, promoting gel formation rather than precipitation. The concentration range (1.7–5.0 wt %) is sufficient to achieve critical gelation concentration, and both H₂O and PBS provide suitable media for hydrogel stability, with PBS potentially aiding by ionic modulation. Based on nucleoside gelation principles, a stable gel is expected to form within hours after cooling.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5195</summary>
+              <pre>Based on my expertise in nucleoside-derived gel formation, I have analyzed the potential of 2-aminoadenosine (2-RA) to form a gel under the specified conditions. Below is my detailed reasoning followed by the required JSON output.
+
+### Analysis of 2-Aminoadenosine (2-RA) for Gel Formation
+
+**Molecular Structure and Properties:**
+- 2-Aminoadenosine is an adenosine derivative with an additional amino group at the 2-position of the adenine base. The canonical SMILES, Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1, indicates multiple hydrogen bond donors and acceptors from the 2-amino group, adenine ring, and ribose sugar. This enhances its ability to participate in supramolecular self-assembly via hydrogen bonding, π-π stacking, and hydrophobic interactions.
+- The molecule exhibits amphiphilic character: the hydrophobic adenine base and hydrophilic ribose moiety promote self-assembly in aqueous environments, potentially leading to fibrous or network structures that can trap solvent and form gels.
+
+**Conditions Evaluation:**
+- **Solvent and Additives:** The conditions specify H₂O or PBS (Phosphate Buffered Saline). Water is a protic solvent that supports hydrogen bonding, while PBS provides ionic strength and pH buffering (typically pH 7.4). PBS may influence gelation by modulating charge interactions or screening, but it generally does not disrupt core non-covalent interactions like hydrogen bonding in nucleoside systems.
+- **Concentration Range (1.7–5.0 wt %):** This range is common for supramolecular gelators. Lower concentrations might yield weak or no gels, while higher concentrations within this range likely promote robust gel formation by facilitating sufficient molecular aggregation.
+- **Heat-Cool Protocol:** This protocol involves heating to dissolve the compound, followed by cooling to allow controlled self-assembly. For nucleoside derivatives, heating disrupts non-covalent interactions, and cooling enables gradual reorganization into gel networks. This method is effective for inducing gelation in similar systems.
+
+**Gelation Potential:**
+- Adenosine derivatives, especially those with functional modifications like amino groups, are known to form gels in aqueous media. The 2-amino group in 2-RA adds extra hydrogen bonding capacity, which can enhance self-assembly and gel stability.
+- In water, the molecule is expected to dissolve upon heating and, upon cooling, self-assemble into a three-dimensional network through intermolecular hydrogen bonds (e.g., involving the 2-amino group and nucleobase) and π-π stacking of adenine rings. This can result in a gel state within hours.
+- In PBS, the buffer ions might slightly alter gelation kinetics or mechanical properties but are unlikely to prevent gelation entirely. Similar nucleoside-based gelators often form gels in physiological buffers due to the dominance of hydrogen bonding over ionic effects.
+- The concentration range supports gel formation; at 1.7–5.0 wt %, sufficient molecular density is present to form a percolating network. The heat-cool protocol optimizes this process by ensuring homogeneous dissolution and controlled aggregation.
+
+**Conclusion:**
+Given the molecular features and conditions, 2-aminoadenosine is predicted to form a gel in both H₂O and PBS using the heat-cool protocol. Gel formation is expected within hours after cooling, as observed for analogous nucleoside derivatives. Therefore, the result is classified as &quot;Gel&quot;.
+
+### JSON Output
+
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;2-Aminoadenosine possesses multiple hydrogen bond donors and acceptors (from the 2-amino group, adenine base, and ribose sugar) and amphiphilic character, enabling self-assembly into supramolecular networks in aqueous solutions. The heat-cool protocol facilitates dissolution and controlled aggregation, while the concentration range (1.7–5.0 wt %) provides sufficient molecular density for gel formation. In H₂O, hydrogen bonding and π-π stacking drive gelation; in PBS, buffer ions may modestly affect but not prevent gelation, as non-covalent interactions remain dominant. Similar nucleoside derivatives are documented to form gels under such conditions, supporting a gel outcome.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5186</summary>
+              <pre>Based on my expertise in nucleoside-derived gel formation, I have analyzed the molecule 2-aminoadenosine (2-RA) under the specified conditions. Below is my detailed reasoning followed by the JSON output.
+
+### Analysis and Reasoning
+
+**Molecular Structure Considerations:**  
+2-Aminoadenosine is a nucleoside derivative with an additional amino group at the 2-position of the adenine base. The canonical SMILES &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot; indicates multiple hydrogen bond donors and acceptors, including primary amino groups, hydroxyl groups on the ribose sugar, and nitrogen atoms in the heterocyclic base. This structure promotes extensive hydrogen bonding and π-π stacking interactions, which are key drivers for supramolecular self-assembly into fibrous networks capable of gelation.
+
+**Conditions Evaluation:**  
+The specified conditions involve a concentration range of 1.7–5.0 wt % in H₂O or PBS (Phosphate Buffered Saline) with a heat-cool protocol. This protocol typically involves heating to dissolve the compound and cooling to facilitate slow self-assembly, which is favorable for gel formation. The concentration range is within typical thresholds for hydrogelators, allowing sufficient molecular density for network formation without immediate precipitation. PBS may provide ionic strength that screens electrostatic repulsions or modulates hydrogen bonding, potentially enhancing gel stability.
+
+**Gelation Potential:**  
+Given the structural features, 2-aminoadenosine is likely to form a gel under these conditions. The heat-cool protocol prevents rapid crystallization or precipitation by controlling the kinetics of self-assembly, allowing the molecules to organize into a three-dimensional network that entraps water molecules. Nucleoside derivatives, such as guanosine analogs, are well-known to form hydrogels via similar mechanisms, and the additional amino group in 2-aminoadenosine could further strengthen intermolecular interactions. Therefore, I predict that gelation will occur within hours to days upon cooling, meeting the criteria for &quot;Gel.&quot;
+
+**Conclusion:**  
+Based on the analysis, 2-aminoadenosine is expected to form a gel in H₂O or PBS under the described conditions. The result is classified as &quot;Gel&quot; since at least one condition (e.g., in H₂O or PBS) leads to gel formation.
+
+### JSON Output
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The molecule 2-aminoadenosine has multiple hydrogen bond donors and acceptors (amino groups, hydroxyl groups, and nitrogen atoms) that enable supramolecular self-assembly through hydrogen bonding and π-π stacking. The heat-cool protocol at concentrations of 1.7-5.0 wt % in aqueous solvents like H₂O or PBS facilitates dissolution at elevated temperatures and slow network formation upon cooling, leading to a three-dimensional gel matrix. PBS may enhance stability via ionic interactions. This aligns with known gelation behavior of nucleoside derivatives, and gel formation is expected within hours to days, meeting the &#x27;Gel&#x27; criteria.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4897</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.4534</summary>
+              <pre>Based on the analysis of the target molecule 2-aminoadenosine (2-RA) in comparison with the provided reference molecules, particularly the structurally similar 2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA), it is predicted that 2-RA will form a hydrogel under the specified conditions. The reasoning considers the molecular features and experimental protocols that favor gelation in nucleoside systems.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The molecule 2-aminoadenosine (2-RA) is structurally analogous to 2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA) from Reference 1, which forms robust, transparent hydrogels in both H₂O and PBS under identical conditions (1.7–5.0 wt %, heat-cool). Key gelation drivers include the 2-amino group on the adenine ring, which enables hydrogen bonding and π-π stacking for supramolecular assembly. Although 2-RA has a hydroxyl group at the 2&#x27; position instead of fluorine (as in 2-FA), hydroxyl groups are proficient in hydrogen bonding and may further stabilize the gel network. The heat-cool protocol is standard for nucleoside gelators, promoting dissolution and subsequent self-assembly upon cooling. PBS contains salts (e.g., Na⁺, K⁺, phosphates) that do not disrupt gelation in 2-FA, suggesting similar compatibility for 2-RA. Given the structural similarity and successful gelation of 2-FA, 2-RA is expected to form a stable hydrogel that withstands the conditions without rapid collapse, crystallization, or precipitation, meeting the &#x27;Gel&#x27; criteria.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5260</summary>
+              <pre>Based on the analysis of the provided references and structural similarities, I predict that 2-aminoadenosine (2-RA) will form a gel under the specified conditions. Below is the detailed reasoning and the required JSON output.
+
+### Analysis and Reasoning:
+1. **Structural Similarity to Reference 1**: The target molecule, 2-aminoadenosine (2-RA), shares an identical nucleobase structure with 2-Amino-2′-fluoro-2′-deoxyadenosine (2-FA) from Reference 1. Both molecules feature a 2-aminoadenine base, which contains additional amino groups that enhance hydrogen bonding and π-π stacking interactions, key drivers for supramolecular gelation in nucleoside derivatives.
+
+2. **Comparison of Sugar Moieties**: The primary difference lies in the sugar moiety: 2-RA has a ribose sugar with a 2′-hydroxyl group, while 2-FA has a 2′-fluoro-2′-deoxyribose sugar. Although the 2′-OH in 2-RA may increase hydrophilicity compared to the more hydrophobic 2′-F in 2-FA, the gelation propensity is predominantly governed by the base modifications. Reference 1 demonstrates that 2-FA forms robust, transparent hydrogels in both H₂O and PBS under identical conditions (1.7–5.0 wt %, heat-cool protocol), with high stability, self-healing, and thermo-reversibility. This suggests that the 2-aminoadenine base is sufficient to promote gelation regardless of subtle sugar modifications.
+
+3. **Experimental Conditions Alignment**: The target conditions (1.7–5.0 wt % in H₂O or PBS, heat-cool protocol) mirror those used for 2-FA in Reference 1, where gelation occurred without requiring additional salts or additives. This further supports the likelihood of gel formation for 2-RA, as the protocol is optimized for similar nucleoside derivatives.
+
+4. **Absence of Counter-Evidence**: None of the references indicate that ribose-containing adenosine derivatives fail to gel under these conditions. For instance, Reference 2 and 3 focus on guanosine derivatives, which often require specific ions (e.g., K⁺ or borate) for gelation, but 2-aminoadenosine analogs show inherent gelation ability in aqueous environments, as seen in Reference 1.
+
+5. **Conclusion**: By analogy to 2-FA, 2-RA is expected to form a stable hydrogel in H₂O or PBS via supramolecular self-assembly. While the 2′-OH might slightly modulate gel stiffness or kinetics, the core gelation capability remains intact. Therefore, the result is classified as &quot;Gel&quot;.
+
+### JSON Output:
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The molecule 2-RA is structurally analogous to 2-FA from Reference 1, sharing the same 2-aminoadenine base that facilitates supramolecular gelation through hydrogen bonding and π-π stacking. Reference 1 shows that 2-FA forms robust hydrogels in H₂O and PBS under identical conditions (1.7–5.0 wt %, heat-cool), with no additives required. Although 2-RA has a ribose sugar (2′-OH) instead of 2′-fluoro-2′-deoxyribose, the gelation propensity is primarily base-driven. The similar experimental protocol and concentration range further support gel formation. Thus, 2-RA is predicted to form a stable hydrogel in H₂O or PBS, meeting the criteria for &#x27;Gel&#x27; (formation within hours to months).&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4565</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.4170</summary>
+              <pre>[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The target molecule 2-aminoadenosine (2-RA) is structurally analogous to 2-amino-2′-fluoro-2′-deoxyadenosine (2-FA) from Reference 1, which forms a robust, thermo-reversible hydrogel in both water and PBS at the same concentration range (1.7–5.0 wt%) using a heat–cool protocol. The only difference is the substituent at the 2&#x27; position of the sugar moiety: 2-RA has a hydroxyl group, while 2-FA has a fluorine atom. Although the hydroxyl increases hydrophilicity relative to fluorine, it remains capable of participating in hydrogen bonding and does not preclude supramolecular assembly. Moreover, the 2-aminoadenine base in both molecules provides key sites for π-stacking and intermolecular hydrogen bonding, which are critical for gel network formation. Given the low chemical distance to Reference 1 and the demonstrated gelation ability of the closely related analogue, it is highly probable that 2-RA also self-assembles into a gel under the specified conditions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.4960</summary>
+              <pre>Based on the analysis of the target molecule 2-aminoadenosine (2-RA) in comparison with the provided reference data, I predict that it will form a gel under the specified conditions. The detailed reasoning is provided below, followed by the required JSON output.
+
+### Analysis and Reasoning:
+1. **Structural Similarity to Reference 1**: The target molecule, 2-aminoadenosine (2-RA), is closely related to 2-amino-2′-fluoro-2′-deoxyadenosine (2-FA) from Reference 1. Both molecules feature an adenine base with a 2-amino substitution, which is critical for promoting hydrogen bonding and π-π stacking interactions that drive supramolecular gelation. The primary difference is at the 2′ position of the ribose sugar: 2-FA has a fluoro substituent, while 2-RA has a hydroxyl group. This hydroxyl group in 2-RA may enhance hydrogen bonding capacity, potentially favoring gel formation rather than hindering it.
+
+2. **Gelation Conditions**: The experimental conditions for the target (&quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol&quot;) are nearly identical to those used for 2-FA in Reference 1 (&quot;1.7–5.0 wt % in H₂O; heat to dissolve, then cool to 25 °C&quot;). Reference 1 demonstrates robust hydrogel formation in both water and PBS, with thermo-reversibility, high storage modulus, and self-healing properties. The similarity in conditions and concentration ranges suggests that 2-RA is likely to behave similarly.
+
+3. **Role of Additives and Solvents**: In Reference 1, gel formation occurs in pure water and PBS without the need for additional additives, indicating that the adenosine derivative itself can self-assemble into a gel network. For 2-RA, the presence of the hydroxyl group might increase hydrophilicity, but this is not expected to disrupt gelation, as hydroxyl groups can participate in the hydrogen bonding network that stabilizes the gel. The reference data for guanosine derivatives (References 2 and 3) show that gelation often requires specific additives like borate or salts, but adenosine derivatives (as seen in Reference 1) can gel in pure water, supporting the prediction for 2-RA.
+
+4. **Chemical Distance Consideration**: Reference 1 has a chemical distance of 2.622408, which is the lowest among the references, indicating the highest structural similarity to the target molecule. This further supports the likelihood of similar gelation behavior.
+
+5. **Conclusion**: Given the structural analogy to 2-FA, the identical experimental protocol, and the demonstrated ability of adenosine derivatives to form gels in aqueous environments, 2-aminoadenosine is predicted to form a gel under the specified conditions. The gel is expected to be thermo-reversible and stable, similar to Reference 1.
+
+### JSON Output:
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The target molecule 2-aminoadenosine is structurally analogous to 2-amino-2′-fluoro-2′-deoxyadenosine (Reference 1), which forms a robust hydrogel under identical conditions. Both molecules share the same adenine base with a 2-amino substitution, promoting hydrogen bonding and π-π stacking essential for supramolecular gelation. The ribose sugar in 2-RA has an additional hydroxyl group compared to the 2′-fluoro derivative, but this is unlikely to disrupt gelation as hydroxyl groups can enhance hydrogen bonding networks. The specified conditions (1.7–5.0 wt % in H₂O or PBS with heat–cool protocol) mirror those in Reference 1, where gel formation was observed in both water and PBS without additives. Therefore, 2-aminoadenosine is predicted to form a gel, exhibiting properties such as thermo-reversibility and stability similar to Reference 1.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4837</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.5128</summary>
+              <pre>Based on analysis of the provided reference data and structural comparison, the target molecule **2-aminoadenosine (2-RA)** is predicted to form a gel under the specified conditions. The reasoning combines insights from the highly similar **2-FA** (Reference 1) and general principles of nucleoside gelation.
+
+### Key Points of Analysis:
+- **Structural Similarity:** 2-RA shares the same **2,6-diaminopurine base** as 2-FA, enabling **Hoogsteen-type pairing** via the double amino groups and **π–π stacking** of purine rings—critical for supramolecular assembly.
+- **Sugar Modification:** While 2-FA has a **2′-F** group participating in strong H···F hydrogen bonds, 2-RA has a **2′-OH** group, which can act as both a hydrogen bond donor and acceptor. This difference may alter hydrogen-bonding patterns but is unlikely to prevent gelation, as OH groups often contribute effectively to supramolecular networks.
+- **Experimental Conditions:** Identical concentration range (1.7–5.0 wt%) and heat–cool protocol as used successfully for 2-FA in both water and PBS.
+- **Mechanistic Extrapolation:** The “water-reinforced” hydrogen-bond network observed in 2-FA is expected to persist in 2-RA, with water molecules bridging base pairs and sugar hydroxyls potentially enhancing cross-linking. Although the unique H···F interactions are absent, O–H···O bonds and other interactions likely compensate to sustain fibrous bundle formation and gel stability.
+
+**Conclusion:** Given the strong structural and functional analogy to 2-FA, and absence of evidence suggesting disruption of gelation, **2-RA is anticipated to form a gel** in water or PBS under the described conditions.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Based on the close structural similarity to 2-FA (Reference 1), which forms a robust hydrogel under identical conditions. Both compounds share the same 2,6-diaminopurine base capable of Hoogsteen pairing and π–π stacking. The replacement of 2&#x27;-F with 2&#x27;-OH is not expected to prevent gelation; the hydroxyl group can also participate in hydrogen bonding, potentially contributing to the supramolecular network. Although the strong H···F bonds in 2-FA are replaced by O-H···O bonds, the overall combination of base pairing, stacking, and hydrogen bonding likely still supports fibrous self-assembly and cross-linking necessary for gel formation. Therefore, gelation is predicted.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.4545</summary>
+              <pre>[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The molecule is structurally similar to 2-FA (Reference 1), which forms a robust hydrogel in both water and PBS, driven by Hoogsteen base pairing, π–π stacking, and strong H···F hydrogen bonds involving the 2′-F. While 2-RA replaces 2′-F with 2′-OH, the 2,6-diaminopurine base retains the ability to form Hoogsteen pairs and stack. The 2′-OH can participate in hydrogen bonding but may lead to more dynamic or competitive interactions with water, potentially reducing the directional stability seen with 2′-F. However, the condition includes PBS as an alternative solvent. PBS contains salts that can screen electrostatic repulsions and promote self-assembly, as observed for other nucleosides (e.g., Reference 3, where KCl/NaCl induced gelation). Although gelation in pure water alone might be less robust, the presence of PBS likely supports network formation. Since the detailed conditions encompass both solvents and gelation in at least one (PBS) is plausible, the overall result is &#x27;Gel&#x27;.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

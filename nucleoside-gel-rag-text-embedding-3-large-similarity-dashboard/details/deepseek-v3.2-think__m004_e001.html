@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>deepseek-v3.2-think | 4-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>deepseek-v3.2-think | 4-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>4</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Isoguanosine (isoG)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>LiCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Stable transparent hydrogels; G′ about 15 × higher than guanosine gels; lifetime up to 3 months.
+
+isoG self-assembles into isoG quartets or pentaplexes stabilized by hydrogen bonding and Li⁺ coordination. These assemblies stack into helical fibers that interconnect into a robust three-dimensional network, producing a stable hydrogel</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6673</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6309</summary>
+              <pre>[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;Isoguanosine (isoG) is a nucleoside derivative capable of forming supramolecular hydrogels through self-assembly driven by hydrogen bonding, π-π stacking, and cation interactions. The concentration of 1.4 mg/100 µL (approximately 1.4% w/v or 49.4 mM) is within the typical range for nucleoside gelation (often 1-5% w/v), providing sufficient molecular density for network formation. LiCl at 0.2 M supplies Li+ ions, which, although smaller than K+ or Na+, can stabilize the assembly by coordinating with the carbonyl and amino groups of isoG, similar to other monovalent cations in nucleoside gels. The heating to 80°C ensures complete dissolution by disrupting initial aggregates, and cooling to room temperature allows controlled self-assembly into fibrous structures that entangle to form a gel matrix. The broad pH range (3-10, including PBS) indicates robustness, as isoG&#x27;s pKa values (e.g., N1 and exocyclic amino groups) allow assembly across various protonation states; at acidic pH, protonation may enhance hydrogen bonding, while at neutral to basic pH, deprotonation can promote π-stacking. Literature on isoG analogs supports gel formation with salts, and the cooling protocol is standard for inducing gelation. Thus, under these conditions, a stable gel is expected to form within hours upon cooling, meeting the &#x27;Gel&#x27; criterion.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7336</summary>
+              <pre>Based on my expertise in nucleoside-derived gel formation, I analyze the potential for isoguanosine (isoG) to form a gel under the specified conditions. Isoguanosine is a nucleoside analog with a molecular structure that enables self-assembly through hydrogen bonding, π-π stacking, and other non-covalent interactions, similar to guanosine and its derivatives. The canonical SMILES provided confirms the presence of a ribose sugar and a nucleobase with multiple hydrogen bond donors and acceptors, which are critical for supramolecular gelation.
+
+The experimental conditions involve dissolving 1.4 mg of isoG in 100 µL of a solution containing 0.2 M LiCl, heating to approximately 80°C, and then cooling to room temperature over a pH range of 3–10, including phosphate-buffered saline (PBS). The concentration of isoG is approximately 0.05 M (calculated from a molecular weight of ~283 g/mol), which is within the typical range for nucleoside gelation. The heating step ensures complete dissolution, while cooling promotes slow self-assembly into a network structure.
+
+Key factors supporting gel formation:
+- **Molecular Self-Assembly**: isoG can form hydrogen-bonded networks, potentially involving base-pairing motifs akin to G-quartets or other aggregates, due to its nucleobase structure. The ribose moiety may contribute to hydration and stability.
+- **Ionic Strength from LiCl**: The addition of 0.2 M LiCl increases ionic strength, which can screen electrostatic repulsions between molecules and enhance aggregation. While Li⁺ ions are less effective than K⁺ or Na⁺ in stabilizing G-quadruplexes, they may still facilitate gelation by modulating solubility and interaction dynamics.
+- **Temperature Cycle**: The process of heating and cooling is a standard method to induce gelation in nucleoside systems, as it allows for controlled nucleation and fiber growth.
+- **pH Robustness**: The broad pH range (3–10) suggests that gelation is not highly dependent on protonation states, likely because isoG maintains hydrogen-bonding capability across this range. PBS provides buffering, which may further stabilize the gel structure.
+
+Given these considerations, isoG is expected to form a stable gel under the described conditions. The gelation likely occurs within hours of cooling, as is common for nucleoside hydrogels, and should persist rather than collapsing, crystallizing, or precipitating rapidly.
+
+Therefore, the result is classified as &quot;Gel&quot;.
+
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;Isoguanosine (isoG) possesses a nucleoside structure conducive to self-assembly via hydrogen bonding and π-π stacking. At ~0.05 M concentration, it is sufficiently concentrated for gelation upon cooling from a hot solution. The 0.2 M LiCl additive provides ionic strength that screens repulsive charges and promotes aggregation, while the temperature cycle (80°C to room temperature) facilitates slow network formation. The broad pH range (3-10) indicates gelation is robust across various protonation states, supported by buffering in PBS. Thus, isoG is expected to form a stable gel under these conditions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6373</summary>
+              <pre>[
+  {
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+      {
+        &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Isoguanosine is a nucleoside derivative capable of forming self-assembled structures such as quartets through hydrogen bonding. The concentration used (≈50 mM) is within the range known for nucleoside hydrogelators. While Li+ alone may not be optimal for stabilizing isoG quartets due to its small size, the conditions include a broad pH range and PBS (phosphate-buffered saline). PBS contains sodium and potassium ions, which are known to promote gelation in guanosine-like systems by stabilizing quartet stacks. Moreover, the heating-cooling protocol facilitates self-assembly. Therefore, it is likely that a gel forms under at least some of these conditions, particularly in PBS. Hence, the overall result is Gel.&quot;
+      }
+    ]
+  }
+]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6501</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6036</summary>
+              <pre>[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;The reference experiments for Guanosine (G) under identical conditions (1.4 mg / 100 µL G in 0.2 M LiCl) show initial hydrogel formation that collapses within minutes, classified as &#x27;No Gel&#x27;. Isoguanosine (isoG) is a structural isomer of guanosine with similar nucleoside geometry and functional groups, suggesting comparable gelation behavior. Li⁺ ions are known to be poor stabilizers of G-quadruplex assemblies compared to K⁺, as evidenced by the transient gels in LiCl versus more stable gels in KCl for guanosine. Given the rapid loss of structural integrity observed for G with LiCl, isoG is predicted to behave similarly, failing to form a persistent gel network. Additionally, the broad pH range (3–10) does not compensate for the weak ion-nucleoside interactions with Li⁺, further supporting a &#x27;No Gel&#x27; outcome.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6723</summary>
+              <pre>Based on the analysis of the reference data and the structural similarity of isoguanosine (isoG) to guanosine (G), I predict that isoG will not form a stable gel under the specified conditions with LiCl. The reasoning is detailed below, considering the gelation behavior of analogous nucleosides and the role of cations in stabilizing gel networks.
+
+### Analysis and Reasoning:
+1. **Reference Data for Guanosine (G) with LiCl**:  
+   In Reference 1, guanosine (G) under identical conditions (1.4 mg / 100 µL in 0.2 M LiCl) initially forms a hydrogel but collapses within minutes, leading to &quot;No Gel&quot; classification. This indicates that Li⁺ ions do not support stable gelation for G, likely due to their inability to effectively stabilize the G-quartet structures essential for gel network integrity.
+
+2. **Structural Similarity of isoG to G**:  
+   Isoguanosine (isoG) is a nucleoside derivative with the same ribose sugar moiety as guanosine but features isoguanine as the base—an isomer of guanine with rearranged functional groups. While isoG can potentially form hydrogen-bonded assemblies similar to G-quartets (e.g., through alternative base pairing), its gelation properties are expected to be influenced by cation type, akin to G. The similar molecular framework suggests comparable responsiveness to additives.
+
+3. **Role of Cations in Gelation**:  
+   Gel formation in guanosine derivatives typically relies on cation-stabilized G-quartet stacking, with K⁺ being optimal due to its ionic radius fitting the quartet cavity. Li⁺, being smaller, provides weaker stabilization, as evidenced by:
+   - G with LiCl: No stable gel (collapses rapidly).
+   - G with KCl: Can form gels, though often transient or crystallizing.
+   - L-Guanosine with KCl: More stable gels, highlighting cation specificity.
+   - 8-hydroxyguanosine: Requires borate additives for gelation, not simple salts like LiCl or KCl.
+
+   Since Li⁺ is ineffective for G, it is likely similarly ineffective for isoG, especially under identical experimental protocols.
+
+4. **Experimental Conditions**:  
+   The conditions for isoG mirror those for G: same concentration (1.4 mg / 100 µL), additive (0.2 M LiCl), and thermal treatment (dissolve at ≈80°C, cool to room temperature). The broad pH range (3–10, including PBS) is unlikely to alter the outcome, as the reference shows G failing to gel with LiCl across similar pH variations. The rapid collapse observed for G suggests that any initial network formation with isoG would also be unstable.
+
+5. **Conclusion**:  
+   Given the precedent from guanosine and the structural parallels, isoG is not expected to form a persistent hydrogel with LiCl. Any initial gel-like behavior would likely disintegrate quickly, aligning with the &quot;No Gel&quot; criterion for collapses within minutes.
+
+### JSON Output:
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;Based on reference data for guanosine (G) with LiCl under identical conditions, which forms an initial hydrogel that collapses within minutes, indicating no stable gel formation. Isoguanosine (isoG) is structurally similar to guanosine, sharing the same ribose sugar and a purine base derivative. The gelation of nucleosides like guanosine often relies on G-quartet formation stabilized by cations such as K⁺, while Li⁺ is less effective due to its smaller ionic radius and poor fit for the quartet cavity. Given the same experimental setup (concentration, additive, thermal protocol), isoG is expected to behave similarly, failing to form a persistent gel with LiCl. The broad pH range (3-10) does not compensate for the lack of suitable cation stabilization, as evidenced by G&#x27;s behavior with LiCl.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6744</summary>
+              <pre>Based on the analysis of the provided reference data and the structural properties of isoguanosine (isoG), I predict that isoG with LiCl under the specified conditions will **not form a stable gel**. Here&#x27;s the detailed reasoning:
+
+1. **Analogous Behavior to Guanosine (G):** The reference data for guanosine (G) in Reference 1 shows that under nearly identical conditions (1.4 mg / 100 µL in 0.2 M LiCl, with heating and cooling), G forms an initial hydrogel that collapses within minutes and loses structural integrity rapidly. This is classified as &quot;No Gel&quot; because the gel is transient and unstable. Isoguanosine (isoG) is a structural isomer of G, sharing the same nucleoside base and sugar moiety but with rearranged atom connectivity in the base. Given this similarity, isoG is likely to exhibit comparable gelation behavior with LiCl.
+
+2. **Role of Cations in Nucleoside Gelation:** Nucleoside-derived gels, particularly those involving guanosine derivatives, often rely on the formation of G-quartet structures stabilized by specific cations. Potassium ions (K⁺) are well-known for effectively stabilizing these quartets due to their optimal ionic radius, leading to stable gels (as seen in Reference 1 with KCl). In contrast, lithium ions (Li⁺) are smaller and less effective at stabilizing G-quartets, resulting in weak or transient gel networks. This is evident in Reference 1, where LiCl leads to no stable gel for G, and similarly in Reference 3, where NaCl (with Na⁺ also less effective than K⁺) does not gel for 8-hydroxyguanosine.
+
+3. **Conditions and pH Variability:** The specified conditions include dissolving isoG at ≈80 °C and cooling to room temperature, with pH ranging from 3 to 10 (including PBS). While pH can influence gelation, the primary additive is LiCl, and the reference data for G with LiCl indicates no stable gel across similar conditions. PBS may introduce other ions, but the dominant cation here is Li⁺, which is unlikely to support stable gel formation based on the cation specificity observed in the references.
+
+4. **Lack of Direct Data for isoG:** Although no direct experiments on isoG with LiCl are provided in the references, the chemical similarity to G and the consistent trend with Li⁺ across nucleoside derivatives suggest that isoG will not form a stable gel. The transient behavior seen in G—initial gelation followed by rapid collapse—is expected to recur with isoG due to the poor stabilizing effect of Li⁺ on the self-assembled structures.
+
+Therefore, under the given conditions, isoG with LiCl is predicted to either form a transient gel that collapses quickly or fail to gel altogether, leading to a &quot;No Gel&quot; outcome.
+
+Here is the required JSON output:
+
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;Based on reference data for guanosine (G) with LiCl (Reference 1), which forms an initial hydrogel that collapses within minutes, indicating no stable gel formation. Isoguanosine (isoG) is structurally similar to G, and Li⁺ ions are less effective than K⁺ in stabilizing the G-quartet structures typically involved in nucleoside gelation. The conditions involve heating and cooling, but Li⁺&#x27;s poor stabilization leads to weak or transient networks. Therefore, isoG with LiCl is predicted to not form a stable gel, likely resulting in rapid collapse or dissolution.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6647</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6651</summary>
+              <pre>Based on the analysis of the provided reference data and the structural properties of isoguanosine (isoG), I predict that isoG will not form a stable gel under the specified conditions with LiCl. Below is the detailed reasoning and the required JSON output.
+
+### Analysis and Reasoning:
+1. **Reference Data Comparison**:
+   - **Guanosine (G) with LiCl**: Forms an initial hydrogel that collapses within minutes, leading to &quot;No Gel&quot; (Reference 1). This indicates that the ribonucleoside structure with a guanine base is unstable with Li⁺ ions.
+   - **2′-deoxy-2′-fluoroisoguanosine (FisoGd) with LiCl**: Forms a transparent and stable hydrogel lasting up to two months, resulting in &quot;Gel&quot; (Reference 2). The fluorination at the 2′ position and deoxy modification appear crucial for enhancing gel stability with Li⁺.
+   - **8-Aza-2′-deoxyisoguanosine (z8isoGd) with LiCl**: Does not form a hydrogel, leading to precipitation or solution state, hence &quot;No Gel&quot; (Reference 3). This suggests that base modifications (aza substitution) without fluorination do not promote gelation with Li⁺.
+
+2. **Structural Similarity of isoG**:
+   - isoG is the parent ribonucleoside of isoguanine, with a canonical SMILES showing a ribose sugar (OH groups at 2′, 3′, and 5′) and an isoguanine base. It is structurally closer to G (both are ribonucleosides) than to FisoGd (which is deoxy and fluorinated) or z8isoGd (which is deoxy and aza-substituted).
+   - The key difference from FisoGd is the lack of fluorination at the 2′ position. Fluorination in FisoGd likely alters hydrogen bonding and steric effects, facilitating stable self-assembly with Li⁺ ions into gel networks. Without this modification, isoG may not achieve similar stability.
+   - The isoguanine base in isoG has different hydrogen bonding patterns compared to guanine in G, but based on the references, this alone does not confer gelation ability with Li⁺, as seen with z8isoGd (which has an isoguanine derivative base but no gel with LiCl).
+
+3. **Conditional Factors**:
+   - The experimental conditions for isoG (1.4 mg/100 µL in 0.2 M LiCl, dissolved at ≈80°C and cooled) are identical to those used for G and FisoGd in the references. The pH range (3–10, including PBS) is broad, but gelation in nucleosides with Li⁺ is primarily cation-dependent rather than pH-sensitive, as inferred from the references where pH is not a limiting factor.
+   - In Reference 1, G with LiCl shows initial gelation but rapid collapse, indicating that transient networks may form but lack long-term integrity. isoG, with its ribose structure, might exhibit similar behavior—forming weak assemblies that disintegrate quickly, rather than a persistent gel.
+
+4. **Conclusion**:
+   - Given that only FisoGd (a fluorinated derivative) forms a stable gel with LiCl, while the ribonucleoside G and modified z8isoGd do not, isoG—lacking fluorination—is unlikely to form a stable gel. It may initially assemble but is expected to collapse or precipitate rapidly, similar to G. Therefore, the result is &quot;No Gel&quot;.
+
+### JSON Output:
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;Based on reference data: Guanosine (G) with LiCl forms an initial hydrogel that collapses within minutes (&#x27;No Gel&#x27;), while 2′-deoxy-2′-fluoroisoguanosine (FisoGd) with LiCl forms a stable gel due to fluorination. Isoguanosine (isoG) is a ribonucleoside similar to G but with an isoguanine base. It lacks the fluorination present in FisoGd, which is critical for stable gelation with Li⁺ ions. Without this modification, isoG is likely to behave similarly to G or 8-Aza-2′-deoxyisoguanosine (z8isoGd), which do not gel with LiCl, forming only transient assemblies that quickly lose integrity. Thus, under the given conditions, isoG is not expected to form a persistent gel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6436</summary>
+              <pre>Based on the provided reference data and the chemical similarity of the target molecule isoguanosine (isoG) to the referenced nucleosides, I have analyzed the likelihood of gel formation under the specified conditions. The key points from the references indicate that gelation behavior is highly sensitive to both the nucleoside structure and the type of salt additive. For isoG with LiCl, the closest analog is guanosine (G) from Reference 1, which has the smallest chemical distance (1.405658) to isoG. Under similar conditions (1.4 mg/100 µL in 0.2 M LiCl), guanosine forms an initial hydrogel that collapses within minutes, leading to a classification of &quot;No Gel.&quot; Although other derivatives like FisoGd (Reference 2) show stable gelation with LiCl, their larger chemical distances (2.494961 for FisoGd and 3.136237 for z8isoGd) suggest greater structural divergence, making guanosine a more reliable predictor for isoG&#x27;s behavior. IsoG, with its unmodified isoguanine base and ribose sugar, is expected to mimic guanosine&#x27;s instability with LiCl due to similar self-assembly dynamics and salt sensitivity. The transient gel formation likely results from inadequate stabilization of the nucleoside networks by Li⁺ ions, leading to rapid disintegration. Thus, for the given conditions, isoG is predicted not to form a stable gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;Guanosine (G) has the smallest chemical distance (1.405658) to isoG among the references, indicating high structural similarity. Under identical conditions with LiCl (1.4 mg/100 µL in 0.2 M LiCl), guanosine forms an initial hydrogel that collapses within minutes, classified as &#x27;No Gel&#x27;. IsoG, as a natural nucleoside with a similar base and sugar moiety, is expected to exhibit comparable behavior due to analogous self-assembly mechanisms and salt interactions. Li⁺ ions likely fail to provide sufficient stabilization for isoG quartets or networks, leading to rapid loss of gel integrity upon cooling. The pH range (3–10) and inclusion of PBS do not alter this outcome, as the reference shows consistent instability for guanosine across similar conditions. Therefore, isoG is predicted to form only a transient, unstable structure that disintegrates quickly, warranting a &#x27;No Gel&#x27; result.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6855</summary>
+              <pre>Based on the provided reference data and structural analysis, I predict that isoguanosine (isoG) will **not form a stable gel** under the specified conditions with LiCl. Here is my detailed reasoning:
+
+**Analysis of Chemical Similarity and Gelation Trends:**
+- **Chemical Distance Reference**: Guanosine (G) has the smallest chemical distance (1.405658) to isoG, indicating high structural similarity. Both are ribonucleosides with identical sugar moieties, differing only in the arrangement of functional groups on the purine base (isoG has swapped carbonyl and amino positions compared to G).
+- **Reference Behavior with LiCl**:
+  - Guanosine (G) in 0.2 M LiCl forms only a transient hydrogel that collapses within minutes → **No Gel**.
+  - 2′-deoxy-2′-fluoroisoguanosine (FisoGd) in 0.2 M LiCl forms a stable hydrogel for months → **Gel**.
+  - 8-Aza-2′-deoxyisoguanosine (z8isoGd) in 0.2 M LiCl does not gel → **No Gel**.
+- **Critical Structural Factors**:
+  - The stable gelation of FisoGd with LiCl is attributed to its **2′-fluoro modification**, which enhances lipophilicity and strengthens hydrophobic interactions within the gel network. This substitution is absent in isoG.
+  - IsoG retains the native ribose sugar (2′-OH), similar to G. The unmodified ribose likely results in similar cation-binding affinity and gel stability as observed with G.
+  - Li⁺ has a small ionic radius and weak polarizing power, making it inefficient at stabilizing G-quartet (or isoG-quartet) assemblies compared to K⁺. For unmodified nucleosides like G and isoG, this leads to fragile, short-lived networks.
+
+**Prediction for isoG in LiCl:**
+- Given the high structural similarity to G (same sugar, analogous base pairing ability) and the absence of stabilizing modifications (like 2′-F), isoG is expected to behave similarly to G under identical conditions.
+- The gelation process will likely follow: dissolution at elevated temperature, followed by initial hydrogel formation upon cooling, but rapid collapse of the network due to insufficient cation stabilization by Li⁺.
+- The broad pH range (3–10) is unlikely to alter this outcome, as the reference experiments for G were conducted under similar pH-neutral conditions.
+
+**Conclusion:** IsoG in 0.2 M LiCl will not form a persistent gel; any initial gel structure will quickly disintegrate.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;IsoG is structurally closest to Guanosine (chemical distance=1.405658), which forms only a transient hydrogel in 0.2 M LiCl that collapses within minutes. Unlike the stabilizing 2′-fluoro modification in FisoGd (which gels with LiCl), isoG has an unmodified ribose sugar similar to G. Li⁺ ions are inefficient at stabilizing nucleoside quartets due to their small size and weak polarizing power, leading to fragile networks. Therefore, isoG is predicted to initially form a hydrogel upon cooling but rapidly lose structural integrity, resulting in no stable gel formation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6827</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6749</summary>
+              <pre>Based on the analysis of the provided reference data and the chemical structure of isoguanosine (isoG), I have determined that isoG is unlikely to form a stable hydrogel under the specified conditions with LiCl. The reasoning is detailed below, considering the behavior of similar nucleoside derivatives and the mechanistic insights from the references.
+
+### Analysis:
+- **Chemical Similarity**: isoG is the unmodified form of isoguanosine, with an isoguanine base and a ribose sugar. It is structurally similar to the referenced molecules but lacks specific modifications that influence gelation.
+- **Reference Comparisons**:
+  - **Guanosine (G) with LiCl**: Forms an initial hydrogel that collapses within minutes, resulting in &quot;No Gel&quot;. This is due to weak crosslinking from Li⁺-stabilized G-quartets forming flat ribbon-like structures with poor mechanical stability.
+  - **2′-deoxy-2′-fluoroisoguanosine (FisoGd) with LiCl**: Forms a stable hydrogel for up to two months (&quot;Gel&quot;). The fluorine substitution enhances hydrophobic interactions and hydrogen bonding, promoting robust assemblies with Li⁺ coordination.
+  - **8-Aza-2′-deoxyisoguanosine (z8isoGd) with LiCl**: Does not form a hydrogel (&quot;No Gel&quot;), as Li⁺ ions cannot effectively template the required supramolecular assemblies for this derivative.
+- **Inference for isoG**: Without the fluorine enhancement present in FisoGd, isoG likely lacks the strengthened intermolecular interactions necessary for stable gel formation with Li⁺ ions. The isoguanine base may form quartets or similar assemblies, but based on the behavior of z8isoGd (an isoG derivative without fluorine) and G, Li⁺ is not optimal for templating stable networks in unmodified or minimally modified isoG systems. The conditions (1.4 mg/100 µL in 0.2 M LiCl) are identical to those in the references, but without structural modifications to boost stability, isoG is expected to precipitate or remain in solution rather than form a persistent gel.
+
+### Conclusion:
+Under the given conditions, isoG with LiCl is predicted to result in &quot;No Gel&quot;, consistent with the behavior of analogous molecules where Li⁺ alone does not support stable hydrogel formation without specific enhancing features.
+
+### JSON Output:
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;Based on reference data, guanosine (G) does not form a stable gel with LiCl due to weak crosslinking from Li⁺-stabilized assemblies, while fluorinated isoguanosine derivative (FisoGd) gels with LiCl due to enhanced interactions from fluorine substitution. Unmodified isoguanosine (isoG) lacks such modifications, and another derivative, 8-aza-2′-deoxyisoguanosine (z8isoGd), also fails to gel with LiCl. This suggests that for isoG-based molecules, gelation with Li⁺ ions requires specific structural enhancements to stabilize supramolecular assemblies. Under the given conditions, isoG is expected to precipitate or remain in solution rather than form a persistent hydrogel, leading to no gel formation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6665</summary>
+              <pre>Based on analysis of the provided references and mechanistic principles of nucleoside gelation, isoG is not expected to form a stable hydrogel under the specified conditions. The primary factors are the insufficient templating ability of Li⁺ for isoG pentaplex/quartet assemblies and the lack of stabilizing modifications present in analogous gel-forming derivatives.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in策定したか。.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;The target molecule isoG is the parent nucleoside of isoguanine. Reference 2 shows that its fluorinated derivative FisoGd forms a stable hydrogel with LiCl, attributed to the fluorine substitution enhancing hydrophobic interactions and strengthening hydrogen bonding, promoting isoG-like quartets/pentaplexes stabilized by Li⁺. In contrast, guanosine (Reference 1) with LiCl forms an initially transient hydrogel that collapses within minutes due to weak crosslinking of ribbon-like structures. IsoG lacks the fluorine modification, so its hydrophobic interactions and hydrogen bonding are presumably weaker than in FisoGd. Moreover, Li⁺ has a small ionic radius and may not effectively template the pentaplex assemblies typically formed by isoG (which are more stable with Na⁺ or K⁺). Without optimal cation coordination, supramolecular stacking into a robust fibrous network is unlikely. Thus, under the given conditions, isoG is not expected to form a stable hydrogel and may either remain soluble or precipitate.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7068</summary>
+              <pre>Based on the analysis of the reference molecules and their gelation behavior with LiCl, I predict that isoguanosine (isoG) will not form a stable hydrogel under the specified conditions. The key factors are the absence of fluorine substitution in isoG, which is critical for enhancing intermolecular interactions in similar derivatives, and the tendency of Li⁺ ions to promote weak, poorly crosslinked assemblies in non-fluorinated nucleosides.
+
+**Detailed Reasoning:**
+- **Comparison with Reference Molecules:** 
+  - **Guanosine (G, Reference 1):** With 0.2 M LiCl, G forms an initial hydrogel that collapses within minutes due to weak crosslinking into flat ribbon-like structures. This results in &quot;No Gel&quot; as per the criteria.
+  - **2′-deoxy-2′-fluoroisoguanosine (FisoGd, Reference 2):** With 0.2 M LiCl, FisoGd forms a stable hydrogel lasting up to two months. The fluorine substitution at the 2′ position enhances hydrophobic interactions and strengthens hydrogen bonding, enabling the formation of robust isoG-like quartets or pentaplexes stabilized by Li⁺ coordination.
+  - **8-Aza-2′-deoxyisoguanosine (z8isoGd, Reference 3):** With 0.2 M LiCl, z8isoGd does not gel because Li⁺ ions cannot effectively template its supramolecular assemblies.
+
+- **Analysis of isoG:** 
+  - isoG has a chemical structure similar to FisoGd but lacks the fluorine atom at the 2′ position (replaced by a hydroxyl group in isoG). This absence reduces hydrophobic interactions and hydrogen-bonding strength compared to FisoGd.
+  - Without fluorine enhancement, isoG&#x27;s intermolecular interactions are likely weaker, making it more comparable to G in terms of assembly behavior. Li⁺ ions may stabilize initial quartets or pentaplexes, but the resulting structures are expected to be ribbon-like with insufficient crosslinking for a stable 3D network.
+  - The specified conditions (1.4 mg/100 µL isoG in 0.2 M LiCl, heat-cool cycle) mirror those in the references where G fails to gel. The broad pH range (3–10) is unlikely to compensate for the weak structural cohesion, as pH effects are not highlighted as decisive in the references for LiCl-based gelation.
+
+- **Conclusion:** Given the propensity for Li⁺ to induce weak, transient assemblies in non-fluorinated nucleosides, isoG will probably form an unstable hydrogel that collapses, precipitates, or dissolves rapidly—similar to G with LiCl. Thus, it does not meet the criteria for &quot;Gel,&quot; which requires gel formation lasting hours or months.
+
+**Output in JSON Format:**
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;No Gel&quot;,
+            &quot;reasoning&quot;: &quot;Based on the reference data, fluorinated derivatives like FisoGd form stable gels with LiCl due to enhanced hydrophobic interactions and hydrogen bonding from fluorine substitution. In contrast, guanosine (G) does not gel with LiCl as it forms weak, ribbon-like structures that collapse quickly. Isoguanosine (isoG) lacks the fluorine modification, making it more similar to G in terms of interaction strength. Therefore, under the specified conditions, isoG is unlikely to form a stable hydrogel and will probably precipitate or form an unstable assembly that disintegrates rapidly, similar to the behavior observed for G with LiCl.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

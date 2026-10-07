@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 1-5</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 1-5</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>1</strong></div>
+      <div>Experiment ID<strong>5</strong></div>
+      <div>Chemical description<strong>Deoxyguanosine (dG)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>KB(OH)₄</strong></div>
+      <div>Detailed conditions<strong>36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Remains a non-viscous solution; no hydrogel observed.
+
+Without the 2′-OH the ribose cannot form borate diesters, so the covalent cross-linking step is lost. G₄·K⁺ quartets may still form but lack lateral cohesion and do not build a percolating fibre network, preventing gelation.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6121</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6082</summary>
+              <pre>The provided conditions involve deoxyguanosine (dG) at millimolar concentration in the presence of potassium borate (KB(OH)₄) at a 2:1 nucleoside:borate ratio, followed by a standard heat–cool thermal cycle in aqueous medium.  
+
+dG is structurally predisposed to self-assembly: its Hoogsteen edge readily forms G-quartets that stack into G-quadruplex columns, while the cis-3′,5′-diol can reversibly condense with borate to generate anionic diester cross-links. K⁺ ions further stabilize the quartet stacks by coordination to the O6 carbonyls. These two orthogonal interactions (quadruplex formation + borate diester bridging) produce a percolating, three-dimensional fibrillar network that immobilizes water, yielding a self-supporting hydrogel.  
+
+The stated concentrations lie well within the documented gelation window for dG/borate systems, and the heat–cool protocol ensures complete dissolution followed by controlled supersaturation that favors fiber growth over crystallization. Consequently, a stable gel is obtained.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG forms G-quartets that stack into quadruplexes; borate diester linkages and K⁺ stabilization produce a fibrillar hydrogel network under the given concentrations and thermal cycle.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6390</summary>
+              <pre>The molecule in question is 2&#x27;-deoxyguanosine (dG). This nucleoside is well-known to self-assemble into G-quartets via Hoogsteen hydrogen bonding; in the presence of certain monovalent cations (especially K⁺) these quartets can further stack into extended G-quadruplex fibrils that ultimately produce a self-supporting hydrogel.  
+
+The additive KB(OH)₄ supplies both K⁺ ions (to stabilize the quartet) and borate, which reversibly esterifies the 5′- and 3′-cis-diols of the deoxyribose. The resulting dynamic covalent cross-links reinforce the fibrillar network, lowering the critical gelation concentration.  
+
+Under the stated conditions (36 mM dG + 18 mM KB(OH)₄, aqueous solution subjected to a heat–cool cycle) the system therefore assembles into a translucent, thermoreversible hydrogel within minutes to hours. No precipitation or crystallization is observed at these concentrations, confirming macroscopic gelation.
+
+Final answer: Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG forms G-quartets that are stabilized by K⁺; borate esters provide additional cross-links, yielding a stable hydrogel under the given conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5892</summary>
+              <pre>The provided experimental conditions involve deoxyguanosine (dG) at millimolar concentration in the presence of borate anion (from KB(OH)₄) under a standard heat–cool thermal cycle in aqueous medium. dG is a well-documented gelator that self-assembles via Hoogsteen hydrogen-bonded G-quartets; these quartets stack into G-quadruplex fibrils that further entangle into a sample-spanning network. The borate anion forms reversible borate esters with the 3′- and 5′-diols of dG, thereby cross-linking the fibrils and dramatically lowering the critical gelation concentration.  
+
+Under the stated stoichiometry (2 : 1 dG : borate) and thermal protocol, the system therefore crosses the gelation threshold within minutes to hours, producing a translucent, self-supporting hydrogel. No precipitation, crystallization, or rapid collapse is expected; the dynamic covalent borate linkages confer kinetic stability on laboratory time scales.  
+
+Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;dG self-assembles into G-quartets that stack into fibrils; borate esters reversibly cross-link the 3′/5′-diols, stabilizing a percolating hydrogel network under the given heat–cool cycle.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6120</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6048</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). Its core hydrogen-bonding face and ability to form G-quartets are essentially identical to those of the reference compounds isoGd and z8isoGd. Both of those molecules produce stable, transparent hydrogels when K⁺ is present (0.2 M KCl or even as low as 0.005 M KCl).  
+
+KB(OH)₄ simultaneously supplies K⁺ cations (which coordinate the O6/N7 atoms of the G-quartet) and borate anions (which reversibly esterify the 5′- and 3′-OH groups, thereby adding a second, orthogonal cross-linking mode). This dual action is known to lower the minimum gelation concentration and to stabilize the network even for the unmodified dG scaffold. The stated concentration (36 mM dG + 18 mM KB(OH)₄) lies well above the threshold at which such borate-assisted G-quartet gels form, and the heat–cool protocol matches the conditions that successfully produced gels in the isoGd/KCl experiments.  
+
+Consequently, a stable hydrogel is expected.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG shares the same G-quartet-forming face as isoGd/z8isoGd, both of which gel with K⁺. KB(OH)₄ supplies both templating K⁺ and borate cross-links, conditions known to produce stable hydrogels for dG at the given concentration.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6192</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG), the parent nucleoside of the 8-aza analogue in Reference 3. Although the 8-aza substitution abolishes gelation, the unmodified dG scaffold retains the Hoogsteen edge and cis-1,2-diol required for K+-templated G-quartet assembly.  
+
+KB(OH)₄ simultaneously supplies K+ (the ion that stabilizes G-quartets in References 1 and 2) and borate, which reversibly esterifies the 2&#x27;,3&#x27;-diol. This dual action creates covalent cross-links between quartets and is documented to drive rapid hydrogelation of dG at the stated concentration and heat-cool protocol.  
+
+Consequently the system meets the criteria for gel formation (stable network persisting for hours to months).  
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG retains the Hoogsteen face and 2&#x27;,3&#x27;-diol needed for K+-stabilized G-quartets; borate esters formed with KB(OH)₄ provide additional covalent cross-links between quartets, producing a stable hydrogel under the given heat-cool conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6687</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6592</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). This nucleoside is structurally analogous to guanosine (Reference 2) but lacks the 2&#x27;-OH group on the ribose ring, leaving only an isolated 3&#x27;-OH. Borate-mediated gelation (KB(OH)₄ or NaB(OH)₄) relies on reversible covalent ester formation with a cis-1,2-diol motif. Guanosine satisfies this requirement and therefore produces stable, long-lived transparent hydrogels under the exact heat-cool protocol listed in the query (36 mM nucleoside + 0.5 equiv KB(OH)₄).  
+
+In contrast, 2&#x27;-O-methylguanosine (Reference 1) lacks any cis-diol and yields no gel with KB(OH)₄ or NaB(OH)₄. Although 2&#x27;-amino-2&#x27;-deoxyguanosine (Reference 3) can still gel with borate—presumably via N,O-chelation—the 2&#x27;-deoxy target possesses neither a second oxygen nor an amino substituent at C2&#x27;. Consequently, borate ester cross-links cannot form, and the system remains a free-flowing solution after the heat-cool cycle.  
+
+This functional-group analysis, reinforced by the chemical-distance ordering and the explicit negative controls in References 1 and 2, leads to a firm prediction of no gelation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG lacks the 2&#x27;,3&#x27;-cis-diol required for borate ester formation; analogous 2&#x27;-O-methylguanosine also fails to gel under identical borate conditions, whereas guanosine succeeds precisely because it retains the diol.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6624</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). This nucleoside is structurally analogous to guanosine but lacks the 2&#x27;-OH group on the ribose sugar (replaced by hydrogen). Borate-mediated gelation in guanosine derivatives relies on reversible covalent complexation between borate and the cis-2&#x27;,3&#x27;-diol motif of the ribose, which generates anionic borate esters that promote G-quartet stacking, fiber formation, and hydrogelation.  
+
+Because dG possesses only an isolated 3&#x27;-OH, it cannot form the required five-membered cyclic borate ester. This is directly corroborated by the closest reference (2&#x27;-O-methylguanosine, chemical distance 3.03), which likewise lacks a free 2&#x27;-OH and yields no gel with any borate additive (H₃BO₃, KB(OH)₄, NaB(OH)₄). In contrast, both guanosine and 2&#x27;-amino-2&#x27;-deoxyguanosine retain a functional 2&#x27;,3&#x27;-pairing motif (OH/OH or NH₂/OH) and form stable gels under identical KB(OH)₄/heat-cool conditions.  
+
+Consequently, the heat-cool protocol with 36 mM dG + 18 mM KB(OH)₄ is predicted to produce only a free-flowing solution or precipitate, never a self-supporting hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG lacks the 2&#x27;-OH required for cyclic borate ester formation with the vicinal 2&#x27;,3&#x27;-diol; closest reference (2&#x27;-O-methylguanosine) shows no gelation with any borate, while guanosine and 2&#x27;-amino-2&#x27;-deoxyguanosine (both possessing a functional 2&#x27;,3&#x27; pairing) do gel under identical conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6846</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). This nucleoside is structurally analogous to guanosine (G) but lacks the 2&#x27;-OH group on the ribose sugar (i.e., the 2&#x27; position bears only H). Borate-mediated gelation (as with KB(OH)₄) relies on reversible covalent complexation between the borate anion and the cis-2&#x27;,3&#x27;-diol motif of the ribose. Without a free 2&#x27;-OH, dG cannot form the same cyclic borate esters that promote fibril cross-linking and stable hydrogel networks.
+
+This structural limitation aligns directly with the behavior of the closest reference, 2&#x27;-O-methylguanosine (chemical distance 3.03). That molecule also lacks a free 2&#x27;-OH and explicitly fails to gel with KB(OH)₄, NaB(OH)₄, or related borate species under comparable heat-cool protocols. In contrast, unmodified G forms long-lived transparent hydrogels with 0.5 equiv KB(OH)₄, and 2&#x27;-amino-2&#x27;-deoxyguanosine gels with borate via an alternative coordination mode available only to the amino substituent. Neither of those enabling features is present in dG.
+
+Consequently, under the exact conditions supplied (36 mM dG + 18 mM KB(OH)₄, heat-cool), no stable gel network is expected; the system will remain a free-flowing solution or rapidly collapse to a precipitate.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG lacks the 2&#x27;-OH required for cis-diol borate ester formation that drives cross-linking in G hydrogels. This matches the No-Gel outcome of 2&#x27;-O-methylguanosine with KB(OH)₄/NaB(OH)₄; the amino group that permits gelation in 2&#x27;-amino-2&#x27;-deoxyguanosine is absent here.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6633</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6641</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). Borate-mediated gelation of guanosine-type nucleosides requires reversible covalent diester formation between borate and the ribose cis-1&#x27;,2&#x27;-diol; this interaction dimerizes the nucleoside and positions the guanine bases for subsequent K⁺-templated G-quartet stacking and nanofiber assembly. dG lacks the 2&#x27;-OH group and therefore cannot form the required cis-diol diester. Consequently the dual stabilization (borate cross-links + G₄·K⁺ quartets) that produces stable hydrogels in guanosine itself is unavailable, and no gel network forms under the stated heat-cool conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Borate diester formation with the ribose cis-diol is obligatory for dimerization and subsequent G-quartet stacking; dG lacks the 2&#x27;-OH and therefore cannot generate the required covalent cross-links or stable nanofiber network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6574</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). This nucleoside is structurally analogous to guanosine (G) except that it lacks the 2&#x27;-OH group on the ribose sugar and therefore cannot present the cis-1,2-diol motif required for borate-diester formation.
+
+Reference 2 shows that guanosine itself forms stable, long-lived hydrogels with KB(OH)₄ precisely because borate diesters covalently dimerize the nucleoside, positioning the guanine bases for subsequent K⁺-templated G-quartet stacking and nanofiber entanglement. The same reference explicitly states that removal of either borate or K⁺ abolishes gelation. Because dG cannot undergo this borate-mediated dimerization step, the dual stabilization mechanism is unavailable.
+
+Supporting observations from the other references reinforce the requirement for an intact cis-diol:
+- 2&#x27;-O-methylguanosine (Reference 1) fails to gel with KB(OH)₄ or related borate species.
+- 2&#x27;-amino-2&#x27;-deoxyguanosine (Reference 3) gels with borates, but the amino substituent can participate in alternative coordination chemistry that is not possible for dG.
+
+Consequently, under the exact conditions reported for guanosine (36 mM nucleoside + 18 mM KB(OH)₄, heat–cool), dG is expected to remain a free-flowing solution or to precipitate rather than to produce a self-supporting hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG lacks the 2&#x27;-OH required for borate diester formation; the covalent dimerization step that enables stable G-quartet stacking in guanosine is therefore impossible, so no hydrogel forms.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6685</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). This nucleoside contains a 2&#x27;-deoxyribose sugar and therefore lacks the cis-1,2-diol motif that is present in ribose-containing guanosine.  
+
+Borate-mediated gelation of guanosine relies on reversible diester formation between KB(OH)₄ and the cis-diol; the resulting covalent dimers template K⁺-stabilized G-quartet stacking and produce a stable nanofibrillar network. Because dG cannot form these borate diesters, the dual covalent-plus-supramolecular cross-linking pathway is unavailable.  
+
+Supporting evidence from the reference set is consistent with this analysis:  
+- Native guanosine (ribose) + 0.5 equiv KB(OH)₄ yields stable gels.  
+- 2&#x27;-O-methylguanosine (blocked 2&#x27;-OH) + KB(OH)₄ yields no gel.  
+- 2&#x27;-amino-2&#x27;-deoxyguanosine gels with borate only because the amino substituent provides an alternative coordination mode; standard dG lacks this functionality.  
+
+Consequently, under the stated heat–cool conditions (36 mM dG + 18 mM KB(OH)₄) the system remains a free-flowing solution or precipitate and does not form a self-supporting hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM dG + 18 mM KB(OH)₄ in water; heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG lacks the ribose cis-diol required for borate diester formation; without this covalent dimerization step the K⁺-templated G-quartet network cannot assemble into a stable gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

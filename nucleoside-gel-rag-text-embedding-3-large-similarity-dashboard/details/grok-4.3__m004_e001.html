@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 4-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 4-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>4</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Isoguanosine (isoG)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>LiCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Stable transparent hydrogels; G′ about 15 × higher than guanosine gels; lifetime up to 3 months.
+
+isoG self-assembles into isoG quartets or pentaplexes stabilized by hydrogen bonding and Li⁺ coordination. These assemblies stack into helical fibers that interconnect into a robust three-dimensional network, producing a stable hydrogel</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7304</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7330</summary>
+              <pre>The target molecule is isoguanosine (isoG), a nucleoside analogue known to self-assemble into higher-order structures (isoG-quartets or related assemblies) that can produce hydrogels. Assembly is driven by hydrogen-bonding patterns distinct from canonical guanosine, and these assemblies are tolerant of a range of monovalent cations, including Li⁺, across a broad pH window (approximately 3–10).  
+
+Under the stated experimental conditions (1.4 mg per 100 µL isoG dissolved at ~80 °C in 0.2 M LiCl, followed by cooling to room temperature), the concentration and thermal protocol are sufficient to allow nucleation and growth of the supramolecular network. The presence of LiCl supplies the ionic strength needed to stabilize the charged assemblies without inducing rapid precipitation or crystallization. Consequently, a self-supporting gel phase is obtained within hours.  
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG self-assembles into quartet-based networks that are stabilized by Li⁺ at the given concentration and thermal cycle; gelation occurs within hours across the stated pH range.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7278</summary>
+              <pre>The molecule isoguanosine (isoG) is a nucleoside analog well-known for its ability to self-assemble into higher-order structures (tetramers, columns) via Watson–Crick-type hydrogen bonding and π–π stacking. In aqueous media these assemblies readily produce hydrogels when the ionic strength and cation identity permit stable columnar stacking without rapid crystallization or precipitation.  
+
+The stated conditions (1.4 mg/100 µL isoG, 0.2 M LiCl, thermal dissolution at ~80 °C followed by cooling to room temperature across pH 3–10) fall squarely inside the documented hydrogelation window for isoG. Li⁺ supplies the requisite ionic strength and coordination environment that stabilizes the stacked isoG quartets long enough for a macroscopic gel to form within minutes to hours. No competing processes (immediate collapse, crystallization, or dissolution) are expected under these parameters.
+
+Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoG self-assembles into tetrameric stacks that are stabilized by Li⁺; the given concentration, salt, thermal cycle and pH range are known to produce a stable hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6661</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6881</summary>
+              <pre>The target molecule (isoG) is a close structural isomer of guanosine (G). Reference experiments on G itself under essentially identical conditions (1.4 mg/100 µL nucleoside + 0.2 M LiCl) show only a transient hydrogel that collapses within minutes; the same outcome is recorded for NaCl. Li⁺ is a poor stabilizer of G-quartet-type assemblies, and the literature pattern for isoG is consistent with this behavior (Li⁺ does not support long-lived gels, whereas selected K⁺ or borate conditions can). Consequently the LiCl experiment on isoG is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;IsoG is a close isomer of guanosine. Under virtually identical conditions (1.4 mg/100 µL + 0.2 M LiCl) guanosine itself yields only a transient hydrogel that collapses within minutes; Li⁺ is known to be a poor stabilizer of G-quartet assemblies. The same rapid loss of integrity is therefore expected for isoG.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6520</summary>
+              <pre>The provided experimental references focus on guanosine (G) and close structural analogs (L-G, 8-hydroxyguanosine). Across all of them, LiCl (or other lithium salts) consistently fails to produce a stable gel: an initial viscous phase or weak hydrogel may appear transiently, but structural integrity is lost within minutes via collapse, precipitation, or dissolution. This outcome is explicitly recorded for G itself under essentially identical conditions (1.4 mg/100 µL nucleoside in 0.2 M LiCl).
+
+Isoguanosine (isoG) is a regioisomer of G that retains the same ribose and the same pattern of hydrogen-bonding donors/acceptors required for quartet-type stacking. Nothing in the reference data indicates that the N/O positional swap alters the lithium-ion coordination behavior enough to stabilize a network that G itself cannot maintain. Consequently, the same rapid loss of integrity observed for G + LiCl is expected for isoG + LiCl.
+
+The target experiment therefore yields **No Gel**.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Reference data for guanosine (structurally closest analog) show that LiCl produces only a transient hydrogel that collapses within minutes. IsoG shares the same ribose and H-bonding pattern; no reference entry indicates that the regioisomeric change confers Li+-dependent stability. Hence the outcome matches the recorded &#x27;No Gel&#x27; behavior for G + LiCl.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6582</summary>
+              <pre>The target molecule is isoguanosine (isoG), an isomer of guanosine in which the exocyclic amino and carbonyl groups are transposed on the purine ring. This structural change alters hydrogen-bonding patterns and preferred self-assembly motifs (isoG tends to form pentameric rather than tetrameric stacks), yet the overall nucleoside scaffold, solubility profile, and dependence on alkali-metal cations remain closely analogous to guanosine.
+
+Reference data for guanosine itself show that 0.2 M LiCl produces only a transient hydrogel that collapses within minutes; Li⁺ is too small and weakly coordinating to stabilize the requisite stacked assemblies. The same salt concentration and thermal protocol (dissolution at ~80 °C followed by cooling) are specified for isoG. Because Li⁺ likewise fails to template stable isoG aggregates, the outcome is expected to be identical: any initial network rapidly disintegrates.
+
+Consequently the experiment is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG is a close structural isomer of guanosine. Reference experiments with guanosine under identical LiCl conditions produce only transient hydrogels that collapse within minutes; Li⁺ does not stabilize the stacked assemblies required for a persistent gel. The same cation-dependent behavior applies to isoG, yielding the classification No Gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6636</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.6390</summary>
+              <pre>The target molecule (isoguanosine) differs from guanosine only by transposition of the exocyclic NH₂ and carbonyl substituents on the nucleobase. This yields a small Tanimoto distance (1.41) and preserves the same ribose sugar and overall polarity/H-bonding pattern. Reference experiments with guanosine in 0.2 M LiCl show that an initial hydrogel forms but collapses within minutes; the same outcome is therefore expected for the target.  
+
+Although the fluorinated isoguanosine derivative (FisoGd) produces stable LiCl gels, that molecule carries a 2′-F/2′-deoxy modification that alters sugar pucker and hydration; the unmodified ribo-isoguanosine lacks this modification and is structurally closer to guanosine than to FisoGd. The aza-deoxy isoguanosine analog likewise fails to gel in LiCl, reinforcing that Li⁺ does not stabilize the requisite supramolecular network for this scaffold family.  
+
+Consequently, the described heat-cool protocol in 0.2 M LiCl is predicted to yield only a transient or collapsed assembly.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally closest to guanosine (distance 1.41); guanosine forms only transient hydrogels in 0.2 M LiCl that collapse within minutes. The 2′-fluoro modification present in the gel-forming FisoGd analog is absent here, so the target is expected to behave like guanosine rather than FisoGd.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6881</summary>
+              <pre>The target molecule is isoguanosine (isoG), an isomer of guanosine whose nucleobase differs only by transposition of the exocyclic NH₂ and carbonyl groups. This seemingly small change alters hydrogen-bonding patterns and quartet geometry relative to native G-quartets, but does not automatically confer Li⁺-dependent gelation.
+
+Reference data show a clear pattern for LiCl:
+- Native guanosine (chemical distance 1.41) produces only transient hydrogels that collapse within minutes.
+- The 8-aza-2′-deoxyisoguanosine analogue (distance 3.14) likewise yields precipitates or solutions, never stable gels, with LiCl.
+- Only the 2′-deoxy-2′-fluoro isoguanosine derivative forms long-lived gels with LiCl; the 2′-fluoro substitution markedly improves solubility and fibril stability under these conditions.
+
+isoG itself lacks both the 8-aza and the 2′-fluoro modifications. Consequently, its solubility and self-assembly behavior with Li⁺ are expected to track more closely with the non-gelling analogues. The stated experimental protocol (1.4 mg/100 µL, 0.2 M LiCl, heat-cool, pH 3–10) matches the conditions under which guanosine and z8isoGd fail to produce stable networks. Therefore the outcome is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG is chemically closest to guanosine (distance 1.41), which forms only transient, rapidly collapsing hydrogels in 0.2 M LiCl. The 8-aza-2′-deoxyisoguanosine analogue likewise fails to gel with LiCl. Although 2′-fluoro-2′-deoxyisoguanosine gels under identical salt conditions, that stabilization is attributed to the specific 2′-fluoro substitution, which isoG lacks. Hence isoG is predicted to remain a solution or precipitate rather than a stable gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7183</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7266</summary>
+              <pre>The target molecule is isoguanosine (isoG), whose base differs from guanosine only by transposition of the exocyclic amino and carbonyl groups. This structural change favors pentameric (rather than tetrameric) assemblies whose central cavity is optimally sized for monovalent cations.  
+
+Reference 2 demonstrates that a close structural analogue, 2′-deoxy-2′-fluoroisoguanosine, forms stable, transparent hydrogels in 0.2 M LiCl that persist for weeks to months. The fluorine substitution merely augments hydrophobic contacts; the underlying pentad-forming propensity of the isoguanine base is already sufficient for gelation. Consequently, unmodified isoG is expected to behave analogously under the same salt conditions.  
+
+Supporting evidence comes from the mechanistic notes attached to Reference 2: Li⁺ coordination, reinforced by the hydrogen-bonding pattern of isoG, drives stacking into fibers that entangle into a three-dimensional network. The 2′-OH groups present in isoG do not disrupt this pathway; they remain compatible with the required ribbon-like or helical morphology.  
+
+In contrast, guanosine (Reference 1) collapses rapidly in LiCl because its G-quartets organize into poorly cross-linked ribbons. The isoguanine scaffold avoids this limitation, as confirmed by the successful gelation of the fluorinated isoG derivative.  
+
+Therefore, under the stated conditions (1.4 mg / 100 µL isoG in 0.2 M LiCl, heat-cool), a stable hydrogel is formed.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG favors pentameric assemblies whose central cavity accommodates Li⁺. Reference 2 shows that the closely related 2′-fluoro-2′-deoxy analogue forms stable hydrogels in 0.2 M LiCl lasting weeks to months; the fluorine merely augments hydrophobicity, so the parent isoG is expected to gel similarly. The isoguanine hydrogen-bonding pattern, reinforced by Li⁺ coordination, produces stacked fibers that entangle into a persistent network, unlike the weakly cross-linked ribbons formed by guanosine.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7157</summary>
+              <pre>The target molecule is isoguanosine (isoG), the parent nucleoside of the two isoG derivatives shown in References 2 and 3. Its core hydrogen-bonding pattern (Watson–Crick edge swapped relative to guanosine) favors pentameric assemblies rather than the classical G-quartet. These isoG pentads/pentaplexes are efficiently templated by Li⁺, whose small ionic radius matches the central cavity of the isoG macrocycle.  
+
+Reference 2 demonstrates that even a single 2′-fluoro substitution on the ribose (FisoGd) produces transparent, long-lived (&gt;2 months) hydrogels in exactly the same solvent (0.2 M LiCl, 1.4 mg/100 µL). The fluorine atom merely augments hydrophobic contacts and base-stacking; the underlying Li⁺-templated isoG pentaplex motif remains intact. Because the unmodified isoG already possesses the required pentad-forming face and the same ribose hydroxyl pattern, it is expected to assemble analogously.  
+
+Reference 3 shows that the 8-aza-2′-deoxy modification abolishes Li⁺-driven gelation, but that structural change simultaneously alters both the purine electronics and the sugar pucker; neither perturbation is present in the target. Reference 1 (guanosine) is chemically farther from isoG and relies on a different (quartet) motif that Li⁺ stabilizes only poorly; its behavior is therefore not predictive.  
+
+Consequently, under the stated conditions (1.4 mg/100 µL isoG, 0.2 M LiCl, heat–cool), isoG is predicted to form a stable, transparent hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Isoguanosine forms Li⁺-templated pentameric/pentaplex assemblies whose geometry matches the ionic radius of Li⁺. The same solvent and concentration that produce stable hydrogels with the close analogue FisoGd (Ref. 2) are therefore expected to yield a robust, long-lived hydrogel for unmodified isoG. The 8-aza-2′-deoxy modification that abolishes gelation (Ref. 3) is absent, and guanosine (Ref. 1) uses a chemically distinct quartet motif irrelevant to isoG.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7127</summary>
+              <pre>The target molecule is isoguanosine (isoG), the unmodified parent nucleoside of the two isoguanine derivatives supplied as references. Its closest structural analogue among the references is FisoGd (chemical distance 2.49), which forms stable, transparent hydrogels in 0.2 M LiCl under essentially identical concentration and thermal protocols (1.4 mg/100 µL, heat-cool). The mechanistic rationale given for FisoGd explicitly attributes gelation to “These interactions promote the formation of isoG-like quartets or pentaplexes stabilized by Li⁺ coordination,” indicating that the parent isoG scaffold itself is competent for Li⁺-templated assembly once the modest solubility barrier is overcome by heating.
+
+By contrast, guanosine (distance 1.41) fails to produce lasting gels with LiCl because it forms only weakly cross-linked ribbons; the isoG regio-isomerism alters hydrogen-bonding patterns and favors the higher-order pentaplexes that Li⁺ can template. The more distant 8-aza analogue (distance 3.14) also fails with Li⁺, but that outcome is ascribed to the electronic perturbation of the 8-aza substitution rather than to any intrinsic limitation of the isoG core.
+
+Consequently, under the stated conditions (0.2 M LiCl, heat-cool), isoG is expected to produce a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M LiCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoG is the parent scaffold of FisoGd, which gels reliably with LiCl under matching conditions via isoG-like pentaplexes. The Li⁺ radius matches the pentaplex cavity, and the modest solubility increase upon heating allows the assemblies to form an entangled fibrillar network before precipitation can occur.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

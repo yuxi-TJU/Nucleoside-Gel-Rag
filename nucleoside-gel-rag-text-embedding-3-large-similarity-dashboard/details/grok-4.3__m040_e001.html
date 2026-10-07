@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 40-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 40-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>40</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Guanosine-5′-Hydrazide</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>KCl</strong></div>
+      <div>Detailed conditions<strong>Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Gelation observed at 10–50 mM. K⁺ is the most effective ion (Tgel ≈ 33 °C at 10 mM, rising to 65 °C at 50 mM; plateaus at KCl ≥ 45 mM). No gel at pH ≥ 8.0; free-standing, transparent hydrogel that withstands vial-inversion for several days; thermoreversible (melts on heating, reforms on cooling); fibres several µm long seen by TEM.
+
+Self-associates through Hoogsteen hydrogen-bonding into G-quartets that stack into K⁺-bridged columns; the hydrazide substituent stabilises the quartet edges and increases π-stacking efficiency, yielding thicker, entangled nanofibrils.  Potassium, being size-matched to the G₄ cavity, maximally stabilises the columnar array.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6910</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6899</summary>
+              <pre>The molecule in question is a 5&#x27;-modified guanosine derivative whose guanine moiety remains fully intact. Guanine bases are well-known to self-assemble into G-quartets that are selectively stabilized by K⁺ coordination; these quartets then stack into higher-order fibrils that produce hydrogels.  
+
+The experimental protocol (dissolution at 60–90 °C in acetate buffer containing 15–90 mM K⁺ followed by cooling to room temperature) exactly matches the canonical thermal cycle used to trigger G-quartet gelation. The 5′-hydrazide substituent replaces the hydroxymethyl group but does not interfere with Hoogsteen edge hydrogen bonding or with K⁺ binding in the central channel of the quartet. Consequently, the same supramolecular pathway that produces gels from guanosine or GMP is expected to operate here, yielding a stable hydrogel on cooling.  
+
+No competing processes (rapid crystallization, precipitation, or immediate dissolution) are indicated by the given conditions.  
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanine-containing nucleosides form K⁺-stabilized G-quartet hydrogels under precisely these heating/cooling conditions; the 5′-hydrazide modification leaves the Hoogsteen face and cation-binding site unaltered, permitting the same fibrillar assembly.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6920</summary>
+              <pre>The molecule is a guanosine derivative bearing a 5′-hydrazide in place of the native hydroxymethyl group. Guanosine nucleosides are well-established gelators because the Hoogsteen face of the guanine base enables spontaneous formation of planar G-quartets; these quartets stack into columnar aggregates that ultimately produce a sample-spanning fibrillar network. Monovalent cations, especially K⁺, stabilize the quartet by coordinating to the O6 carbonyls of four guanines.  
+
+In the stated protocol the compound is dissolved at elevated temperature in an acetate buffer that supplies 15–90 mM K⁺ and is then cooled to room temperature. Under these conditions the K⁺ ions template quartet assembly, the hydrazide moiety remains compatible with hydrogen-bonded stacking, and the resulting fibers immobilize the solvent, producing a hydrogel. No competing processes (rapid crystallization, precipitation, or immediate collapse) are expected at the indicated K⁺ concentrations and pH.  
+
+Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+    &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine derivatives self-assemble via Hoogsteen-paired G-quartets that are strongly stabilized by K⁺ coordination. The 5′-hydrazide substitution does not disrupt this motif; cooling therefore produces a fibrillar hydrogel network.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6911</summary>
+              <pre>The molecule Guanosine-5′-hydrazide is a close structural analog of guanosine, retaining the Hoogsteen hydrogen-bonding face of the guanine base. Guanine nucleosides are well-documented to self-assemble into G-quartets that stack into G-quadruplex fibrils; these fibrils entangle to produce hydrogels when monovalent cations (especially K⁺) are present to stabilize the quartet.  
+
+The experimental protocol—heating to 60–90 °C in 0.5 M acetate buffer (pH 6) containing 15–90 mM K⁺ followed by cooling to room temperature—exactly matches the conditions routinely used to trigger K⁺-dependent G-quadruplex gelation. Under these conditions the hydrazide derivative dissolves completely, allowing quartet formation upon cooling; the resulting supramolecular network yields a stable, translucent hydrogel that persists for hours to months.  
+
+Consequently the outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+    &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine derivatives self-assemble into K⁺-stabilized G-quadruplex fibrils that form hydrogels; the given heating/cooling protocol in K⁺-containing buffer directly promotes this process.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7166</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7112</summary>
+              <pre>The target molecule (guanosine-5′-hydrazide) is a close structural analog of guanosine itself, differing only by replacement of the 5′-CH₂OH with a 5′-C(O)NHNH₂ group. The guanine base and ribose stereochemistry remain intact, so the molecule retains the ability to form G-quartets that are selectively stabilized by K⁺ coordination.  
+
+Reference data for unmodified guanosine show that K⁺ reliably induces hydrogelation (transparent, self-supporting networks) once the salt concentration reaches ~0.2 M; lower but still millimolar K⁺ levels (15–90 mM) produce transient gels that ultimately collapse or crystallize. The 5′-hydrazide modification does not disrupt the Hoogsteen face required for quartet assembly and, if anything, adds additional hydrogen-bonding sites that can further stabilize the fibrillar network.  
+
+The experimental protocol supplied for the target (heating to 60–90 °C in acetate buffer containing 15–90 mM K⁺ followed by cooling) is essentially identical to the conditions that produce gels for both guanosine and its 2′-amino or L-enantiomer congeners. Consequently, gel formation is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The guanine and ribose moieties are preserved, enabling K⁺-templated G-quartet formation. Reference guanosine and 2′-amino-guanosine analogs gel under comparable K⁺ concentrations and thermal protocols; the 5′-hydrazide substitution does not interfere with quartet assembly and may even reinforce the network via extra H-bond donors.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7124</summary>
+              <pre>The target molecule is a 5&#x27;-modified guanosine derivative whose core retains the Hoogsteen hydrogen-bonding face required for G-quartet assembly. Reference data for unmodified guanosine (and its close congeners 2&#x27;-amino-2&#x27;-deoxyguanosine and L-guanosine) demonstrate that K⁺ reliably templates quartet formation and subsequent hydrogelation once the nucleoside concentration and ionic strength exceed a modest threshold. The stated conditions (0.5 M acetate buffer pH 6, 15–90 mM K⁺, heat-cool cycle) fall squarely inside the regime where quartet stacking occurs for guanosine itself; the 5&#x27;-hydrazide substituent does not block this motif and, if anything, adds supplementary hydrogen-bonding sites that favor network formation. Consequently the mixture is expected to produce a self-supporting hydrogel that persists for hours or longer.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The guanosine core supports K⁺-templated G-quartet stacking; the 5&#x27;-hydrazide does not obstruct this motif and the stated salt/buffer regime matches conditions that produce stable hydrogels in closely related guanosines.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7263</summary>
+              <pre>The target molecule (guanosine-5′-hydrazide) is a close structural analog of guanosine itself, differing only by replacement of the 5′-CH₂OH with a 5′-C(O)NHNH₂ group. This modification does not remove the Hoogsteen edge of the guanine base that is required for K⁺-templated G-quartet assembly—the dominant mechanism underlying hydrogelation in all three reference compounds.  
+
+Reference 2 shows that native guanosine forms a hydrogel in the presence of KCl once the salt concentration reaches the tens-of-millimolar regime (e.g., 0.2 M KCl or 354 mM KCl). The same reference explicitly states that concentrations ≤ 5 mM K⁺ produce no gel, while concentrations ≥ 15 mM produce at least a transient gel. The target conditions (15–90 mM K⁺ in acetate buffer, heat–cool cycle) therefore fall squarely inside the gel-forming window.  
+
+Reference 1 demonstrates that a 2′-amino-modified guanosine also gels under KCl/NaCl conditions at 50 mM nucleoside concentration, reinforcing that modest peripheral substitutions on the ribose do not abolish K⁺-driven gelation. Reference 3 further confirms that the enantiomeric guanosine (L-G) likewise forms stable hydrogels with K⁺, indicating that the chirality or exact substitution pattern at the 5′-position is not decisive.  
+
+Because the target molecule retains the essential guanine quartet-forming motif and is examined under K⁺ concentrations already shown to induce gelation in closely related nucleosides, a hydrogel is expected to form upon cooling. (Any subsequent slow collapse or crystallization would still be classified as “Gel” per the supplied decision rules, which count any observable gel phase as positive.)
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule retains the intact guanine Hoogsteen face required for K⁺-templated G-quartet formation. Reference data for guanosine and 2′-amino-2′-deoxyguanosine establish that K⁺ concentrations of 15–90 mM reliably produce hydrogels (even if transient). The supplied conditions therefore fall inside the documented gelation regime.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6915</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6684</summary>
+              <pre>The target molecule is a 5′-modified guanosine derivative whose purine and ribose moieties remain intact. These structural elements permit the canonical Hoogsteen hydrogen-bonded G-quartet assembly that is further stabilized by K⁺ coordination. The experimental protocol (heating to 60–90 °C in acetate buffer followed by cooling in the presence of 15–90 mM K⁺) exactly matches the conditions known to trigger quartet stacking and subsequent fibril entanglement for closely related guanosine analogues (e.g., 2′-amino-2′-deoxyguanosine and L-guanosine).  
+
+Although the 5′-hydrazide replaces the native CH₂OH, this peripheral change does not disrupt quartet formation; instead it improves aqueous solubility and reduces the rapid crystallization that plagues unmodified guanosine. Consequently, a self-supporting hydrogel is expected to form on cooling and to persist for hours to days.  
+
+The outcome is therefore recorded as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The intact guanine and ribose moieties enable K⁺-stabilized G-quartet formation; the 5′-hydrazide substitution enhances solubility without blocking self-assembly, leading to stable fibrillar hydrogels upon cooling, analogous to the gelation observed for 2′-amino-2′-deoxyguanosine and L-guanosine under comparable K⁺ conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6966</summary>
+              <pre>The target molecule (guanosine-5′-hydrazide) retains an intact guanine nucleobase and ribose ring, both of which are essential for K⁺-templated G-quartet/G-quadruplex formation—the same supramolecular motif responsible for gelation in the reference compounds.  
+
+- Reference 2 (guanosine) and Reference 3 (L-guanosine) both produce hydrogels when heated and cooled in the presence of K⁺ (0.2–0.354 M), even though the gels are sometimes transient.  
+- Reference 1 (2′-amino-2′-deoxyguanosine) likewise gels under KCl/NaCl conditions at comparable nucleoside concentration.  
+
+The 5′-hydrazide substitution replaces the primary alcohol with a carbonyl-hydrazide group. This modification does not remove any of the Hoogsteen or Watson–Crick hydrogen-bonding faces required for quartet stacking; it may even add supplementary H-bond donors/acceptors that stabilize the fibrillar network. The experimental protocol (heating to 60–90 °C in acetate buffer containing 15–90 mM K⁺ followed by cooling) is functionally identical to the heat–cool cycles that trigger gelation in the references. Although the K⁺ concentration is modestly lower than some reference conditions, it remains well above the threshold needed for quartet stabilization, and the buffer pH (6.0) is compatible with guanine deprotonation equilibria that favor assembly.  
+
+Consequently, the molecule is expected to self-assemble into a fibrillar hydrogel that persists for hours or longer.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The guanine and ribose moieties remain intact and can form K⁺-stabilized G-quartets exactly as seen in guanosine and 2′-amino-2′-deoxyguanosine references. The 5′-hydrazide adds H-bonding functionality without blocking quartet faces. The heat–cool protocol in K⁺-containing buffer therefore drives fibril formation and hydrogelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7094</summary>
+              <pre>The target molecule is a 5′-modified guanosine derivative whose core retains the guanine nucleobase and the ribose stereochemistry required for G-quartet formation. G-quartets are the canonical supramolecular motif that drives hydrogelation in guanosine, 2′-amino-2′-deoxyguanosine, and L-guanosine (References 1–3). Monovalent cations, especially K⁺, stabilize the quartet stack by coordinating to the O6 carbonyls; all three reference compounds produce hydrogels under KCl or K⁺-containing conditions even when the gels are ultimately transient.
+
+The 5′-hydrazide substitution replaces the primary alcohol with a hydrazide carbonyl, which alters solubility and may add supplementary hydrogen-bonding sites, but does not remove the Hoogsteen edge or the 2′- and 3′-OH groups that participate in quartet hydrogen bonding. Consequently the molecule remains competent for K⁺-templated quartet assembly. The experimental protocol (heating to 60–90 °C in 0.5 M acetate buffer pH 6 containing 15–90 mM K⁺ followed by cooling) matches the heat-cool cycles used to obtain gels from guanosine itself and from the 2′-amino analogue. Salt concentrations in this range are sufficient to induce gelation in the reference series; lower-millimolar K⁺ is routinely reported as adequate once the nucleoside is fully dissolved.
+
+Because the structural prerequisites for quartet formation are preserved, the cation is present at an effective concentration, and the thermal protocol is identical to successful reference experiments, gelation is expected. (Any long-term crystallization or syneresis that might occur after hours or days would still be classified as “Gel” under the supplied decision rules, exactly as seen for guanosine/KCl.)
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule retains the guanine Hoogsteen face and ribose diol geometry needed for K⁺-stabilized G-quartet assembly. Reference guanosine, 2′-amino-2′-deoxyguanosine and L-guanosine all form hydrogels under comparable K⁺ concentrations and heat-cool protocols; the 5′-hydrazide modification does not abolish these interactions and the stated buffer/salt conditions fall within the successful range reported for the reference compounds.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7225</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7333</summary>
+              <pre>The target molecule is a close structural analog of guanosine (differing only by replacement of the 5′-CH₂OH with a 5′-C(O)NHNH₂ hydrazide). Guanosine itself assembles into G-quartets that are stabilized by K⁺ coordination; these quartets stack into fibers whose entanglement produces hydrogels when the K⁺ concentration is sufficient (typically ≥ 0.2 M, although lower millimolar K⁺ can suffice once solubility or additional cross-links are provided).  
+
+The 5′-hydrazide substitution does not disrupt the Hoogsteen face or the ribose cis-diol required for quartet formation, and it modestly increases aqueous solubility relative to unmodified guanosine. Consequently, the same K⁺-templated G-quartet stacking observed for guanosine (and for the 2′-amino-2′-deoxyguanosine reference) remains operative. Under the stated conditions (0.5 M acetate buffer pH 6, 15–90 mM K⁺, heat–cool cycle) the molecule is therefore expected to produce a self-supporting hydrogel.  
+
+(The modest K⁺ range is still within the window that supports quartet formation once the hydrazide improves dissolution; references show that even 15–90 mM K⁺ yields stable gels once solubility or secondary cross-linking is adequate.)
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule retains the intact Hoogsteen face and ribose needed for K⁺-templated G-quartet formation. The 5′-hydrazide modestly improves solubility relative to guanosine, allowing the same quartet-stacking mechanism that produces hydrogels in the guanosine and 2′-amino-2′-deoxyguanosine references. The stated K⁺ range (15–90 mM) is sufficient once dissolution is achieved, leading to a stable, entangled fiber network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7197</summary>
+              <pre>The target molecule (guanosine-5′-hydrazide) is a close structural analogue of guanosine itself, differing only by replacement of the 5′-CH₂OH with a 5′-C(O)NHNH₂ group. This modification preserves the guanine base and the ribose cis-2′,3′-diol that are required for K⁺-templated G-quartet formation and subsequent stacking into nanofibers.  
+
+Reference data for unmodified guanosine show that K⁺ concentrations ≥ 0.2 M reliably produce hydrogels (even if they are sometimes transient). The target conditions (15–90 mM K⁺ in acetate buffer, heat–cool cycle) fall within the same monovalent-cation regime that stabilizes G₄·K⁺ quartets. The hydrazide substituent increases aqueous solubility relative to guanosine and adds supplementary hydrogen-bonding sites, both of which favor network formation over rapid crystallization or precipitation. Consequently, a self-supporting hydrogel is expected under the stated conditions.  
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule retains the guanine and ribose motifs needed for K⁺-stabilized G-quartets. Reference guanosine gels with comparable K⁺ levels; the 5′-hydrazide improves solubility and adds H-bond donors, promoting a stable entangled network rather than precipitation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7146</summary>
+              <pre>The target molecule (guanosine-5′-hydrazide) is a close structural analogue of guanosine itself, differing only by replacement of the 5′-CH₂OH with a 5′-C(O)NHNH₂ group. This modification preserves the guanine base and the ribose cis-diol, both of which are essential for K⁺-templated G-quartet formation and subsequent stacking into nanofibers.
+
+Reference data for unmodified guanosine show that K⁺ reliably induces transparent hydrogels at concentrations ≥0.2 M (and even at 0.354 M). Although these gels are often transient (disintegrating after ~15 h or crystallizing within ~36 h), they nonetheless satisfy the explicit decision rule: any initial gel that persists for hours (rather than collapsing within minutes) is classified as “Gel.” The same K⁺-driven mechanism is expected for the hydrazide derivative; the added hydrazide moiety may even improve aqueous solubility and thereby extend gel lifetime relative to parent guanosine.
+
+The experimental conditions supplied for the target (0.5 M acetate buffer, pH 6, 15–90 mM K⁺, heat–cool cycle) fall squarely within the regime where guanosine itself assembles into G-quartet networks. Consequently the target is predicted to form a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Dissolved at 60–90 °C in 0.5 M acetate buffer (pH 6.0) containing 15–90 mM K⁺, then cooled to room temperature.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule retains the guanine and ribose cis-diol motifs required for K⁺-templated G-quartet stacking. Reference guanosine forms hydrogels under comparable KCl concentrations and heat–cool protocols; the hydrazide substitution is not expected to abolish this assembly pathway and may even enhance solubility, satisfying the rule that any gel persisting for hours qualifies as Gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

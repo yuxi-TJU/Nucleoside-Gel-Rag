@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 7-7</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 7-7</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>7</strong></div>
+      <div>Experiment ID<strong>7</strong></div>
+      <div>Chemical description<strong>Guanosine (G)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>KCl</strong></div>
+      <div>Detailed conditions<strong>Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">The resulting hydrogel is transient, quickly transforming into a precipitate within approximately 30 minutes.
+
+The primary reason G fails to form a stable hydrogel is its low water solubility (2.1 mM). This insufficient solubility leads to rapid precipitation rather than the formation of a stable, self-standing hydrogel. The imbalance between hydrophobicity and hydrophilicity prevents the stable assembly of G4·K⁺ quartets necessary for hydrogel formation, favoring instead crystallization or precipitation.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6738</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6994</summary>
+              <pre>The molecule guanosine is well-known to self-assemble into stable G-quadruplex structures in aqueous media when monovalent cations (especially K+) are present to coordinate the O6 carbonyls of four guanine bases. Under the stated conditions (2 wt% aqueous solution + 0.5 eq KCl, followed by a heat-cool cycle) the cation-induced quartet stacking produces a percolating fibrillar network that immobilizes the solvent, yielding a translucent hydrogel. No precipitation or crystallization is observed on the experimental timescale; therefore the outcome is classified as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;K+ ions template G-quartet formation; heat-cool cycle promotes fibril growth and network percolation, producing a stable hydrogel.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6670</summary>
+              <pre>The molecule guanosine is a well-known gelator that self-assembles via Hoogsteen hydrogen bonding into G-quartets; these quartets are further stabilized and stacked by coordination to K+ cations. Under the stated conditions (aqueous 2 wt% solution plus 0.5 equiv KCl, followed by a heat-cool cycle) the K+ ions therefore trigger the formation of an extended, fibrillar G-quadruplex network that immobilizes the solvent, producing a hydrogel.  
+
+Consequently the outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine self-assembles into G-quartets that are stabilized by K+ coordination; the resulting stacked quadruplex fibrils form a percolating network that yields a hydrogel after the heat-cool cycle.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6548</summary>
+              <pre>The molecule guanosine is well-known to self-assemble into G-quadruplex (G-quartet) structures that further aggregate into a three-dimensional fibrillar network capable of immobilizing water. This process is strongly promoted by K+ cations, which stabilize the central cavity of each G-quartet.  
+
+Under the stated conditions (2 wt% aqueous guanosine + 0.5 equiv KCl, heat-cool cycle) the temperature ramp first dissolves the solid, allowing the nucleosides to diffuse freely; subsequent cooling permits K+-templated quartet formation and fiber growth. Within minutes to hours a translucent, self-supporting hydrogel is obtained. No precipitation or crystallization is observed at this concentration and salt stoichiometry.  
+
+Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine forms K+-stabilized G-quartets that hierarchically assemble into a fibrillar hydrogel network; the heat-cool cycle with 0.5 equiv KCl at 2 wt% reliably produces a stable gel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6600</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6679</summary>
+              <pre>The target molecule is the canonical D-guanosine nucleoside. Guanosine is well-established to self-assemble into G-quadruplex hydrogels in the presence of K⁺ cations, which stabilize the Hoogsteen-paired G-quartets that further stack into fibers and ultimately a sample-spanning network.  
+
+The supplied conditions (2 wt % guanosine + 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and salt regime where transparent, thermoreversible hydrogels are routinely obtained (see, for example, the direct comparison of D-G vs. L-G in Reference 1, where D-G is stated to gel before crystallizing). Consequently the outcome is predicted to be gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine is the classic K⁺-templated G-quadruplex hydrogelator. The stated concentration and salt stoichiometry lie well within the documented gelation window; the heat-cool cycle simply ensures complete dissolution prior to self-assembly. Reference 1 explicitly confirms that D-G forms gels (albeit shorter-lived than the L-enantiomer) under comparable KCl conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6753</summary>
+              <pre>The target molecule is the canonical D-guanosine nucleoside. Guanosine is well-established to self-assemble into G-quadruplex hydrogels in the presence of K⁺ (via Hoogsteen hydrogen-bonded G-quartets that stack into fibrils and ultimately form a sample-spanning network).  
+
+The supplied conditions (2 wt % aqueous guanosine + 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and cation range where transparent, thermoreversible hydrogels are routinely obtained. Reference 1 explicitly states that D-guanosine forms gels under analogous KCl conditions (even though those gels crystallize within ~24 h); the same K⁺-driven gelation is observed for the close structural analogues in References 2 and 3.  
+
+Consequently the outcome is recorded as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine is the classic K⁺-responsive gelator that forms G-quadruplex hydrogels. The stated concentration and KCl stoichiometry lie inside the documented gelation window; Reference 1 directly confirms that D-G produces gels (albeit short-lived) under comparable KCl conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6368</summary>
+              <pre>The target molecule is guanosine (the natural D-enantiomer). Reference 1 directly addresses this compound (and its L-enantiomer) under essentially identical conditions (KCl, heat-cool, comparable wt% concentrations). Both enantiomers initially produce hydrogels via K+-templated G-quadruplex assembly; the only difference is long-term stability (D-G crystallizes after ~24 h while L-G persists for weeks). The supplied target conditions (0.5 equiv KCl, 2 wt%, heat-cool) fall squarely inside the reported gelation window, so gel formation is expected.
+
+The remaining references describe close structural analogues (isoguanosine, guanosine-5′-hydrazide) that likewise gel with KCl, reinforcing the same supramolecular mechanism.
+
+Thus the outcome for the target experiment is Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Reference 1 shows that D-guanosine itself forms a K+-dependent hydrogel under nearly identical conditions (2–3 wt%, KCl, heat-cool); only long-term stability differs from the L-enantiomer. The target protocol lies inside the documented gelation range, confirming a positive result via G-quadruplex assembly.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6666</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6496</summary>
+              <pre>The target molecule is guanosine (the D-enantiomer). Reference 1 directly addresses this compound (and its L-enantiomer) under KCl conditions. L-Guanosine forms stable hydrogels at 0.7–5.6 % w/v with K⁺; the same reference explicitly states that the corresponding D-G gels also form but crystallize within 24 h. This establishes that gelation occurs (even if the resulting hydrogel is metastable).  
+
+The supplied experimental conditions (2 wt % guanosine + 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and cation range shown to produce gels in Reference 1. Additional supporting precedents appear in References 2 and 3, where structurally related guanosine analogues likewise gelate in the presence of KCl via G-quartet/K⁺ stacking.  
+
+Collectively these data confirm gel formation for the target.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Reference 1 shows that D-guanosine itself forms hydrogels with K⁺ (albeit metastable, crystallizing within 24 h), while the L-enantiomer forms long-lived gels under identical salt conditions. The target concentration (2 wt %) and KCl stoichiometry lie inside the experimentally validated gelation window. Additional literature precedents for G-quartet/K⁺ stacking in closely related nucleosides further support gel formation.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6837</summary>
+              <pre>The target molecule is guanosine (the D-enantiomer). Reference 1 directly compares it to its L-enantiomer under closely analogous conditions (KCl, 0.7–5.6 wt %). The L-form produces stable hydrogels, while the D-form is stated to form gels that subsequently crystallize within ~24 h. Because gelation occurs first and crystallization is observed only on a much longer time scale, the outcome meets the explicit criterion for “Gel” (formation within hours, not collapse/precipitation within minutes).
+
+This behavior is also consistent with the broader literature on guanosine: addition of sub-stoichiometric KCl to a warm aqueous solution followed by cooling triggers self-assembly into G-quadruplex fibrils that produce a translucent hydrogel. The supplied conditions (2 wt %, 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and cation range known to induce gelation.
+
+Consequently the predicted result is Gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Reference 1 explicitly states that D-guanosine (the target) forms hydrogels with K+ that crystallize only after ~24 h, satisfying the &#x27;gel forms first&#x27; rule. The concentration (2 wt %) and KCl stoichiometry lie inside the documented gelation window for guanosine. Standard G-quadruplex assembly with K+ therefore produces a hydrogel under the stated heat-cool protocol.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6665</summary>
+              <pre>Guanosine (the standard D-enantiomer) is a well-established gelator that self-assembles into G-quadruplex nanofibers in the presence of K⁺ cations; the added KCl supplies the requisite monovalent ions that stabilize the Hoogsteen-paired quartets and subsequent hydrogel network. The supplied conditions (2 wt % / 2.1 mM aqueous solution + 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and thermal regime documented for guanosine hydrogelation. Although the resulting gels are known to be metastable and may crystallize after ~24 h, gelation itself occurs on the laboratory time-scale of minutes to hours, satisfying the explicit criterion “Gel forms (within hours or months).”  
+
+The close structural analogues in the reference set (L-Guanosine, isoguanosine, and guanosine-5′-hydrazide) all produce gels under comparable KCl/heat-cool protocols, reinforcing the prediction for the parent D-guanosine.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine is the canonical D-enantiomer that forms K⁺-stabilized G-quadruplex hydrogels. The exact concentration (2 wt %), salt stoichiometry (0.5 equiv KCl), and heat-cool protocol lie within the documented gelation window. Although the gels are metastable and may crystallize after ~24 h, macroscopic gelation occurs within minutes to hours and therefore meets the &#x27;Gel&#x27; criterion. Reference data on L-Guanosine explicitly state that D-G gels form before later crystallizing, and the other KCl-active analogues (isoG, 5′-hydrazide) further corroborate the outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6856</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6888</summary>
+              <pre>The target molecule is standard D-guanosine (G). Reference 1 directly documents that D-G forms hydrogels in the presence of K⁺ (0.7–5.6 % w/v) via the canonical Hoogsteen hydrogen-bonded G-quartet motif that is further stabilized by K⁺ coordination inside the quartet cavity. Although the resulting gels are metastable and crystallize within ~24 h, gelation is unambiguously observed on the experimental time scale of hours.  
+
+The supplied conditions (2 wt % G + 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and cation range shown to produce gels in Reference 1. Consequently the outcome is classified as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;D-Guanosine is known to self-assemble into G-quartets that are stabilized by K⁺; the cited concentration and cation stoichiometry lie within the documented gelation window, producing a hydrogel (albeit metastable).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6826</summary>
+              <pre>The target molecule is the standard D-guanosine nucleoside. Its ability to form hydrogels is directly attested by the behavior of the closely related L-guanosine stereoisomer (Reference 1) and by the extensive data on the 5′-hydrazide derivative (Reference 3). Both of those congeners gelate in the presence of K⁺ via the same underlying mechanism: Hoogsteen hydrogen-bonded G-quartets that are further stabilized by K⁺ coordination inside the quartet cavity and subsequent stacking of the quartets into long fibers.  
+
+The experimental conditions supplied for the target (2 wt % guanosine + 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and cation ranges shown to produce gels for both L-guanosine and the hydrazide analogue. Although the D-enantiomer crystallizes more rapidly than its L-counterpart, the initial self-assembly still yields a hydrogel network before crystallization occurs. Consequently the outcome is classified as “Gel.”
+
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine forms G-quartets via Hoogsteen H-bonding; K+ templates and stabilizes these quartets, which stack into fibers that produce a hydrogel. The supplied concentration and K+ stoichiometry lie within the range that yields gels for both L-guanosine and guanosine-5&#x27;-hydrazide, confirming gel formation for the D-enantiomer as well.&quot;
+        }]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6853</summary>
+              <pre>The target molecule is the naturally occurring D-guanosine (G) stereoisomer. Reference 1 explicitly documents that D-G forms hydrogels in the presence of KCl (via K+-templated G-quartet assembly and fiber stacking), even though the resulting gels are metastable and crystallize within ~24 h. The supplied conditions (2 wt % G + 0.5 equiv KCl, heat-cool) fall squarely inside the concentration and cation range shown to produce gels in that reference and in the broader G-quartet literature. Consequently the outcome is classified as Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine (G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Upon addition of 0.5 equivalents of KCl to a 2 wt% (2.1 mM) aqueous solution. Heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;D-Guanosine is known to self-assemble into G-quartets that are stabilized by K+ coordination; the supplied concentration, cation stoichiometry and heat-cool protocol match the conditions under which transparent hydrogels are observed (albeit metastable) in the reference data.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

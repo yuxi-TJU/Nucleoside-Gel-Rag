@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 3-2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 3-2</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>3</strong></div>
+      <div>Experiment ID<strong>2</strong></div>
+      <div>Chemical description<strong>Uridine (U)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>B(OH)₃ + AgNO₃</strong></div>
+      <div>Detailed conditions<strong>50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">No gelation; mixture remains liquid.
+
+Uridine can form borate diesters but lacks the cytosine base needed for Ag⁺-mediated C·Ag⁺·C pairing; without metal-stabilised base dimers the network does not nucleate, so gelation fails despite the presence of borate cross-links.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7254</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7075</summary>
+              <pre>The target molecule is uridine, a pyrimidine ribonucleoside whose ribose cis-diol can reversibly esterify with borate under basic conditions. This interaction produces anionic borate–nucleoside complexes, but these complexes remain small and soluble; they do not spontaneously assemble into the extended, cross-linked networks required for hydrogelation.  
+
+The added AgNO₃ introduces Ag⁺ ions that can coordinate weakly to the N3 or carbonyl sites of uracil, yet this coordination is insufficient to drive fibril formation or macroscopic gelation at the stated concentrations. In practice the mixture remains a clear solution or, at most, slowly deposits microcrystalline silver–uridine salts; no stable gel is observed within hours or days.  
+
+Consequently the outcome is classified as No Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Borate esters form with the ribose diol but remain soluble; Ag⁺ coordination to uracil is too weak to produce the fibrillar network needed for gelation. The mixture stays fluid or slowly crystallizes.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7438</summary>
+              <pre>The target molecule is uridine, a pyrimidine ribonucleoside whose ribose moiety contains a cis-1,2-diol that can reversibly esterify with borate under basic conditions. This interaction produces anionic mono- or diester complexes whose charge and geometry are well-documented in carbohydrate–borate chemistry.  
+
+However, uridine lacks the purine N7 and O6 atoms required for Hoogsteen-type hydrogen-bonded quartets or other extended base-pairing motifs that drive the formation of anisotropic fibers in known nucleoside gels (e.g., guanosine–borate systems). Consequently, the borate–uridine species remain discrete, low-molecular-weight complexes that do not spontaneously assemble into a percolating three-dimensional network.  
+
+Addition of AgNO₃ introduces Ag⁺ ions that can coordinate to the uracil carbonyls or the ribose hydroxyls, but this coordination typically yields insoluble silver–nucleoside salts or microcrystalline precipitates rather than a viscoelastic hydrogel. Under the stated concentrations (50 mM uridine, 25 mM each additive) and ambient temperature, any transient aggregates collapse or sediment within minutes.  
+
+Thus the experimental outcome is classified as No Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Uridine forms soluble borate esters via its cis-diol but cannot sustain the Hoogsteen-type base-pairing or fiber-forming motifs needed for gelation; Ag⁺ promotes precipitation instead.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7251</summary>
+              <pre>The target molecule is the nucleoside uridine, which contains a ribose moiety (with vicinal diols capable of forming reversible borate esters at basic pH) but lacks the Hoogsteen edge and N7 donor required for stable G-quadruplex-type supramolecular polymerization.  
+
+Under the stated conditions (equimolar borate and Ag⁺, basic pH), borate will transiently cross-link the 2′,3′-diol of the ribose, while Ag⁺ may coordinate weakly to the deprotonated N3 of the uracil base. These interactions produce only low-molecular-weight, soluble coordination complexes or, at best, microcrystalline precipitates; they do not generate the extended, entangled fibrillar network needed for macroscopic gelation.  
+
+Consequently the sample remains a free-flowing solution or forms a rapidly collapsing aggregate, never a self-supporting gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Uridine lacks the Hoogsteen face and N7 donor needed for G-quadruplex-type polymerization. Borate–diol esterification and Ag⁺–N3 coordination produce only low-MW complexes or microcrystalline precipitates that never form an entangled fibrillar network.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7182</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7110</summary>
+              <pre>The target molecule is the unmodified ribonucleoside uridine. Reference 3 describes an experiment performed under essentially identical conditions (50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, basic pH, ambient temperature) with the closely related nucleoside arabino-cytidine; that experiment produced only a free-flowing solution and no hydrogel.  
+
+Uridine differs from arabino-cytidine only in the pyrimidine base (uracil vs. cytosine) and in the configuration at C2′ of the pentose (ribo vs. arabino). Neither change introduces the additional hydrogen-bonding or metal-coordination motifs that would be expected to enable network formation under these conditions. Consequently, the same outcome—no hydrogel—is predicted.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Reference 3 reports that arabino-cytidine remains a free-flowing solution under identical conditions. Uridine differs only in base identity and C2′ stereochemistry, neither of which supplies new supramolecular interactions capable of producing a hydrogel; therefore the same negative result is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7108</summary>
+              <pre>The target molecule (uridine) shares the exact experimental conditions reported for arabino-cytidine in Reference 3. That reference nucleoside remains a free-flowing solution and does not produce a hydrogel, indicating that the combination of borate–silver complexation at basic pH is insufficient to drive the supramolecular ordering required for gelation. Although uridine differs from arabino-cytidine in base identity and C2′ stereochemistry, these structural variations do not introduce any new functional groups or conformational features that would be expected to enable gel formation under the same conditions. Consequently, the outcome is predicted to be identical.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Reference 3 reports that arabino-cytidine under identical borate–silver conditions yields only a free-flowing solution. Uridine lacks any additional structural elements that would promote the requisite supramolecular assembly, so the same negative result is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7330</summary>
+              <pre>The target molecule is unmodified uridine, a simple ribonucleoside. Reference 3 reports the identical solvent/additive combination (50 mM nucleoside + 25 mM B(OH)₃ + 25 mM AgNO₃, basic pH, RT) for the closely related nucleoside arabino-cytidine and explicitly records a free-flowing solution with no hydrogel.  
+
+Uridine differs from arabino-cytidine only in the nucleobase (uracil vs. cytosine) and in the configuration at C2′ (ribo vs. arabino). Neither change introduces the long hydrophobic acyl chain that enables gelation in References 1–2, nor does it create a self-complementary motif capable of forming the Ag⁺-bridged or borate-ester networks required for hydrogelation under these conditions. Consequently the same outcome—no hydrogel—is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine lacks the long-chain acyl substituent required for gelation in Refs. 1–2 and is structurally analogous to arabino-cytidine (Ref. 3), which remains a free-flowing solution under identical conditions. No Ag⁺-bridged or borate-ester network capable of hydrogel formation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7727</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7919</summary>
+              <pre>The provided references establish a clear structure–activity pattern for nucleoside gelation under borate + AgNO₃ conditions. Cytidine forms a stable, thixotropic hydrogel because (i) its ribose cis-diol readily forms borate esters and (ii) the cytosine base engages in specific Ag⁺ coordination (well-known C–Ag⁺–C base-pairing geometry), producing a cross-linked supramolecular network. Arabino-cytidine fails to gel despite an identical base, showing that the precise stereochemistry of the 2′-OH is also essential. 5-Fluorouridine, which possesses the same ribose configuration as uridine but a uracil base, shows no gelation with either borate or Ag⁺ (alone or in any listed combination), confirming that the uracil heterocycle lacks the requisite Ag⁺-binding motif.
+
+Uridine shares the same ribose stereochemistry as cytidine yet contains a uracil base. Consequently it can form borate esters but cannot participate in the Ag⁺-mediated base-pairing interactions that are indispensable for network formation. The experimental conditions supplied for uridine (50 mM nucleoside, 25 mM B(OH)₃ + 25 mM AgNO₃, basic pH) are therefore insufficient to produce a gel, exactly as observed for the structurally analogous 5-fluorouridine.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine possesses the same ribose configuration that permits borate-ester formation in cytidine, but its uracil base lacks the cytosine N3/N4 motif required for Ag⁺ coordination (C–Ag⁺–C geometry). Reference data show that 5-fluorouridine (identical sugar, uracil-like base) fails to gel under borate or Ag⁺ conditions, while arabino-cytidine (correct base, wrong sugar stereochemistry) also fails. Therefore the combination of borate + AgNO₃ cannot produce the dual cross-linking needed for hydrogelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7675</summary>
+              <pre>The target molecule is uridine, a pyrimidine ribonucleoside whose ribose moiety is identical to that of cytidine (cis-2′,3′-diol geometry). Borate can therefore form the same dynamic borate esters that cross-link the sugar units in both molecules. However, the pyrimidine base of uridine is uracil (2,4-dioxo), whereas cytidine contains cytosine (4-amino-2-oxo).  
+
+The decisive supramolecular interaction that produces the cytidine hydrogel is Ag⁺-mediated base pairing (C–Ag⁺–C coordination), which, together with the borate-sugar network, yields a percolating, self-supporting gel. Uracil lacks the N4 amino group and the electronic pattern required for stable Ag⁺ bridging; consequently the second cross-linking motif is absent.  
+
+This inference is reinforced by the experimental behavior of 5-fluorouridine, a close structural analogue of uridine that also fails to gel under any combination of borate or Ag⁺ conditions. The arabino-cytidine control further demonstrates that sugar stereochemistry alone is insufficient; both sugar and base recognition elements must be present.  
+
+Under the stated conditions (50 mM uridine + 25 mM B(OH)₃ + 25 mM AgNO₃, basic pH, room temperature) the system therefore remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine possesses the same ribose cis-diol as cytidine and can therefore form borate esters, but its uracil base cannot participate in the Ag⁺-bridged base pairing (C–Ag⁺–C) that supplies the second cross-linking motif required for gelation. 5-Fluorouridine, a close analogue, likewise fails to gel with borate or Ag⁺, confirming that the uracil base is incompatible with the Ag⁺-dependent network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7588</summary>
+              <pre>The provided references establish a clear structure–property pattern for borate/silver-mediated hydrogelation of pyrimidine nucleosides. Gel formation requires two synergistic interactions that occur only under basic conditions:
+
+- reversible borate diester formation with the cis-2′,3′-diol of a ribofuranose sugar, and  
+- simultaneous coordination of Ag⁺ to the nucleobase (most favorably to N3 of cytosine).
+
+Cytidine satisfies both requirements and produces a robust, thixotropic hydrogel. Arabino-cytidine fails because the trans-diol geometry prevents stable borate ester formation. 5-Fluorouridine fails for both borate-only and Ag-only conditions because the uracil base lacks the electronic and coordination features of cytosine; the same limitation applies to unmodified uridine.
+
+Uridine possesses the correct ribose stereochemistry for borate binding, yet its uracil base (pKa ≈ 9.2, carbonyl at C4 rather than an amino group) does not support the Ag⁺–nucleobase cross-links that drive network formation. Consequently, the mixture remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine shares the ribose configuration that permits borate-diol esterification, but its uracil base lacks the cytosine N3 coordination geometry required for Ag⁺ cross-linking. Reference data for 5-fluorouridine (structurally analogous uracil nucleoside) show no gelation with borate or silver, confirming that the base change precludes network assembly under otherwise identical conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7937</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7960</summary>
+              <pre>The target molecule is uridine, which possesses the same ribose moiety (with a cis-2′,3′-diol) as cytidine. This structural feature would in principle allow formation of the dynamic borate-diester cross-links (U–B–U) that are one of the two orthogonal interactions required for gelation. However, the second required interaction—Ag⁺-mediated base-pairing that produces stable, one-dimensional nucleobase stacks—depends critically on the identity of the nucleobase.  
+
+Reference data show that only cytosine supports the necessary C·Ag⁺·C geometry; all other metal cations tested with cytidine fail to produce gels, and arabino-cytidine (which cannot form borate esters) likewise fails. Uridine, whose uracil base does not form an analogous Ag⁺-bridged pair under the same conditions, therefore lacks the supramolecular stacking motif even though borate cross-links could occur. This conclusion is reinforced by the complete absence of gelation for the closely related 5-fluorouridine under every additive combination that includes either Ag⁺ or borate.  
+
+Consequently, the two orthogonal interactions cannot operate simultaneously, macroscopic percolation does not occur, and the mixture remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Although the cis-2′,3′-diol of the ribose permits borate-diester cross-links, the uracil base cannot form the Ag⁺-bridged stacks that are essential for fiber formation (as demonstrated by the cytidine-specific requirement for C·Ag⁺·C and by the lack of gelation for 5-fluorouridine under identical conditions).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7814</summary>
+              <pre>The target molecule is uridine, which possesses a cis-2′,3′-diol on the ribose (identical to cytidine) and can therefore form dynamic borate diester cross-links with B(OH)₃ under basic conditions. However, macroscopic hydrogelation in the cytidine system also requires a second, orthogonal interaction: Ag⁺-mediated base-pairing (C·Ag⁺·C) that drives the formation of one-dimensional stacks that ultimately bundle into the percolating nanofibre network.  
+
+Uridine contains a uracil rather than a cytosine nucleobase. Uracil lacks the specific donor–acceptor pattern that enables stable Ag⁺ coordination between two bases; consequently the Ag⁺-driven stacking column does not form. This situation is directly analogous to the behaviour of 5-fluorouridine (reference 3), which likewise fails to gel with either AgNO₃ or borate alone or in combination. The arabino-cytidine control (reference 2) further underscores that both interactions are indispensable: removal of either the borate-diester or the Ag⁺-base-pairing motif abolishes gelation.  
+
+Because the Ag⁺-mediated supramolecular element is missing, the orthogonal cross-linking required for a self-supporting hydrogel cannot occur. The mixture therefore remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine possesses the cis-diol needed for borate cross-links, but lacks the cytosine-like Ag⁺ base-pairing motif required for the second orthogonal interaction that produces stacked columns and a percolating fibre network. Consequently the system remains a free-flowing solution, exactly as observed for the closely related 5-fluorouridine.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.8038</summary>
+              <pre>The target molecule is uridine, which possesses the same ribose moiety (and thus the same cis-2′,3′-diol) as cytidine. This geometry permits dynamic borate-diester cross-links (U–B–U) under the stated basic aqueous conditions. However, macroscopic hydrogelation in the cytidine reference system also requires a second, orthogonal interaction: Ag⁺-mediated base-pairing (C·Ag⁺·C) that drives the formation of one-dimensional stacks that ultimately bundle into the percolating nanofibre network.
+
+Uridine lacks the cytosine N3/N4 motif required for stable Ag⁺ coordination; the corresponding U·Ag⁺·U pair is not observed under comparable conditions. Consequently the borate cross-links alone are insufficient to produce an entangled, load-bearing network. This conclusion is reinforced by the experimental behaviour of the closely related pyrimidine nucleoside 5-fluorouridine, which likewise fails to gel in the presence of either AgNO₃ or borate. The arabino-cytidine control further underscores that both interactions must be present; removal of either abolishes gelation.
+
+Therefore, under the exact solvent-additive combination supplied for uridine, the system remains a free-flowing solution.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM U with 25 mM B(OH)₃ and 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Uridine possesses the cis-2′,3′-diol needed for borate diester cross-links, but lacks the cytosine motif required for Ag⁺-mediated base pairing (U·Ag⁺·U does not form). Without this second orthogonal interaction the system cannot produce the percolating nanofibre network observed for cytidine; hence no macroscopic gelation occurs.&quot;
+        }]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

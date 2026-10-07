@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 58-2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 58-2</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>58</strong></div>
+      <div>Experiment ID<strong>2</strong></div>
+      <div>Chemical description<strong>N₄-tetradecanoyl-2′,3′-dideoxycytidine</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>EtOH/H₂O</strong></div>
+      <div>Detailed conditions<strong>Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Showed a significant reduction in the propensity for gelation at lower solvent volume fractions.
+
+Having only 1 hydroxyl group (lacking both 2&#x27;- and 3&#x27;-hydroxyls) results in a highly lipophilic compound (clog P 5.26) with low predicted aqueous solubility, which hinders the solubility-driven self-assembly process.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5809</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5736</summary>
+              <pre>The molecule is a nucleoside analog featuring a long (C14) fatty acyl chain attached to the exocyclic N4 amino group of 2′,3′-dideoxycytidine. This structural motif supplies both (i) multiple hydrogen-bond donor/acceptor sites on the cytosine base and the 5′-CH2OH group and (ii) a hydrophobic tail that promotes van der Waals interactions and solvophobic collapse in aqueous media.  
+
+In binary EtOH/H2O mixtures (EtOH volume fraction 0.05–0.50) at 0.5 % w/v the solvent polarity is still high enough for the hydrophobic effect to drive self-assembly while the modest ethanol content keeps the compound sufficiently soluble to avoid immediate precipitation. Under these conditions the amphiphilic nucleoside is therefore expected to form an extended, three-dimensional fibrillar network that immobilizes the solvent—i.e., a gel—within hours.  
+
+Consequently the experimental outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The long C14 acyl chain plus the hydrogen-bonding cytosine and 5′-CH2OH moieties enable amphiphilic self-assembly into a fibrillar network that immobilizes the aqueous ethanol solvent at the stated concentration and solvent ratios.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5934</summary>
+              <pre>The molecule is an amphiphilic nucleoside derivative bearing a long C14 acyl chain. This architecture supplies both (i) multiple H-bond donor/acceptor sites (the cytosine amide, the 5′-OH, and the ring oxygen) that drive directional self-assembly and (ii) a hydrophobic tail that promotes lateral aggregation in aqueous media.  
+
+In EtOH/H₂O mixtures the ethanol fraction (0.05–0.50 v/v) is sufficient to dissolve the compound at the preparation temperature yet low enough that, upon cooling or equilibration, the hydrophobic effect dominates. At the stated concentration (0.5 % w/v) the molecule therefore reaches the critical gelation concentration typical for this structural class. Consequently the system assembles into a self-supporting fibrillar network that immobilizes the solvent—i.e., a gel forms.  
+
+No experimental outcome (crystallization, precipitation, or rapid dissolution) is expected under the described conditions.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C14 chain; H-bonding plus hydrophobic effect in aqueous ethanol drives fibrillar network at 0.5% w/v.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5758</summary>
+              <pre>The molecule is an amphiphilic nucleoside derivative bearing a long (C14) aliphatic tail. Such structures are well-known to undergo hierarchical self-assembly in water-rich media through a combination of Watson–Crick-type hydrogen bonding, π–π stacking of the nucleobases, and hydrophobic collapse of the alkyl chains.  
+
+The stated experimental window (EtOH volume fraction 0.05–0.50, 0.5 % w/v) corresponds to solvent compositions that are sufficiently polar to drive the hydrophobic effect yet still permit hydrogen-bond donation/acceptance by the cytosine moiety. Under these conditions the molecule is therefore expected to form a stable, translucent supramolecular gel within minutes to hours rather than crystallizing or precipitating.  
+
+Consequently the outcome for the listed experiment is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C14 tail; EtOH/H₂O mixtures (0.05–0.50) promote hydrophobic collapse plus nucleobase H-bonding, yielding stable gel at 0.5 % w/v.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5483</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5373</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative bearing a tetradecanoyl (C14) amide substituent.  
+
+All three reference compounds share the identical nucleoside core and differ only in acyl-chain length (C8, C10, C12). In every case the EtOH/H₂O binary-solvent screen (0.05–0.50 EtOH volume fraction, 0.5 % w/v) produced a gel, albeit one described as “moderate” and less visually stable than the corresponding 2′-deoxycytidine analogues.  
+
+Because gelation is observed across the entire C8–C12 range and because increasing chain length from C12 to C14 further augments the hydrophobic driving force for self-assembly, the same solvent conditions are expected to yield a gel for the C14 homologue as well.  
+
+Consequently the experimental outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;All shorter-chain (C8–C12) 2′,3′-dideoxycytidine references form gels under identical EtOH/H₂O conditions; extending the chain to C14 preserves the same self-assembly motif and is therefore also expected to gel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5602</summary>
+              <pre>The target molecule is the C14-acyl analogue of the C12/C10/C8 2′,3′-dideoxycytidine derivatives shown in the references. All three reference compounds form gels (albeit moderate ones) in binary EtOH/H₂O mixtures at the same concentration and solvent-fraction range specified for the target. The structural perturbation introduced by extending the acyl chain by only two methylene units is modest and lies well within the range already shown to support gelation; longer alkyl tails typically enhance, rather than abolish, the hydrophobic interactions that drive self-assembly in aqueous-organic media. Consequently the target is expected to behave analogously and produce a gel under the stated conditions.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Closest reference (C12 acyl chain) gels under identical conditions; chain-length extension by two carbons remains within the demonstrated gel-forming window for this scaffold.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5473</summary>
+              <pre>The provided reference compounds are close structural analogs of the target (all are \(N_4\)-acyl-2′,3′-dideoxycytidine derivatives that differ only in acyl-chain length).  In every case the compounds are reported to be non-gelators in pure water yet form gels in EtOH/H₂O binary mixtures at the exact concentration and solvent-fraction range stipulated for the target.  
+
+Because the target possesses a still-longer, linear tetradecanoyl chain (C14 versus C12–C8 in the references), its hydrophobicity and self-assembly propensity are expected to be at least as favorable.  Consequently the same binary-solvent conditions that produce gels for the shorter-chain congeners are predicted to produce a gel for the C14 derivative as well.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;All structurally analogous N4-acyl-2′,3′-dideoxycytidines (C8–C12 acyl chains) form gels under identical EtOH/H₂O conditions; the longer C14 chain of the target maintains or enhances the hydrophobic interactions required for gelation, so gel formation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5513</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5419</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative acylated at N4 with a tetradecanoyl (C14) chain. This places it in the same structural family as the three reference compounds, which differ only in acyl-chain length (C12, C10 and C8).  
+
+All three references form gels in EtOH/H₂O binary mixtures (0.05–0.50 volume fraction EtOH, 0.5 % w/v) while failing to gel in pure water. The closest analogue (C12, chemical distance 0.35) already exhibits moderate gelation under these conditions; extending the chain by two methylene units increases the hydrophobic surface area and therefore strengthens the van der Waals contribution to the self-assembled network. The ethanol co-solvent continues to provide the necessary solubility window, preventing immediate precipitation. Consequently the C14 homologue is expected to gel under the stated solvent and concentration regime.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The target is a direct homologue of the C12–C8 references, all of which gel in the same EtOH/H₂O mixtures at identical concentration. The additional two carbons enhance hydrophobic interactions without shifting the molecule outside the solubility window provided by the ethanol co-solvent, supporting gel formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5707</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative acylated at N₄ with a tetradecanoyl (C14) chain. This places it in the same structural family as the three reference compounds, which differ only in acyl-chain length (C8, C10, C12).  
+
+All three references exhibit the same binary-solvent behavior: no gelation occurs in pure water, whereas moderate gelation is observed in EtOH/H₂O mixtures across the 0.05–0.50 volume-fraction range at 0.5 % (w/v). The C12 congener (chemical distance 0.35) is the closest analogue; its gelation performance is described as “moderate” but still successful. Extending the chain by two methylene units (C14) increases hydrophobicity modestly while preserving the hydrogen-bonding motif of the nucleobase and the overall molecular topology. Consequently, the same EtOH/H₂O conditions that support gelation for the shorter-chain homologues are expected to support gelation for the C14 derivative as well.  
+
+No experimental indication exists that further chain elongation within this narrow range abolishes gelation; on the contrary, longer alkyl tails typically enhance the solvophobic driving force that favors self-assembly in aqueous-organic mixtures.  
+
+Thus the predicted outcome for the stated EtOH/H₂O protocol is gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The target is a direct homologue of the C12 reference (chemical distance 0.35), differing only by two additional methylene units. All shorter-chain 2′,3′-dideoxycytidine analogues (C8–C12) form gels under identical EtOH/H₂O conditions; the modest increase in hydrophobicity for C14 is expected to maintain or enhance the solvophobic driving force for self-assembly, leading to gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5414</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative acylated at N4 with a tetradecanoyl (C14) chain. All three reference compounds share the identical nucleoside core and differ only in acyl-chain length (C8–C12). In every case, pure water produces no gel while EtOH/H2O binary mixtures (0.05–0.50 volume fraction EtOH, 0.5 % w/v) produce gels, albeit with moderate stability that improves modestly as chain length increases from C8 to C12.  
+
+Extending the chain by two additional methylene units (C12 → C14) preserves the amphiphilic balance required for self-assembly in aqueous-organic media. The longer hydrophobic tail enhances van-der-Waals interactions without crossing into the regime where solubility becomes too low to permit network formation; consequently the same EtOH/H2O conditions that gel the C12 analogue are expected to gel the C14 homologue as well.  
+
+Thus the experimental outcome for the target is predicted to be “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The closest reference (C12 acyl chain, chemical distance 0.35) forms a gel under identical EtOH/H2O conditions. Extending the chain to C14 maintains the amphiphilic character that supports self-assembly in aqueous-organic mixtures; therefore gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5659</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5664</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative bearing a single free hydroxyl group and a C14 acyl chain. All three reference compounds share the same nucleoside core (one OH, no 2′- or 3′-OH) and differ only in acyl-chain length (C8–C12). In every case the EtOH/H₂O binary-solvent screen (0.05–0.50 EtOH volume fraction, 0.5 % w/v) produced a gel, albeit one that was mechanically weaker than the corresponding 2′-deoxycytidine analogues.  
+
+Because the only structural variable that changes between the references and the target is a further two-carbon extension of the already lipophilic acyl chain, the same solubility–hydrogen-bonding balance that permits gelation in the C8–C12 series is expected to remain operative. Consequently the target is predicted to form a gel under the stated EtOH/H₂O conditions.
+
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;All structurally analogous 2′,3′-dideoxycytidine derivatives (C8–C12 acyl chains, single free OH) form gels in the identical EtOH/H₂O screen; extending the chain by two additional carbons does not alter the core solubility/H-bonding features that enable self-assembly.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5607</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative bearing a C14 acyl chain. All three reference compounds share the identical nucleoside core (one free hydroxyl, no 2′- or 3′-OH) and differ only in acyl-chain length (C8–C12). In every case, binary EtOH/H₂O mixtures (0.05–0.50 volume fraction EtOH, 0.5 % w/v) produced gels, albeit of only moderate strength and visual stability.  
+
+Because the structural perturbation between the C12 reference (chemical distance 0.35) and the C14 target is limited to a two-carbon extension of an already lipophilic chain, the same solubility–hydrogel balance that permits self-assembly in the references is expected to persist. Consequently the target is predicted to form a gel under the stated conditions.
+
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;All structurally analogous 2′,3′-dideoxycytidine N4-acyl derivatives (C8–C12) form gels in the identical EtOH/H₂O solvent window; the additional two methylene units in the C14 chain do not alter the fundamental solubility–H-bonding balance that enables self-assembly.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5707</summary>
+              <pre>The target molecule is a close structural analog of the three reference compounds (differing only in acyl chain length). All three references form gels in EtOH/H₂O binary mixtures at the exact concentration and solvent-fraction range given for the target; the sole structural feature repeatedly cited as limiting gel quality (presence of only one hydroxyl group) is identical in the target. Increasing the chain from C12 to C14 raises lipophilicity but does not change the fundamental solubility/H-bonding balance that permits gelation under these mixed-solvent conditions. Consequently the target is predicted to produce a gel (most likely within the same moderate-performance regime already documented for the C8–C12 series).
+
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Prepared from binary mixtures of ethanol and water at solvent volume fractions from 0.05 to 0.50 with a final compound concentration of 0.5% (w/v).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;All three reference dideoxycytidine analogs (C8–C12 acyl chains) form gels under identical EtOH/H₂O conditions; the single-OH structural motif that governs their moderate gelation behavior is unchanged in the C14 target, so gel formation is expected.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 49-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 49-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>49</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Arabino-cytidine (arabinoC)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>B(OH)₃ + AgNO₃</strong></div>
+      <div>Detailed conditions<strong>50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Remains a free-flowing solution—no hydrogel formed.
+
+The trans-2′,3′-diol prevents borate-diester formation, so covalent C–B–C cross-links cannot develop.  Without this scaffold the Ag⁺-paired bases fail to organise into a percolating fibre network, eliminating macroscopic gelation.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6012</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6088</summary>
+              <pre>The molecule arabino-cytidine contains a vicinal diol motif whose stereochemistry (trans-2′,3′-OH) is poorly matched to the formation of stable borate diesters. Under the stated alkaline conditions, borate therefore remains largely uncomplexed and cannot template the supramolecular assemblies required for gelation. Addition of AgNO₃ introduces possible N3–Ag⁺ coordination, yet this interaction alone is insufficient to drive the extended fibrillar network needed for macroscopic gelation; rapid precipitation of a silver–nucleoside salt is the dominant outcome. Consequently, the sample collapses or precipitates within minutes rather than forming a self-supporting gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;The arabino stereochemistry precludes stable borate-diol chelation; Ag⁺ coordination yields only insoluble aggregates.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5823</summary>
+              <pre>The molecule arabino-cytidine (ara-C) possesses a trans-2′,3′-diol configuration on the arabinose sugar. Borate esters that drive supramolecular fiber formation and subsequent gelation require a cis-diol geometry, which is absent here. Consequently, the combination of B(OH)₃ and AgNO₃ at basic pH cannot generate the requisite cross-linked network, and the sample remains a free-flowing solution (No Gel).
+
+[{
+    &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Arabino-cytidine bears a trans-2′,3′-diol that cannot form the borate esters needed for fiber assembly; Ag⁺ coordination alone is insufficient to produce a gel.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6124</summary>
+              <pre>The molecule arabino-cytidine possesses a trans-2′,3′-diol configuration. Borate esters (and the subsequent Ag⁺-bridged supramolecular assemblies that produce gels) form efficiently only with cis-diols. Consequently, the required pre-organization into 1-D fibers or 3-D networks cannot occur under the stated basic, room-temperature conditions, and the sample remains a free-flowing solution (or at best yields a transient precipitate).  
+
+[{
+    &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Arabino-cytidine bears a trans-2′,3′-diol that does not form stable borate esters; without this complexation Ag⁺ cannot template the fibrillar network required for gelation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5929</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6033</summary>
+              <pre>The target molecule (arabinoC) shares the cytosine nucleobase with cytidine (Reference 1), which is the key structural feature enabling Ag⁺ coordination and hydrogelation in the presence of borate. However, the sugar pucker differs: cytidine contains a β-D-ribofuranosyl moiety whose 2′,3′-diol is cis, permitting reversible borate ester formation that is essential for the supramolecular fiber network. ArabinoC instead contains a β-D-arabinofuranosyl moiety whose 2′,3′-diol is trans; this geometry precludes stable borate complexation under the stated aqueous, ambient conditions.  
+
+Consequently, the self-assembly pathway observed for cytidine is blocked, and the mixture is expected to remain a free-flowing solution (exactly as seen for uridine, which also fails to gel with the same additive despite a cis-diol).  
+
+No other experimental conditions or additives are supplied that could rescue gelation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytosine base matches the successful cytidine case, but the trans-2′,3′-diol of arabinose prevents borate ester formation required for network assembly; mixture remains liquid.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5822</summary>
+              <pre>The target molecule (arabino-cytidine) is a C2′-epimer of cytidine. Reference 1 demonstrates that cytidine forms a stable, transparent hydrogel specifically with the B(OH)₃ + AgNO₃ combination under basic aqueous conditions at room temperature; this outcome is attributed to a precise network of borate–diol coordination plus Ag⁺–nucleobase bridging that is geometrically enabled by the native ribose stereochemistry.  
+
+The arabino configuration inverts the C2′-OH stereodescriptor, altering the spatial relationship between the 2′- and 3′-diol groups and between the sugar and the cytosine base. This change disrupts the same coordination geometry required for cross-linking, rendering the assembly incompetent. Reference 3 supplies an analogous negative control: uridine, whose sugar is identical to cytidine but whose base differs, likewise fails to gel under identical B(OH)₃ + AgNO₃ conditions.  
+
+Consequently, arabino-cytidine is expected to remain a free-flowing solution rather than produce a self-supporting hydrogel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Arabino-cytidine is the C2′-epimer of cytidine. Gelation of cytidine with borate + Ag⁺ depends on a stereospecific diol–borate and Ag⁺–base coordination network that is geometrically precluded by the inverted 2′-OH; analogous stereochemical or base mismatches (e.g., uridine) also abolish gelation under the same conditions.&quot;
+        }]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5931</summary>
+              <pre>The target molecule (arabinoC) is the C2′ epimer of cytidine. Cytidine itself forms a stable, transparent hydrogel under exactly the same conditions (50 mM nucleoside + 25 mM B(OH)₃ + 25 mM AgNO₃, basic pH, room temperature) because the ribose configuration permits simultaneous borate-diol ester formation at the 2′,3′-cis-diol and Ag⁺–N3 coordination that together drive anisotropic fiber growth and cross-linking. Inversion of the C2′ stereocenter in arabinoC destroys the cis-diol geometry required for stable five-membered borate esters and simultaneously alters the spatial presentation of the 3′-OH and nucleobase, eliminating the directional non-covalent interactions that produce the gel network.  
+
+This stereochemical dependence is corroborated by the reference data: uridine, whose sugar differs from cytidine only at the nucleobase, fails to gel under identical borate/Ag⁺ conditions. ArabinoC is therefore expected to behave analogously and remain a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ArabinoC is the C2′ epimer of cytidine; loss of the 2′,3′-cis-diol geometry prevents stable borate ester formation and Ag⁺ coordination needed for fiber assembly, exactly as seen with uridine under identical conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5993</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5689</summary>
+              <pre>The gelation behavior of cytidine with boric acid + AgNO₃ depends on reversible borate ester formation at the cis-2′,3′-diol of the ribose moiety; these anionic complexes then ion-pair with Ag⁺ and engage the nucleobase edges to produce an extended, self-supporting fibrillar network. Arabino-cytidine is the C2′-epimer of cytidine, so its 2′,3′-diol is trans in the furanose ring. Trans-diols do not form stable five-membered borate chelates under the stated aqueous basic conditions, exactly as observed for 2′,3′-dideoxy-cytidine (which lacks the diol entirely) and for uridine (which possesses the correct cis-diol but the wrong nucleobase). Consequently the required supramolecular cross-links never assemble and the mixture remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Gelation of cytidine requires a cis-2′,3′-diol for stable borate ester formation that templates Ag⁺-mediated fiber assembly. Arabino-cytidine is the C2′-epimer, yielding a trans-2′,3′-diol that cannot form these complexes; hence the mixture remains liquid, analogous to ddC and to U under identical conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6041</summary>
+              <pre>The target molecule arabino-cytidine differs from cytidine solely by inversion of configuration at C2′ of the furanose ring. This produces a trans-2′,3′-diol geometry instead of the cis-diol present in cytidine. Borate-mediated gelation of cytidine requires reversible ester formation with the cis-diol; the trans arrangement in arabino-cytidine precludes stable borate complexation under the stated aqueous, basic conditions. Consequently the Ag⁺-bridged supramolecular network that yields the transparent, self-supporting hydrogel never assembles. The outcome is therefore identical to that observed for 2′,3′-dideoxy-cytidine, which also lacks a competent cis-diol.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inversion at C2′ places the 2′ and 3′ hydroxyls trans to each other, eliminating the cis-diol geometry required for borate ester formation. Without this reversible cross-link the Ag⁺-coordinated fibrillar network cannot form, so the mixture remains a free-flowing solution.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6247</summary>
+              <pre>The target molecule arabino-cytidine (arabinoC) is a close structural analogue of cytidine, differing only by inversion of configuration at a single stereocenter on the furanose ring (C2′). This change converts the native cis-2′,3′-diol of ribose into a trans-2′,3′-diol.  
+
+Borate-mediated gelation of cytidine requires reversible formation of a cyclic borate diester with the cis-diol; the resulting anionic complex then assembles into fibers through cytosine–Ag⁺ coordination and base-stacking interactions. A trans-diol cannot form the same five-membered cyclic borate ester with appreciable stability under the stated aqueous, room-temperature conditions. Consequently the key supramolecular synthon is absent, exactly as observed for 2′,3′-dideoxycytidine (which lacks any diol) and for uridine (which possesses a cis-diol but the wrong nucleobase).  
+
+No alternative gelation pathway is suggested by the experimental precedents, so the mixture is predicted to remain a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ArabinoC is epimeric to cytidine at C2′, converting the cis-2′,3′-diol into a trans-diol. Cyclic borate ester formation, which is essential for the cytosine–Ag⁺ hydrogel network, requires the cis geometry; the trans isomer cannot form this complex under the given conditions. Precedent with ddC (no diol) and U (cis-diol but wrong base) confirms that both the cytosine and the cis-diol are necessary. Hence the sample remains a liquid.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6185</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6585</summary>
+              <pre>The target molecule arabinoC is a stereoisomer of cytidine that retains the cytosine nucleobase (and therefore the ability to form Ag⁺-mediated C·Ag⁺·C base pairs) but possesses an inverted configuration at C2′. This inverts the relative orientation of the 2′ and 3′ hydroxyl groups from cis (as in ribose) to trans (as in arabinose).  
+
+Stable five-membered borate diester complexes, which supply the covalent cross-links essential for network formation in the cytidine hydrogel, require a cis-vicinal diol. The trans arrangement in arabinoC precludes formation of these junctions under the stated basic aqueous conditions. Consequently, even though Ag⁺-mediated base pairing can still occur, the absence of borate cross-links prevents assembly of the entangled nanofibre network required for macroscopic gelation—exactly as observed for 2′,3′-dideoxycytidine, which also lacks a usable cis-diol.  
+
+Thus the mixture remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ArabinoC retains cytosine and can therefore form Ag⁺-mediated base pairs, but the C2′ stereochemistry places the 2′ and 3′ OH groups trans to each other. Borate diester cross-links require a cis-vicinal diol; the trans diol cannot supply these junctions. Without covalent network points the system cannot form the entangled fibres needed for gelation and remains a liquid, analogous to the behaviour of ddC.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6101</summary>
+              <pre>The target molecule arabinoC is a stereoisomer of cytidine that retains the cytosine nucleobase (and thus the capacity for Ag⁺-mediated C·Ag⁺·C base-pairing) but possesses a trans-2′,3′-diol on the arabinofuranose ring. Borate diester formation, which supplies the covalent cross-links essential for the cytidine hydrogel network, is stereospecific and requires a cis-vicinal diol. The trans geometry precludes stable five-membered cyclic borate esters, eliminating the orthogonal cross-linking interaction that is indispensable for nanofibre entanglement and macroscopic gelation. Consequently, even under the exact solvent-additive conditions that produce a robust hydrogel with cytidine, arabinoC remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ArabinoC possesses a trans-2′,3′-diol that cannot form the cyclic borate diesters required for covalent cross-linking; without these junctions the Ag⁺-mediated base pairs alone are insufficient to produce a percolating network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5869</summary>
+              <pre>The target molecule arabino-cytidine differs from cytidine only in the configuration at C2′ (trans-2′,3′-diol instead of the cis-2′,3′-diol present in ribose). Borate diester formation, which supplies the covalent cross-links essential for the cytosine–Ag⁺ hydrogel network, is strictly dependent on a cis-vicinal diol. The trans geometry of arabino-cytidine precludes stable five-membered borate esters, exactly as removal of both hydroxyls in ddC abolishes gelation. Consequently, even though Ag⁺-mediated base pairing remains possible, the absence of the required covalent junctions prevents network formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Arabino-cytidine (arabinoC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM nucleoside, 25 mM B(OH)₃, 25 mM AgNO₃, pH basic, room temperature.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 2′,3′-diol in arabinoC is trans, preventing formation of the borate diester cross-links that are indispensable for the cytosine–Ag⁺ hydrogel. Without these covalent junctions the Ag⁺-mediated base pairs cannot produce an extended network, analogous to the behavior of ddC.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

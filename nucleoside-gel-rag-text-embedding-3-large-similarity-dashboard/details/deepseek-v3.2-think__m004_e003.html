@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>deepseek-v3.2-think | 4-3</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>deepseek-v3.2-think | 4-3</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>4</strong></div>
+      <div>Experiment ID<strong>3</strong></div>
+      <div>Chemical description<strong>Isoguanosine (isoG)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>KCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Stable transparent hydrogels; G′ about 15 × higher than guanosine gels; lifetime up to 3 months.
+
+K⁺ ions effectively template isoG quartet or pentaplex assemblies through cation coordination. The stacked assemblies form flexible helical fibers that interconnect into a dense three-dimensional network, giving rise to a stable hydrogel.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6293</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6111</summary>
+              <pre>[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The concentration of isoguanosine is approximately 49.5 mM, which is sufficiently high for self-assembly into supramolecular structures. Potassium ions (K+) from KCl are known to stabilize quartet-based assemblies in nucleoside systems, analogous to G-quadruplex formation in guanosine derivatives. The heating-cooling protocol promotes dissolution and subsequent self-assembly into fibers or other aggregates that entangle to form a gel matrix. The broad pH range (3-10) indicates gelation is robust across various protonation states, further supported by compatibility with phosphate-buffered saline (PBS). Based on these factors, isoguanosine is expected to form a stable hydrogel under the specified conditions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6420</summary>
+              <pre>Based on my expertise in nucleoside-derived gel formation, I have analyzed the provided molecule and experimental conditions. Isoguanosine (isoG) is a nucleoside analog known for its ability to self-assemble into higher-order structures, such as quadruplexes, through hydrogen bonding and π-π interactions, similar to guanosine derivatives. The presence of potassium ions (K⁺) from 0.2 M KCl is critical, as they coordinate with carbonyl groups on the nucleobase, stabilizing these assemblies and promoting gelation. The concentration of 1.4 mg/100 µL (approximately 50 mM or 1.4% w/v) is sufficient for molecular aggregation and network formation. The thermal cycle—dissolving at ≈80°C and cooling to room temperature—allows for monomer dissolution followed by slow self-assembly into a gel network upon cooling. The broad pH range (3–10, including PBS) indicates that gelation is robust across various conditions, likely due to the stabilizing effect of K⁺ ions and the inherent properties of isoG. Therefore, under these conditions, isoG is expected to form a gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Isoguanosine (isoG) can self-assemble via hydrogen bonding and π-π stacking, akin to guanosine. The 0.2 M KCl provides K⁺ ions that stabilize quadruplex-like structures by coordinating with carbonyl groups, essential for gel network formation. At ~50 mM concentration, molecules are sufficiently concentrated to form a percolating network. The thermal cycle (heating to 80°C to dissolve, then cooling) promotes slow assembly into a gel matrix. Gelation is expected across pH 3–10, including PBS, due to the robustness of ion-stabilized assemblies, making gel formation likely under these conditions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6348</summary>
+              <pre>Based on my expertise in nucleoside-derived gel formation, I analyze the potential of isoguanosine (isoG) to form a gel under the specified conditions. Isoguanosine is a nucleoside analog of guanosine, with a structure that includes a ribose sugar attached to an isoguanine base. Guanosine and its derivatives are well-known for forming hydrogels through self-assembly into G-quartets stabilized by monovalent cations like K⁺, driven by hydrogen bonding, π-π stacking, and metal ion coordination. Although isoguanosine has an altered hydrogen bonding pattern compared to guanosine, it retains the ability to form supramolecular assemblies under appropriate conditions.
+
+For the given experiment:
+- **Concentration**: 1.4 mg in 100 µL corresponds to 14 mg/mL. Assuming a molecular weight similar to guanosine (~280 g/mol), this is approximately 50 mM, which is a high concentration conducive to molecular aggregation and gelation.
+- **Solvent Additive**: 0.2 M KCl provides K⁺ ions. In nucleoside systems, K⁺ ions are known to stabilize quartet-like structures by coordinating with carbonyl groups, promoting the formation of a fibrous network that can trap solvent.
+- **Temperature Protocol**: Dissolving at ≈80 °C ensures complete solubilization of isoG, and cooling to room temperature reduces solubility, favoring self-assembly into a gel network over time (hours to months, as per the gel definition).
+- **pH Range**: The broad pH range (3–10, including PBS) covers conditions where isoG may exist in various ionization states. Isoguanosine has pKa values around 4–5 for the nucleobase, but it can form gels across a wide pH range due to the robustness of its self-assembly, with neutral to slightly basic conditions often optimal. PBS (pH ~7.4) is within this range and should support gelation without significant degradation.
+- **Mechanistic Insight**: While isoG may not form canonical G-quartets as efficiently as guanosine, it can still assemble into alternative hydrogen-bonded structures (e.g., through Hoogsteen-like bonding or base pairing) that are stabilized by K⁺ ions. The high concentration and cooling process facilitate the growth of these assemblies into a percolating network, leading to gel formation rather than precipitation or crystallization.
+
+Given these factors, isoguanosine is expected to form a gel under the described conditions. The presence of KCl, high concentration, and thermal cycle are favorable for gelation, aligning with literature on nucleoside gelators where similar conditions yield gels.
+
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;Isoguanosine (isoG) can form gels due to its ability to self-assemble into supramolecular structures via hydrogen bonding and π-π stacking, similar to guanosine derivatives. The high concentration (~50 mM) promotes molecular aggregation, while 0.2 M KCl provides K⁺ ions that stabilize quartet-like assemblies through coordination with carbonyl groups on the nucleobase. Dissolving at 80°C ensures homogeneity, and cooling reduces solubility, driving the formation of a fibrous network that traps water, resulting in gelation. The broad pH range (3–10) includes conditions where isoG is stable and can gel, with PBS (pH ~7.4) being particularly favorable. This combination of factors leads to gel formation within hours or upon standing, rather than precipitation or dissolution.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6246</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.5631</summary>
+              <pre>```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The gelation behavior of isoguanosine (isoG) is assessed by analogy to guanosine (G), which forms a transient hydrogel under identical conditions (1.4 mg/100 µL in 0.2 M KCl), as shown in Reference 1. Both G and isoG are purine nucleosides capable of forming quadruplex structures through Hoogsteen hydrogen bonding, stabilized by K⁺ ions that fit the central cavity of G-quartets. IsoG is known to assemble into similar quartet-like motifs, albeit with altered hydrogen-bonding patterns, but it still exhibits cation-dependent self-assembly. The concentration (≈14 mg/mL) and salt condition (0.2 M KCl) are conducive to gelation, as demonstrated for G. While the isoG gel may also be transient (potentially disintegrating within hours like G), the criteria for &#x27;Gel&#x27; are met if a gel forms initially and persists for hours. The broad pH range (3–10) includes conditions where isoG exists in suitable tautomeric/ionic forms for assembly, further supporting gel formation. Thus, isoG is predicted to form a hydrogel under these conditions.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6861</summary>
+              <pre>Based on the analysis of the provided reference data and structural considerations, isoguanosine (isoG) is predicted to form a gel under the specified conditions. The detailed reasoning is as follows:
+
+- **Structural Similarity to Guanosine**: IsoG is an isomer of guanosine (G), with identical sugar moieties and similar base functional groups (amino and carbonyl) rearranged. This structural similarity suggests that isoG can engage in analogous self-assembly processes, such as G-quartet formation, which is key to gelation in nucleosides like G.
+
+- **Reference Data Analogy**: From Reference 1, guanosine (G) forms a hydrogel under nearly identical conditions (1.4 mg/100 µL in 0.2 M KCl, heat-cool cycle), even though the gel is transient and disintegrates within approximately 15 hours. This demonstrates that 0.2 M KCl is sufficient to promote gelation in G, and by extension, isoG is likely to behave similarly due to its comparable ability to form cation-stabilized quartets.
+
+- **Gelation Mechanism**: Potassium ions (K⁺) are known to stabilize G-quartets through coordination with carbonyl groups, facilitating the formation of supramolecular networks that lead to gelation. IsoG retains the necessary functional groups for such interactions, and the heat-cool cycle (dissolving at ≈80 °C then cooling) promotes the self-assembly required for gel formation.
+
+- **Condition Suitability**: The concentration of isoG (1.4 mg/100 µL, approximately 49.5 mM assuming similar molecular weight to G) and KCl (0.2 M) aligns with conditions that yield gels in G references. The broad pH range (3–10, including PBS) is not expected to inhibit gelation, as guanosine gels form across various pH levels when K⁺ is present.
+
+- **Outcome Classification**: Although the gel may be unstable and potentially crystallize or disintegrate over time (similar to G gels), it is anticipated to form within hours upon cooling. According to the provided rules, any gel formation within hours qualifies as &quot;Gel,&quot; regardless of long-term stability.
+
+Thus, isoG is expected to form a gel under the given conditions, driven by its structural analogy to guanosine and the favorable role of K⁺ in promoting supramolecular assembly.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;IsoG is structurally similar to guanosine (G), which forms a transient hydrogel under identical conditions (Reference 1: 1.4 mg/100 µL G in 0.2 M KCl gels but disintegrates within ~15 hours). IsoG can form analogous G-quartet structures stabilized by K⁺ ions, and the heat-cool cycle promotes self-assembly into a gel network. Although the gel may be unstable long-term, it is expected to form within hours, meeting the &#x27;Gel&#x27; criteria.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6345</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6744</summary>
+              <pre>Based on the analysis of the provided reference data and structural similarities, Isoguanosine (isoG) is predicted to form a gel under the specified conditions. The reasoning is detailed below.
+
+### Analysis and Reasoning:
+1. **Structural Similarity to Guanosine**: Isoguanosine (isoG) is an isomer of guanosine (G), with swapped positions of the carbonyl and amino groups on the purine ring. Despite this modification, isoG retains the ability to form hydrogen-bonded quartet structures similar to G-quartets, which are essential for gelation in nucleoside systems. The sugar moiety (ribose) is identical to that in guanosine, supporting similar self-assembly behavior.
+
+2. **Comparison with Reference Experiments**:
+   - In Reference 1, guanosine (G) under identical conditions (1.4 mg/100 µL in 0.2 M KCl with a heat-cool cycle) forms a transient hydrogel that disintegrates within approximately 15 hours. According to the guidelines, this is classified as &quot;Gel&quot; since gel formation occurs within hours.
+   - Reference 2 shows that L-guanosine also forms gels with K⁺, indicating that gelation is not highly sensitive to stereochemistry in this context, though stability varies.
+   - Reference 3 indicates that modifications like 8-hydroxylation can disrupt gelation with KCl, but isoG&#x27;s structural change is less drastic and is known to support quartet formation.
+
+3. **Role of KCl**: Potassium ions (K⁺) are crucial for stabilizing G-quartet structures through coordination with carbonyl oxygens. The concentration of 0.2 M KCl is sufficient to promote gelation in guanosine, and isoG is expected to behave similarly due to its analogous hydrogen-bonding capabilities and cation interaction sites.
+
+4. **Experimental Conditions**: The heat-cool process (dissolving at ≈80 °C and cooling to room temperature) is standard for nucleoside gelation, facilitating the self-assembly into fibrous networks. The pH range (3–10, including PBS) suggests that gelation is robust across various conditions, similar to guanosine.
+
+5. **Prediction**: Given the structural analogy and consistent experimental setup, isoG is likely to form a hydrogel upon cooling, though it may be transient and disintegrate over time (e.g., within hours), mirroring the behavior of guanosine. Since the gel forms within hours, it meets the criterion for &quot;Gel&quot;.
+
+### Conclusion:
+Isoguanosine is expected to form a gel under the specified conditions, based on its similarity to guanosine and the stabilizing effect of KCl on quartet formation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;Isoguanosine (isoG) is structurally similar to guanosine (G), which forms transient G-quartet hydrogels with K⁺ ions under identical conditions (1.4 mg/100 µL in 0.2 M KCl). The heat-cool cycle promotes self-assembly into a fibrous network, and KCl stabilizes the quartet structures through cation coordination. Although isoG has swapped functional groups on the purine ring, it retains hydrogen-bonding capabilities conducive to gelation. Based on analogy with guanosine in Reference 1, where a gel forms but disintegrates within hours, isoG is predicted to exhibit similar behavior, forming a gel that may be transient. The pH range (3–10) supports gel robustness across conditions. Therefore, gel formation is expected.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5765</summary>
+              <pre>[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;The target molecule is isoguanosine, a structural isomer of guanosine. Reference experiments show that guanosine (G) forms a transient hydrogel under identical conditions (1.4 mg/100 µL in 0.2 M KCl), though it disintegrates within ~15 hours. Isoguanosine is known to form G-quadruplex-like structures via hydrogen-bonded quartets, which can stack into fibers that entangle to form hydrogels, particularly in the presence of K+ ions that fit the central cavity. The high KCl concentration (0.2 M) and heating-cooling protocol are conducive to self-assembly. The broad pH range (3–10) is unlikely to prevent gelation, as guanosine gels form across a similar pH range. Therefore, it is predicted that isoguanosine will also form a hydrogel under these conditions, albeit likely with limited long-term stability similar to guanosine.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6526</summary>
+              <pre>Based on the analysis of the provided reference data and the structural properties of isoguanosine (isoG), I predict that isoG will form a gel under the specified conditions with KCl. The reasoning is detailed below, considering the similarities to guanosine gelation behavior and the role of potassium ions in stabilizing supramolecular assemblies.
+
+### Analysis:
+- **Structural Similarity**: isoG is an isomer of guanosine (G), with a rearranged isoguanine base that retains key functional groups (amino and carbonyl groups) capable of hydrogen bonding. This allows isoG to form G-quartet-like structures or similar supramolecular networks, analogous to guanosine, which is known to gel with K⁺ ions (Reference 1).
+- **Role of KCl**: In Reference 1, guanosine forms a hydrogel with 0.2 M KCl under nearly identical conditions (1.4 mg/100 µL, heat-cool protocol), despite eventual disintegration within hours. The K⁺ ion is critical for stabilizing quartet structures by coordinating with carbonyl oxygens, a property shared by isoG due to its similar base moiety.
+- **Concentration and Protocol**: The concentration (1.4 mg/100 µL ≈ 1.4% w/v) and thermal protocol (dissolve at ≈80°C, then cool) are standard for nucleoside gelation, promoting self-assembly into fibrous networks. This matches successful gelation conditions for guanosine in Reference 1.
+- **pH Range**: The broad pH range (3–10, including PBS) is unlikely to prevent gelation, as guanosine gels form across similar pH values, and the primary driver is K⁺-stabilized assembly rather than pH-dependent protonation.
+- **Expected Outcome**: Although isoG gels might exhibit limited stability (e.g., disintegration over hours like guanosine), the formation of a transient hydrogel meets the criteria for &quot;Gel&quot; (gel forms within hours). No direct references show isoG failing under these conditions, and its structural analogy supports gelation.
+
+### Conclusion:
+Under the given conditions, isoG is predicted to form a hydrogel with KCl, aligning with the behavior of its structural analog, guanosine.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;Isoguanosine (isoG) is structurally similar to guanosine, which forms a hydrogel with 0.2 M KCl under identical conditions (Reference 1). isoG&#x27;s isoguanine base can participate in hydrogen-bonded assemblies such as quartets, stabilized by K⁺ ions. The concentration (1.4 mg/100 µL) and heat-cool protocol promote supramolecular gelation. Although the gel may have limited stability (e.g., disintegration within hours similar to guanosine), it forms initially, meeting the criteria for &#x27;Gel&#x27;. The broad pH range (3–10) does not inhibit gelation, as K⁺-driven assembly is pH-tolerant in this range.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5920</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.5872</summary>
+              <pre>[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;Isoguanosine (isoG) is structurally similar to guanosine (G), differing only in the positions of the amino and carbonyl groups on the purine ring. Based on Reference 1, guanosine forms a hydrogel with 0.2 M KCl under comparable conditions (1.4 mg/100 µL), albeit with limited stability (disintegrating within ~15 hours). This gelation is driven by the formation of G-quartet-like supramolecular assemblies stabilized by K⁺ ions, which template and coordinate the quartets, leading to stacked structures that entangle into a network. IsoG is known to form analogous quartet structures through altered but complementary hydrogen bonding, as isoguanine can participate in Hoogsteen-like pairing. The heat-cool cycle (≈80 °C to room temperature) promotes dissolution and subsequent self-assembly. The broad pH range (3–10) includes physiological conditions (e.g., PBS), where ionizable groups on isoG (e.g., the base and sugar) remain protonated or deprotonated without disrupting core interactions, as seen with guanosine. Although the gel may be transient or less mechanically robust due to potential weaker crosslinking or faster crystallization—similar to guanosine—the conditions are sufficient for initial gel formation within hours. Therefore, isoG is predicted to form a gel under these conditions.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5969</summary>
+              <pre>Based on comparative analysis with structurally similar nucleosides and known gelation mechanisms, I predict that isoG will form a gel under the specified conditions. The reasoning is detailed below.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Isoguanosine (isoG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+            &quot;solvent_additive&quot;: &quot;KCl&quot;,
+            &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoG in of 0.2 M KCl; dissolve at ≈80 °C, then cool to room temperature (pH 3–10, incl. PBS).&quot;,
+            &quot;results&quot;: &quot;Gel&quot;,
+            &quot;reasoning&quot;: &quot;IsoG closely resembles guanosine (G) in both structure and functional groups, differing only in the arrangement of carbonyl and amino groups on the purine ring. Under identical conditions (1.4 mg/100 µL in 0.2 M KCl with heat-cool cycling), guanosine forms a hydrogel through K⁺-templated G-quartet stacking, despite transient stability. IsoG is known to form analogous cyclic tetramers (i-quartets) stabilized by similar Hoogsteen hydrogen bonding and K⁺ coordination. The heating step ensures dissolution and proper molecular dispersion, while cooling promotes self-assembly into quartets that stack into elongated fibers. These fibers entangle to form a three-dimensional network capable of immobilizing water, resulting in gelation. The broad pH range (3–10) suggests that gelation is not critically dependent on protonation state, as K⁺ templating remains effective across neutral to mildly acidic/basic conditions. However, similar to guanosine, the gel may exhibit limited mechanical stability and may eventually collapse or crystallize over time due to weak lateral interactions and fiber rearrangement.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

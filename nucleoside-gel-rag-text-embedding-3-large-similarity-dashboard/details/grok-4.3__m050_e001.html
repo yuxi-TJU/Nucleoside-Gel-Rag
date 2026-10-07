@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 50-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 50-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>50</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>2′,3′-Dideoxy-cytidine (ddC)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>B(OH)₃ + AgNO₃</strong></div>
+      <div>Detailed conditions<strong>50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Solution stays liquid—no hydrogel observed.
+
+Removal of both 2′ and 3′ hydroxyl groups abolishes vicinal diols, so borate cross-linking is impossible; lacking covalent junctions the Ag⁺-mediated dimers cannot assemble beyond small aggregates.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5502</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5579</summary>
+              <pre>The molecule 2′,3′-dideoxy-cytidine (ddC) possesses only a single free hydroxyl group (at the 5′ position). Borate-mediated gelation of nucleosides relies on reversible covalent ester formation between B(OH)₃/B(OH)₄⁻ and a cis-1,2-diol motif on the sugar; ddC lacks any such diol. Consequently the Ag⁺–nucleobase coordination that normally cross-links the borate esters into a fibrillar network cannot occur, and the system remains a free-flowing solution.
+
+Final answer: No Gel
+
+[{
+    &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;ddC lacks a cis-diol on the sugar; borate ester formation and subsequent Ag⁺ cross-linking are impossible, precluding gelation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5165</summary>
+              <pre>The molecule ddC is a dideoxy nucleoside analog featuring a tetrahydrofuran ring with only a single primary hydroxyl group at the 5′-position. Borate-mediated gelation (even in the presence of Ag⁺ and under basic conditions) relies on reversible covalent ester formation between B(OH)₃/B(OH)₄⁻ and vicinal cis-diols. Because the 2′ and 3′ positions are fully deoxygenated, no such diol motif exists; the lone 5′-OH cannot generate the multivalent, cross-linkable borate complexes required for fibrillar self-assembly. Consequently the system remains a free-flowing solution at room temperature and does not produce a gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;ddC lacks the 2′/3′-vicinal diol required for borate ester cross-linking; the single 5′-OH is insufficient to drive the supramolecular assembly needed for gelation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5761</summary>
+              <pre>The molecule ddC lacks the 2′ and 3′ hydroxyl groups required to form cyclic borate esters with B(OH)₃. Without these cis-diols, borate-mediated cross-linking (the dominant mechanism enabling hydrogelation in ribonucleosides) cannot occur. The remaining 5′-primary alcohol is insufficient to produce the supramolecular network needed for gelation. Although Ag⁺ can coordinate to the nucleobase, this interaction alone does not generate stable, room-temperature gels under the stated aqueous conditions. Consequently the mixture remains a free-flowing solution (or rapidly precipitates), yielding “No Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;ddC lacks the 2′/3′ cis-diol required for borate ester formation; the single 5′-OH cannot produce the cross-linked network needed for gelation, and Ag⁺–base coordination is insufficient under these conditions.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4950</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.4798</summary>
+              <pre>The target molecule is the unmodified parent nucleoside ddC (no N4-acyl chain). All reference compounds contain long hydrophobic acyl tails (C8–C12) that confer the amphiphilicity required for self-assembly into gels; those tails are absent here. In addition, the only solvent system shown to support gelation in the references is aqueous ethanol; the target conditions are purely aqueous (with borate/silver additives that do not appear in any reference experiment). Consequently the molecule is expected to remain fully soluble and unable to form a gel network.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule lacks the long N4-acyl chain present in all gel-forming references; without this hydrophobic moiety it cannot exhibit the amphiphilic self-assembly needed for gelation. The solvent is also pure water rather than the EtOH/H₂O mixtures required by the references.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5052</summary>
+              <pre>The target molecule is the unmodified parent nucleoside 2′,3′-dideoxycytidine (ddC). All three reference compounds are N₄-acylated analogues that carry a long hydrophobic tail (C8–C12). Those tails are essential for the intermolecular hydrophobic contacts that drive self-assembly into gels; without them the compounds remain too hydrophilic to gel.  
+
+The references explicitly show that even the acylated derivatives produce “No Gel” in pure water and only form (moderately stable) gels in EtOH/H₂O mixtures. The target lacks the acyl chain entirely, so the key hydrophobic driving force is absent. The solvent system supplied for the target (aqueous B(OH)₃ + AgNO₃) is still overwhelmingly aqueous and offers no compensating organic co-solvent or other obvious gel-promoting interaction. Consequently the molecule is predicted to remain soluble or to precipitate rather than to form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule lacks the long N₄-acyl hydrophobic tail present in all gel-forming references. Without that tail the compound is too hydrophilic to self-assemble into a gel in an aqueous medium, consistent with the explicit “No Gel” result recorded for the acylated analogues in pure water.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5000</summary>
+              <pre>The target molecule is the unmodified parent nucleoside 2′,3′-dideoxycytidine. All three reference compounds are N₄-acylated analogues that carry a long hydrophobic tail (C8–C12). Those tails confer the amphiphilicity required for self-assembly into gels, yet even they fail to gel in pure water and only produce moderately stable gels in EtOH/H₂O mixtures.  
+
+The target lacks any such tail, so it remains a small, highly water-soluble nucleoside. The added salts (borate + Ag⁺) do not compensate for the missing hydrophobic driving force; they are not known to induce gelation of unmodified nucleosides under the stated conditions. Consequently the molecule is expected to remain dissolved rather than form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule lacks the long N4-acyl chain present in all gel-forming references; without this hydrophobic moiety it remains fully water-soluble and does not self-assemble into a gel even in the presence of borate/Ag+.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5512</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5729</summary>
+              <pre>The target molecule is 2′,3′-dideoxycytidine (ddC). Its sugar moiety is a 2′,3′-dideoxyfuranose; consequently the only free hydroxyl group is the 5′-CH₂OH.  
+
+Reference cytidine (ribo configuration) forms a stable, Ag⁺-reinforced borate hydrogel because the cis-2′,3′-diol readily forms a borate diester that, together with N3 coordination to Ag⁺, produces the supramolecular cross-links required for gelation. Arabino-cytidine, which possesses a 2′,3′-trans diol, fails to gel under identical conditions, demonstrating that both the presence and the correct stereochemistry of the vicinal diol are indispensable.  
+
+ddC lacks any 2′ or 3′ hydroxyl groups and therefore cannot form the borate ester cross-link. The remaining 5′-OH is insufficient to generate the same network, and the cytosine–Ag⁺ interaction alone does not produce macroscopic gelation (as shown by the non-gelling adenine derivative in Reference 3).  
+
+Hence the mixture remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ddC lacks the 2′,3′-cis-diol required for borate-ester cross-linking; only a single 5′-OH remains. Without this diol the Ag⁺-mediated supramolecular network cannot form, so the sample stays a free-flowing solution (cf. successful gelation of ribo-cytidine and failure of arabino-cytidine).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5389</summary>
+              <pre>The target molecule is 2′,3′-dideoxycytidine (ddC). Its sugar moiety is a 2′,3′-dideoxyfuranose, so the only remaining hydroxyl is the primary 5′-CH₂OH. In contrast, cytidine (Reference 1) possesses a vicinal 2′,3′-cis-diol that readily forms anionic borate esters under the stated basic conditions; these esters, together with Ag⁺ coordination to the nucleobase, drive the hierarchical assembly that produces a transparent, self-supporting hydrogel.  
+
+Because ddC lacks both the 2′- and 3′-OH groups, it cannot generate the same borate-ester cross-links. The stereochemical and functional-group differences are even more pronounced than those that already abolish gelation in arabino-cytidine (Reference 2). Consequently, the mixture remains a free-flowing solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ddC lacks the 2′ and 3′ hydroxyls required for borate-ester formation; without these cross-links the supramolecular network that produces a hydrogel in cytidine cannot assemble.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5419</summary>
+              <pre>The target molecule is 2′,3′-dideoxycytidine (ddC). Its structure is identical to cytidine at the nucleobase and anomeric carbon but lacks any hydroxyl substituents at the 2′ and 3′ positions of the furanose ring (both positions are methylene groups).  
+
+Borate-mediated gelation of cytidine requires reversible ester formation between B(OH)₃ and the cis-1,2-diol motif of the ribose; the resulting anionic borate complexes are then cross-linked by Ag⁺ coordination to the nucleobase, producing the observed transparent, thixotropic hydrogel. Because ddC possesses no vicinal diol, borate ester formation is impossible. The same additive combination that gels cytidine therefore leaves ddC as a free-flowing solution. This conclusion is reinforced by the arabino-cytidine reference, which also fails to gel despite retaining hydroxyl groups—the wrong stereochemistry prevents effective borate binding.  
+
+Consequently the outcome under the stated conditions is No Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ddC lacks 2′ and 3′ hydroxyl groups, preventing the cis-diol–borate ester formation that is essential for Ag⁺-cross-linked hydrogel assembly in cytidine. The identical additive mixture therefore yields only a free-flowing solution.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5379</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5101</summary>
+              <pre>The target molecule 2′,3′-dideoxy-cytidine lacks any hydroxyl groups at the 2′ and 3′ positions of the sugar. Reference cytidine gels only because its cis-2′,3′-diol enables dynamic borate-diester cross-links (C–B–C) that, together with Ag⁺-mediated base pairing, produce the entangled nanofibre network. Arabino-cytidine fails to gel precisely because its trans diol cannot form those covalent junctions; ddC is even more deficient, possessing no diol at all. Consequently the orthogonal interaction set required for gelation is absent and the system remains a free-flowing solution under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ddC possesses no 2′ or 3′ hydroxyl groups, so borate-diester cross-links cannot form. Without this covalent scaffold the Ag⁺-paired bases remain unable to assemble into a percolating fibre network, exactly as observed for arabino-cytidine and for other nucleosides lacking the cis-diol motif.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5497</summary>
+              <pre>The target molecule (ddC) is a cytidine analogue that retains the nucleobase required for Ag⁺-mediated base pairing. However, its ribose moiety has been stripped of both the 2′- and 3′-OH groups, eliminating the cis-diol motif that is essential for reversible borate-diester cross-linking (C–B–C).  
+
+Reference 1 demonstrates that cytidine itself forms a robust hydrogel only when both the borate-diester junctions and the Ag⁺-paired stacks are simultaneously present. Reference 2 shows that even a stereochemical inversion that yields a trans-diol abolishes gelation; removal of the diol entirely (as in ddC) is a more severe perturbation and likewise precludes formation of the covalent supramolecular scaffold. Consequently, the orthogonal interaction network required for percolation into a macroscopic gel cannot be established under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ddC lacks both 2′- and 3′-OH groups, so borate-diester cross-links cannot form. Without this covalent junction the Ag⁺-mediated base stacks remain isolated and cannot produce a percolating nanofibre network; the system therefore stays a free-flowing solution.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5540</summary>
+              <pre>The target molecule (ddC) is a cytidine analogue that retains the nucleobase required for Ag⁺-mediated base pairing. However, its ribose moiety lacks both the 2′- and 3′-OH groups, eliminating the cis-diol motif that is essential for reversible borate-diester cross-linking (C–B–C).  
+
+Reference 1 demonstrates that gelation of cytidine occurs only when both orthogonal interactions—borate diester formation and Ag⁺ coordination—are simultaneously available. Reference 2 shows that even a stereochemical change that abolishes the cis-diol (arabinoC) is sufficient to prevent network formation. Because ddC removes the diol entirely, the covalent junction points required for nanofibre entanglement cannot arise. Consequently, the system remains a free-flowing solution under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′-Dideoxy-cytidine (ddC)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;ddC lacks the 2′,3′-cis-diol required for borate-diester cross-links; without this covalent junction the Ag⁺-paired bases cannot assemble into a percolating fibre network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

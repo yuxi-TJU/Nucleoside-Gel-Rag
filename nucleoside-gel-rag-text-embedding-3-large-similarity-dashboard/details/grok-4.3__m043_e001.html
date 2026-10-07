@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 43-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 43-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>43</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>5′-Hydroxylamino-guanosine (NHOH-G)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>KCl</strong></div>
+      <div>Detailed conditions<strong>2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Fails to form a gel; precipitates on cooling.
+
+Hydroxylamino substitution does not improve solubility sufficiently; inadequate monomer availability leads to precipitation rather than ordered G₄ assembly and fibre entanglement.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5588</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5495</summary>
+              <pre>The molecule is a close structural analog of guanosine, retaining the intact guanine base that is known to self-assemble into G-quartets. In the presence of K⁺ (here supplied as 0.5 equiv KCl) these quartets are further stabilized by coordination to the cation, a prerequisite for the formation of extended, fibrillar networks that produce hydrogels. The experimental protocol (2 wt % concentration, aqueous medium, heat–cool cycle) is the standard trigger for nucleoside gelation and supplies both the thermal energy needed to dissolve the solid and the subsequent supersaturation that drives anisotropic fiber growth. The 5′-CH₂NHOH modification replaces the native hydroxymethyl group but does not remove any of the hydrogen-bonding sites on the base or ribose that participate in quartet stacking and lateral fiber association; consequently the molecule is expected to follow the same assembly pathway as unmodified guanosine or other 5′-functionalized derivatives that have been shown to gel under identical KCl conditions.  
+
+No competing outcomes (rapid crystallization, precipitation, or immediate collapse) are anticipated from the given parameters.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanine-containing nucleosides form K⁺-stabilized G-quartets that produce hydrogels under heat–cool aqueous conditions; the 5′-NHOH substitution preserves all base and sugar H-bonding sites required for quartet stacking and fiber elongation, so gelation is expected.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5769</summary>
+              <pre>The molecule is a guanosine derivative whose core guanine heterocycle is fully intact and therefore retains the canonical Hoogsteen edge required for K+-templated G-quartet formation. In aqueous solution the planar quartets stack into columnar aggregates whose peripheral hydrogen-bonding and hydrophobic contacts produce a sample-spanning fibrillar network. The 5′-CH2NHOH substituent replaces the native CH2OH but does not occlude the Hoogsteen face or introduce steric bulk that would block quartet stacking; literature precedents with other 5′-amino or 5′-azido guanosines confirm that such modifications still permit hydrogelation under identical heat–cool/KCl conditions. Consequently, a 2 wt % solution containing 0.5 equiv KCl is expected to yield a stable gel after a single thermal cycle.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanine base remains available for K+-stabilized G-quartet assembly; 5′-modification does not disrupt Hoogsteen pairing or columnar stacking, enabling fibril network formation under the stated conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5501</summary>
+              <pre>The molecule is a guanosine derivative whose Hoogsteen edge remains fully intact, allowing K+-templated G-quartet assembly. Under the stated heat–cool protocol the quartets stack into fibers that produce a self-supporting hydrogel; the 5′-NHOH substituent does not prevent this process and may even aid fiber–fiber contacts via hydrogen bonding. Consequently the single reported condition yields a gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Intact guanine permits K+-stabilized G-quartets that stack into gel-forming fibers; the 5′-NHOH group does not block quartet formation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5461</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5524</summary>
+              <pre>The target molecule (NHOH-G) is a close structural analog of the 5′-hydrazino-guanosine reference (chemical distance 3.19), differing only by replacement of the terminal NH₂ with OH. Both the hydrazino and hydroxylamino substituents introduce an additional heteroatom capable of participating in an extended hydrogen-bonding network that stabilizes G-quartet stacking and subsequent hydrogelation in the presence of K⁺.  
+
+In contrast, the simple 5′-amino-guanosine (reference 2) lacks this extra H-bond donor/acceptor and precipitates rather than gels under identical conditions (2 wt %, 0.5 equiv KCl, heat–cool). The 2′-amino reference is less relevant because the modification site is on the ribose ring rather than the 5′ position that directly influences the Hoogsteen face and cation coordination.  
+
+Consequently, the electronic and H-bonding profile of NHOH-G is expected to mirror that of the hydrazino derivative, supporting formation of a thermoreversible hydrogel with KCl.  
+
+[{
+    &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Structurally analogous to gel-forming 5′-hydrazino-guanosine (extra heteroatom enables H-bond network for G-quartet stacking); unlike non-gelling 5′-amino analog.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5493</summary>
+              <pre>The target molecule (NHOH-G) is a close structural analog of the 5′-hydrazino-guanosine reference (chemical distance 3.19), differing only by replacement of the terminal NH₂ with OH. Both molecules share the same guanosine core that supports K⁺-templated G-quartet assembly, and both carry a 5′-CH₂–NH–X substituent capable of additional hydrogen-bond donation/acceptance.  
+
+In the hydrazino case these interactions produce a stable, thermoreversible hydrogel at 0.25–2 equiv KCl. The amino-guanosine reference (distance 3.42) lacks the second heteroatom and therefore precipitates rather than gels, underscoring the importance of the extra lone-pair/H-bonding site. NHOH-G restores that site, so the same non-covalent network observed for the hydrazino derivative is expected to form under the stated heat–cool conditions (2 wt % nucleoside, 0.5 equiv KCl).  
+
+Consequently the outcome is predicted to be gelation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;NHOH-G is structurally closest to the gel-forming 5′-hydrazino-guanosine (distance 3.19). Both possess a 5′-CH₂–NH–X motif that supplies an additional H-bond donor/acceptor beyond the simple amino group, enabling the K⁺-stabilized G-quartet network required for hydrogelation. The amino-guanosine reference (distance 3.42) lacks this motif and precipitates; restoring the heteroatom in NHOH-G restores gelation under identical conditions.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5366</summary>
+              <pre>The target molecule (NHOH-G) is a close structural analog of the 5′-hydrazino-guanosine reference (chemical distance 3.19), differing only by replacement of the terminal NH₂ with OH. Both molecules share the same guanosine core, the same 5′-CH₂–N linkage, and the same pattern of hydrogen-bond donors/acceptors that enable K⁺-templated G-quartet stacking and hydrogelation.  
+
+In contrast, the 5′-amino-guanosine reference (chemical distance 3.42) lacks the second nitrogen atom and therefore cannot sustain the same intermolecular H-bond network; it precipitates rather than gels under identical KCl/heat–cool conditions. The additional OH in NHOH-G restores a hydrogen-bonding capability comparable to the hydrazino NH₂, making gel formation the expected outcome.  
+
+The experimental protocol supplied for the target (2 wt % nucleoside, 0.5 equiv KCl, heat–cool) lies squarely inside the range shown to produce stable, thermoreversible hydrogels for the hydrazino derivative. Consequently the target is predicted to form a gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally closest to 5′-hydrazino-guanosine (which forms stable KCl hydrogels); the NHOH moiety supplies the additional H-bond donor needed for G-quartet stacking, unlike the non-gelling 5′-amino analog.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5945</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5869</summary>
+              <pre>The target molecule is a 5′-modified guanosine derivative whose core structure (guanine + ribose) is identical to the three reference compounds. All such derivatives are known to be capable, in principle, of K⁺-templated G-quartet formation and subsequent fibrillar self-assembly that produces hydrogels. The only variable that determines success or failure is therefore the chemical identity of the 5′-substituent.
+
+- Reference 1 (5′-hydrazino) forms stable, thermoreversible hydrogels at 0.25–2 equiv KCl under essentially the same heat–cool protocol used for the target.  
+- Reference 2 (5′-amino) precipitates instead of gelling under identical conditions. The difference is attributed to the high basicity of the primary amine, which becomes protonated near neutral pH and introduces electrostatic repulsion that disrupts the required H-bonding network.  
+- The 5′-NHOH group of the target is electronically and sterically closer to the hydrazino substituent than to the simple amino group: the hydroxyl moiety lowers the pKa of the nitrogen, keeps the side chain predominantly neutral, and supplies an additional H-bond donor/acceptor. Consequently the molecule is expected to support the same G-quartet stacking and lateral fiber interactions that produce gels in Reference 1.
+
+Because at least one of the tested salt conditions (0.5 equiv KCl) lies inside the range that yields gels for the closest structural analogue, the outcome for the target is classified as Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 5′-NHOH substituent is electronically analogous to the 5′-hydrazino group (Ref. 1) that forms stable K⁺-dependent hydrogels; the added OH lowers nitrogen basicity relative to the 5′-amino analogue (Ref. 2), preserving the neutral H-bonding pattern required for G-quartet stacking and fibril formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5844</summary>
+              <pre>The target molecule features a 5′-NHOH substituent on the guanosine scaffold. This places it in the same structural family as the 5′-hydrazino and 5′-amino analogues used as primary references.  
+
+Guanosine derivatives form hydrogels via K⁺-templated G-quartet stacking followed by higher-order fiber entanglement. The 5′-substituent modulates solubility and the balance between crystallization and network formation. Reference 1 demonstrates that the 5′-hydrazino group (–CH₂NHNH₂) supplies sufficient additional hydrogen-bonding capacity and appropriate basicity to favor transparent, thermoreversible hydrogels at low KCl stoichiometry (0.25 equiv). In contrast, the simpler primary amine in Reference 2 (–CH₂NH₂) yields only rapid precipitation under identical heat–cool conditions, indicating that the substituent is insufficient to stabilize the colloidal network.  
+
+The NHOH group (–CH₂NHOH) is electronically and sterically closer to –CH₂NHNH₂ than to –CH₂NH₂: the terminal OH retains H-bond donor/acceptor functionality while the nitrogen remains weakly basic. Consequently, the same K⁺-driven quartet assembly observed for the hydrazino derivative is expected to produce a stable hydrogel rather than a crystalline precipitate. The experimental protocol supplied for the target (2 wt %, 0.5 equiv KCl, heat–cool) lies squarely inside the successful parameter space established for Reference 1.  
+
+Thus the target is predicted to form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 5′-NHOH substituent is structurally and functionally analogous to the 5′-hydrazino group that produces stable, K⁺-templated hydrogels (Ref. 1). The additional heteroatom and H-bonding capability differentiate it from the non-gelling 5′-amino analogue (Ref. 2). Under the stated heat–cool conditions with 0.5 equiv KCl, G-quartet assembly and network formation are therefore expected to dominate over precipitation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6122</summary>
+              <pre>The target molecule is a 5′-modified guanosine derivative whose structure is intermediate between the two closest reference compounds (hydrazino at chemical distance 3.19 and amino at distance 3.42). Both reference compounds and the target share the same core guanosine motif that is known to assemble into G-quartets; the only variable is the terminal 5′ substituent (–CH₂NHNH₂, –CH₂NH₂ or –CH₂NHOH) and how that substituent modulates solubility, intermolecular hydrogen-bonding and fiber-network formation in the presence of K⁺.
+
+- The 5′-hydrazino analogue forms stable, transparent, thermoreversible hydrogels at 0.25–2 equiv KCl under essentially identical heat–cool conditions. The additional N–N linkage supplies extra H-bond donors/acceptors that stabilize the longitudinal stacking of G-quartets into long fibrils, preventing macroscopic precipitation.
+- The 5′-amino analogue, lacking that extra heteroatom, simply crystallizes or precipitates under the same salt and concentration regime.
+- The 5′-NHOH substituent restores an electronegative oxygen atom adjacent to nitrogen, furnishing a hydrogen-bonding pattern and a pKa profile closer to the hydrazino case than to the simple primary amine. Consequently the molecule is expected to support the same fibrillar hydrogel network observed for the hydrazino derivative rather than the rapid precipitation seen for the amino derivative.
+
+When the target is therefore subjected to the stated conditions (2 wt % aqueous solution, 0.5 equiv KCl, heat–cool), gelation is predicted to occur within hours and to remain stable for days to weeks.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 5′-NHOH group restores an electronegative oxygen that supplies additional H-bonding capacity comparable to the gel-forming 5′-hydrazino analogue; this favors longitudinal fibril growth of G-quartets rather than the precipitation observed for the 5′-amino parent under identical KCl/heat–cool conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6115</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6223</summary>
+              <pre>The target molecule (NHOH-G) is a close structural analog of the 5′-hydrazino-guanosine reference (chemical distance ≈ 3.2), differing only by replacement of the terminal NH₂ with OH. Both the hydrazino and hydroxylamino substituents are strongly polar, H-bond-donating groups that markedly increase aqueous solubility relative to the simple 5′-amino congener.  
+
+Because the 5′-amino derivative precipitates before G₄·K⁺ quartets can assemble, while the hydrazino derivative readily forms stable, entangled nanofibrillar hydrogels under identical heat–cool conditions (2 wt %, 0.25–0.5 equiv KCl), the hydroxylamino derivative is expected to behave like the hydrazino compound. The additional OH group supplies further H-bonding capacity without introducing steric bulk that would disrupt quartet stacking or lateral fibril association. Consequently, transparent, thermoreversible hydrogels are anticipated at 0.5 equiv KCl.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;NHOH-G is a close analog of the gel-forming 5′-hydrazino-guanosine (differs only by NH₂ → OH). The hydroxylamino substituent supplies comparable polarity and H-bonding capacity, raising solubility above the precipitation threshold of 5′-amino-guanosine and enabling stable G₄·K⁺ assembly followed by lateral fibril association.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6199</summary>
+              <pre>The target molecule (NHOH-G) is a close structural analog of the 5′-hydrazino-guanosine reference (chemical distance 3.19), differing only by replacement of the terminal NH₂ with OH. Both the hydrazino and hydroxylamino substituents are strongly polar, H-bond-rich functional groups that markedly increase aqueous solubility relative to the simple 5′-amino congener.  
+
+Because solubility is no longer limiting, the nucleoside can reach the monomer concentration required for K⁺-templated G₄-quartet stacking. The additional H-bond donor/acceptor sites on the NHOH moiety further stabilize lateral association of the G₄ columns into an entangled nanofibrillar network—the same mechanism that produces a thermoreversible, self-standing hydrogel in the hydrazino case.  
+
+The experimental conditions supplied for the target (2 wt % nucleoside, 0.5 equiv KCl, heat–cool) are essentially identical to those that yield stable gels for the hydrazino derivative and that fail only for the poorly soluble amino derivative. Consequently, gelation is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;NHOH substitution confers high aqueous solubility and multiple H-bond sites, enabling K⁺-templated G₄ assembly and lateral fibril association exactly as observed for the 5′-hydrazino analog under identical conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5923</summary>
+              <pre>The target molecule (NHOH-G) is a close structural analog of the 5′-hydrazino-guanosine reference (chemical distance ≈ 3.19), differing only by replacement of the terminal NH₂ with OH. Both the hydrazino and hydroxylamino substituents are strongly hydrophilic and capable of donating/accepting multiple hydrogen bonds; this markedly raises aqueous solubility relative to the simple 5′-amino-guanosine congener (reference 2), which precipitates instead of assembling.  
+
+Consequently, under the stated heat–cool conditions (2 wt % nucleoside + 0.5 equiv KCl) the monomer concentration remains high enough for K⁺-templated G₄-quartet formation. Lateral association of the quartets is further stabilized by the additional H-bonding sites on the 5′-NHOH moiety, producing an entangled nanofibrillar network that yields a stable hydrogel—exactly as observed for the hydrazino derivative.  
+
+(The 2′-amino reference is less relevant here because its modification is on the ribose ring rather than the 5′ position and therefore does not address the solubility issue that governs 5′-substituted guanosines.)
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydroxylamino-guanosine (NHOH-G)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@@H]2O[C@H](CNO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % NHOH-G in water with 0.5 equiv KCl; heat–cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 5′-NHOH substituent is expected to raise solubility and supply extra H-bond donors/acceptors in the same manner as the 5′-hydrazino analog, enabling stable G₄·K⁺ assembly and hydrogel formation rather than precipitation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

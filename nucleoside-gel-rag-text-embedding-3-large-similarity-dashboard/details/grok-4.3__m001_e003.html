@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 1-3</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 1-3</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>1</strong></div>
+      <div>Experiment ID<strong>3</strong></div>
+      <div>Chemical description<strong>Deoxyguanosine (dG)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>NaCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Crystallizes instead of stable gel.
+
+Na⁺ ions favor ordered molecular packing. Due to the relatively limited hydrogen-bonding and stacking capability of Gd, the supramolecular assemblies preferentially crystallize rather than forming a stable gel network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5927</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6176</summary>
+              <pre>The molecule deoxyguanosine (dG) is a well-known nucleoside gelator whose self-assembly is driven by Hoogsteen hydrogen-bonded G-quartets that further stack into G-quadruplex fibrils; these fibrils entangle to produce a hydrogel network. The presence of alkali-metal cations (here Na⁺ from 0.2 M NaCl) stabilizes the quartet by coordinating to the O6 carbonyl oxygens, lowering the solubility of the assembled state and favoring gelation upon cooling from a hot solution.  
+
+At the stated concentration (14 mg mL⁻¹ ≈ 52 mM) the heat-cool cycle supplies sufficient thermal energy to dissolve the solid, after which rapid cooling allows the quartets to nucleate before the molecules can crystallize or precipitate. Consequently a self-supporting gel is obtained.  
+
+(The 2′-deoxy substitution slightly weakens inter-quartet hydrogen bonding relative to riboguanosine, yet Na⁺-stabilized dG still forms a macroscopic gel under these conditions; only at much lower ionic strength or without a heat-cool trigger does precipitation dominate.)
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na⁺ cations template G-quartet formation; heat-cool cycle at 52 mM drives supersaturation and fibril entanglement before crystallization, yielding a stable hydrogel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5849</summary>
+              <pre>The molecule deoxyguanosine (dG) is a well-known nucleoside capable of self-assembly via Hoogsteen hydrogen bonding into G-quartets. In aqueous media these quartets stack into higher-order G-quadruplex fibrils that ultimately produce a macroscopic hydrogel network. Alkali-metal cations (Na⁺ in the present case) stabilize the quartet by coordinating to the O6 carbonyl oxygens, lowering the critical gelation concentration and accelerating fibril formation.  
+
+The experimental protocol (14 mg mL⁻¹ dG, 0.2 M NaCl, heat-cool) supplies both the required cation concentration and the thermal energy needed to dissolve the solid and allow supersaturation upon cooling. Under these conditions the system crosses the gelation threshold within minutes to hours, producing a stable, self-supporting hydrogel rather than crystals or a precipitate.  
+
+Consequently the outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;dG self-assembles into G-quartets that are stabilized by Na⁺ coordination; the heat-cool cycle at 14 mg mL⁻¹ in 0.2 M NaCl drives supersaturation and rapid fibril network formation, yielding a stable hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5756</summary>
+              <pre>The molecule deoxyguanosine (dG) is a well-known nucleoside capable of self-assembly via Hoogsteen hydrogen bonding into planar G-quartets. These quartets stack into columnar structures (G-quadruplexes) whose stability is strongly enhanced by alkali-metal cations, particularly Na⁺.  
+
+Under the stated conditions (14 mg mL⁻¹ dG in 0.2 M NaCl, heat–cool cycle) the Na⁺ ions template quartet formation while the thermal cycle dissolves any kinetic aggregates and allows the system to reach the thermodynamically favored, entangled fibrillar network upon cooling. The resulting three-dimensional mesh immobilizes the solvent, producing a hydrogel.  
+
+Consequently the experiment yields a gel.  
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;dG self-assembles into Na⁺-stabilized G-quadruplexes that form an entangled fibrillar network upon cooling, immobilizing the solvent.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5865</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6120</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). Its structure is the parent guanosine nucleoside scaffold (without the 8-aza substitution present in reference 3 or the isoguanine base isomerization present in references 1–2).  
+
+All three reference compounds exhibit a clear, consistent selectivity pattern for alkali-metal-ion-mediated hydrogelation:  
+- Gelation occurs only when the metal cation can template a stable, stacked supramolecular assembly (typically K⁺ or, in the case of isoGd, also Li⁺).  
+- Na⁺ consistently fails to produce gels; the systems remain solutions or form precipitates.  
+
+Because dG shares the same core hydrogen-bonding face and lacks any structural feature that would invert this Na⁺/K⁺ selectivity, the same outcome is expected under the stated conditions (0.2 M NaCl, heat–cool cycle).  
+
+Consequently the experiment yields “No Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na⁺ fails to template stable assemblies in all structurally related nucleosides (isoGd, z8isoGd, z8Gd). dG lacks any modification that would reverse this selectivity, so the system remains a solution or precipitate.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5809</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). Its core nucleobase scaffold is identical to that of reference 3 (z8Gd) except for the absence of the 8-aza nitrogen; the sugar moiety and all hydrogen-bonding edges are the same. Reference 3 explicitly demonstrates that z8Gd produces neither hydrogels nor stable supramolecular assemblies in 0.2 M NaCl under a standard heat-cool cycle.  
+
+The same NaCl condition likewise fails to induce gelation for the two isoguanine analogues (references 1 and 2), indicating that Na⁺ does not template the requisite G-quartet or ribbon-type stacking for this family of deoxy-nucleosides. Because the structural perturbation between dG and z8Gd is minimal and the experimental outcome for NaCl is uniformly negative across all chemically proximal analogues, dG is predicted to remain in solution or to precipitate rather than to form a hydrogel.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG is structurally closest to z8Gd (ref 3), which shows no gelation in 0.2 M NaCl. All other NaCl experiments on related deoxy-nucleosides (refs 1-2) are likewise negative; Na⁺ does not stabilize the necessary assemblies.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5666</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG). This structure is the direct parent of the 8-aza analogue examined in Reference 3 (z8Gd). Reference 3 explicitly shows that z8Gd produces no hydrogel in 0.2 M NaCl under a standard heat-cool cycle; the system remains a sol or forms only a precipitate.  
+
+The same NaCl outcome is observed for the closely related isomer 2&#x27;-deoxyisoguanosine (Reference 2) and its 8-aza derivative (Reference 1). In both cases the Na+ cation fails to stabilize the requisite supramolecular stacks or G-quartet-like assemblies that would lead to gelation.  
+
+Because dG itself lacks the structural modifications (8-aza substitution or base isomerization) that enable gelation even with K+ or Li+, and because Na+ is uniformly ineffective across the entire reference series, the identical solvent-additive and heat-cool protocol applied to dG is predicted to yield no hydrogel.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG is the direct parent of z8Gd (Ref. 3), which shows no gelation in 0.2 M NaCl. The same NaCl failure is recorded for isoGd and z8isoGd (Refs. 1-2). Na+ does not stabilize the assemblies required for hydrogel formation in this nucleoside family; therefore dG + NaCl also remains a sol or precipitate.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5780</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5989</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG), a canonical guanine nucleoside. Its closest structural analogues among the references are isoGd (Ref. 2) and z8Gd (Ref. 3). Both of those analogues remain in solution or precipitate when subjected to an identical heat-cool cycle in 0.2 M NaCl; neither produces a self-supporting hydrogel.  
+
+The same NaCl condition likewise fails to induce gelation for the more distant but still related 8-aza-isoguanine derivative (Ref. 1). In all three reference cases the alkali-metal cation selectivity is strict: only K⁺ (and, for isoGd, Li⁺) supports the requisite Hoogsteen-type quartet or ribbon stacking, while Na⁺ does not. Because dG shares the same core hydrogen-bonding face and lacks any structural feature that would invert this selectivity, the NaCl experiment is expected to behave identically—i.e., the system will either remain a free-flowing solution or form a crystalline precipitate rather than a stable gel.
+
+Final answer: No Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG is structurally closest to isoGd and z8Gd, both of which remain soluble or precipitate under identical NaCl heat-cool conditions. Na⁺ does not stabilize the Hoogsteen quartet/ribbon assemblies required for hydrogelation in this nucleoside family; only K⁺ (and sometimes Li⁺) does. Hence the system is predicted to yield either a free-flowing solution or a crystalline precipitate rather than a gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5946</summary>
+              <pre>The target molecule is deoxyguanosine (dG), a canonical purine nucleoside whose base presents a standard guanine hydrogen-bonding pattern. All three reference compounds are close structural analogs (differing only by 8-aza substitution and/or transposition of the exocyclic amino/carbonyl groups).  
+
+Across the entire reference set, NaCl consistently fails to induce gelation:  
+- z8isoGd remains a sol or precipitate in 0.2 M NaCl.  
+- isoGd likewise yields only solution or precipitate in 0.2 M NaCl (while forming stable gels with LiCl or KCl).  
+- z8Gd shows no hydrogel formation in NaCl (or any other alkali-metal salt).  
+
+The experimental protocol supplied for dG (1.4 mg/100 µL, 0.2 M NaCl, heat–cool) is essentially identical to the conditions used in the references. Because Na+ does not stabilize the requisite G-quartet or ribbon-type assemblies for any of the closely related nucleosides, and because the concentration and thermal history match those that produce “No Gel” outcomes, dG is predicted to remain a sol or to precipitate rather than to form a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All reference nucleosides (isoGd, z8isoGd, z8Gd) fail to gel in 0.2 M NaCl under identical heat-cool protocols; Na+ does not stabilize the supramolecular assemblies that Li+ or K+ can support. The target dG shares the same concentration, solvent, and thermal history, so it likewise remains a sol or precipitate.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5405</summary>
+              <pre>The target molecule is 2&#x27;-deoxyguanosine (dG), whose base is guanine. Among the supplied references, the two closest structures (chemical distances 1.29–1.39) are the isoguanine analogues isoGd and z8isoGd. Both of those molecules are explicitly reported to remain in solution or to precipitate rather than gel when NaCl is the additive (0.2 M, heat–cool protocol identical to the target conditions).  
+
+The more distant 8-aza-guanine reference (z8Gd) likewise yields “No Gel” with NaCl. Guanine and isoguanine differ in hydrogen-bonding pattern, yet the alkali-metal selectivity observed across all three references is consistent: Na⁺ does not stabilize the requisite supramolecular assemblies under the stated concentration and thermal cycle, whereas K⁺ (and sometimes Li⁺) can. Consequently, the same outcome is expected for unmodified dG with NaCl.
+
+Final answer:  
+[{
+    &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Closest reference structures (isoGd, z8isoGd) both fail to gel in 0.2 M NaCl under an identical heat–cool protocol; Na⁺ does not stabilize the necessary assemblies for any of the guanine/isoguanine nucleosides tested.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6313</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6317</summary>
+              <pre>The target molecule is deoxyguanosine (dG), the canonical nucleoside that serves as the structural parent of the three reference compounds. All references share the same 2′-deoxyribose moiety and the same experimental protocol (1.4 mg/100 µL nucleoside, 0.2 M alkali-metal chloride, heat–cool cycle).  
+
+- isoGd (Ref. 2) forms stable hydrogels with Li⁺ or K⁺ but yields only solution or precipitate with Na⁺.  
+- z8isoGd (Ref. 1) is even more selective, gelling exclusively with K⁺ and remaining soluble or precipitating with Na⁺.  
+- z8Gd (Ref. 3) fails to gel with any alkali cation.  
+
+The common mechanistic thread is that Na⁺ lacks the optimal ionic radius and coordination geometry needed to template the Hoogsteen-paired quartets/pentads that ultimately produce the fibrillar network required for gelation. Because dG possesses the same core hydrogen-bonding face and lacks any structural feature that would invert this Na⁺ selectivity, the same outcome is expected: the molecule remains in solution or forms a precipitate rather than a hydrogel.  
+
+Consequently the experimental entry is reported as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na⁺ does not template the Hoogsteen quartets/pentads required for fibril formation in any of the structurally related nucleosides (isoGd, z8isoGd, z8Gd). dG shares the same core recognition elements and therefore likewise yields only solution or precipitate under the stated conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6071</summary>
+              <pre>The target molecule is unmodified 2′-deoxyguanosine (dG). Its core scaffold is isosteric with the three reference compounds, but it lacks both the C8→N8 substitution (present in z8isoGd and z8Gd) and the O6/N3 regiochemical shift that defines the isoguanine isomers (isoGd and z8isoGd).  
+
+All three references demonstrate a strict cation-size dependence for hydrogelation under the exact heat-cool protocol given in the query (1.4 mg/100 µL nucleoside, 0.2 M alkali-metal chloride). Na⁺ consistently fails to template the required Hoogsteen-paired quartets/pentads:
+- isoGd (Reference 2) yields only sol/precipitate with NaCl.  
+- z8isoGd (Reference 1) likewise fails with NaCl.  
+- z8Gd (Reference 3) shows no gelation with any alkali cation, including Na⁺.  
+
+Because dG possesses neither the structural features that relax Na⁺ selectivity in the iso-series nor the 8-aza modification that abolishes gelation altogether, it inherits the same Na⁺ incompatibility. Consequently the system remains a free-flowing solution or forms only transient precipitates after the heat-cool cycle.  
+
+Final classification: No Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG lacks both the isoguanine regiochemistry that permits Li⁺/K⁺ gelation in isoGd and the 8-aza substitution that abolishes gelation in z8Gd. All reference compounds fail to gel with Na⁺ under identical conditions; unmodified dG therefore also remains a sol or precipitate.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6552</summary>
+              <pre>The target molecule is deoxyguanosine (dG), the canonical DNA nucleoside. Its hydrogen-bonding face is the standard Hoogsteen pattern of guanine, which in principle can support G-quartet formation. However, the experimental references demonstrate a clear cation selectivity for gelation in this structural family:
+
+- isoGd (structurally closest to dG) forms stable hydrogels with K⁺ or Li⁺ but yields only solutions or precipitates with Na⁺.  
+- z8isoGd gels exclusively with K⁺; Na⁺ again produces no network.  
+- z8Gd fails to gel with any alkali cation.
+
+Na⁺ has neither the optimal ionic radius nor the coordination geometry required to template and stabilize the stacked quartets/pentads that ultimately produce the fibrillar hydrogel network. Consequently, under the stated heat–cool protocol (1.4 mg/100 µL, 0.2 M NaCl) the system remains a sol or forms only transient aggregates that collapse or precipitate.  
+
+This ion-selectivity pattern, reinforced by the known preference of G-quadruplexes for K⁺ over Na⁺ in aqueous media, leads directly to the prediction below.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Deoxyguanosine (dG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2C[C@H](O)[C@@H](CO)O2)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL Gd in 0.2 M NaCl; heat-cool.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;dG shares the standard guanine hydrogen-bonding face but, like the reference isoGd and z8isoGd analogues, requires K⁺ (or Li⁺ for isoGd) to template stable quartets/pentads. Na⁺ lacks the correct size and coordination geometry, so no fibrillar network forms; the system remains a sol or precipitate, exactly as observed for isoGd + NaCl under identical conditions.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

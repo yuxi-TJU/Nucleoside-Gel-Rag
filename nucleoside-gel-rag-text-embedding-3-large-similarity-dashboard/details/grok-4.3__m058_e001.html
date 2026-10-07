@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 58-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 58-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>58</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>N₄-tetradecanoyl-2′,3′-dideoxycytidine</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>H₂O</strong></div>
+      <div>Detailed conditions<strong>Pure water.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">No gelation
+
+When neither 2′- nor 3′-hydroxyl functionalities are present, there is reduced gelation, correlating with higher partition coefficient and lower predicted aqueous solubility.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5214</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5215</summary>
+              <pre>The molecule is an amphiphilic nucleoside derivative featuring a long C14 acyl chain attached to the exocyclic N4 of a 2′,3′-dideoxycytidine scaffold. This architecture supplies (i) multiple H-bond donor/acceptor sites (amide NH, cytosine carbonyls and ring nitrogens, and the single 5′-OH) that can form directional intermolecular H-bonds and (ii) a sufficiently hydrophobic tail to drive solvophobic association in water. In pure aqueous medium these two orthogonal interactions commonly produce the anisotropic, entangled fibrillar networks required for hydrogelation.  
+
+Because the solvent is neat water (no competing organic co-solvent or extreme pH that would disrupt H-bonding), the balance of forces favors self-assembly into a gel rather than rapid crystallization or macroscopic phase separation. Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C14 tail and multiple H-bonding sites (amide, cytosine, 5′-OH) that together promote anisotropic fibril formation and hydrogelation in neat water.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5172</summary>
+              <pre>The molecule in question is an amphiphilic nucleoside derivative featuring a long (C14) hydrophobic acyl tail attached to a cytosine-based headgroup. The headgroup retains multiple H-bond donor/acceptor sites (amide NH, cytosine carbonyls and ring nitrogens, and the 5′-CH₂OH), while the saturated alkyl chain supplies a strong hydrophobic driving force in aqueous media.  
+
+In pure water these complementary non-covalent interactions—intermolecular H-bonding between nucleobase/amide moieties plus hydrophobic collapse of the tetradecanoyl chains—commonly produce the anisotropic, entangled assemblies required for hydrogelation. Although the 2′,3′-dideoxy modification removes two secondary hydroxyls, the remaining functional groups are still sufficient to sustain the necessary supramolecular contacts, as demonstrated by numerous closely related N⁴-acyl-2′,3′-dideoxy- and 2′-deoxycytidine analogues that gel water at modest concentrations.  
+
+Consequently, under the stated conditions (pure H₂O) the compound is expected to produce a stable gel within hours to days.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C14 tail and multiple H-bonding sites on the cytosine/amide/5′-OH; these features drive the formation of entangled fibrillar networks that immobilize water.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5256</summary>
+              <pre>The target molecule is an amphiphilic nucleoside derivative bearing a C14 acyl chain at N4. The long hydrophobic tail combined with the polar nucleobase and 5′-CH2OH head-group creates the classic structural motif for hydrogelators: hydrophobic-effect-driven self-assembly in water is reinforced by Watson–Crick-type hydrogen bonding and π-stacking of the cytosine rings. Although the 2′,3′-dideoxy modification removes two potential H-bond donors relative to the ribo or 2′-deoxy series, the remaining functional groups are still sufficient to sustain the one-dimensional fibrillar networks required for gelation. Consequently, in pure water the molecule is expected to undergo rapid nucleation and growth of a self-supporting hydrogel network (typically within minutes to a few hours at millimolar concentrations).  
+
+No experimental counter-indications (precipitation, crystallization, or immediate dissolution) are present for this solvent, so the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C14 tail; hydrophobic collapse plus residual H-bonding/π-stacking of cytosine yields stable fibrillar hydrogel in water.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5387</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5196</summary>
+              <pre>The target molecule is an N₄-acyl-2′,3′-dideoxycytidine bearing a C14 (tetradecanoyl) side chain. This structure is chemically closest to the C12 congener in Reference 1 (Tanimoto distance 0.35) and belongs to the same homologous series examined in References 2 and 3.  
+
+Across the entire series, every member was experimentally tested in neat water at the same concentration regime used for the target. In all three cases the outcome was identical: the compound remained soluble or formed only a clear solution; no self-supporting gel network was obtained. The absence of gelation is therefore a consistent structure–property relationship for this scaffold in pure water, independent of modest chain-length variation.  
+
+Consequently the target molecule is also predicted to give “No Gel” under the stated conditions.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All close homologues (C8–C12 acyl chains) fail to gel in neat water; the C14 analogue follows the same pattern.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5549</summary>
+              <pre>The target molecule is a close structural analog (C14 acyl chain) of the C12–C8 dideoxycytidine derivatives in References 1–3. All three references exhibit identical behavior in pure water: the compounds remain soluble or form only transient aggregates that never produce a stable gel network. The modest increase in hydrophobicity conferred by two additional methylene units is insufficient to alter this outcome, as gelation in this structural class still requires a binary EtOH/H₂O co-solvent to modulate solubility and drive anisotropic self-assembly. Consequently, the experimental outcome in neat H₂O is predicted to be “No Gel.”
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;All structurally analogous N₄-acyl-2′,3′-dideoxycytidines (C12–C8) fail to gel in neat water; the additional two carbons in the target do not change this established pattern.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5415</summary>
+              <pre>The provided references describe a series of closely related N₄-acyl-2′,3′-dideoxycytidine derivatives that differ only in acyl-chain length (C8–C12). In every case the outcome in neat water is identical: the compound remains soluble or forms only a transient sol that collapses or precipitates; no stable gel network is obtained.  
+
+The target molecule (C14 acyl chain) is only one methylene unit longer than the closest reference (C12). This incremental change does not alter the fundamental solubility profile or the absence of the hydrogen-bonding/hydrophobic balance required for gelation in pure water. Consequently the same “No Gel” result is expected under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All structurally analogous N₄-acyl-2′,3′-dideoxycytidines (C8–C12) fail to gel in neat water; the C14 homologue is expected to behave identically.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5463</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5574</summary>
+              <pre>The provided references describe a clear and consistent structure–property trend for 2′,3′-dideoxycytidine derivatives acylated at N4 with linear saturated chains. In every case examined (C8, C10 and C12 acyl chains), the compounds remain fully soluble or form only transient precipitates in neat water; none produce a self-supporting gel.  
+
+The target molecule differs from the closest reference (C12) by only two methylene units. Extending the hydrophobic tail increases overall lipophilicity and raises the critical aggregation concentration, but does not alter the fundamental requirement for a polar co-solvent (ethanol–water mixtures) to achieve the delicate balance of solubility and directional hydrogen-bonding that leads to gelation. Consequently, the same outcome observed for the shorter homologues is expected: the compound dissolves or slowly precipitates in pure water without forming a gel network.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All structurally analogous N4-acyl-2′,3′-dideoxycytidines (C8–C12 chains) fail to gel in neat water; the additional two methylene groups in the C14 tail further increase hydrophobicity without supplying the co-solvent polarity needed for stable fibrillar networks.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5422</summary>
+              <pre>The provided reference data covers a series of closely related \(N_4\)-acyl-2′,3′-dideoxycytidine derivatives that differ only in acyl-chain length (C8–C12). In every case the pure-water experiment returns an unambiguous “No Gel” outcome: the compounds either remain soluble or rapidly precipitate/collapse rather than forming a self-supporting network.  
+
+The target molecule is the direct C14 homologue of the C12 reference (chemical distance expected to be &lt;0.35). Extending the hydrophobic tail by two methylene units increases overall amphiphilicity but does not alter the fundamental solubility profile in neat water; literature on this chemotype shows that such lengthening merely shifts the precipitation threshold without enabling gelation in the absence of a co-solvent. Consequently the same “No Gel” classification applies under the stated pure-water conditions.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All structurally analogous 2′,3′-dideoxycytidine derivatives (C12, C10 and C8 acyl chains) return &#x27;No Gel&#x27; in pure water. The C14 target is only two carbons longer than the nearest reference and therefore follows the same solubility/precipitation behavior; no gel network is formed.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5393</summary>
+              <pre>The target molecule is a close structural analog of the provided references, differing only by extension of the N4-acyl chain by two methylene units (C14 vs. C12 in the nearest reference). All three reference compounds (C8, C10, and C12 acyl chains) are explicitly reported to produce “No Gel” in pure water under identical conditions.  
+
+These dideoxycytidine derivatives require a co-solvent such as ethanol to achieve the necessary solubility–hydrophobicity balance for self-assembly into a gel network. In pure water the compounds are too hydrophobic, leading to either insolubility or rapid precipitation rather than gelation. Extending the chain length to C14 increases hydrophobicity still further and therefore does not reverse this behavior; the outcome in neat water remains “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Nearest reference (C12 acyl chain, chemical distance 0.35) and more distant analogs (C10, C8) all give no gelation in pure water. The additional two methylene units in the target increase hydrophobicity, reinforcing the same outcome: insufficient solubility for gel-network formation without a co-solvent.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5471</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5413</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative bearing a C14 (tetradecanoyl) acyl chain. All three reference compounds share the identical nucleoside core and differ only in acyl-chain length (C12, C10, C8). In every case, pure water produced no gel; gelation occurred only in EtOH/H₂O mixtures.  
+
+Because the C14 chain is longer than the C12 reference, aqueous solubility is further reduced. The mechanistic explanations supplied for the references explicitly link insufficient aqueous solubility to the absence of self-assembly in water. Consequently, the same outcome—no gel—is expected for the target in pure water.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All structurally analogous 2′,3′-dideoxycytidine derivatives (C12–C8 acyl chains) fail to gel in pure water; the longer C14 chain further lowers aqueous solubility, reinforcing the same solubility-limited outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5542</summary>
+              <pre>The target molecule is a 2′,3′-dideoxycytidine derivative bearing a C14 acyl chain. All structurally analogous compounds in the reference set (C12, C10 and C8 acyl chains) fail to produce gels in pure water; gelation occurs only in binary EtOH/H₂O mixtures. The mechanistic explanations supplied with the references consistently attribute the lack of gelation in neat water to insufficient aqueous solubility and an inadequate balance of hydrophobic/hydrophilic interactions needed for self-assembly. Extending the acyl chain from C12 to C14 further decreases water solubility, reinforcing the same outcome. Consequently the target molecule is predicted to give “No Gel” under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;All reference 2′,3′-dideoxycytidine derivatives (C8–C12 acyl chains) give no gel in neat water because aqueous solubility is too low to support the intermolecular H-bonding and hydrophobic packing required for self-assembly. The C14 chain of the target further lowers solubility, confirming the same negative result.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5456</summary>
+              <pre>The target molecule is a close structural analog of the C12–C8 acyl chain variants in References 1–3 (all 2′,3′-dideoxycytidine nucleosides bearing a single free hydroxyl). In every case those analogs fail to gel in neat water; the mechanistic explanations uniformly cite insufficient aqueous solubility to drive the intermolecular H-bonding and hydrophobic packing needed for self-assembly. Extending the acyl chain to C14 further lowers water solubility (higher clogP), reinforcing the same outcome.
+
+Consequently the single listed condition yields “No Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;N₄-tetradecanoyl-2′,3′-dideoxycytidine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)Nc1ccn([C@H]2CC[C@@H](CO)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;Pure water.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;All close analogs (C12–C8 acyl chains) fail to gel in neat water because aqueous solubility is too low to support the required H-bonding/hydrophobic balance. The longer C14 chain lowers solubility still further, precluding gelation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

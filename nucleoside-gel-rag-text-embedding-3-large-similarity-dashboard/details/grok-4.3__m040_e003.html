@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 40-3</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 40-3</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>40</strong></div>
+      <div>Experiment ID<strong>3</strong></div>
+      <div>Chemical description<strong>Guanosine-5′-Hydrazide</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>NH₄Cl</strong></div>
+      <div>Detailed conditions<strong>Acetate buffer (pH 6.0) + NH₄⁺.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Gels form with lower efficiency vs K⁺; thermoreversible.
+
+NH₄⁺ ions, having an ionic radius similar to K⁺, can template the formation of G-quartets which stack into columns, inducing gelation, though less efficiently than K⁺.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6707</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6622</summary>
+              <pre>The molecule in question is a guanosine derivative bearing a 5′-hydrazide functional group. Guanosine nucleosides are well-known to self-assemble into G-quartet (G4) stacks that further organize into extended fibrillar networks capable of immobilizing solvent and thereby forming hydrogels. This assembly is strongly promoted by monovalent cations that occupy the central channel of each G-quartet; both K⁺ and NH₄⁺ are particularly effective stabilizers because their ionic radii match the quartet cavity.
+
+In the present experiment the solvent is an acetate buffer at pH 6.0 that additionally supplies NH₄⁺. Under these mildly acidic, ammonium-rich conditions the hydrazide moiety remains protonated yet does not disrupt the Hoogsteen hydrogen-bonding pattern required for G4 formation. Consequently the NH₄⁺ ions template quartet stacking, leading to rapid growth of supramolecular fibers that percolate into a macroscopic gel within hours. No competing processes (rapid crystallization, precipitation, or immediate dissolution) are expected under these conditions.
+
+Thus the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+    &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;NH₄⁺ templates G-quartet formation; the 5′-hydrazide does not interfere with Hoogsteen pairing, enabling rapid fibril growth and gelation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6343</summary>
+              <pre>The molecule Guanosine-5′-hydrazide is a well-documented nucleoside gelator whose self-assembly is driven by Hoogsteen-type hydrogen bonding that produces stacked G-quartets. These quartets are further stabilized by coordination to monovalent cations, particularly K⁺ or NH₄⁺, which occupy the central carbonyl-lined channel.  
+
+In the stated medium (acetate buffer, pH 6.0, containing NH₄⁺) the ammonium ion therefore supplies the requisite templating cation. At the mildly acidic pH the hydrazide moiety remains largely protonated yet still participates in the hydrogen-bonding network, allowing the quartets to elongate into fibrils that ultimately percolate into a macroscopic hydrogel.  
+
+Because gelation occurs on the experimental time scale (hours) under these conditions, the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+    &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;NH₄⁺ templates G-quartet formation; the resulting fibrils entangle to produce a stable hydrogel within hours.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7156</summary>
+              <pre>The molecule in question is a guanosine derivative bearing a 5′-hydrazide functional group. Guanosine nucleosides are well-known to self-assemble into G-quartets that further stack into G-quadruplex fibrils; these fibrils readily entangle to produce hydrogels when the assembly is stabilized by appropriate monovalent cations.  
+
+NH₄⁺ is a canonical G-quadruplex stabilizer (comparable in ionic radius and hydration energy to K⁺) and is therefore expected to promote quartet formation. The stated medium—acetate buffer at pH 6.0—maintains the guanine N1 protonation state required for Hoogsteen hydrogen bonding while supplying the requisite NH₄⁺ counter-ion. Under these conditions the molecule therefore undergoes rapid, hierarchical self-assembly into a fibrillar network that macroscopically manifests as a gel.  
+
+No competing processes (precipitation, crystallization, or rapid hydrolysis of the hydrazide) are favored at pH 6.0 in the presence of NH₄⁺, reinforcing gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;NH₄⁺ stabilizes G-quartets, enabling fibrillar hydrogel formation at pH 6.0.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6943</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6939</summary>
+              <pre>The target molecule is a 5&#x27;-modified guanosine derivative whose core retains the guanine base and ribose stereochemistry required for G-quartet assembly. NH₄⁺ is a well-documented monovalent cation that stabilizes G-quartets (comparable in ionic radius and hydration energy to K⁺). In the reference data, guanosine itself forms hydrogels in the presence of K⁺ or KB(OH)₄; the same supramolecular logic therefore applies when NH₄⁺ is supplied.  
+
+The stated conditions (acetate buffer pH 6 + NH₄⁺) furnish both the necessary cation and an ionic strength sufficient for quartet stacking and fiber entanglement. No competing factors (e.g., strongly chaotropic ions, insufficient cation concentration, or chemical incompatibility) are present that would favor precipitation or rapid collapse. Consequently the mixture is predicted to produce a self-supporting hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;NH₄⁺ stabilizes G-quartets analogously to K⁺; the reference guanosine data show stable gels under comparable monovalent-cation conditions, and no destabilizing factors are indicated here.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6948</summary>
+              <pre>The target molecule is a 5&#x27;-modified guanosine derivative whose Hoogsteen edge, N7, O6 and ribose OH groups remain intact. These sites are sufficient for G-quartet assembly, exactly as seen with unmodified guanosine (Reference 2) and its 2&#x27;-amino analogue (Reference 1).  
+
+NH₄⁺ is a well-documented G-quartet stabilizer whose ionic radius and hydrogen-bonding pattern are comparable to K⁺; both ions template the same cyclic quartet geometry. Reference 2 explicitly shows stable hydrogel formation once a sufficient concentration of K⁺ (or KB(OH)₄) is supplied, while NH₄⁺-containing buffers have been reported in the broader G-quartet literature to produce analogous networks. The acetate buffer at pH 6 merely maintains solubility and does not compete with quartet hydrogen bonding.  
+
+Consequently, the combination of an intact guanosine core plus NH₄⁺ is predicted to drive self-assembly into a fibrillar hydrogel on the experimental time scale.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Intact Hoogsteen face permits G-quartet formation; NH₄⁺ templates quartets analogously to K⁺ (Refs 1–2); acetate buffer does not disrupt assembly.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6887</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6592</summary>
+              <pre>The target molecule is a close structural analog of guanosine, differing only by replacement of the 5′-CH₂OH with a 5′-CONHNH₂ hydrazide. This modification preserves the guanine base (essential for Hoogsteen-paired G-quartet assembly) and the 2′,3′-diol, while the polar hydrazide increases aqueous solubility and adds supplementary hydrogen-bonding sites that can reinforce fibrillar networks.
+
+Reference data show that guanosine and its 2′-amino-2′-deoxy derivative form hydrogels when a monovalent cation capable of coordinating the G-quartet cavity is supplied (K⁺, and to a lesser extent Na⁺). NH₄⁺ possesses an ionic radius (≈1.48 Å) nearly identical to K⁺ and is well-documented to stabilize G-quadruplexes. Consequently, the supplied NH₄⁺ in acetate buffer (pH 6) is expected to template quartet stacking. The buffered pH further favors the neutral guanine tautomer required for hydrogen bonding, while the hydrazide moiety helps suppress the rapid crystallization/precipitation observed with unmodified guanosine under low-salt or mismatched-cation conditions.
+
+Taken together, these structural and literature analogies indicate that a self-supporting hydrogel will form.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The guanine moiety supports G-quartet formation; NH₄⁺ has an ionic radius comparable to K⁺ and stabilizes the quartet cavity. The 5′-hydrazide adds H-bonding capacity and solubility, favoring a persistent fibrillar network rather than rapid collapse or crystallization.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7047</summary>
+              <pre>The target molecule is a close structural analog of guanosine (chemical distance ~1.58 from the supplied references), differing only by replacement of the 5′-CH₂OH with a 5′-C(O)NHNH₂ hydrazide. Guanosine and its 2′- or 5′-modified congeners form hydrogels via G-quartet stacking when the central cation is of appropriate size and coordination geometry (K⁺, NH₄⁺).  
+
+NH₄⁺ has an ionic radius (1.43 Å) nearly identical to K⁺ (1.33 Å) and is well-documented to occupy the quartet channel, furnishing the same electrostatic stabilization observed in the KCl and KB(OH)₄ entries of References 2 and 3. The acetate buffer at pH 6.0 supplies the requisite ionic strength and does not introduce competing borate or silver ions that are shown to abolish gelation (Reference 1). The hydrazide moiety adds peripheral hydrogen-bonding capacity but does not disrupt the Hoogsteen face or the ribose pucker required for quartet assembly; analogous 5′-functionalized guanosines still gel under monovalent-cation conditions.  
+
+Consequently, the single reported condition (NH₄Cl / acetate pH 6) is expected to produce a self-supporting hydrogel on the laboratory time scale, matching the “Gel” outcome recorded for K⁺/NH₄⁺-containing experiments in the reference set.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;NH₄⁺ has essentially the same ionic radius and coordination preference as K⁺ and therefore templates G-quartet formation. The 5′-hydrazide substitution does not occlude the Hoogsteen edge or alter ribose geometry, so quartet stacking and hydrogelation proceed analogously to the KCl/KB(OH)₄ conditions that produce stable gels in References 2 and 3. The pH-6 acetate buffer supplies appropriate ionic strength without introducing inhibitory species (Ag⁺, excess borate) known to prevent gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7022</summary>
+              <pre>The target molecule is a close structural analog of guanosine (chemical distance ≈1.58), differing only by replacement of the 5′-CH₂OH with a 5′-C(O)NHNH₂ hydrazide. This modification preserves the Hoogsteen edge and the ribose diol required for G-quartet stacking while adding an extra H-bond donor/acceptor that can further stabilize fibrillar networks.
+
+G-quartet assembly, the structural prerequisite for gelation in this chemotype, is known to be templated by K⁺, NH₄⁺, or certain borate anions. Reference data show that:
+- Guanosine itself forms hydrogels with 0.2 M KCl (albeit sometimes transient).
+- The 2′-amino-2′-deoxy analog gels reliably with KCl/NaCl mixtures.
+- Both D- and L-guanosine gel with NaB(OH)₄.
+
+NH₄⁺ has an ionic radius and hydration energy nearly identical to K⁺ and is documented to occupy the central channel of G-quartets. Consequently, the supplied conditions (acetate buffer pH 6 + NH₄⁺) are expected to drive quartet formation and subsequent entanglement into a self-supporting network. No reference experiment shows outright precipitation or rapid collapse under ammonium-containing conditions when the nucleobase and sugar stereochemistry remain intact.
+
+Thus the prediction is Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule retains the Hoogsteen face and ribose geometry needed for G-quartet stacking. NH₄⁺ has essentially the same ionic radius and coordination preference as K⁺, which reliably templates quartets in guanosine and its close analogs (Refs 1–3). The 5′-hydrazide adds extra H-bonding capacity that further stabilizes the fibrillar network. No reference data indicate precipitation or rapid collapse under ammonium conditions; therefore gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6742</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6704</summary>
+              <pre>The target molecule (guanosine-5′-hydrazide) is a close structural analogue of the reference guanosines, differing only by replacement of the 5′-CH₂OH with a hydrazide. This modification preserves the Hoogsteen edge and the cis-2′,3′-diol required for G-quartet formation and borate-type crosslinking, while the hydrazide adds extra H-bond donor/acceptor sites that can further stabilize fiber–fiber contacts.
+
+NH₄⁺ has an ionic radius essentially identical to K⁺ and is well-documented to template stable G₄ quartets. In the acetate buffer (pH 6) the nucleoside remains sufficiently soluble for self-assembly, and the NH₄⁺ ions therefore promote the same quartet-stacking motif observed for guanosine itself in KCl or KB(OH)₄. The additional hydrazide functionality is expected to enhance lateral fiber interactions, further favoring an entangled network rather than rapid precipitation or crystallization.
+
+Consequently the system meets the criteria for gelation (stable network formed within hours and persisting for an extended period).
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;NH₄⁺ templates G-quartets analogously to K⁺; the 5′-hydrazide preserves the diol and Hoogsteen face while adding H-bonding sites that promote stable fiber entanglement rather than collapse or precipitation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6940</summary>
+              <pre>The target molecule is a close structural analogue of guanosine (chemical distance ≈ 1.53–1.58 relative to the supplied references). It retains the guanine base and the cis-2′,3′-diol of the ribose that are required for G-quartet formation and for any borate-mediated cross-linking. The only modification is replacement of the 5′-CH₂OH by a 5′-hydrazide; this change does not abolish the Hoogsteen edge of guanine or the ability of the nucleoside to stack into G₄ columns.
+
+NH₄⁺ has an ionic radius essentially identical to that of K⁺ and is well-documented to template stable G-quartets. In the reference data, guanosine itself forms gels once a sufficiently high concentration of a monovalent cation of the correct size (K⁺ or, by extension, NH₄⁺) is supplied; the same cation dependence is observed for both 2′-amino-2′-deoxyguanosine and L-guanosine. The acetate buffer at pH 6 simply maintains the nucleoside in its neutral, hydrogen-bond-competent form and supplies the NH₄⁺ ions; no competing or destabilizing additive (Ag⁺, Li⁺, sub-stoichiometric borate, pure water) is present.
+
+Consequently, the molecule is expected to assemble into NH₄⁺-templated G-quartet stacks that further organize into a fibrillar network, producing a gel. The 5′-hydrazide may even enhance solubility or add supplementary hydrogen-bonding sites, reinforcing rather than preventing network formation.
+
+Final answer: Gel
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+    &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+        &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The molecule retains the guanine Hoogsteen face and ribose cis-diol needed for G-quartet assembly. NH₄⁺ has essentially the same radius as K⁺ and is known to template stable G₄ stacks; reference guanosine and 2′-amino-2′-deoxyguanosine both gel under comparable high-K⁺/NH₄⁺ conditions. The pH-6 acetate buffer supplies the templating cation without introducing destabilizing ions or insufficient salt, so a fibrillar hydrogel network is expected.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6582</summary>
+              <pre>The target molecule is a close structural analog of guanosine (differing only by replacement of the 5′-CH₂OH with a 5′-hydrazide). Guanosine itself assembles into G-quartets that are stabilized by monovalent cations whose ionic radius matches the central cavity (K⁺ being optimal, but NH₄⁺ also competent). The hydrazide moiety adds extra hydrogen-bond donors/acceptors without disrupting the Hoogsteen face required for quartet formation; consequently the same cation-driven quartet stacking that produces gels in the reference compounds remains available.
+
+NH₄⁺ is explicitly supplied in the target experiment (acetate buffer, pH 6). Literature precedent shows that NH₄⁺ supports stable G-quartet hydrogels for both native guanosine and 5′-modified derivatives under comparable buffered conditions. The pH is also compatible with quartet hydrogen bonding and does not protonate the Watson–Crick face. Therefore the molecule is expected to form a self-supporting hydrogel on the experimental time scale (hours).
+
+Final answer: Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;Guanosine-5′-Hydrazide&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC(=O)[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NH₄Cl&quot;,
+      &quot;detailed_conditions&quot;: &quot;Acetate buffer (pH 6.0) + NH₄⁺.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule retains the Hoogsteen face of guanosine and can therefore form NH₄⁺-templated G-quartets. The 5′-hydrazide adds H-bonding capacity without steric interference, enabling the same cation-stabilized stacking that produces gels in the reference guanosines. NH₄⁺ is a known quartet-stabilizing cation and the buffered pH is compatible with quartet hydrogen bonding, so a self-supporting hydrogel is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

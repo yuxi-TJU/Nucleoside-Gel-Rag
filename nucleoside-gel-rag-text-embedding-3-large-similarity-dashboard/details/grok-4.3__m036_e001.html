@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 36-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 36-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>36</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>NaCl</strong></div>
+      <div>Detailed conditions<strong>0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Transparent→opaque Na⁺ hydrogels stable for months; strong shear-recovery and tunable modulus (via TAcG co-gels).
+
+8-OMe shifts guanosine to ≈70 % syn, favouring Na⁺-templated helical fibers instead of G-quartets. Ribose acetates cap G-stacks and enforce helical growth; Na⁺ contracts the helix, producing dense fibrous bundles that entangle into a tough, long-lived network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6729</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6745</summary>
+              <pre>The molecule 8OMeTAcG is a guanosine derivative whose purine core is known to self-assemble into G-quartets. These quartets are further stabilized by alkali-metal cations (here Na⁺ from NaCl), leading to extended fibrillar networks that produce hydrogels. The stated experimental protocol (0.5 wt % in 100–400 mM NaCl, room temperature) matches the canonical conditions under which such G-quadruplex gels form within minutes to hours. The additional note that the material remains injectable through a 16-gauge needle confirms that a self-supporting, shear-thinning gel—not a precipitate or solution—is obtained. Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine derivatives self-assemble into cation-stabilized G-quartets that produce hydrogels. The supplied conditions explicitly describe room-temperature gelation and injectability, confirming network formation rather than precipitation or dissolution.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6946</summary>
+              <pre>The molecule 8OMeTAcG is an 8-substituted guanosine derivative whose purine core retains the Hoogsteen edge required for cation-templated self-assembly. In aqueous NaCl (100–400 mM) the Na+ ions coordinate to O6 and N7 of multiple molecules, driving the formation of G-quartets; the peripheral acetyl groups provide sufficient hydrophobicity to promote lateral stacking of these quartets into fibers that entangle into a self-supporting network. The stated concentration (0.5 wt %) lies well above the critical gelation threshold for such derivatives, and the explicit mention of room-temperature gelation together with injectability through a 16-gauge needle confirms that a stable, shear-thinning hydrogel is obtained. Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Na+ ions template G-quartet formation via Hoogsteen hydrogen bonding; the resulting fibers entangle into a stable hydrogel at the stated concentration and temperature.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6497</summary>
+              <pre>The molecule 8OMeTAcG is a guanosine derivative bearing an 8-methoxy substituent and acetyl-protected ribose hydroxyls. Such structures are well-known to self-assemble into G-quadruplexes that further organize into fibrillar networks, especially in the presence of alkali-metal cations that stabilize the Hoogsteen-paired quartets.  
+
+The stated conditions (0.5 wt % in 100–400 mM NaCl or 2 wt % in DMEM at room temperature) supply precisely the ionic strength and monovalent cations required for quadruplex formation. The explicit mention of “room-temperature gelation” together with injectability through a 16-gauge needle confirms that a self-supporting hydrogel is obtained on the experimental timescale (minutes to hours). No counter-indications such as rapid crystallization or precipitation are provided.  
+
+Consequently the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine derivatives readily form cation-stabilized G-quadruplex hydrogels. The supplied NaCl concentration and room-temperature conditions match the requirements for quadruplex assembly and network formation, and the description explicitly states gelation occurs.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6639</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6492</summary>
+              <pre>The target molecule 8OMeTAcG is a close structural analog of TAcG (chemical distance 2.25), differing only by the presence of the 8-methoxy substituent. Reference experiments on TAcG establish that this parent compound is itself a non-gelator in NaCl (no self-supporting network forms at ≤2 wt %). However, the same data explicitly describe binary mixtures in which addition of TAcG to 8OMeTAcG systematically reduces storage modulus and yield stress. This behavior is possible only if 8OMeTAcG itself assembles into a load-bearing fibrillar network under the stated NaCl conditions; the non-gelator TAcG merely dilutes or disrupts that pre-existing network.  
+
+The experimental protocol supplied for the target (0.5 wt % in 100–400 mM NaCl, room-temperature gelation) is fully consistent with the salt and concentration ranges used in the TAcG/8OMeTAcG mixture studies. Consequently, the outcome is classified as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;TAcG (chemically closest reference) does not gel alone in NaCl, yet mixtures of TAcG with 8OMeTAcG show progressive loss of modulus/yield stress as TAcG fraction increases. This dilution effect is possible only if 8OMeTAcG itself forms a fibrillar gel network under the same NaCl conditions; the supplied protocol (0.5 wt %, 100–400 mM NaCl) matches the reference salt/concentration window.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6481</summary>
+              <pre>The target molecule 8OMeTAcG is a close structural analog of TAcG (Reference 1), differing only by the presence of the 8-methoxy substituent on the nucleobase. TAcG itself is explicitly described as a nongelator in NaCl (no self-assembly into a fibrillar network occurs at any concentration up to 2 wt %). In contrast, the experimental narrative in Reference 1 repeatedly positions 8OMeTAcG as the active gelator component: binary mixtures of TAcG with 8OMeTAcG produce stable, transparent hydrogels whose mechanical properties vary systematically with the 8OMeTAcG fraction. This establishes that 8OMeTAcG alone is capable of forming a self-supporting gel network under aqueous saline conditions.
+
+The supplied target conditions (0.5 wt % 8OMeTAcG in 100–400 mM NaCl, or 2 wt % in DMEM) fall squarely inside the concentration and ionic-strength regime already shown to support gelation for this scaffold. The additional descriptors (“room-temperature gelation,” “injectable through a 16-gauge needle”) are consistent with the formation of a fibrillar hydrogel rather than a precipitate or solution. Consequently the outcome is classified as Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;8OMeTAcG is the active gelator in the TAcG/8OMeTAcG binary mixtures described in Reference 1; the supplied NaCl conditions lie within the demonstrated gelation window for this scaffold.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6945</summary>
+              <pre>The target molecule (8OMeTAcG) is a close structural analog of the nongelator TAcG (Reference 1, chemical distance 2.25). TAcG alone produces no stable network in NaCl under any tested concentration or protocol. However, the same reference explicitly describes binary mixtures in which addition of 8OMeTAcG modulates the mechanical properties of TAcG-containing samples, implying that 8OMeTAcG itself supplies the fibrillar network.  
+
+This inference is reinforced by the broader guanosine literature (References 2–3): 8-substitution (methoxy in this case) alters hydrogen-bonding and stacking preferences sufficiently to permit Na+-mediated quartet stacking, whereas unsubstituted guanosine or TAcG require K+ and still yield only transient gels. The stated conditions (0.5 wt % in 100–400 mM NaCl) fall squarely inside the regime where such 8-modified, acetyl-protected derivatives are reported to form self-supporting, injectable hydrogels.  
+
+Consequently the outcome is classified as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;8OMeTAcG is the active gelator component in TAcG/8OMeTAcG mixtures; 8-methoxy substitution enables stable Na+-templated G-quartet networks under the listed salt concentrations, in contrast to TAcG alone.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6645</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6811</summary>
+              <pre>The target molecule (8OMeTAcG) is a close structural analog of TAcG (chemical distance 2.25), differing only by the 8-methoxy substituent on the guanine ring. TAcG itself is consistently a non-gelator in NaCl (or KCl) across all reported conditions, producing either solutions or weak crystalline precipitates. However, every reference that explicitly mixes TAcG with 8OMeTAcG describes the formation of self-supporting hydrogels whose storage modulus and yield stress are modulated by the 8OMeTAcG fraction. This implies that 8OMeTAcG itself supplies the fibrillar network responsible for gelation; the acetylated ribose moiety provides solubility while the 8-methoxy group alters base stacking and hydrogen-bonding patterns sufficiently to stabilize G-quartet-like assemblies even in NaCl.
+
+The experimental conditions supplied for the target (0.5 wt % in 100–400 mM NaCl, room-temperature gelation) fall squarely inside the concentration and salt ranges where these stable, injectable hydrogels are observed. No collapse, rapid crystallization, or precipitation is reported under these conditions. Consequently the outcome is classified as Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;8OMeTAcG is the active gelating component in all reported TAcG/8OMeTAcG mixtures; the 8-methoxy substitution enables stable fibrillar networks in NaCl that TAcG alone cannot form. The stated conditions match published hydrogel formulations that remain self-supporting and injectable.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6403</summary>
+              <pre>The target molecule (8OMeTAcG) is a close structural analog of the TAcG reference (chemical distance ≈ 2.25), differing only by the presence of the 8-methoxy substituent on the guanine ring. TAcG itself is repeatedly shown to be a non-gelator in NaCl (or KCl) when used alone, producing either solutions or unstable aggregates. However, the same reference explicitly states that binary mixtures of TAcG with 8OMeTAcG continue to produce self-supporting hydrogels whose modulus and yield stress vary continuously with composition. This behavior is possible only if 8OMeTAcG itself is an active gelator under the same saline conditions; the non-gelator TAcG merely acts as a modulator that softens (but does not abolish) the network.
+
+The experimental conditions supplied for the target (0.5 wt % 8OMeTAcG in 100–400 mM NaCl, room-temperature gelation, injectability) fall squarely inside the concentration and salt regime already shown to support stable gels in the TAcG/8OMeTAcG mixtures. Additional supporting context comes from the broader guanosine literature: 8-substituted derivatives frequently stabilize G-quartet or stacked assemblies even in the presence of Na⁺, whereas the parent guanosine or simple acetylated analogs do not. Consequently, the target molecule is predicted to form a gel.
+
+Final answer: Gel
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;8OMeTAcG is a close analog of the non-gelator TAcG (distance 2.25). TAcG alone never gels in NaCl, yet binary TAcG/8OMeTAcG mixtures form stable, transparent hydrogels whose mechanical properties vary continuously with 8OMeTAcG content. This implies that 8OMeTAcG itself is the active gelator under the same saline conditions. The supplied target conditions (0.5 wt % in 100–400 mM NaCl) lie inside the regime already demonstrated to support gels in those mixtures, confirming gel formation.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6720</summary>
+              <pre>The target molecule is an 8-methoxy derivative of triacetylguanosine. Reference 1 (TAcG, chemical distance 2.25) establishes that the non-methoxy triacetyl parent is a nongelator in NaCl at any concentration up to 2 wt %. The same reference explicitly states that TAcG “progressively lowers modulus and yield stress” when added to 8OMeTAcG, which is possible only if 8OMeTAcG itself forms a self-supporting network.  
+
+The 8-methoxy substituent supplies an additional hydrogen-bond acceptor and alters the electronic properties of the guanine ring, favoring G-quartet stacking even in the presence of Na⁺ rather than the stricter K⁺ requirement seen for unmodified guanosine (Reference 2). The supplied conditions (0.5 wt % in 100–400 mM NaCl or 2 wt % in DMEM, room-temperature gelation, injectability) are therefore sufficient for hydrogel formation.  
+
+Consequently the outcome is recorded as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG (chemically closest reference) is a confirmed nongelator in NaCl, yet mixtures with 8OMeTAcG produce stable hydrogels whose modulus decreases with added TAcG; this implies 8OMeTAcG itself is the gelator. The 8-methoxy group relaxes the usual K⁺ selectivity of G-quartets, enabling network formation under the stated NaCl/DMEM conditions at room temperature.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6771</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6660</summary>
+              <pre>The target molecule (8OMeTAcG) is a close structural analogue of TAcG (chemical distance 2.25), differing only by the presence of the 8-methoxy substituent on the guanine base. Reference 1 explicitly states that TAcG itself is a non-gelator in NaCl but co-assembles with 8OMeTAcG; the latter forms the underlying helical stacks/fibres into which TAcG inserts. This establishes that 8OMeTAcG is itself a gelator under NaCl conditions.  
+
+The supplied experimental parameters (0.5 wt % nucleoside, 100–400 mM NaCl, room-temperature gelation) fall squarely within the concentration and salt regime described for 8OMeTAcG-containing systems in Reference 1. Consequently, a stable hydrogel is expected.  
+
+(The more distant references on unmodified guanosine or 8-aminoguanosine are less directly relevant, because they lack the acetyl protecting groups that modulate solubility and fibre morphology in the TAcG/8OMeTAcG family.)
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Reference 1 states that TAcG is a non-gelator in NaCl but forms stable hydrogels when co-assembled with 8OMeTAcG, because the latter nucleoside templates the underlying helical stacks. The target molecule therefore gels on its own under the listed NaCl conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6714</summary>
+              <pre>The target molecule (8OMeTAcG) is a close structural analogue of TAcG (chemical distance 2.25), differing only by the presence of the 8-methoxy substituent on the guanine ring. TAcG itself is repeatedly shown to be a non-gelator in NaCl (or KCl) because its bulky acetyl groups act as chain terminators that prevent stable G-quadruplex stacking. In contrast, the experimental descriptions explicitly state that TAcG “co-inserts into helices formed by 8OMeTAcG,” which can only occur if 8OMeTAcG itself assembles into those helices. The 8-methoxy group removes the steric termination effect while preserving the hydrogen-bonding face needed for G-quartet formation; the resulting fibres are therefore stable enough to produce a self-supporting hydrogel.  
+
+The supplied conditions (0.5 wt % in 100–400 mM NaCl) fall squarely inside the concentration and salt ranges where 8OMeTAcG is reported to gel (including in cell-culture medium). Consequently the outcome is gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;8OMeTAcG is the active gelator whose helices are disrupted by added TAcG; the 8-methoxy substituent enables stable G-quartet stacking that TAcG alone cannot achieve. The stated NaCl concentrations and nucleoside loadings match the regime where transparent, self-supporting hydrogels are formed.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6937</summary>
+              <pre>The target molecule (8OMeTAcG) is a close structural analogue of TAcG (Reference 1; chemical distance 2.25). TAcG itself is explicitly described as a non-gelator in NaCl, but the same reference states that TAcG “progressively lowers modulus and yield stress” only when it is co-assembled with 8OMeTAcG. This implies that 8OMeTAcG is itself capable of forming a self-supporting network under NaCl conditions; the acetyl groups of TAcG merely act as chain terminators that modulate the pre-existing gel formed by 8OMeTAcG.
+
+The 8-methoxy substituent further favors gelation relative to unmodified guanosine (Reference 2). Guanosine alone yields only transient or collapsing gels in NaCl/KCl because its G-quartets readily crystallize. The 8-methoxy group introduces steric and electronic perturbations that frustrate long-range crystalline packing while still permitting G-quartet stacking, thereby extending the lifetime of the fibrillar network. The tri-O-acetyl protection simultaneously increases hydrophobicity, providing additional physical cross-links that stabilize the gel at room temperature.
+
+Consequently, the experimental conditions given for the target (0.5 wt % 8OMeTAcG in 100–400 mM NaCl, room-temperature gelation) are fully consistent with stable hydrogel formation. The outcome is therefore recorded as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Methoxy-2′,3′,5′-tri-O-acetylguanosine (8OMeTAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;COc1nc2c(=O)[nH]c(N)nc2n1[C@@H]1O[C@H](COC(C)=O)[C@@H](OC(C)=O)[C@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in 100–400 mM NaCl (or 2 wt % in DMEM); room-temperature gelation; injectable through 16-gauge needle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;8OMeTAcG is the active gelator in the TAcG/8OMeTAcG mixtures described in Reference 1; the 8-methoxy substituent frustrates crystallization while the acetyl groups supply hydrophobic cross-links, enabling stable room-temperature gels in NaCl.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

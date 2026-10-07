@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 3-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 3-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>3</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Uridine (U)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>Tb(NO₃)₃ or Eu(NO₃)₃</strong></div>
+      <div>Detailed conditions<strong>0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Green-emissive hydrogel (Tb³⁺), fibre bundles, elastic network; Red-emissive hydrogel (Eu³⁺), morphology, stiffness similar to T gels.
+
+Uracil carbonyl pairs and N3 coordinate Ln³⁺ to give U₃·Ln³⁺ complexes that π–π stack and cross-link through extensive ribose hydroxyl hydrogen bonds, forming bundled fibres. Compared with dG, the 3:1 stoichiometry and lower base-stacking energy yield thicker fibres and smaller G′. Lanthanide-centered emission is sensitised by uracil singlet–triplet transitions; coordination disruption by pH or competing anions dims the emission and liquefies the gel, highlighting the key role of reversible metal–ligand and hydrogen-bond interactions.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6744</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.6528</summary>
+              <pre>The target molecule is the nucleoside uridine, which lacks the Hoogsteen-edge hydrogen-bonding motif and strong self-assembly propensity of guanosine (or GMP). Consequently, uridine does not spontaneously form G-quartet-like stacks or hydrogels under aqueous conditions.  
+
+When equimolar Tb³⁺ or Eu³⁺ is added at pH ≈ 8 and the mixture is subjected to a heat–cool cycle, the lanthanide ions coordinate weakly to the O2/O4 carbonyls and/or ribose hydroxyls. This interaction produces only soluble coordination complexes or, at most, microcrystalline precipitates; no extended fibrillar network capable of immobilizing the solvent is generated.  
+
+Therefore both listed conditions yield **No Gel**.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Uridine lacks the Hoogsteen-edge motif required for stable quartet stacking. Lanthanide coordination at pH 8 produces only soluble complexes or microcrystalline solids; no fibrillar network capable of gelation is formed.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6959</summary>
+              <pre>The molecule under consideration is uridine, a pyrimidine ribonucleoside whose canonical structure features a uracil base capable of metal coordination (primarily via O4/O2 carbonyls) but lacking the self-complementary Hoogsteen edge and N7 acceptor geometry required for stable quartet or polymeric assemblies.  
+
+Under the stated conditions (equimolar 0.1 M mixtures with Tb³⁺ or Eu³⁺ at pH ≈ 8, followed by a heat–cool cycle), the lanthanide ions can form discrete coordination complexes or small oligomers with the nucleobase. However, these species remain soluble or rapidly precipitate as microcrystalline solids; they do not generate the extended, fibrillar networks necessary for hydrogelation. This behavior contrasts with purine nucleosides (e.g., guanosine), which readily form cation-stabilized gels under analogous protocols.  
+
+Consequently, neither Tb(NO₃)₃ nor Eu(NO₃)₃ induces gelation of uridine.
+
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Uridine lacks the Hoogsteen edge and N7 geometry needed for stable metal-templated quartets or fibers; lanthanide coordination yields only soluble complexes or microcrystalline precipitates.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6356</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6179</summary>
+              <pre>The target molecule is unmodified uridine, which lacks the long hydrophobic acyl chains present in the closest reference structures (References 1 and 2). Those chains are required for the amphiphilic self-assembly that produces gels; plain uridine therefore cannot form stable hydrogels or organogels under aqueous or mixed-solvent conditions.  
+
+Reference 3 supplies the nearest experimental precedent: a nucleoside of comparable size and polarity (arabino-cytidine) tested with a trivalent metal salt under basic aqueous conditions yields only a free-flowing solution. The Tb/Eu nitrate conditions supplied for uridine are chemically analogous (lanthanide ions, pH ≈ 8, heat–cool cycle), reinforcing the expectation of no gelation.  
+
+Consequently the outcome is recorded as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine lacks the C12–C14 acyl chain required for amphiphilic gelation (cf. Refs 1–2). Reference 3 shows an analogous nucleoside + trivalent metal salt at basic pH produces only a free-flowing solution; the supplied lanthanide conditions are chemically equivalent and therefore also yield no gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6639</summary>
+              <pre>The target molecule is unmodified uridine, a small hydrophilic nucleoside lacking any long hydrophobic acyl chain at the 5′-position. Reference compounds 1 and 2 demonstrate that gelation (both hydrogel and organogel) requires such a chain to drive the necessary amphiphilic self-assembly; without it, the parent nucleoside does not gel under aqueous basic or organic-solvent conditions. Reference 3 further shows that an unmodified nucleoside (arabino-cytidine) remains a free-flowing solution when exposed to metal salts under basic aqueous conditions, exactly analogous to the Tb³⁺/Eu³⁺ experiments listed for uridine.  
+
+Lanthanide ions can coordinate the uridine carbonyl/ribose oxygen atoms, yet this interaction alone is insufficient to produce the extended fibrillar network required for macroscopic gelation; the system therefore remains a solution (or at best forms a crystalline precipitate) after the prescribed heat–cool cycle. Consequently the outcome is recorded as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Unmodified uridine lacks the amphiphilic character supplied by a 5′-acyl chain; literature precedents with closely related nucleosides show that metal-ion coordination alone does not produce a gel network under these aqueous basic conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6251</summary>
+              <pre>The target molecule is unmodified uridine, which lacks any long-chain acyl substituent at the 5′-position. References 1 and 2 demonstrate that only the amphiphilic 5′-O-acyl derivatives (lauroyl or myristoyl) produce gels, either in water/NaOH or in organic solvents; the parent nucleoside itself is not reported to gel under any of those conditions. Reference 3 further shows that an unmodified nucleoside (arabino-cytidine) remains a free-flowing solution when treated with metal salts under basic aqueous conditions analogous to the target experiment.  
+
+The target conditions (0.1 M uridine + 0.1 M Ln(NO₃)₃, pH ≈ 8, heat–cool) therefore supply only a hydrophilic nucleoside and a simple lanthanide salt; no hydrophobic driving force for self-assembly into a hydrogel network is present. Consequently the mixture is expected to remain a solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine lacks the 5′-O-acyl chain required for amphiphilic gelation (cf. Refs 1–2). Reference 3 shows an analogous unmodified nucleoside remains soluble with metal salts under basic aqueous conditions; the same outcome is therefore predicted here.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7016</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7125</summary>
+              <pre>The target molecule is uridine, a pyrimidine nucleoside whose structure is highly analogous to the thymidine reference (differing only by the lack of a 5-methyl substituent on the nucleobase and the presence of a 2′-OH on the ribose). Thymidine is experimentally shown to produce transparent, stable hydrogels (G′ ≈ 20 Pa) with both Tb(NO₃)₃ and Eu(NO₃)₃ under essentially identical conditions (0.1 M nucleoside + 0.1 M Ln salt, pH ≈ 8, heat–cool cycle).  
+
+These gels arise from a combination of nucleobase hydrogen-bonding, ribose hydroxyl coordination, and lanthanide bridging; the structural perturbations in uridine do not remove any of these interaction motifs and are therefore not expected to abolish gelation. The deoxyguanosine reference further supports that lanthanide salts at pH ≈ 8 reliably induce hydrogelation across nucleosides that possess suitable H-bonding faces, while the lauroyl-uridine reference is irrelevant because it employs a heavily modified, lipophilic derivative tested only in organic solvents or strongly basic aqueous media.  
+
+Consequently, uridine is predicted to form a hydrogel with the stated lanthanide additives.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine is structurally analogous to thymidine (reference 1), sharing the same pyrimidine H-bonding face and ribose hydroxyl groups that enable lanthanide coordination and hydrogel formation. Thymidine yields stable, luminescent hydrogels (G′ ≈ 20 Pa) under identical 0.1 M Ln-salt conditions at pH ≈ 8; the minor differences (no 5-methyl, presence of 2′-OH) do not eliminate the key supramolecular interactions, so gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6913</summary>
+              <pre>The target molecule is uridine, a pyrimidine nucleoside that is structurally analogous to thymidine (differing only by the absence of the C5-methyl substituent on the nucleobase and by the presence of a 2′-OH on the ribose). Reference 1 demonstrates that thymidine forms transparent, luminescent hydrogels with Tb(NO₃)₃ or Eu(NO₃)₃ under essentially identical conditions (0.1 M nucleoside + 0.1 M Ln salt, pH ≈ 8, heat–cool cycle). The same lanthanide coordination and base-stacking interactions that drive gelation in thymidine are therefore expected to operate for uridine.  
+
+The chemical distance of 4.13 to thymidine is modest, and the experimental protocol matches exactly. Although uridine possesses an additional 2′-OH, this group does not disrupt the key Ln³⁺–carbonyl coordination or π-stacking motifs required for network formation; analogous ribonucleosides (e.g., cytidine or adenosine derivatives) are known to produce lanthanide hydrogels under comparable conditions.  
+
+By contrast, the more distant references (dG with alkali salts, 5′-lauroyluridine in NaOH or organic solvents) involve different additives or covalent modifications and are not directly applicable. Consequently, the heat–cool protocol with Tb³⁺ or Eu³⁺ is predicted to yield a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine is structurally nearly identical to thymidine (Reference 1), which forms transparent Ln³⁺-luminescent hydrogels under the exact same 0.1 M nucleoside + 0.1 M Ln(NO₃)₃, pH ≈ 8, heat–cool protocol. The modest chemical distance (4.13) and shared pyrimidine carbonyl/Ln³⁺ coordination motifs support gel formation; the extra 2′-OH does not preclude network assembly.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7010</summary>
+              <pre>The target molecule is uridine (U), a pyrimidine nucleoside consisting of uracil attached to a ribose sugar. Its structure is highly analogous to the thymidine (T) reference (chemical distance 4.127), differing only by the lack of a 5-methyl substituent on the nucleobase and the presence of an additional 2′-OH on the sugar. Both molecules therefore share the same functional groups that participate in lanthanide coordination (carbonyl oxygens, N3 of the base, and multiple sugar hydroxyls) and hydrogen-bonding networks that stabilize the hydrogel matrix.
+
+Reference experiments demonstrate that 0.1 M thymidine + 0.1 M Tb(NO₃)₃ or Eu(NO₃)₃ at pH ≈ 8, subjected to a heat–cool cycle (95 °C → 25 °C), reliably produces transparent hydrogels with storage moduli ≈ 20 Pa and characteristic lanthanide luminescence. The same heat–cool protocol and metal-to-ligand stoichiometry are specified for uridine. Because the key metal-binding and supramolecular motifs remain intact, the identical experimental conditions are expected to drive self-assembly into a comparable lanthanide–nucleoside hydrogel.
+
+The 5′-O-lauroyluridine reference (chemical distance 3.339) is not directly comparable: the long hydrophobic acyl chain renders the molecule amphiphilic and shifts its gelation behavior toward organic solvents, while preventing hydrogel formation in aqueous base. Plain uridine lacks this chain and is fully hydrophilic, aligning it instead with the thymidine case. Deoxyguanosine references further support that pyrimidine and purine nucleosides alike form stable lanthanide hydrogels under the same pH and thermal conditions, reinforcing the prediction for uridine.
+
+Consequently, uridine is predicted to produce a transparent hydrogel (with Tb³⁺ green or Eu³⁺ red luminescence) under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Uridine is structurally analogous to thymidine (differs only by absence of 5-methyl and presence of 2′-OH). Thymidine forms transparent Ln³⁺ hydrogels under identical conditions via lanthanide coordination and H-bonding; uridine retains the same coordinating groups and is hydrophilic, so the same heat–cool protocol at pH ≈ 8 is expected to yield a luminescent hydrogel. The lauroyluridine reference is not applicable because its hydrophobic chain alters solubility and prevents aqueous gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7256</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7391</summary>
+              <pre>The target molecule uridine (U) is a close structural analogue of thymidine (T; chemical distance 4.13). Both share the same pyrimidine carbonyl / ring-nitrogen coordination motif that binds Ln³⁺ ions in a 3:1 stoichiometry, the same ability of the bases to stack via π–π interactions, and the same ribose-derived hydroxyl groups that supply lateral hydrogen-bonding contacts.  
+
+Because these three non-covalent elements are preserved (and the extra 2′-OH in U can only add, not remove, hydrogen-bonding possibilities), the same cooperative assembly pathway that produces transparent, luminescent hydrogels for T with Tb³⁺ or Eu³⁺ is expected to operate for U under identical heat–cool, pH ≈ 8 conditions. No experimental counter-example (crystallization, precipitation, or loss of coordination) is present in the reference set for any pyrimidine nucleoside + Ln³⁺ pair.  
+
+Consequently the mixture is predicted to form a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;U is a close analogue of thymidine (T), preserving the Ln³⁺-binding carbonyl/nitrogen sites, base-stacking capability, and ribose OH hydrogen-bond donors that drive T gelation. The additional 2′-OH can only strengthen lateral interactions, so transparent luminescent hydrogels are expected under the stated conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7387</summary>
+              <pre>The uracil nucleobase in uridine presents the same O2/O4 carbonyl and N3 coordination sites as thymine, allowing formation of analogous 3:1 U₃·Ln³⁺ complexes with Tb³⁺ or Eu³⁺. These complexes are further stabilized by π–π stacking of the bases and an extensive lateral hydrogen-bonding network supplied by the ribose 2′/3′/5′-OH groups. Because the additional 2′-OH does not disrupt the metal-binding motif and actually augments inter-fiber cohesion, the same heat–cool protocol that produces stable, luminescent hydrogels from thymidine is expected to produce hydrogels from uridine. Consequently the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Uridine possesses the same uracil coordination sites (O2, O4, N3) as thymidine and an additional 2′-OH that enhances lateral H-bonding; therefore the identical Ln³⁺-mediated assembly pathway yields stable luminescent hydrogels.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6990</summary>
+              <pre>The target molecule uridine (U) is a pyrimidine nucleoside whose nucleobase (uracil) is nearly identical to thymine in thymidine (T). Both bases present the same Ln³⁺-coordination donors (O4, O2 carbonyls and N3). The experimental protocol supplied for U (0.1 M nucleoside + 0.1 M Ln(NO₃)₃, pH ≈ 8, heat–cool) is exactly the same as the protocol that produces transparent, luminescent hydrogels with T.  
+
+Uridine possesses a ribose rather than a 2′-deoxyribose, supplying an additional 2′-OH group. This augments the lateral hydrogen-bonding capacity already shown to stabilize T₃·Ln³⁺ fibres, thereby reinforcing rather than disrupting the cooperative network of metal coordination, π–π stacking and sugar H-bonding that drives gelation in the reference T system. No counter-indication (e.g., crystallization propensity or borate-specific cross-linking requirement) appears under the stated Ln³⁺ conditions.  
+
+Consequently the same self-assembly pathway operates and a hydrogel is formed.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Uridine (U)&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;Tb(NO₃)₃ or Eu(NO₃)₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.1 M U + 0.1 M Tb(NO₃)₃, pH ≈ 8, 95 °C 20 min → 25 °C; 0.1 M U + 0.1 M Eu(NO₃)₃, pH ≈ 8, heat–cool&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Uridine shares the same Ln³⁺-coordinating uracil sites as thymidine (T), which gels under identical conditions via 3:1 base–metal complexes, base stacking and sugar H-bonding. The extra 2′-OH on ribose further strengthens lateral fibre interactions, so gelation is expected.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

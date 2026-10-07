@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 39-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 39-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>39</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>2′,3′,5′-tri-O-acetylguanosine (TAcG)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>NaCl</strong></div>
+      <div>Detailed conditions<strong>100 mM NaCl, up to 2 wt %.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Does not gel by itself.
+
+Bulky acetate groups act as G-stack terminators.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5506</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5520</summary>
+              <pre>The molecule TAcG is a fully O-acetylated guanosine derivative. While unmodified guanosine or certain partially protected analogs are well-known to self-assemble into G-quadruplex hydrogels in the presence of alkali-metal cations (including Na⁺), the complete acetylation of the ribose hydroxyls renders TAcG markedly more lipophilic and disrupts the hydrogen-bonding pattern required for stable fibrillar networks in aqueous media.  
+
+Consequently, addition of 100 mM NaCl (even at concentrations up to 2 wt %) is expected only to produce precipitation or phase separation rather than gelation.  
+
+Final answer:  
+[{
+    &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Complete O-acetylation eliminates the H-bond donors needed for G-quadruplex fibril formation in water; Na⁺ alone cannot induce gelation and the compound precipitates.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5492</summary>
+              <pre>The molecule TAcG is a lipophilic, fully protected guanosine derivative whose self-assembly is driven by Hoogsteen-type hydrogen bonding that can produce G-quartets. In aqueous media these quartets further stack into fibrils that ultimately yield a hydrogel, but this process is strongly cation-dependent: K⁺ (and to a lesser extent NH₄⁺) efficiently stabilizes the quartet, whereas Na⁺ provides only marginal stabilization.  
+
+Under the stated conditions (100 mM NaCl, ≤ 2 wt % TAcG) the concentration of Na⁺ is therefore insufficient to drive the requisite quartet stacking at the low weight-percent loadings employed. Consequently the solute either remains dissolved or rapidly precipitates/crystallizes rather than forming a self-supporting network.  
+
+No Gel
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;TAcG self-assembly requires K⁺ (or NH₄⁺) to stabilize G-quartets; Na⁺ at 100 mM is insufficient, leading to dissolution or precipitation instead of gelation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5137</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 2 | score=0.5186</summary>
+              <pre>The target molecule (TAcG) is a close structural analog of the gelator in Reference 1 (8OMeTAcG; chemical distance = 2.25), differing only by the absence of the 8-methoxy substituent. Reference 1 explicitly demonstrates that 8OMeTAcG forms stable, transparent-to-opaque hydrogels at 0.5–2 wt % in 100–400 mM NaCl (including at the exact salt concentration and concentration range specified for the target). The same reference further shows that TAcG itself is routinely blended with 8OMeTAcG under identical NaCl conditions to produce co-gels whose mechanical properties can be tuned while maintaining a self-supporting network.  
+
+This behavior is consistent with the known ability of 2′,3′,5′-tri-O-acetylguanosine derivatives to assemble into cation-templated G-quartet fibrils that percolate into a hydrogel; the Na+ ion is competent for this assembly once the ribose hydroxyls are acetylated. In contrast, the unmodified nucleoside guanosine (Reference 2) fails to produce stable gels with NaCl, underscoring that the acetylation pattern present in TAcG is the decisive structural feature enabling gelation under the stated conditions.  
+
+Consequently, TAcG is predicted to produce a stable hydrogel (Gel) at 100 mM NaCl and up to 2 wt %.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG is a close analog of 8OMeTAcG (chem. dist. 2.25), which forms stable Na+ hydrogels at identical concentration/salt conditions. Reference 1 further shows TAcG participates in NaCl co-gels, confirming that acetylation enables Na+-templated G-quartet assembly.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5087</summary>
+              <pre>The target molecule is TAcG (the 2′,3′,5′-tri-O-acetyl derivative of guanosine). Reference structures establish that native guanosine itself forms only transient or unstable hydrogels in the presence of NaCl and requires KCl (or borate additives) for any observable gelation. In contrast, the structurally proximal acetylated analogue 8OMeTAcG (chemical distance 2.25) produces stable, transparent-to-opaque Na⁺ hydrogels at 0.5–2 wt % in 100–400 mM NaCl.  
+
+Crucially, the same experimental series explicitly incorporates TAcG as a co-gelator with 8OMeTAcG under essentially identical NaCl conditions (≈100 mM NaCl, total gelator ≈2 wt %). The resulting binary mixtures form self-supporting, shear-recoverable hydrogels whose modulus and yield stress are continuously tunable by varying the TAcG fraction. This demonstrates that TAcG is fully competent to participate in Na⁺-driven G-quartet-type fibrillar networks once the solubility and packing constraints are satisfied by acetylation.  
+
+Because the supplied target conditions (100 mM NaCl, up to 2 wt %) fall squarely inside the concentration and salt regime where TAcG-containing mixtures gel, and because the rule set stipulates that a “Gel” outcome is recorded whenever at least one compatible condition produces a stable network, the prediction for pure TAcG follows the same classification.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG participates in stable Na⁺-driven hydrogels when co-formulated with the closely related gelator 8OMeTAcG under essentially identical conditions (≈100 mM NaCl, ~2 wt % total gelator). The acetylation pattern and salt regime match those that produce robust, shear-recoverable gels, satisfying the criteria for a positive gelation outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5298</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5315</summary>
+              <pre>The target molecule is TAcG (2′,3′,5′-tri-O-acetylguanosine). Its structure is closely related to the Reference 1 molecule (8OMeTAcG, chemical distance 2.25), differing only by the absence of the 8-methoxy substituent on the guanine base. Reference 1 shows that the 8-methoxy group confers selective hydrogelation in NaCl (stable, transparent-to-opaque Na⁺ hydrogels at 0.5–2 wt % in 100–400 mM NaCl). Without this substituent, TAcG is expected to lose that Na⁺ selectivity.
+
+TAcG is also structurally related to unmodified guanosine (Reference 2, chemical distance 5.47). Reference 2 demonstrates that guanosine forms only transient, rapidly collapsing hydrogels in NaCl; stable gels require K⁺ (or borate additives). The tri-O-acetyl modification improves solubility and is exploited in co-gels, but does not invert the cation preference: TAcG is used successfully only in KCl-based mixtures (e.g., G/TAcG co-gels), never reported to gel alone in NaCl.
+
+Reference 3 (2′-O-methylguanosine) reinforces the same pattern—gelation occurs with KCl or AgNO₃ but not with NaCl—indicating that simple O-alkyl or O-acyl modifications on the ribose do not enable Na⁺-driven gelation.
+
+Consequently, under the queried conditions (100 mM NaCl, ≤2 wt %), TAcG is predicted to produce only transient aggregates or a rapidly collapsing network, not a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG lacks the 8-methoxy group that enables selective Na⁺ hydrogelation in the closest analogue (8OMeTAcG). It is therefore expected to behave like unmodified guanosine, which forms only transient, collapsing networks in NaCl. The acetyl groups improve solubility but do not alter the intrinsic K⁺ preference of the G-quartet motif; stable gels are observed only in KCl-based or co-gel systems, not in NaCl alone.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5280</summary>
+              <pre>The target molecule (TAcG) is a tri-acetylated guanosine derivative whose gelation behavior must be inferred from the three supplied experimental references. The closest analogue (chemical distance 2.25) is 8OMeTAcG, which forms stable, long-lived Na⁺-selective hydrogels at 0.5–2 wt % in 100–400 mM NaCl. The sole structural difference between 8OMeTAcG and TAcG is the absence of the 8-methoxy substituent. This substituent is known to invert the normal cation selectivity of G-quartet assemblies from K⁺ to Na⁺; without it, TAcG reverts to the canonical guanosine-like preference for K⁺.
+
+Reference 2 shows that unmodified guanosine itself produces only transient hydrogels in NaCl that collapse within minutes. Reference 3 likewise demonstrates that a related 2′-O-methylguanosine derivative yields no gel in NaCl. Although TAcG participates in stable co-gels when mixed with either 8OMeTAcG (Na⁺) or guanosine (K⁺), these binary mixtures rely on the second component to supply the appropriate templating ion and/or hydrogen-bonding pattern. In the absence of such a partner, pure TAcG at 100 mM NaCl is therefore expected to behave like guanosine: any initial aggregates rapidly disintegrate rather than maturing into a persistent, self-supporting network.
+
+Consequently, the experimental outcome for the queried condition is No Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG lacks the 8-methoxy group that confers Na⁺ selectivity to the close analogue 8OMeTAcG. Canonical G-quartet assemblies (and close derivatives such as 2′-O-methylguanosine) are K⁺-selective; in NaCl they produce only transient aggregates that collapse within minutes. Although TAcG can participate in co-gels when a second, ion-compatible gelator is present, pure TAcG at 100 mM NaCl is therefore predicted to yield no stable hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5517</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5504</summary>
+              <pre>The target molecule is TAcG (2′,3′,5′-tri-O-acetylguanosine). All three reference compounds are close structural analogs that share the same guanosine core and differ only in the pattern of ribose or base substitution.  
+
+- Reference 1 explicitly labels TAcG as “non-gelating” when it is used as a co-component with the gel-forming 8-OMeTAcG derivative. Even though the binary mixture still produces a hydrogel in NaCl, the text states that TAcG itself does not support fiber formation or network stability; it merely modulates the mechanical properties of an already-formed network.  
+- Reference 2 shows that pure guanosine (the unsubstituted parent) fails to give stable gels in NaCl; only mixtures that incorporate TAcG as a co-gelator succeed. This again implies that TAcG alone is insufficient.  
+- Reference 3 (2′-O-methylguanosine) likewise produces no gel in NaCl, reinforcing that simple ribose modification without a suitably templating cation or additional functional group does not yield a self-supporting network.  
+
+Collectively these observations indicate that TAcG lacks the structural features (either an 8-methoxy substituent that biases the syn conformation or a borate diester cross-link) required for stable Na⁺-templated helical fibers or G-quartet stacks. Consequently, under the stated conditions (100 mM NaCl, ≤ 2 wt %) TAcG does not form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG is repeatedly described in the literature as a non-gelating additive that only modulates the properties of an already-formed network (e.g., 8-OMeTAcG/NaCl hydrogels). Pure guanosine itself fails to gel in NaCl, and the acetylated derivative lacks the 8-methoxy or borate functionality needed for stable helical or G-quartet assemblies. Hence no self-supporting gel is expected under the stated conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5640</summary>
+              <pre>The target molecule is TAcG (2′,3′,5′-tri-O-acetylguanosine). This is a close structural analog of the 8OMeTAcG molecule in Reference 1 (differing only by the absence of the 8-methoxy substituent) and is also directly referenced in the guanosine experiments of Reference 2.
+
+TAcG lacks the 8-methoxy group that shifts the nucleobase conformational equilibrium toward the syn geometry required for Na⁺-templated helical fiber growth. Consequently, TAcG alone cannot produce the dense, entangled fibrous network needed for gelation. This is confirmed by the explicit description of TAcG as a “non-gelating” additive in both Reference 1 (where it is used only to modulate the properties of an 8OMeTAcG hydrogel) and Reference 2 (where stable gels are obtained only when TAcG is co-assembled with unmodified guanosine). In the absence of either the 8-methoxy substituent or a co-gelator, TAcG remains soluble or forms only transient aggregates that do not yield a self-supporting hydrogel.
+
+The experimental conditions supplied for the target (100 mM NaCl, ≤2 wt %) are therefore insufficient to induce gelation. The outcome is recorded as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG lacks the 8-methoxy substituent that enforces the syn conformation needed for Na⁺-templated helical fibers (cf. 8OMeTAcG). Literature explicitly labels TAcG as non-gelating when used alone; it only participates in stable gels when co-assembled with another gelator. Under the stated NaCl conditions it therefore remains soluble or forms only transient aggregates.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5405</summary>
+              <pre>The target molecule is TAcG (fully acetylated guanosine). All three reference compounds are close structural analogs that share the same guanine hydrogen-bonding face and ribose core, allowing direct mechanistic extrapolation.
+
+- Reference 1 explicitly labels TAcG a “non-gelating” additive. When it is blended with the closely related gelator 8OMeTAcG, the mixture still forms Na⁺-templated helical fibers, but the role of TAcG itself is only to truncate fiber length and introduce hydrophobic cross-links; it does not nucleate or sustain a network on its own.
+- Reference 2 shows the same behavior in the parent guanosine system: stable gels appear only when TAcG is co-assembled with unmodified G (or when borate/K⁺ chemistry is added). Pure TAcG never produces a self-supporting hydrogel under any salt condition examined.
+- Reference 3 reinforces the pattern for 2′-O-methylguanosine, which gels with K⁺ but not with Na⁺; acetylation of all three ribose hydroxyls (as in TAcG) further reduces water solubility and removes the cis-diol needed for borate cross-linking, eliminating the remaining pathways to gelation.
+
+Consequently, under the stated conditions (100 mM NaCl, ≤2 wt % TAcG) the molecule remains soluble or forms only transient aggregates that collapse or precipitate; no stable, entangled fiber network is produced.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′,3′,5′-tri-O-acetylguanosine (TAcG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;CC(=O)OC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](OC(C)=O)[C@@H]1OC(C)=O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;100 mM NaCl, up to 2 wt %.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;TAcG is repeatedly described in the reference set as a non-gelating co-additive. It can modulate the mechanical properties of gels formed by 8OMeTAcG or guanosine, but does not itself assemble into an entangled fibrous network under NaCl conditions. The fully acetylated ribose removes both solubility and cis-diol functionality required for stable hydrogel formation, leading to either dissolution or rapid precipitation rather than gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

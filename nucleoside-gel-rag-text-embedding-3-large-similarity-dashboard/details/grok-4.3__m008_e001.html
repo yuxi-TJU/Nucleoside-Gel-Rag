@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 8-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 8-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>8</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>8-Aza-2′-deoxyisoguanosine (z8isoGd)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>LiCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Does not form a hydrogel; precipitation or solution state is observed.
+
+Li⁺ ions cannot effectively template the supramolecular assemblies required for z8isoGd gelation. Without suitable cation coordination, the hydrogen-bonded pentad or tetrad stacking necessary for fiber network formation cannot be stabilized.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6595</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6659</summary>
+              <pre>The molecule 8-aza-2′-deoxyisoguanosine contains an isoguanine nucleobase capable of self-assembly via Watson–Crick-like hydrogen-bonding patterns. However, gelation in this structural class normally requires a monovalent cation (typically K⁺ or Na⁺) that templates the formation of stable quartets or pentamers and thereby drives the growth of an extended fibrillar network.  
+
+Li⁺ is too small and too strongly hydrated to occupy the central coordination site of these assemblies; consequently the nucleoside remains molecularly dissolved or forms only transient, low-order aggregates that collapse upon cooling. The experimental protocol (heating to &gt;90 °C followed by cooling in 0.2 M LiCl) therefore yields a clear solution that does not immobilize the solvent, satisfying the “No Gel” criterion.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Li⁺ cannot template the nucleobase quartets/pentamers required for fibril formation; the sample therefore remains a free-flowing solution after cooling.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6531</summary>
+              <pre>The molecule 8-aza-2′-deoxyisoguanosine is a close structural analog of 2′-deoxyisoguanosine, which is known to self-assemble via a Hoogsteen-type hydrogen-bonding pattern into tetrameric or higher-order stacks. These stacks can produce hydrogels when the cation and concentration permit stable columnar aggregates. However, the 8-aza substitution replaces C8 with nitrogen, which alters both the electronic character of the purine ring and the preferred glycosidic torsion angle. This modification weakens π–π stacking and reduces the lifetime of the tetrameric units relative to the parent isoguanosine.
+
+Under the stated conditions (1.4 mg/100 µL in 0.2 M LiCl, heated above 90 °C and cooled to room temperature), the lithium cation is too small and too strongly hydrated to provide the coordination geometry needed to stabilize the tetramer. Consequently, the aggregates remain short-lived, and the supersaturated solution either remains fluid or rapidly collapses into a precipitate or microcrystalline suspension rather than forming a self-supporting gel.  
+
+Thus the outcome is classified as No Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution weakens tetramer stacking; Li+ is too small and hydrated to stabilize the required columnar aggregates, leading to precipitation or a fluid solution rather than a gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6656</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6726</summary>
+              <pre>The target molecule (z8isoGd) is a close structural analog of isoGd (Reference 1), differing only by the 8-aza substitution on the nucleobase. isoGd itself readily forms stable, transparent hydrogels in 0.2 M LiCl under essentially identical heat–cool conditions. However, the same 8-aza modification completely abolishes hydrogel formation in the closely related guanosine series (z8Gd vs. dG; References 2–3). In every alkali-metal salt tested, z8Gd remains a free-flowing solution or precipitate rather than a gel.  
+
+Because the 8-aza nitrogen alters the hydrogen-bonding pattern and tautomeric preference of the nucleobase in a manner that prevents the requisite G-quartet-like stacking, the same loss of gelation capability is expected for z8isoGd. Consequently, the LiCl experiment yields no hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution abolishes the hydrogel-forming ability that isoGd exhibits with LiCl; the same substitution prevents gelation in the guanosine series (z8Gd).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6729</summary>
+              <pre>The target molecule (z8isoGd) is a close structural analog of isoGd (Ref. 1), differing only by the 8-aza substitution on the nucleobase. IsoGd itself forms stable, transparent hydrogels with LiCl under essentially identical heat–cool conditions. However, the same 8-aza modification completely abolishes hydrogelation in the closely related guanosine series (z8Gd vs. dG; Refs. 2–3). In every alkali-metal salt tested, z8Gd remains a free-flowing solution or precipitate after the heat–cool cycle; no gel is ever observed.  
+
+Because the 8-aza nitrogen alters the hydrogen-bonding pattern and tautomeric preference of the nucleobase in a manner that is independent of the 2-amino/6-oxo regiochemistry, the same loss of gelation propensity is expected for z8isoGd. Consequently, the LiCl experiment yields only a solution or crystalline precipitate, never a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution abolishes the gelation that isoGd exhibits with LiCl (Ref. 1), exactly as observed when the same modification is introduced into dG (Refs. 2–3). The altered H-bonding/tautomeric pattern prevents stable hydrogel formation; the system remains a solution or precipitate.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6513</summary>
+              <pre>The target molecule (z8isoGd) is a structural hybrid of isoGd (Reference 1) and z8Gd (Reference 3). It retains the isoguanine nucleobase that enables LiCl-mediated hydrogelation in isoGd, but it also carries the 8-aza ring nitrogen that completely abolishes gelation in the guanosine series (z8Gd remains a free-flowing solution or precipitate under identical LiCl/heat-cool conditions).  
+
+Because the 8-aza modification overrides the gel-promoting effect of the isoguanine tautomer, z8isoGd is expected to behave like z8Gd rather than like isoGd. Consequently, the 0.2 M LiCl solution will not produce a stable hydrogel after the heat-cool cycle.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution, shown to eliminate gelation in the closely related z8Gd series under identical LiCl conditions, overrides the gel-forming propensity of the isoguanine nucleobase; the mixture is therefore predicted to remain a solution or precipitate rather than a stable hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6812</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7110</summary>
+              <pre>The target molecule (z8isoGd) is a close structural analog of isoGd (Reference 1), differing only by the 8-aza substitution that replaces C8–H with an additional ring nitrogen. This substitution is known to alter the electronic distribution and pKa of the purine ring, which in turn perturbs the precise hydrogen-bonding pattern and cation coordination geometry required for stable supramolecular assembly.
+
+Reference 1 shows that the parent isoGd readily forms long-lived, transparent hydrogels with LiCl under essentially identical conditions (1.4 mg/100 µL, 0.2 M LiCl, heat–cool). In contrast, Reference 3 demonstrates that the same 8-aza modification completely abolishes gelation for the closely related guanosine scaffold (z8Gd): the compound remains a free-flowing solution or precipitate with LiCl, KCl, or NaCl. Because the 8-aza change is detrimental in the guanine series and because the supramolecular requirements for isoG-type quartet/pentamer formation are equally stringent, the same substitution is expected to eliminate the ability of z8isoGd to produce a stable network with Li⁺.
+
+Consequently, under the stated conditions the system does not form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution, shown to destroy gelation in the z8Gd series (Ref. 3), perturbs the H-bonding and Li⁺ coordination geometry that otherwise allow isoGd to gel (Ref. 1). The target therefore remains a solution or precipitate rather than a stable hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6772</summary>
+              <pre>The target molecule (z8isoGd) is a structural hybrid of the isoguanine nucleoside core found in Reference 1 and the 8-aza modification found in Reference 3. Reference 1 demonstrates that the unmodified isoGd core readily forms stable, transparent hydrogels with LiCl (0.2 M, heat–cool protocol) because the isoguanine hydrogen-bonding face supports cation-templated self-assembly into higher-order aggregates.  
+
+In contrast, Reference 3 shows that introduction of the 8-aza nitrogen (replacing C8–H with N) completely abolishes gelation for the closely related guanosine scaffold, even under identical LiCl conditions; the system remains a free-flowing sol. The 8-aza substitution alters the electronic properties of the purine ring, perturbs Hoogsteen-edge hydrogen bonding, and changes the preferred cation coordination geometry, thereby blocking the supramolecular polymerization required for hydrogel formation.  
+
+Because the structural perturbation introduced by the 8-aza group is chemically identical in both scaffolds, the same loss of self-assembly capability is expected for z8isoGd. Consequently, under the stated conditions (1.4 mg/100 µL in 0.2 M LiCl, heat–cool), the target molecule remains in solution and does not produce a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution disrupts the hydrogen-bonding and cation-coordination geometry needed for self-assembly (as proven by the complete loss of gelation in z8Gd versus dG). Although the isoG core alone supports LiCl gels, the added aza nitrogen overrides this capability, leaving a free-flowing sol after the heat–cool cycle.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6553</summary>
+              <pre>The target molecule (z8isoGd) is a close structural analog of isoGd (Reference 1), differing only by the 8-aza substitution (C8–H replaced by N). isoGd itself forms stable, transparent hydrogels with LiCl under essentially identical heat–cool conditions (1.4 mg/100 µL, 0.2 M LiCl).  
+
+However, the same 8-aza modification applied to the closely related deoxyguanosine scaffold (Reference 3, z8Gd) completely abolishes gelation with LiCl, KCl, and NaCl; the nucleoside remains soluble or forms only transient precipitates. The 8-aza nitrogen alters the electronic distribution of the purine ring, raises the N7 basicity, and perturbs the hydrogen-bonding pattern required for the cation-templated stacks or ribbons that underpin hydrogel formation. Because this substitution is decisive in the guanine series, it is expected to exert the same disruptive effect on the isoguanine series.  
+
+Consequently, z8isoGd is predicted to remain in solution rather than produce a stable hydrogel with LiCl.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Although isoGd (chemically closest reference) forms stable hydrogels with LiCl, the 8-aza substitution (as seen in z8Gd) abolishes gelation with all alkali-metal salts by altering ring electronics and H-bonding patterns required for cation-stabilized assemblies. The same outcome is therefore expected for z8isoGd.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7106</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7146</summary>
+              <pre>The target molecule z8isoGd is a structural hybrid of isoGd (which gels readily with LiCl via effective quartet/pentaplex formation and Li⁺ templating) and z8Gd (which never gels with any alkali-metal salt). The decisive structural change is the 8-aza substitution, which replaces C8 with N and thereby lowers N7 basicity. This directly impairs the Hoogsteen-edge hydrogen-bonding pattern required to close stable G-quartet or isoG-quartet assemblies in aqueous media. Without intact quartets, the subsequent steps of cation coordination, π–π stacking into fibers, and network percolation cannot occur; the system therefore remains a free-flowing sol after the heat–cool cycle.  
+
+The 2′-deoxy modification present in z8isoGd is insufficient to overcome this hydrogen-bonding defect, as evidenced by the complete loss of gelation in the closely analogous z8Gd series under identical LiCl conditions. Consequently the outcome is predicted to be No Gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution lowers N7 basicity and abolishes the Hoogsteen hydrogen-bonding pattern needed for stable isoG-quartet or pentaplex formation. Although the parent isoGd gels with LiCl, the same 8-aza modification that prevents gelation in z8Gd is present here; the 2′-deoxy feature cannot compensate. The system therefore remains a sol after the heat–cool cycle.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7137</summary>
+              <pre>The target molecule z8isoGd is a close structural analog of isoGd (Reference 1), which readily forms stable, transparent hydrogels with LiCl via Li⁺-templated isoG-quartet/pentaplex formation, hydrogen-bonded stacking, and fiber entanglement. However, z8isoGd also incorporates the 8-aza modification present in z8Gd (Reference 3). This substitution lowers N7 basicity, which directly impairs the Hoogsteen-edge hydrogen-bonding geometry required to close quartets or higher-order assemblies in water. As a result, the cation-templated supramolecular polymerization that produces an entangled nanofiber network cannot occur; the system remains a free-flowing sol after the heat–cool cycle. The same 8-aza-induced loss of gelation is observed for z8Gd across Li⁺, Na⁺, and K⁺, confirming that the aza modification overrides any favorable features of the isoGd scaffold.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Although the 2′-deoxyisoguanosine core supports Li⁺-templated quartet/pentaplex assembly and hydrogelation, the 8-aza substitution lowers N7 basicity and thereby abolishes the Hoogsteen hydrogen-bonding geometry needed for stable supramolecular polymerization in water. Consequently the system remains a sol rather than forming an entangled nanofiber network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7035</summary>
+              <pre>The target molecule (z8isoGd) is a close structural analog of isoGd (Reference 1), which readily forms stable, transparent hydrogels with LiCl via self-assembly into hydrogen-bonded quartets/pentaplexes that stack into an entangled fiber network. However, z8isoGd also incorporates the 8-aza modification present in z8Gd (Reference 3). That modification specifically lowers N7 basicity, which in turn disrupts the Hoogsteen-edge hydrogen bonding that is essential for stable quartet/pentaplex formation in water. As a direct consequence, the supramolecular assemblies required for gelation cannot form; the system remains a sol (or may eventually crystallize). This outcome is fully consistent with the experimental behavior of z8Gd under identical LiCl conditions and overrides the gel-forming propensity of the parent isoGd scaffold.
+
+The same mechanistic reasoning applies to the supplied heat–cool protocol: dissolution occurs at high temperature, but the disrupted hydrogen-bonding pattern prevents the necessary fiber network from assembling upon cooling.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Aza-2′-deoxyisoguanosine (z8isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1nnn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL z8isoGd in 0.2 M LiCl, dissolve at &gt; 90 °C, then cool to room-temperature&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The 8-aza substitution lowers N7 basicity and thereby abolishes the Hoogsteen hydrogen-bonding pattern needed for isoGd-type quartet/pentaplex formation in water. Consequently the molecule cannot generate the stacked, entangled fiber network required for hydrogelation and remains a sol (or crystallizes), exactly as observed for the analogous 8-aza-guanine derivative under identical LiCl conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

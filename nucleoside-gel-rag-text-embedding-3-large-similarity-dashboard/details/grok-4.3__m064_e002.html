@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 64-2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 64-2</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>64</strong></div>
+      <div>Experiment ID<strong>2</strong></div>
+      <div>Chemical description<strong>L-Guanosine</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>NaB(OH)₄</strong></div>
+      <div>Detailed conditions<strong>Sodium borate.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">The hydrogel exhibited a more regular and distinct polyporous membrane-like network and demonstrated favorable biocompatibility, making it a suitable candidate for three-dimensional cell culture extracellular matrices.
+
+Borates form dynamic covalent borate diester bonds with the ribose ring, which are stronger than standard non-covalent bonds. These diester bonds act as an adhesive agent, bonding the gelators tighter to enhance molecular interactions, propping the structures up, and leading to more compact crosslinking. NOE experiments confirmed that L-G maintains its optimal anti-conformation within this crosslinked network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6372</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6739</summary>
+              <pre>The provided target molecule is L-guanosine, whose ribose cis-diol motif is well-known to undergo reversible borate ester formation with B(OH)₄⁻ anions. These esters create covalent cross-links between nucleoside molecules, while the guanine bases simultaneously stack into G-quadruplex-type assemblies. The combination of dynamic covalent cross-linking and supramolecular stacking produces a self-supporting hydrogel network.  
+
+Because the borate–diol interaction is insensitive to the absolute configuration of the sugar, the L-enantiomer behaves analogously to its D-counterpart under the same conditions. Consequently, addition of NaB(OH)₄ is expected to yield a stable gel (typically within minutes to hours at room temperature).  
+
+No experimental factors in the stated conditions (e.g., competing crystallization or rapid precipitation) are indicated that would override this established gelation pathway.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Borate anions form reversible esters with the ribose cis-diols of guanosine, generating covalent cross-links that, together with guanine G-quadruplex stacking, produce a stable hydrogel network. The L-configuration does not impede this established gelation mechanism.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6020</summary>
+              <pre>The L-enantiomer of guanosine is known to undergo the same borate-mediated self-assembly as the more commonly studied D-enantiomer. Borate anions reversibly esterify the cis-2′,3′-diol of the ribose, generating anionic guanosine–borate complexes that are able to stack into G-quadruplex columns; these columns further entangle into a three-dimensional fibrillar network that immobilizes the solvent. Consequently, an aqueous solution of L-guanosine containing NaB(OH)₄ forms a stable, transparent hydrogel within minutes to hours at room temperature.  
+
+No literature reports precipitation, crystallization, or rapid collapse under these conditions; the borate–guanosine interaction is therefore classified as gel-forming.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Borate anions form reversible esters with the ribose cis-diol of L-guanosine, enabling G-quadruplex stacking and fibrillar network formation that yields a stable hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6357</summary>
+              <pre>The molecule L-guanosine is the enantiomer of the well-studied natural nucleoside D-guanosine. Both enantiomers share identical chemical functionality (the guanine base plus the cis-1,2-diol of the ribose), so they exhibit the same fundamental self-assembly behavior. In the presence of borate, the ribose diols reversibly form anionic borate esters; these esters promote the Hoogsteen-type hydrogen-bonded G-quartets that subsequently stack into G-quadruplex fibrils. The resulting anisotropic fibrillar network immobilizes the solvent and produces a hydrogel.  
+
+Sodium borate (NaB(OH)₄) supplies both the requisite borate anion and a monovalent cation that further stabilizes the G-quartets. Literature on guanosine–borate systems consistently shows that transparent, self-supporting gels form within minutes to hours at millimolar concentrations under ambient conditions. Because the stereochemical differences between L- and D-guanosine do not alter the key hydrogen-bonding or borate-ester motifs, the same gelation outcome is expected for L-guanosine.  
+
+Consequently the experimental outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;L-Guanosine forms reversible borate esters at the ribose cis-diol; the resulting anionic species templates Hoogsteen G-quartets that stack into fibrils and produce a hydrogel. Sodium borate supplies both the borate anion and a stabilizing cation, exactly the conditions known to yield stable guanosine–borate gels.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6033</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6116</summary>
+              <pre>The target molecule (L-guanosine) is the non-natural enantiomer of the D-guanosine (G) characterized in Reference 1. Its core hydrogen-bonding face, sugar pucker, and ability to form G-quartets are chemically identical to D-G; only the absolute configuration of the ribose is inverted. Consequently, the same ion-specific and additive-specific rules that govern quartet stacking, fiber elongation, and hydrogel lifetime in D-G are expected to apply.
+
+Reference 1 shows that D-G forms only transient or collapsing hydrogels with monovalent alkali-metal salts other than potassium (LiCl, NaCl, low-concentration KCl all give “No Gel”). When borate is introduced, gelation occurs exclusively with the potassium salt KB(OH)₄; the lithium analogue LiB(OH)₄ yields a free-flowing solution (“No Gel”). Sodium borate (NaB(OH)₄) is therefore expected to behave analogously to LiB(OH)₄: the Na⁺ cation does not stabilize G-quartet stacks sufficiently, and the borate ester equilibrium alone is insufficient to produce a persistent network.
+
+Because the target experiment uses precisely this non-gelling cation (Na⁺) together with borate, the outcome matches the “No Gel” entry recorded for LiB(OH)₄ in Reference 1. The opposite chirality of L-guanosine does not override the cation selectivity that is already decisive for D-G under otherwise identical conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;L-Guanosine is the enantiomer of D-G (Reference 1). Reference 1 demonstrates that only K⁺ (as KCl or KB(OH)₄) supports stable G-quartet hydrogels; Li⁺ and Na⁺ salts, even when paired with borate, produce only transient gels or free-flowing solutions. NaB(OH)₄ therefore falls into the non-gelling category, identical to the LiB(OH)₄ result.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5915</summary>
+              <pre>The target molecule is the L-enantiomer of guanosine. Reference data for the D-enantiomer (guanosine) show that stable, long-lived borate hydrogels require K+ (as KB(OH)₄) to template G-quartets; the identical protocol with LiB(OH)₄ yields only a free-flowing solution. No experiment in the reference set demonstrates gelation of guanosine (D or L) with NaB(OH)₄.  
+
+Because Na+ is a weaker quartet stabilizer than K+ and the borate-mediated network is known to be cation-selective, the NaB(OH)₄ condition is expected to produce only a transient or non-gelling solution. The change in absolute configuration does not alter this cation dependence.  
+
+Consequently the outcome is classified as “No Gel.”
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na+ does not template stable G-quartet/borate networks (only K+ does); enantiomerism does not change the cation selectivity.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6069</summary>
+              <pre>The target molecule is the L-enantiomer of guanosine. Reference data for the D-enantiomer (guanosine) establish that stable, long-lived borate hydrogels are obtained only when the borate salt supplies K⁺ (KB(OH)₄, 0.5 equiv); the identical protocol with LiB(OH)₄ yields only a free-flowing solution. K⁺ is uniquely effective because it templates G-quartet assembly; smaller cations (Li⁺, and by extension Na⁺) do not.
+
+The queried additive is NaB(OH)₄. Because Na⁺ cannot stabilize the requisite G-quartet stack, the same outcome observed with LiB(OH)₄ is expected: no persistent fibrillar network forms. Chirality of the nucleoside does not alter this cation selectivity; the stereochemical inversion merely produces the mirror-image gel when a suitable cation is present, but does not change the cation requirement itself.
+
+Consequently the experiment is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Na⁺ cannot template stable G-quartets (cf. KB(OH)₄ gels vs. LiB(OH)₄ solutions for D-G). The L-enantiomer does not change the cation selectivity, so no persistent hydrogel is formed.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6302</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6169</summary>
+              <pre>The target molecule is the L-enantiomer of guanosine. Its ribose cis-diol motif is chemically competent for reversible borate ester formation, exactly as seen in the three reference nucleosides (all of which contain the same vicinal-diol array).  
+
+Reference 1 (8-hydroxyguanosine) and Reference 3 (8-aminoguanosine) both produce stable gels when NaB(OH)₄ (or the related NaB(OH)₄/KB(OH)₄ mixture) is added at half-equimolar stoichiometry; the borate acts as a dynamic cross-linker that stabilizes G-quartet stacks. Reference 2 (2′-amino-2′-deoxyguanosine) likewise gels under identical borate conditions.  
+
+Because L-guanosine presents an identical diol geometry (only globally mirrored) and the same guanine hydrogen-bonding face, the same borate-mediated assembly pathway remains available. No steric or electronic feature in the target molecule blocks this interaction, and the solvent/additive environment matches the successful reference cases. Consequently the mixture is predicted to form a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;L-Guanosine retains the cis-2′,3′-diol required for reversible borate esterification. References 1 and 3 explicitly gel with NaB(OH)₄ (or NaB(OH)₄/KB(OH)₄) at comparable nucleoside concentrations; Reference 2 also gels under the same borate conditions. The enantiomeric configuration does not impede diol–borate complexation or subsequent G-quartet stacking, so gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6454</summary>
+              <pre>The target molecule is L-guanosine, the enantiomer of the naturally occurring D-guanosine. Its ribose moiety therefore presents the same 2′,3′-cis-diol functionality that is required for reversible borate ester formation, but with inverted absolute configuration at every stereocenter.  
+
+Borate-mediated gelation of guanosine derivatives proceeds by two orthogonal recognition events: (1) reversible covalent complexation of NaB(OH)₄ with the vicinal diol of the ribose, which generates anionic borate esters that increase solubility and provide electrostatic cross-links, and (2) Hoogsteen-type hydrogen-bonded G-quartet assembly of the guanine bases, followed by cation-stabilized stacking into fibrils that ultimately form a percolating hydrogel network. Because neither of these steps is inherently chiral-selective when only a single enantiomer is present, the mirror-image sugar does not abolish either recognition process.  
+
+This conclusion is reinforced by the three reference compounds (chemical distances 1.63–1.81), all of which contain an intact ribose or modified ribose and all of which form stable gels when NaB(OH)₄ (or the closely related KB(OH)₄) is added at half-equivalent stoichiometry. The sole structural difference between the target and these references is the absolute configuration of the sugar; the functional groups that participate in borate esterification and G-quartet formation remain identical. Consequently, L-guanosine is expected to undergo the same borate-assisted fibril assembly and produce a macroscopic gel under the stated conditions.  
+
+Final answer:  
+[{
+    &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;L-guanosine retains the 2′,3′-cis-diol required for reversible borate ester formation and the guanine face needed for G-quartet assembly. Reference compounds at similar chemical distances (8-hydroxyguanosine, 8-aminoguanosine, 2′-amino-2′-deoxyguanosine) all gel with NaB(OH)₄ or KB(OH)₄ under comparable concentrations; the sole difference is sugar chirality, which does not prevent homochiral quartet stacking or borate cross-linking. Hence gelation is predicted.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6284</summary>
+              <pre>The target molecule is L-guanosine, the enantiomer of the naturally occurring D-guanosine. Its ribose moiety retains the cis-2′,3′-diol geometry required for reversible borate ester formation.  
+
+Reference compounds that share the same guanosine core (8-hydroxyguanosine, 8-aminoguanosine, and 2′-amino-2′-deoxyguanosine) all produce stable gels when treated with NaB(OH)₄ under comparable nucleoside concentrations (50–100 mM) and borate stoichiometry. The borate anion acts both as a covalent cross-linker (via diol–borate esters) and as a source of sodium cations that further stabilize G-quartet stacking. Because L-guanosine possesses an identical diol array and can form the same G-quartet hydrogen-bonding motif, the same borate-mediated assembly pathway is expected to operate.  
+
+No experimental reference indicates that the absolute configuration of the ribose (D vs. L) prevents gelation under these conditions; enantiomers typically yield gels of comparable macroscopic appearance, although the underlying fibrillar handedness may be inverted. Consequently, gel formation is predicted for the supplied NaB(OH)₄ condition.
+
+[{
+  &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;L-guanosine retains the cis-2′,3′-diol geometry essential for reversible borate-ester cross-linking. Structurally related guanosine derivatives (8-hydroxy-, 8-amino-, and 2′-amino-2′-deoxyguanosine) all form stable gels with NaB(OH)₄ at similar concentrations; the same borate-mediated G-quartet network is therefore expected for the L-enantiomer.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6316</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6542</summary>
+              <pre>The target molecule is the L-enantiomer of native guanosine. All three reference compounds are close structural analogues (8-hydroxy, 8-amino or 2′-amino derivatives) that share the same guanine base and the cis-2′,3′-diol motif on the ribose.  
+
+In every case the borate additives NaB(OH)₄ / KB(OH)₄ produce stable gels at the stated concentrations. The accepted mechanism is reversible borate ester formation with the vicinal diol, which creates a dynamic, cross-linked supramolecular network. Because L-guanosine possesses an identical diol geometry (only the absolute configuration of the sugar is inverted), the same borate-ester cross-linking is expected to occur.  
+
+No reference shows precipitation or crystallisation under sodium-borate conditions, and the chemical distances (1.6–1.8) confirm that the core recognition elements remain intact. Consequently the outcome for the queried experiment is gel formation.
+
+[{
+    &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;L-Guanosine retains the guanine base and the cis-2′,3′-diol required for reversible borate-ester cross-linking. All structurally analogous nucleosides (8-OH, 8-NH₂, 2′-NH₂ guanosines) form stable gels under identical NaB(OH)₄ conditions; the enantiomeric configuration does not alter diol geometry or borate reactivity, so gelation is predicted.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6315</summary>
+              <pre>The target molecule (L-guanosine) is the enantiomer of the naturally occurring D-guanosine scaffold. All three reference compounds share the same core guanosine structure (purine nucleobase + ribose cis-diol) and differ only by peripheral substitutions at C8 or C2′.  
+
+Borate additives such as NaB(OH)₄ promote gelation by reversible esterification with the 2′,3′-cis-diol of the ribose, generating anionic borate diesters that drive supramolecular polymerization into fibers. Because the cis-diol geometry is identical in both enantiomers, the borate–diol interaction is unaffected by the absolute configuration of the sugar.  
+
+Reference 1 (8-hydroxyguanosine) and Reference 3 (8-aminoguanosine) both form stable gels at 100 mM nucleoside with half-equivalent NaB(OH)₄; Reference 2 likewise gels with NaB(OH)₄ at 50 mM. The target L-guanosine therefore satisfies the same structural prerequisites and is expected to gel under the stated conditions.  
+
+[{
+    &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Borate esters form with the ribose cis-diol regardless of sugar chirality; analogous D-guanosine derivatives (Refs 1–3) all gel with NaB(OH)₄ under comparable concentrations.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6093</summary>
+              <pre>The target molecule is L-guanosine, the enantiomer of the naturally occurring D-guanosine. Enantiomers exhibit identical physicochemical properties in achiral environments, and the borate additive NaB(OH)₄ is achiral. Consequently, any supramolecular interactions (borate–diol complexation, hydrogen-bonded G-quartet stacking, and eventual hydrogel network formation) that occur with D-guanosine will occur identically with L-guanosine.
+
+All three reference guanosine derivatives (8-hydroxyguanosine, 2′-amino-2′-deoxyguanosine, and 8-aminoguanosine) form stable gels when treated with NaB(OH)₄ under comparable nucleoside concentrations (50–100 mM) and additive stoichiometry (half-equimolar). These precedents confirm that the core guanosine scaffold readily undergoes borate-mediated gelation. Because L-guanosine retains the identical cis-1,2-diol motif on the ribose and the same hydrogen-bonding face on the guanine base, the same gelation outcome is expected.
+
+Therefore, under the stated conditions (NaB(OH)₄, sodium borate), L-guanosine produces a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;L-Guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(ncn2[C@H]2O[C@@H](CO)[C@H](O)[C@@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;Sodium borate.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;L-guanosine is the enantiomer of D-guanosine; both share identical functional groups (guanine base and ribose cis-diol) that enable borate complexation and G-quartet stacking. All three reference guanosine derivatives form gels with NaB(OH)₄ at comparable concentrations, confirming that the unmodified guanosine scaffold gels under these conditions. Hence L-guanosine yields a gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 23-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 23-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>23</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>5&#x27;-O-Lauroylgemcitabine</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>EtOH/H₂O</strong></div>
+      <div>Detailed conditions<strong>0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Did not form a stable gel under screening conditions; sample flowed on inversion
+
+The long dodecanoyl chain increases hydrophobic bulk around the 5′-ester, causing steric hindrance that frustrates π-stacking and intermolecular H-bond alignment of the gemcitabine cores; molecules therefore aggregate into amorphous clusters rather than an extended fibrous network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6433</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6568</summary>
+              <pre>The molecule 5&#x27;-O-Lauroylgemcitabine is an amphiphilic nucleoside derivative bearing a long (C12) hydrophobic acyl chain at the 5&#x27;-position together with the cytosine nucleobase and a free 3&#x27;-OH. These structural features enable a combination of directional hydrogen-bonding (nucleobase and OH) and van der Waals/hydrophobic interactions (alkyl chain) that are known to drive self-assembly into fibrillar networks in mixed aqueous-organic solvents.
+
+The experimental protocol employs an anti-solvent method at 0.5 wt % with controlled cooling from 60 °C to room temperature over 18 h. Under these conditions the molecule is expected to nucleate one-dimensional aggregates that percolate into a self-supporting gel, as confirmed by the vial-inversion test. Consequently the outcome is recorded as Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C12 chain and H-bonding motifs assembles into a fibrillar network under the stated anti-solvent cooling protocol; 18 h observation window meets the Gel criterion.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6428</summary>
+              <pre>The molecule 5&#x27;-O-Lauroylgemcitabine is an amphiphilic nucleoside derivative featuring a cytosine nucleobase (H-bond donor/acceptor), a ribose sugar with a free 3&#x27;-OH (additional H-bonding site), and a C12 alkyl chain that imparts significant hydrophobicity. These structural elements enable directional intermolecular interactions (H-bonding + π-stacking of bases) combined with solvophobic driving forces, which are the classic prerequisites for supramolecular gelation.
+
+The experimental protocol (anti-solvent addition of water to an ethanolic solution at 60 °C, followed by slow cooling to room temperature) is a standard trigger for nucleation of fibrillar networks in such systems. At 0.5 wt % and with variable EtOH/H₂O ratios, the progressive increase in water content reduces solubility of the hydrophobic tail while preserving enough H-bonding capability, favoring one-dimensional self-assembly over crystallization or precipitation. Literature precedents with closely related 5&#x27;-O-acyl gemcitabine and cytidine derivatives confirm that C10–C14 chains reliably produce stable gels under identical mixed-solvent, vial-inversion conditions.
+
+Consequently, at least one composition within the screened ΦEtOH range yields a self-supporting gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with long hydrophobic tail; anti-solvent cooling in EtOH/H₂O promotes fibrillar assembly via H-bonding and solvophobic effects; analogous derivatives gelate under identical conditions.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6305</summary>
+              <pre>The molecule 5&#x27;-O-Lauroylgemcitabine is an amphiphilic nucleoside derivative bearing a long (C12) hydrophobic acyl chain. This structural motif is known to drive self-assembly in mixed aqueous-organic solvents via a combination of (i) hydrophobic collapse of the alkyl tail, (ii) Watson–Crick-type hydrogen bonding and π-stacking of the cytosine base, and (iii) additional H-bonding from the 3&#x27;-OH and the difluorinated ribose.  
+
+Under the stated anti-solvent protocol (dissolution in warm EtOH followed by addition of warm water, ΦEtOH variation, slow cooling to room temperature and 18 h equilibration), the progressive increase in water content reduces solubility and triggers one-dimensional fiber growth. These fibers entangle into a percolating network that immobilizes the solvent, satisfying the vial-inversion criterion for gelation. Because the experiment explicitly varies the ethanol fraction, at least one composition lies within the gelation window.  
+
+Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C12 chain; hydrophobic interactions plus nucleobase H-bonding/π-stacking drive fiber formation in EtOH/H₂O mixtures. Variation of ΦEtOH ensures at least one ratio yields a stable gel after cooling.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6025</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5906</summary>
+              <pre>The target molecule is a close structural analog of the reference compounds (differing only in acyl chain length: C12 vs. C14/C10/C8). All three references were tested under essentially identical conditions (0.5 wt % EtOH/H₂O anti-solvent method, 60 °C dissolution followed by cooling to room temperature and vial-inversion testing) and uniformly failed to produce a self-supporting gel; they remained solutions or formed precipitates. Because gelation propensity in this nucleoside series is known to be highly sensitive to chain length and the nearest neighbors (C10 and C14) are already non-gelators, the C12 homolog is likewise expected to be a non-gelator under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Nearest analogs (C10 and C14 acyl chains) fail to gel under identical conditions; chain-length SAR therefore predicts the C12 homolog will also remain a free-flowing solution.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6328</summary>
+              <pre>The target molecule is a close structural analog of the C14-acyl reference (chemical distance 0.27), differing only by two methylene units in the fatty-acid chain. All three reference compounds (C8, C10, C14) were examined under essentially identical anti-solvent conditions (0.5 wt % EtOH/H₂O, 60 °C dissolution followed by cooling) and uniformly failed to produce a self-supporting gel; they remained free-flowing solutions or gave precipitates. Because gelation propensity in this gemcitabine series is known to be highly sensitive to chain length yet still absent across the C8–C14 window, the C12 homolog is expected to behave identically.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Closest reference (C14 acyl) and two shorter-chain analogs (C10, C8) all fail to gel under identical EtOH/H₂O anti-solvent conditions; the two-carbon difference is insufficient to invert this behavior.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5839</summary>
+              <pre>The target molecule is a close structural analog of the reference compounds (differing only in acyl chain length: C12 vs. C14/C10/C8). All three references were tested under essentially identical conditions (EtOH/H₂O anti-solvent method at 0.5 wt %, 60 °C dissolution followed by cooling) and uniformly failed to produce a self-supporting gel; they remained free-flowing solutions or precipitates. Because gelation propensity in this nucleoside series is known to be highly sensitive to chain length, yet no gelation occurs on either side of C12, the C12 homolog is likewise expected to be a non-gelator under the stated protocol.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Target is a C12-chain homolog of the C14/C10/C8 references, all of which fail to gel under identical EtOH/H₂O conditions; chain-length sensitivity therefore predicts the same outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6406</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6352</summary>
+              <pre>The target molecule is a fatty acid ester of gemcitabine bearing a C12 (lauroyl) acyl chain. Its closest structural analogue in the reference set is the C14 myristoyl derivative (chemical distance 0.27), which was tested under essentially identical conditions (0.5 wt % EtOH/H₂O, anti-solvent addition at 60 °C followed by cooling and vial-inversion). That compound produced only a free-flowing solution and never formed a self-supporting gel.  
+
+The two shorter-chain analogues (C10 and C8) likewise failed to gel in the same solvent system, indicating that this structural family is generally a poor gelator under these conditions. Because the target differs from the nearest non-gelling reference by only two methylene units and shares the identical solvent, concentration, temperature profile, and evaluation method, it is expected to behave analogously. No evidence supports spontaneous gelation within the 18-hour observation window.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally closest reference (C14 myristoyl analogue, chemical distance 0.27) yields only a flowing solution under identical EtOH/H₂O anti-solvent conditions. Shorter-chain homologues (C10, C8) are likewise non-gelators. The two-carbon difference does not alter the observed poor gelation propensity.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6307</summary>
+              <pre>The target molecule is 5&#x27;-O-Lauroylgemcitabine, which features a saturated C12 acyl chain attached at the 5&#x27; position of the gemcitabine nucleoside core. This structure is directly analogous to the three reference compounds, which differ only in acyl-chain length (C8, C10, and C14).  
+
+All three references were tested under essentially identical gelation protocols (0.5 wt % in EtOH/H₂O, dissolution at 60 °C followed by cooling to room temperature and vial-inversion assessment). In every case the outcome was the same: the sample remained a free-flowing solution or produced only weak, non-self-supporting aggregates that collapsed on inversion. The chemical-distance metrics supplied for the references further confirm that the C12 homologue lies well within the same local structure–property space (distances 0.27–0.36 to the nearest neighbors).  
+
+Because the molecular scaffold, the head-group functionality, the solvent system, the concentration, and the thermal history are all conserved, the C12 derivative is expected to exhibit the same inability to establish the anisotropic, long-range intermolecular interactions required for gelation. Consequently the experimental result is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The target bears a C12 acyl chain on the identical gemcitabine nucleoside core used in the three reference compounds (C8, C10, C14). All references were examined at the same concentration (0.5 wt %), in the same EtOH/H₂O mixtures, and with the same thermal cycle (60 °C dissolution → room-temperature cooling). Each reference produced only free-flowing solutions or transient aggregates that failed the inversion test. The C12 chain length lies squarely between the nearest non-gelling homologues (chemical distances 0.27–0.36), so the same lack of sufficient amphiphilic balance and intermolecular ordering is expected. Therefore the outcome is No Gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6560</summary>
+              <pre>The target molecule is a nucleolipid derivative consisting of the gemcitabine nucleoside core functionalized at the 5′-position with a saturated C12 fatty acyl chain (lauroyl). Gelation in this structural class is known to be highly sensitive to the hydrophilic–lipophilic balance, which is modulated primarily by acyl-chain length.  
+
+The closest structural analogue in the reference set is 5′-O-myristoylgemcitabine (C14 chain, chemical distance 0.272). Under essentially identical conditions (0.5 wt % in EtOH/H₂O, thermal dissolution at 60 °C followed by cooling), that compound produced only a free-flowing solution that failed the vial-inversion test. The two shorter-chain analogues (C10 and C8) likewise proved to be poor gelators in both pure water and EtOH/H₂O mixtures.  
+
+Because the target differs from the nearest non-gelling reference by only two methylene units, the hydrophilic–lipophilic balance remains outside the narrow window required for stable self-supporting gel networks. Consequently, the same anti-solvent protocol is expected to yield either a precipitate or a solution that collapses on inversion rather than a gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Closest analogue (C14 myristoyl, chemical distance 0.272) fails to gel under identical EtOH/H₂O conditions; shorter C10/C8 chains are likewise non-gelators. The C12 chain length therefore lies outside the narrow HLB window needed for stable gel formation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6446</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6743</summary>
+              <pre>The target molecule is a 5′-acylated gemcitabine derivative bearing a C12 (lauroyl) ester chain. All three reference compounds share the identical nucleoside core and the same 5′-esterification pattern; they differ only in acyl-chain length (C8, C10, C14). In every case the experimental outcome in EtOH/H₂O (or pure H₂O) is “No Gel,” and the mechanistic rationale supplied is steric occlusion of the nucleobase hydrogen-bonding face by the 5′-acyl substituent. Because the C12 chain length lies squarely between the C10 and C14 congeners, the same steric impediment is expected to operate. Consequently the molecule is predicted to remain a solution or to form only amorphous aggregates rather than the anisotropic fibres required for gelation.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule is a direct homologue of the three reference 5′-acyl gemcitabines (C8–C14 chains). All references fail to gel in EtOH/H₂O because the 5′-ester sterically blocks nucleobase stacking and H-bonding, yielding only disordered aggregates. The C12 chain length falls between the non-gelling C10 and C14 analogues, so the same steric barrier precludes fibre formation and gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6446</summary>
+              <pre>The target molecule is a 5′-O-acyl gemcitabine derivative bearing a C12 (lauroyl) ester chain. All three reference compounds share the identical nucleoside core and the same 5′-ester substitution pattern; they differ from the target only in the precise length of the aliphatic chain (C8, C10, C14). In every case the experimental outcome under EtOH/H₂O anti-solvent conditions identical to those specified for the target was “No Gel.”  
+
+The mechanistic explanation given for the references is steric occlusion: attachment of any acyl chain at the 5′-position blocks the hydrogen-bonding face of the nucleobase and prevents the molecules from adopting the ordered, one-dimensional stacks required for fiber formation. Because the target possesses the same substitution pattern, the same steric impediment is present and gelation is precluded.  
+
+Consequently the predicted result is “No Gel.”
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule is a 5′-O-acyl gemcitabine bearing a C12 ester. All reference 5′-O-acyl gemcitabines (C8–C14) fail to gel under identical EtOH/H₂O anti-solvent conditions because the 5′-ester sterically blocks nucleobase hydrogen-bonding and prevents formation of the ordered stacks needed for fiber networks. The same steric hindrance applies here, so gelation is precluded.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6149</summary>
+              <pre>The target molecule is a close structural analog of the three reference compounds (differing only in acyl chain length at the 5′-position). All three references were tested under essentially identical conditions (0.5 wt % EtOH/H₂O anti-solvent protocol, 60 °C dissolution followed by cooling) and uniformly failed to produce gels. The mechanistic explanation given for the references—steric occlusion of the nucleobase and ribose hydrogen-bonding faces by the 5′-ester chain—applies identically to the C12 homologue. Consequently the target molecule is also incapable of forming the ordered, anisotropic fibers required for gelation.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Lauroylgemcitabine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(N)nc2=O)C(F)(F)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol/water (anti-solvent method, ΦEtOH varied), dissolve at 60 °C in EtOH then add 60 °C water, cool to r.t. 18 h, vial-inversion test&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule differs from the three reference 5′-acyl gemcitabine derivatives only in the precise length of the saturated ester chain. All references were examined under the identical EtOH/H₂O anti-solvent protocol and produced only flowing solutions or amorphous precipitates; the steric blockage of base-stacking and H-bonding interactions that prevents fiber formation is therefore equally operative for the C12 homologue.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

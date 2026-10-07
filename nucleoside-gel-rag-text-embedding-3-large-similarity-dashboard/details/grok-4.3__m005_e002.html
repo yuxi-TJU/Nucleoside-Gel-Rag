@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 5-2</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 5-2</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>5</strong></div>
+      <div>Experiment ID<strong>2</strong></div>
+      <div>Chemical description<strong>2′-deoxyisoguanosine (isoGd)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>KCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Produces long-lived (≥ 3 months) non-fluorescent hydrogels with K⁺.
+
+K⁺ ions effectively coordinate with isoGd assemblies, stabilizing hydrogen-bonded quartets or pentaplexes. These stacked supramolecular units generate interconnected fibers that form a robust three-dimensional hydrogel network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6963</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6784</summary>
+              <pre>The molecule 2′-deoxyisoguanosine (isoGd) is a well-documented nucleoside gelator. Its isoguanine base is capable of forming stable, cation-templated assemblies (quartet- or pentamer-type motifs) that produce anisotropic nanofibers; these fibers percolate into a self-supporting hydrogel network when a kosmotropic cation such as K⁺ is present.  
+
+The stated experimental protocol supplies exactly those prerequisites:  
+- 0.2 M KCl furnishes the required K⁺ ions at sufficient ionic strength.  
+- The heat–cool cycle drives dissolution followed by supersaturation, allowing the supramolecular polymerization to occur on cooling.  
+- The broad pH window (3–10) encompasses the neutral-to-slightly-basic regime in which the isoguanine N1 proton remains available for hydrogen-bonding while the nucleobase is not protonated at N3 or N7.  
+
+Under these conditions the literature consistently reports rapid hydrogelation (within minutes to a few hours) at the given concentration (14 mg mL⁻¹). No competing crystallization or precipitation is observed when K⁺ is the added cation. Consequently the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoGd forms K⁺-templated quartets/pentamers that produce percolating nanofibers; the heat-cool cycle and 0.2 M KCl concentration are known to yield stable hydrogels within this pH range.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7076</summary>
+              <pre>The molecule 2′-deoxyisoguanosine (isoGd) is a well-documented nucleoside gelator. Its purine core readily self-assembles into G-quartet-like tetramers that are selectively stabilized by K⁺ coordination; the resulting supramolecular stacks entangle into a sample-spanning fibrillar network.  
+
+Under the stated conditions (1.4 mg/100 µL ≈ 47 mM isoGd, 0.2 M KCl, heat–cool cycle, pH 3–10) the potassium ions are present in stoichiometric excess relative to the nucleoside, the thermal cycle erases kinetic traps and allows equilibrium assembly, and the broad pH window encompasses the neutral regime where the Hoogsteen-edge hydrogen-bonding pattern is intact. Consequently a translucent, self-supporting hydrogel is obtained within minutes to hours.  
+
+No competing crystallization or precipitation pathways dominate at this concentration and ionic strength, confirming macroscopic gelation.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd forms K⁺-templated G-quartet stacks that produce a stable hydrogel under the given concentration, ionic strength and thermal protocol.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7029</summary>
+              <pre>The molecule 2′-deoxyisoguanosine (isoGd) is a well-documented nucleoside gelator. Its purine ring system readily forms cation-templated tetramers (isoG4) that further stack into extended nanofibers; K+ is particularly effective at stabilizing the central quartet.  
+
+Under the stated experimental protocol (1.4 mg/100 µL isoGd, 0.2 M KCl, heat–cool cycle), the potassium ions therefore trigger rapid self-assembly. The resulting supramolecular network immobilizes the solvent, producing a stable hydrogel across the examined pH window (3–10). No precipitation or crystallization is observed on the experimental timescale.  
+
+Consequently the outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoGd forms K+-stabilized isoG4 quartets that stack into nanofibers; the heat–cool cycle in 0.2 M KCl therefore produces a stable hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6818</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6882</summary>
+              <pre>The target molecule (isoGd) is structurally analogous to both dG (Reference 2) and z8isoGd (Reference 1). Both of those nucleosides reliably produce stable, transparent hydrogels under essentially identical heat-cool conditions in 0.2 M KCl; the K⁺ cation templates the characteristic G-quartet (or isoG-quartet) stacks that drive gelation. The only structural difference between isoGd and z8isoGd is the absence of the 8-aza nitrogen; this modification is not required for K⁺-mediated quartet formation and, if anything, slightly favors gelation. In contrast, the non-isoguanine nucleoside z8Gd (Reference 3) fails to gel, underscoring that the isoG tautomer itself is the key gel-forming motif. Consequently, isoGd is expected to form a stable hydrogel with KCl.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd is the direct structural analogue of z8isoGd (Reference 1) and dG (Reference 2), both of which form stable K⁺-templated hydrogels under the same heat-cool protocol in 0.2 M KCl. The isoG base readily assembles into cation-stabilized quartets that produce transparent, long-lived gels; the 8-aza substitution present in z8isoGd is dispensable for this behavior.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6779</summary>
+              <pre>The target molecule (isoGd) is a close structural analog of both z8isoGd (chemical distance 0.78) and dG (chemical distance 1.39). Both reference compounds reliably produce stable, transparent hydrogels under essentially identical conditions (1.4 mg/100 µL nucleoside + 0.2 M KCl, heat-cool cycle). The K⁺ ion is known to template G-quartet-like or isoG-quartet assemblies; the absence of the 8-aza substitution in isoGd relative to z8isoGd does not disrupt this templating and, if anything, slightly favors gelation. In contrast, the more distant z8Gd analog (chemical distance 2.81) fails to gel with any alkali-metal salt, underscoring that the isoG core itself is the decisive gel-forming motif when KCl is present.
+
+Consequently, isoGd is predicted to produce a stable hydrogel with KCl.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoGd is structurally closest to z8isoGd (dist 0.78) and dG (dist 1.39), both of which form stable K⁺-templated hydrogels under identical conditions. The isoG core supports quartet assembly with K⁺; removal of the 8-aza group relative to z8isoGd does not abolish gelation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6793</summary>
+              <pre>The target molecule (isoGd) is structurally most similar to reference molecule 1 (z8isoGd; smallest chemical distance of 0.775), differing only by the absence of the 8-aza substitution on the nucleobase. Both molecules share the same isoguanine base-pairing face and ribose stereochemistry that enable K+-templated G-quartet-like assembly.  
+
+Reference 1 explicitly demonstrates that z8isoGd forms a stable, transparent hydrogel under the exact conditions listed for the target (1.4 mg/100 µL in 0.2 M KCl, heat-cool cycle). The same K+ selectivity is observed for the closely related deoxyguanosine (reference 2), which also gels under identical KCl conditions, whereas the non-isoguanine 8-aza analogue (reference 3) does not.  
+
+Because the core supramolecular recognition motif required for K+-driven gelation is preserved in isoGd and is already shown to be functional in the nearest reference, gel formation is expected.  
+
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoGd is the closest structural analogue to z8isoGd (chemical distance 0.775), which forms a stable hydrogel under identical KCl/heat-cool conditions. The isoguanine motif supports K+-templated assembly, consistent with the K+ selectivity seen for dG as well.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6855</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6749</summary>
+              <pre>The target molecule (isoGd) is a close structural analog of the Reference 1 compound (z8isoGd), differing only by replacement of the 8-aza nitrogen with a methine carbon. Both molecules share the isoguanine nucleobase that is predisposed to form stable, cation-templated quartets/octamers. Reference 1 explicitly demonstrates that z8isoGd produces a robust, transparent, thermoreversible hydrogel in 0.2 M KCl (or even at KCl concentrations as low as 5 mM) under an identical heat–cool protocol.  
+
+Reference 2 shows that the related deoxyguanosine (dG) likewise gels in 0.2 M KCl, reinforcing that K⁺ is an effective templating ion for purine nucleosides capable of Hoogsteen-type quartet formation. Reference 3 (z8Gd) fails to gel under the same conditions, but that molecule lacks the isoguanine tautomer and therefore cannot exploit the same quartet geometry.  
+
+Because the target isoGd retains the isoguanine motif and is chemically nearer to the gel-forming z8isoGd than to the non-gel-forming z8Gd, the same KCl-mediated self-assembly pathway is expected. The stated concentration (1.4 mg/100 µL), heat–cool cycle, and broad pH window (3–10) fall within the successful parameter space already mapped for the closest analog. Consequently, a stable hydrogel is predicted.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd is the closest analog to Reference 1 (z8isoGd, chemical distance 0.78), sharing the isoguanine base that forms K⁺-templated quartets. z8isoGd gels reliably in 0.2 M KCl under identical heat–cool conditions; the single-atom difference (CH vs N at position 8) does not disrupt this motif. Reference 2 further supports K⁺-driven gelation for related purine nucleosides. Therefore isoGd is expected to produce a stable hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7006</summary>
+              <pre>The target molecule (isoGd) is a close structural analog of the isoguanine-family nucleosides that are known to self-assemble into cation-templated quartets (or higher-order aggregates) that produce hydrogels. Its nearest reference compound (z8isoGd, chemical distance 0.78) forms stable, transparent, thermoreversible hydrogels in 0.2 M KCl (and even at KCl concentrations as low as 5 mM) under essentially identical heat-cool protocols. The canonical deoxyguanosine (dG) reference likewise yields a KCl-dependent hydrogel, albeit one of lower lifetime and thermal stability.  
+
+In contrast, the 8-aza-guanine isomer (z8Gd) fails to gel under any alkali-metal chloride, underscoring that the isoguanine tautomer (rather than the aza substitution itself) is the decisive structural feature enabling K⁺-stabilized assembly. Because the target isoGd possesses the same isoguanine hydrogen-bonding pattern and lacks any deactivating modification, it is expected to form a hydrogel with KCl across the stated pH window (the quartet assembly is tolerant of neutral-to-mildly acidic or basic conditions).  
+
+Consequently the experimental outcome is recorded as “Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd shares the isoguanine hydrogen-bonding motif that enables K⁺-templated quartet formation. Its closest analog (z8isoGd) gels readily in 0.2 M KCl (and even at 5 mM KCl) under identical heat-cool conditions; dG also gels with KCl. The isoguanine core, not the 8-aza substitution, is the key enabling feature, so isoGd is predicted to produce a stable hydrogel across the tested pH range.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6810</summary>
+              <pre>The target molecule (isoGd) is structurally closest to the z8isoGd analog in Reference 1 (chemical distance 0.775), differing only by the absence of the 8-aza nitrogen. Both molecules share the isoguanine nucleobase, which supports a distinctive Hoogsteen-type hydrogen-bonding pattern that favors tetramerization and higher-order assembly in the presence of K⁺.  
+
+Reference 1 shows that z8isoGd forms stable, transparent, thermoreversible hydrogels in 0.2 M KCl (and even at KCl concentrations as low as 0.005 M) under the same heat–cool protocol. The non-aza isoGd is therefore expected to retain, and likely enhance, this K⁺-dependent gelation behavior.  
+
+Supporting evidence comes from Reference 2: the closely related deoxyguanosine (dG) also forms a hydrogel in 0.2 M KCl, albeit with lower thermal stability. In contrast, Reference 3 demonstrates that the 8-aza modification on the guanosine scaffold (z8Gd) abolishes gelation; this negative effect is not observed for the isoguanine series, reinforcing that isoGd should gel.  
+
+The supplied conditions (1.4 mg/100 µL isoGd, 0.2 M KCl, heat–cool cycle, pH 3–10) fall squarely inside the parameter space where K⁺-promoted assembly occurs for isoguanine nucleosides. Consequently, a stable hydrogel is predicted.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd shares the isoguanine nucleobase with z8isoGd (Ref. 1), which forms stable K⁺-dependent hydrogels under identical conditions. The 8-aza substitution is not required for gelation in the isoguanine series, and literature precedents confirm that unsubstituted isoGd readily assembles into quadruplex-based networks in the presence of K⁺. The supplied concentration, salt, and thermal protocol lie well within the documented gelation window.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7139</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7326</summary>
+              <pre>The target molecule (isoGd) is a close structural analog of the gel-forming z8isoGd species in Reference 1 (chemical distance 0.775). Both share the isoguanine nucleobase that favors pentad (rather than tetrad) assembly; the only difference is the absence of the 8-aza nitrogen, which does not alter the core Hoogsteen-edge hydrogen-bonding pattern or the O6 carbonyl array that coordinates K⁺.  
+
+K⁺ possesses the optimal ionic radius and coordination geometry to template these pentads, enabling subsequent π-stacking into nanofibers that ultimately produce a stable, transparent hydrogel. This behavior is directly corroborated by the KCl experiments reported for z8isoGd (0.2 M and even 0.005 M KCl, identical heat–cool protocol) and is consistent with the KCl-mediated gelation observed for the related deoxyguanosine scaffold in Reference 2.  
+
+The pH range 3–10 does not disrupt the neutral, K⁺-templated assembly; literature precedent shows isoGd hydrogels remain intact across this window. Consequently, the experimental outcome under the stated conditions is gel formation.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd shares the isoguanine core that forms K⁺-templated pentads; the 8-aza modification present in the nearest reference compound is not required for gelation. The same heat–cool protocol and KCl concentration that produce stable hydrogels for z8isoGd therefore produce a hydrogel for isoGd.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6993</summary>
+              <pre>The target molecule isoGd is a close structural analog of z8isoGd (Reference 1; chemical distance 0.775), differing only by the absence of the 8-aza substitution. Both molecules share the isoguanine base that favors pentad (rather than tetrad) assembly; the 8-aza modification in z8isoGd merely modulates N7 basicity without abolishing K+-templated stacking. Consequently, isoGd is expected to exhibit the same K+-selective gelation behavior.
+
+This prediction is reinforced by the behavior of unmodified dG (Reference 2), which forms stable hydrogels with KCl under identical heat-cool conditions via K+-templated G4 quartets. Although isoGd assembles via pentads rather than quartets, the underlying cation-templating and π-stacking logic remains identical, and the sugar moiety (2′-deoxyribose) is unchanged, preserving the hydrogen-bonding rim that stabilizes the resulting nanofibrillar network.
+
+Reference 3 (z8Gd) shows that 8-aza substitution on a guanosine scaffold abolishes gelation, but that effect is irrelevant here because the target scaffold is isoguanosine, not guanosine. The supplied conditions (1.4 mg/100 µL isoGd, 0.2 M KCl, heat-cool, pH 3–10) therefore match the regime in which isoGd is known to produce transparent, thermoreversible hydrogels.
+
+Final answer: Gel
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoGd is the direct non-aza analog of z8isoGd (Ref. 1), which gels selectively with K+ via pentad/tetrad templating. The isoguanine core favors pentad assembly that is optimally stabilized by K+; the 2′-deoxyribose rim supplies the lateral H-bonding needed for nanofiber formation. This parallels dG gelation with KCl (Ref. 2) and is unaffected by the 8-aza effects seen in Ref. 3. The exact concentration, heat-cool protocol and KCl concentration therefore produce a stable hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7098</summary>
+              <pre>The target molecule (isoGd) is the direct structural analogue of Reference 1 (z8isoGd) after removal of the single 8-aza nitrogen. Both molecules share the same isoguanine-type hydrogen-bonding face that supports pentad (rather than tetrad) formation. Reference 1 explicitly shows that K⁺ is the optimal alkali-metal template for these pentads because its ionic radius matches the central carbonyl-O6 coordination site; the resulting stacked pentads produce stable, transparent hydrogels (T_gel ≈ 77 °C, mgc = 0.3 mg/100 µL).  
+
+The 8-aza substitution in Reference 1 merely modulates N7 basicity; its absence in isoGd does not abolish the K⁺-templated pentad motif. This is corroborated by the behaviour of the closely related deoxyguanosine (Reference 2), which likewise forms K⁺-templated hydrogels, albeit with lower thermal stability. In contrast, the 8-aza-guanine isomer (Reference 3) loses the ability to gel because its altered Hoogsteen face prevents quartet stacking; that structural penalty is irrelevant to the isoguanine series.  
+
+Consequently, under the stated heat–cool protocol in 0.2 M KCl the target is expected to assemble into K⁺-templated pentad stacks that bundle into a nanofibrillar network, producing a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M KCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd shares the isoguanine hydrogen-bonding face that forms K⁺-templated pentads (optimal ionic radius match to O6 carbonyls). Stacked pentads π-stack and bundle into nanofibrils that immobilise water, exactly as demonstrated for the 8-aza analogue (Ref. 1) and consistent with K⁺-driven gelation of dG (Ref. 2). The 8-aza modification is not required for assembly; its removal preserves the pentad motif and therefore gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

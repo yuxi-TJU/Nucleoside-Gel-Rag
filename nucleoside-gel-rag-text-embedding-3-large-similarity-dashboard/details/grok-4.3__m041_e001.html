@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 41-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 41-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>41</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>5′-Hydrazino-guanosine</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>KCl</strong></div>
+      <div>Detailed conditions<strong>2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Highly transparent, self-standing hydrogel at 0.25 equiv KCl; becomes stiffer and hazy as KCl rises; gel remains stable for weeks and is thermoreversible.
+
+The 5′-hydrazino group boosts solubility and donates hydrogen bonds, enabling stable G₄·K⁺ columns that laterally associate via hydrazide H-bonding. Dense, entangled nanofibrils give a tough, long-lived gel whose modulus and opacity tune with KCl concentration.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7115</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6936</summary>
+              <pre>The molecule is a guanosine derivative bearing a 5′-hydrazino substituent. Guanosine and the large majority of its 5′-modified analogues are well-known to self-assemble into G-quadruplex-based hydrogels when dissolved in water (typically 1–3 wt %) in the presence of K⁺ salts. The added KCl (0.25–2 equiv) supplies the central cation that stabilizes the G-quartet stacks, while the heat–cool cycle supplies the thermal energy needed to dissolve the solid and then kinetically trap the molecules in the metastable gel state upon cooling.  
+
+Because the 5′-hydrazino modification does not disrupt the Hoogsteen face or the ribose pucker required for quartet formation, the same supramolecular pathway remains accessible. Consequently the mixture is expected to produce a stable hydrogel under the stated conditions.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Guanosine derivatives self-assemble into G-quadruplex hydrogels in water when K⁺ is present; the 5′-hydrazino substituent does not block the Hoogsteen face, so the same K⁺-stabilized gelation occurs under the heat–cool protocol.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7174</summary>
+              <pre>The molecule is a close structural analog of guanosine, retaining the intact guanine nucleobase that is known to self-assemble into G-quartets. These quartets are strongly stabilized by K⁺ cations, which coordinate to the O6 carbonyls and N7 atoms at the center of each quartet. The experimental protocol (2 wt % aqueous solution, 0.25–2.0 equiv KCl, heat–cool cycle) is the classic condition used to induce G-quartet hydrogelation; the heat–cool step dissolves the solid and allows the quartets to nucleate and grow into an extended fibrillar network upon cooling.  
+
+Although the 5′-CH₂NHNH₂ substituent replaces the native 5′-CH₂OH, this modification does not disrupt the Hoogsteen edge of guanine or the ribose hydrogen-bonding pattern required for quartet stacking. The hydrazino group remains sufficiently polar to maintain aqueous solubility at the working concentration, yet does not introduce steric bulk that would prevent lateral association of the quartets. Consequently, the same K⁺-driven self-assembly pathway observed for unmodified guanosine and many 5′-modified congeners is expected to operate here, producing a stable hydrogel.  
+
+Final answer: Gel
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;The guanine moiety enables K⁺-stabilized G-quartet formation; the 5′-hydrazino substitution preserves the Hoogsteen face and does not block quartet stacking, so the standard heat–cool protocol yields a hydrogel.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7235</summary>
+              <pre>The molecule 5′-hydrazino-guanosine is a close structural analog of guanosine itself. Guanosine and many of its 5′-modified congeners are well-established low-molecular-weight gelators that self-assemble into G-quadruplex nanofibers; these fibers entangle to produce hydrogels when the compound is dissolved in water at a few weight-percent and then subjected to a heat–cool cycle in the presence of K⁺.  
+
+The K⁺ cation templates the formation of G-quartets by coordinating to the O6 carbonyls of four guanines; the 5′-hydrazino substituent does not disrupt the Hoogsteen face or the ribose pucker required for quartet stacking, and the terminal NH₂ group can even participate in additional hydrogen-bonding or reversible covalent linkages that further stabilize the network. Consequently, under the stated conditions (2 wt % in water, 0.25–2.0 equiv KCl, heat–cool), the molecule is expected to produce a stable hydrogel rather than crystallize or precipitate.
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The guanosine core forms K⁺-templated G-quartets that stack into nanofibers; the 5′-hydrazino group does not interfere with quartet assembly and can add supplementary H-bonding, enabling hydrogelation under the given heat–cool conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6428</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6625</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is a close structural analog of the 5′-amino-guanosine species in Reference 1 (chemical distance 1.22), differing only by insertion of a single NH unit in the 5′ substituent. Both compounds share the same guanosine core, the same 2 wt % concentration regime in water, and the same KCl additive plus heat–cool protocol. Reference 1 explicitly shows that the amino analog fails to gel and instead precipitates; the marginal structural change introduced by the hydrazino group is not expected to alter the underlying solubility or self-assembly balance sufficiently to produce a stable hydrogel under otherwise identical conditions. The more distant references (iodo-guanosine with borate and 2-aminoadenosine in water) are not relevant because they employ different 5′ functionality or different additives that are known to change gelation propensity.
+
+Consequently the target is predicted to behave like its amino counterpart.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally almost identical to 5′-amino-guanosine (Ref 1), which precipitates rather than gels under the same KCl/heat–cool conditions. The extra NH does not alter the solubility/self-assembly balance enough to enable hydrogel formation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6229</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is a close structural analog of the 5′-amino-guanosine species in Reference 1 (chemical distance 1.22), differing only by insertion of a single NH group in the 5′ substituent. Both compounds share the same guanosine core, the same 2 wt % concentration regime, the same KCl additive, and the same heat–cool protocol. Reference 1 explicitly shows that the amino derivative fails to gel and instead precipitates; the marginal structural change introduced by the hydrazino moiety is not expected to alter the underlying solubility or nucleation behavior sufficiently to produce a stable hydrogel.  
+
+References 2 and 3 are more distant (chemical distances &gt;2.8) and employ either a different 5′ substituent or a different nucleobase, rendering them less informative for this specific comparison. Consequently, the experimental outcome for the target is predicted to mirror that of Reference 1.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Target is a near-isostere of 5′-amino-guanosine (Ref. 1), which precipitates under identical KCl/heat–cool conditions; the added NH does not alter the precipitation outcome.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6429</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is a close structural analog of reference 1 (5′-amino-guanosine/NH₂G), differing only by insertion of an additional NH moiety at the 5′ position. Both share the same guanosine core, the same 2 wt % concentration regime in water, and the same KCl additive + heat–cool protocol.  
+
+Reference 1 shows that the 5′-amino substitution already prevents hydrogelation; the molecule simply precipitates upon cooling because the 5′ substituent does not furnish the additional supramolecular contacts or solubility modulation needed for fiber formation and network percolation. Extending the 5′ substituent by one nitrogen atom (hydrazino vs amino) does not meaningfully alter the hydrogen-bonding pattern of the nucleobase or ribose, nor does it introduce a new reversible cross-linking motif that KCl could exploit. Consequently, the same precipitation behavior is expected.  
+
+References 2 and 3 are less relevant: reference 2 requires a borate additive that can covalently cross-link cis-diols, while reference 3 lacks any 5′-modification and is tested without salt. Neither scenario maps onto the KCl conditions given for the target.  
+
+Thus the experimental outcome is predicted to be identical to reference 1.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally almost identical to 5′-amino-guanosine (ref 1), which precipitates under the same KCl/heat–cool conditions. The extra NH does not add cross-linking capability or alter solubility enough to enable gelation.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6631</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6797</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is a close structural analog of Reference 1 (5′-amino-guanosine), differing only by insertion of a single NH moiety in the 5′-substituent (–CH₂NHNH₂ vs. –CH₂NH₂). Both compounds retain the native guanosine hydrogen-bonding face and ribose stereochemistry, so they are expected to exhibit similar solubility, cation-binding, and self-assembly behavior. Reference 1 is explicitly reported to remain soluble when heated but to precipitate (rather than form a stable hydrogel network) upon cooling in the presence of KCl.  
+
+The target’s experimental protocol (2 wt % aqueous solution, 0.25–2.0 equiv KCl, heat–cool cycle) is essentially identical to the Reference 1 conditions. Although the extra NH group could in principle add hydrogen-bond donors, it does not introduce the carbonyl rigidity or altered electronics present in the 5′-hydrazide (Reference 3), which is the motif that successfully templates G-quadruplex-based gels. Consequently, the target is predicted to behave like the amino derivative and to precipitate rather than gel.  
+
+This conclusion is reinforced by the low chemical distance (1.22) to Reference 1 versus the substantially larger distances to the gel-forming hydrazide and 2′-amino analogs.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally closest to 5′-amino-guanosine (Ref 1, chem. dist. 1.22), which precipitates under nearly identical KCl/heat–cool conditions. The extra NH does not confer the carbonyl rigidity that enables gelation in the 5′-hydrazide (Ref 3).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6067</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is a close structural analog of 5′-amino-guanosine (Reference 1), differing only by insertion of a single NH unit in the 5′-substituent. Both compounds share the same guanosine core, the same 5′-CH₂ linkage, and the same set of hydroxyl groups that participate in G-quartet hydrogen bonding.  
+
+Reference 1 was tested under essentially identical conditions (2 wt % nucleoside, KCl, heat–cool cycle) and produced only a precipitate; no self-supporting network formed. The modest increase in hydrogen-bond donor/acceptor count provided by the extra NH is insufficient to overcome the same kinetic tendency toward crystallization that is already documented for the amino derivative.  
+
+By contrast, the successful gelation reported for guanosine-5′-hydrazide (Reference 3) relies on the presence of a carbonyl group that rigidifies the 5′-substituent and alters the balance of hydrophobic/hydrophilic interactions. That carbonyl is absent in the target, so the hydrazide precedent cannot be extrapolated.  
+
+Consequently, under the stated conditions the target molecule is expected to behave like Reference 1 and precipitate rather than form a gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally almost identical to 5′-amino-guanosine (Ref 1, chemical distance 1.22), which precipitates under the same heat–cool/KCl protocol. The extra NH does not alter the crystallization propensity enough to enable network formation, and the carbonyl present in the gel-forming hydrazide (Ref 3) is absent here.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7028</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is a close structural analog of the 5′-amino-guanosine species in Reference 1, differing only by insertion of a single NH group within the 5′-substituent (–CH₂NHNH₂ versus –CH₂NH₂). Both compounds share the same guanosine core that is known to support K⁺-templated G-quartet assembly, yet the 5′-amino derivative fails to produce a gel under essentially identical conditions (2 wt % nucleoside, sub-stoichiometric KCl, heat–cool cycle). Instead it rapidly precipitates, indicating that the 5′-amino substituent disrupts the balance between solubility and fiber elongation needed for network formation.
+
+The carbonyl-containing 5′-hydrazide in Reference 3 gels successfully with KCl, but that functionality is absent in the target; the hydrazino group more closely resembles the simple primary amine. Consequently, the same solubility/precipitation behavior observed for the amino compound is expected. Under the stated conditions (2 wt % target, 0.25–2.0 equiv KCl, heat–cool), the system therefore yields a precipitate rather than a self-supporting hydrogel.
+
+Final answer: No Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally almost identical to 5′-amino-guanosine (Ref 1, chem. dist. 1.22), which precipitates under matching conditions; lacks the carbonyl present in the gel-forming hydrazide (Ref 3).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6707</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6792</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is structurally closest to 5′-amino-guanosine (Ref. 1, chemical distance 1.22). Both share an unmodified ribose C5′–CH₂–N linkage that confers very low aqueous solubility (&lt;2 mM). Under the exact conditions specified (2 wt % nucleoside, stoichiometric or sub-stoichiometric KCl, heat–cool), this solubility limit is exceeded, causing rapid precipitation of insoluble aggregates rather than accumulation of the soluble monomers required for G₄·K⁺ quartet stacking and subsequent fibrillar network formation.  
+
+Although the extra NH group in the hydrazino substituent slightly increases polarity relative to the simple amino analogue, it does not introduce the carbonyl functionality present in the hydrazide (Ref. 3) that stabilizes quartet edges through additional H-bonding. Consequently, the solubility and self-assembly behavior remain far closer to the non-gelling amino compound than to the hydrazide.  
+
+No other experimental variable (pH, buffer, alternative cations) is supplied that would overcome this solubility barrier. Therefore gelation is precluded.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally nearest to 5′-amino-guanosine (Ref. 1), which fails to gel under identical conditions because its solubility (&lt;2 mM) is too low to allow sufficient monomer concentration for stable G₄·K⁺ assembly; rapid precipitation occurs instead. The additional NH in the hydrazino group does not confer the edge-stabilizing carbonyl present in the gelling hydrazide (Ref. 3), so solubility and assembly behavior remain non-gelling.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6477</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is structurally closest to 5′-amino-guanosine (chemical distance 1.22), differing only by insertion of an additional NH group in the 5′ substituent. Both lack the carbonyl present in the 5′-hydrazide that stabilizes edge-to-edge H-bonding and promotes efficient G₄ stacking.  
+
+Under the exact conditions reported for 5′-amino-guanosine (2 wt % nucleoside, stoichiometric KCl, heat–cool), the amino analogue fails to reach the monomer concentration needed for stable G₄·K⁺ assembly; instead, poorly soluble aggregates precipitate. The modest increase in H-bonding potential afforded by the extra NH is insufficient to overcome this solubility barrier or to replicate the supramolecular stabilization seen with the hydrazide. Consequently, the same precipitation behavior is expected, precluding formation of a self-supporting hydrogel network.
+
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally nearest to 5′-amino-guanosine (distance 1.22), which precipitates under identical conditions because its aqueous solubility is too low (&lt;2 mM) to sustain G₄·K⁺ assembly. The extra NH does not confer the edge-stabilizing or stacking benefits of the 5′-hydrazide carbonyl, so precipitation rather than gelation is predicted.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6852</summary>
+              <pre>The target molecule (5′-hydrazino-guanosine) is structurally closest to Reference 1 (5′-amino-guanosine; chemical distance 1.22). Both share an unmodified guanine base and a 5′-nitrogen substituent attached directly to the ribose CH₂; the only difference is insertion of an additional NH between the methylene and the terminal nitrogen.  
+
+Reference 1 fails to gel at 2 wt % with 0.5 equiv KCl under an identical heat–cool protocol because its aqueous solubility is too low (&lt; 2 mM). Monomers therefore cannot accumulate at the concentration required for G₄·K⁺ quartet assembly; instead, poorly soluble aggregates precipitate.  
+
+The target’s extra NH does not introduce the carbonyl or additional H-bond donors present in the successful hydrazide (Reference 3). Consequently, its solubility and self-assembly behavior are expected to remain comparable to the amino analogue. Under the stated conditions (2 wt %, 0.25–2.0 equiv KCl, heat–cool), the molecule is therefore predicted to precipitate rather than form a stable hydrogel.
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;5′-Hydrazino-guanosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;NNC[C@H]1O[C@@H](n2cnc3c(=O)[nH]c(N)nc32)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;2 wt % in water; 0.25~2.0 equiv KCl; heat–cool cycle.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally almost identical to 5′-amino-guanosine (Ref. 1), which fails to gel at the same concentration and salt stoichiometry because of insufficient aqueous solubility. The added NH does not confer the solubility or edge-stabilizing features of the hydrazide (Ref. 3), so precipitation rather than G₄·K⁺ network formation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

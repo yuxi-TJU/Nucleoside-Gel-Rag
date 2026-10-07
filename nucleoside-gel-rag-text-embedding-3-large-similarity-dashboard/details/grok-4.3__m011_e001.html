@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 11-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 11-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>11</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>2-aminoadenosine (2-RA)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>H₂O</strong></div>
+      <div>Detailed conditions<strong>1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Fully soluble; no hydrogel formation.
+
+2′-OH makes molecules tend to form more intramolecular hydrogen bonds (such as O2′-H2′···O3′), leaving no extra hydrogen donor to bring water molecules into the hydrophilic regions. The weaker stacking combined with excessive solvation of the ribose prevents formation of the bound-water-reinforced fibrous network.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5307</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5260</summary>
+              <pre>The target molecule is 2-aminoadenosine, an adenine nucleoside bearing an additional exocyclic NH₂ substituent at the purine C2 position. This substitution pattern increases the number of potential hydrogen-bond donor sites relative to unmodified adenosine, yet it does not reproduce the canonical guanine Hoogsteen-edge pattern (O6 acceptor + N2 donor) that drives the well-documented hydrogelation of guanosine and its close analogues.  
+
+Under the stated aqueous conditions (1.7–5 wt % in H₂O or PBS, heat–cool), the molecule therefore lacks both the precise H-bonding geometry and the metal-ion coordination preferences required for stable, long-lived fibrillar networks. Consequently, the supersaturated solution either remains clear, precipitates as microcrystals, or collapses within minutes rather than forming a self-supporting gel.  
+
+No experimental outcome in the supplied concentration/solvent window meets the operational definition of gelation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;2-Aminoadenosine possesses an extra C2-NH₂ group but lacks the O6/N2 Hoogsteen-edge pattern of guanosine. Consequently it cannot sustain the fibrillar assemblies needed for hydrogelation under the stated aqueous heat–cool conditions; solutions remain fluid or rapidly crystallize/precipitate.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5354</summary>
+              <pre>The molecule 2-aminoadenosine possesses multiple H-bond donor/acceptor sites (N2-amino, N6-amino, N1, N3, N7, O2′, O3′, O5′) that in principle could support self-assembly. However, at the modest concentrations and purely aqueous conditions given (1.7–5 wt % in H₂O or PBS, heat–cool), the compound remains fully soluble; the additional amino substituent does not sufficiently tip the balance toward anisotropic fiber growth versus isotropic dissolution or eventual crystallization. Consequently no stable hydrogel is obtained.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Although the nucleoside offers numerous H-bonding sites, literature precedent and solubility considerations indicate that 2-aminoadenosine remains molecularly dissolved or eventually crystallizes under the stated aqueous heat–cool conditions; no stable supramolecular network is formed.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5039</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.4929</summary>
+              <pre>The target molecule (2-RA) is a close structural analog of reference 1 (2-FA). The two compounds differ solely by a single-atom substitution at the 2′-position of the ribose (OH versus F). Both molecules share the same 2,6-diaminopurine nucleobase and the same overall stereochemistry of the sugar.  
+
+Reference 1 demonstrates that 2-FA reliably forms robust, transparent, thermo-reversible hydrogels in pure water (and in PBS) at 1.7–5.0 wt % using a simple heat–cool protocol. The resulting gels are mechanically strong, self-healing, and stable for months. Because the 2′-OH versus 2′-F change is a minor peripheral modification that does not alter the hydrogen-bonding face of the nucleobase or the overall molecular shape, the same supramolecular interactions that drive gelation in 2-FA are expected to remain operative for 2-RA under identical solvent and temperature conditions.  
+
+No counter-examples appear among the more distant guanosine references that would suggest loss of gelation for this specific adenine derivative. Consequently, 2-RA is predicted to form a gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Target is a near-isostructural analog of gel-forming 2-FA (reference 1); the sole difference is 2′-OH vs 2′-F. The nucleobase hydrogen-bonding pattern and overall molecular geometry are unchanged, so the same supramolecular assembly that produces stable hydrogels for 2-FA is expected to operate for 2-RA under identical conditions.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5139</summary>
+              <pre>The target molecule (2-RA) is a close structural analog of the gelator in Reference 1 (2-FA). The two compounds differ solely by a single-atom substitution at the 2′-position of the ribose (OH versus F). All other functional groups, stereochemistry, and hydrogen-bonding motifs are identical.
+
+Reference 1 demonstrates that 2-FA reliably forms robust, transparent, thermo-reversible hydrogels in pure water (and in PBS) at the exact concentration range and under the exact heat–cool protocol specified for the target. Because the 2′-OH versus 2′-F change is peripheral to the key supramolecular interactions that drive assembly (Watson–Crick and Hoogsteen hydrogen bonding of the nucleobase, plus π-stacking), the same self-assembly behavior is expected for 2-RA.
+
+Supporting context from the guanosine references (References 2 and 3) shows that nucleosides possessing the same 2-amino-purine motif can form stable gels when the sugar and solvent conditions permit fibril formation; the target satisfies those structural prerequisites.
+
+Consequently, under the stated conditions the target molecule is predicted to produce a stable hydrogel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Target is a near-identical analog of the proven gelator 2-FA (differs only by 2′-OH vs 2′-F). Reference 1 shows robust hydrogel formation under identical solvent, concentration, and heat–cool conditions; the peripheral 2′-substitution does not disrupt the nucleobase hydrogen-bonding or stacking motifs required for assembly.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5050</summary>
+              <pre>The target molecule (2-RA) is a close structural analog of reference molecule 10 (2-FA). The two differ solely by replacement of the 2′-F substituent with a 2′-OH; all other functional groups, stereochemistry, and hydrogen-bonding motifs remain identical.  
+
+Reference 10 forms robust, transparent, thermo-reversible hydrogels in pure water (and in PBS) at the exact concentration range and under the exact heat–cool protocol specified for the target. Because the 2′-OH group is capable of the same hydrogen-bonding interactions that support the supramolecular network of 2-FA, and because no steric or electronic perturbation is introduced that would be expected to disrupt fibril formation, the target molecule is predicted to exhibit the same gelation behavior.  
+
+No counter-examples are present among the more distant guanosine references, which rely on entirely different self-assembly motifs (G-quartets) and salt requirements.  
+
+Thus the experimental outcome for the listed conditions is Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Structurally almost identical to reference 2-FA (only 2′-F vs 2′-OH difference). Reference 2-FA gels reliably under the identical solvent, concentration and heat–cool conditions; the 2′-OH substitution preserves all key H-bonding sites, so gelation is expected.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5602</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5344</summary>
+              <pre>The target molecule (2-aminoadenosine) is a close structural analog of reference 1 (2-FA), differing only by replacement of the 2′-F substituent with a 2′-OH group on an otherwise identical 2,6-diaminopurine riboside scaffold. Reference 1 forms robust, transparent, thermo-reversible hydrogels in pure water at 1.7–5 wt % via the same heat–cool protocol specified for the target. The 2,6-diaminopurine motif supplies the requisite Watson–Crick and Hoogsteen hydrogen-bonding faces that drive G-quartet-like stacking and fiber formation; the 2′-OH is expected to participate in additional inter-sugar hydrogen bonds that are compatible with (and often strengthen) the same supramolecular network observed for the 2′-fluoro congener.  
+
+References 2 and 3 are 8-aminoguanosine and 2′-amino-2′-deoxyguanosine, respectively; both require specific borate or alkali-metal additives to gel and remain soluble or precipitate in pure water. Because the target lacks the guanine O6 carbonyl and instead matches the 2,6-diaminopurine pattern of reference 1, those additive-dependent precedents do not apply.  
+
+Consequently, under the stated aqueous heat–cool conditions the target is predicted to produce a stable hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally nearly identical to reference 1 (2-FA), which gels robustly in water under the exact same concentration and heat–cool protocol. The 2,6-diaminopurine nucleobase enables the same H-bonding and stacking motif; the 2′-OH versus 2′-F change is compatible with fiber formation. Guanosine-based references require additives and do not gel in pure water, but those precedents are irrelevant here.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5428</summary>
+              <pre>The target molecule (2-aminoadenosine) shares an identical nucleobase (2,6-diaminopurine) with Reference 1 and differs from it by only a single atom at the 2′-position of the ribose (OH versus F). This substitution produces a modest chemical distance (2.62) and preserves the key features responsible for gelation: (i) the ability of the nucleobase to engage in multiple hydrogen-bonding and π-stacking interactions and (ii) sufficient aqueous solubility under the heat–cool protocol.  
+
+Reference 1 demonstrably forms transparent, robust, thermo-reversible hydrogels at 1.7–5.0 wt % in pure water (or PBS) that withstand temperatures above 38 °C, exhibit high storage moduli, and self-heal after shear. Because the structural perturbation is peripheral to the nucleobase and the experimental conditions are essentially identical, the same supramolecular assembly pathway is expected to operate for the target.  
+
+References 2 and 3, which contain guanine rather than 2,6-diaminopurine, require specific additives (borate or alkali-metal salts) to gel and remain soluble but non-gelling in pure water; these precedents are therefore not predictive for the present adenine-based scaffold.  
+
+Consequently, 2-aminoadenosine is predicted to produce a stable hydrogel under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally almost identical to Reference 1 (identical nucleobase, single-atom difference at 2′), which gels robustly in water under matching conditions; the core supramolecular motifs are preserved.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6035</summary>
+              <pre>The target molecule (2-aminoadenosine) is a close structural analog of Reference 1 (2-FA), differing only by replacement of the 2′-F substituent with a 2′-OH group while retaining the 2,6-diaminopurine nucleobase and the same stereochemical configuration at the furanose ring. Reference 1 forms robust, transparent, thermo-reversible hydrogels in pure water at the identical concentration range (1.7–5.0 wt %) and under the same heat–cool protocol.  
+
+Because the nucleobase—the primary driver of the hydrogen-bonded supramolecular network—is unchanged, and because the 2′-OH can participate in additional hydrogen-bonding interactions that are compatible with (or even supportive of) the same fibrillar assembly, the target is expected to exhibit the same gelation behavior. The modest increase in chemical distance (2.62) arises solely from this single-atom substitution and does not alter the key supramolecular recognition elements.  
+
+Supporting analogies from the other references reinforce that 2′-modified purine nucleosides readily form gels in water when the nucleobase permits quartet-like or stacked architectures; the absence of gelation in pure water occurs only when the nucleobase itself is altered (e.g., 8-aminoguanosine or 2′-amino-2′-deoxyguanosine). Consequently, under the stated aqueous conditions the target molecule forms a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Nearly identical to Reference 1 (2-FA) except for 2′-F → 2′-OH; the nucleobase that dictates self-assembly is unchanged, and the additional OH is compatible with the same H-bonded network that produces robust hydrogels in water under identical conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5822</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5561</summary>
+              <pre>The target molecule (2-RA) is a close structural analog of the gel-forming reference compound 2-FA (chemical distance 2.62). Both share an identical 2,6-diaminopurine nucleobase that supports Hoogsteen-type base pairing and π–π stacking of the purine rings. The only difference is replacement of the 2′-F substituent by a 2′-OH group.  
+
+A 2′-OH moiety is itself an excellent hydrogen-bond donor/acceptor and can readily participate in the same water-bridged H-bond network that stabilizes the fibrous bundles of 2-FA. Consequently, the supramolecular interactions responsible for gelation in 2-FA remain intact. Under the stated heat–cool protocol (1.7–5 wt % in H₂O) the molecule is therefore expected to produce a robust, thermo-reversible hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule shares the critical 2,6-diaminopurine base that enables Hoogsteen-type hydrogen bonding, similar to the gel-forming 2-FA. The 2&#x27;-OH can participate in hydrogen bonding networks, potentially supporting gel formation through similar mechanisms involving base stacking and H-bonding with water.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6082</summary>
+              <pre>The target molecule (2-aminoadenosine) is a close structural analog of Reference 1 (2-FA). Both share an identical 2,6-diaminopurine nucleobase that supports Hoogsteen-type base pairing and \(\pi\)-\(\pi\) stacking; the only difference is the 2′-substituent (OH versus F).  
+
+Because the 2′-OH group is itself an excellent hydrogen-bond donor/acceptor, it can readily substitute for the H···F contacts described in Reference 1. In addition, the ribose 2′,3′-diol motif is known to recruit bridging water molecules that further reinforce the supramolecular network. Consequently, the same heat–cool protocol in pure water (1.7–5 wt %) that produces robust, transparent, self-healing hydrogels for 2-FA is expected to produce an analogous hydrogel for 2-aminoadenosine.  
+
+References 2 and 3, which lack the 2,6-diaminopurine motif, do not gel in plain water and therefore do not contradict this prediction.  
+
+Final answer: Gel
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2-aminoadenosine (2-RA)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc(N)c2ncn([C@@H]3O[C@H](CO)[C@@H](O)[C@H]3O)c2n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.7–5.0 wt % in H₂O or PBS, heat–cool protocol.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule possesses the same 2,6-diaminopurine base as the gel-forming 2-FA (Ref. 1). The 2′-OH can replace the H-bonding role of 2′-F and additionally recruit water bridges, enabling the same fibrous, cross-linked network under identical aqueous heat–cool conditions.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

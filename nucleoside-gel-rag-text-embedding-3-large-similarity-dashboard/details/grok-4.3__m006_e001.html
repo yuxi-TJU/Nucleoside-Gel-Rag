@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 6-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 6-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>6</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>2′-deoxy-2′-fluoroisoguanosine (FisoGd)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>LiCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL FisoGd in 0.2 M LiCl.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Forms a transparent and stable hydrogel with stability up to about two months.
+
+The fluorine substitution at the 2′ position enhances hydrophobic interactions and strengthens hydrogen bonding. These interactions promote the formation of isoG-like quartets or pentaplexes stabilized by Li⁺ coordination, which stack into interconnected fiber networks forming a hydrogel.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6871</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6713</summary>
+              <pre>The molecule FisoGd is a fluorinated isoguanosine derivative. Isoguanosine analogs are well-established gelators that self-assemble into stable tetrameric or higher-order aggregates via Watson–Crick-like hydrogen-bonding patterns; these assemblies are further reinforced by π–π stacking and coordination to alkali-metal cations. The 2′-fluoro substituent locks the sugar pucker in a C3′-endo conformation that favors the anti glycosidic torsion required for tetramer formation, while the 0.2 M LiCl medium supplies the monovalent cation needed to stabilize the central ion channel of the aggregate.  
+
+At the stated concentration (14 mg mL⁻¹ ≈ 49 mM) the solution is well above the critical gelation concentration reported for related isoguanosine derivatives in aqueous salt. Consequently, a self-supporting hydrogel is expected to form within hours.  
+
+Final answer:  
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;FisoGd is an isoguanosine analog whose tetrameric hydrogen-bonded assemblies are stabilized by Li+ coordination; the given concentration exceeds typical CGC values, leading to hydrogel formation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7028</summary>
+              <pre>The molecule FisoGd is a close structural analogue of guanosine/isoguanosine, both of which are well-known to self-assemble into cation-stabilized G-quartet (or isoG-quartet) stacks that produce hydrogels. The 2′-fluoro substituent is known to rigidify the ribose pucker in the C2′-endo conformation that favors stacking, while the isoguanine base retains the Watson–Crick and Hoogsteen faces needed for tetramer formation.  
+
+At the stated concentration (14 mg mL⁻¹ ≈ 49 mM) in 0.2 M LiCl, Li⁺ ions supply the central coordination that templates isoG-quartets; the same salt concentration has been shown to trigger rapid gelation for closely related 2′-F-guanosine and isoguanosine derivatives. No competing crystallization or precipitation pathways are expected under these conditions, because the fluorine atom suppresses the syn/anti flexibility that otherwise leads to crystalline polymorphs. Consequently, a self-supporting hydrogel is formed within minutes to hours.
+
+Final answer: Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;FisoGd retains the Hoogsteen face of isoguanine and the C2′-endo pucker favored by the 2′-F substituent, enabling Li⁺-templated isoG-quartet stacking at ~49 mM; literature precedents with analogous 2′-fluorinated guanosine/isoguanosine derivatives confirm rapid hydrogel formation under identical salt conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6746</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6728</summary>
+              <pre>The target molecule (FisoGd) is a close structural analog of both isoG (Reference 2) and isoGd (Reference 3). All three share the same isoguanine nucleobase, which is known to drive hydrogelation through the formation of stable supramolecular assemblies (quartet-like or ribbon-like motifs) that are further stabilized by alkali-metal cations.  
+
+The only difference between FisoGd and isoGd is the substitution of the 2′-OH (or 2′-H) by fluorine. This modification preserves the overall furanose pucker and hydrogen-bonding pattern required for self-assembly, and literature precedent shows that 2′-fluoro nucleosides retain the gelation behavior of their deoxy or ribo counterparts when the nucleobase is unchanged.  
+
+Because isoGd itself forms a transparent, long-lived hydrogel with 0.2 M LiCl under essentially identical concentration and temperature conditions, the same outcome is expected for FisoGd.  
+
+Thus the prediction is Gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;FisoGd is a direct 2′-fluoro analog of isoGd, which forms stable hydrogels with LiCl. The isoguanine base and overall sugar pucker remain compatible with the same supramolecular assembly, so gelation is retained.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6725</summary>
+              <pre>The target molecule FisoGd is a close structural analog of both isoG (Reference 2) and isoGd (Reference 3). All three share the same isoguanine base that drives self-assembly into cation-templated quartets/hexamers; the only variation lies at the 2′-position of the ribose (OH in isoG, H in isoGd, F in FisoGd).  
+
+Because the 2′-substituent is not involved in the Watson–Crick or Hoogsteen hydrogen-bonding faces of the isoguanine base, it does not directly interfere with quartet formation. Experimentally, both isoG and isoGd produce stable, transparent hydrogels in 0.2 M LiCl under essentially identical heat–cool protocols. The 2′-fluoro modification is sterically compact and known to favor the same C3′-endo sugar pucker that supports stacking in RNA-like nucleosides; therefore the self-assembly behavior observed for isoGd is expected to be retained.  
+
+Consequently, FisoGd is predicted to form a gel in 0.2 M LiCl.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;FisoGd shares the isoguanine base that drives cation-templated quartet assembly in both isoG and isoGd, both of which gel reliably in 0.2 M LiCl. The 2′-F substituent is remote from the hydrogen-bonding edges and favors the same C3′-endo conformation that supports stacking; hence gelation is retained.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6784</summary>
+              <pre>The target molecule FisoGd is a close structural analog of isoGd (Reference 3), differing only by substitution of the 2′-H with 2′-F. Both molecules share the isoguanine nucleobase that is known to support G-quartet-like assembly, and both lack the 2′-OH that is present in the parent isoG (Reference 2).  
+
+Reference 3 explicitly shows that isoGd forms stable, transparent hydrogels in 0.2 M LiCl under heat–cool conditions identical to those specified for the target. The 2′-fluoro substituent is sterically and electronically similar to the 2′-H of isoGd and does not disrupt the hydrogen-bonding or stacking interactions required for gelation; therefore the same LiCl-mediated assembly pathway is expected to remain operative.  
+
+Consequently, FisoGd is predicted to produce a gel with LiCl.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;FisoGd is a 2′-fluoro analog of isoGd (Reference 3), which forms stable hydrogels in 0.2 M LiCl under identical heat–cool conditions. The isoguanine base supports quartet assembly, and the 2′-F substitution is sterically/electronically compatible with the gelation pathway observed for isoGd, so gel formation is expected.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7047</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7181</summary>
+              <pre>The target molecule FisoGd is a close structural analog of isoGd (2′-deoxyisoguanosine) and isoG (isoguanosine). Both reference compounds form stable, transparent hydrogels in 0.2 M LiCl under essentially identical heat–cool conditions (≈1.4 mg/100 µL, pH 3–10). The key structural feature enabling gelation is the isoguanine base, which supports cation-templated quartet assembly even when the sugar is 2′-deoxy.  
+
+Replacement of the 2′-H (isoGd) by 2′-F introduces only a modest steric and electronic perturbation; the sugar pucker and hydrogen-bonding pattern of the base remain compatible with the same supramolecular motif. Consequently, Li⁺-mediated gelation is expected to persist, producing a transparent hydrogel on the same time scale (hours to months) observed for isoGd.  
+
+No reference data suggest that a 2′-fluoro substituent would induce crystallization or precipitation under these conditions, unlike the guanine-based deoxyguanosine series that fails with LiCl.  
+
+Thus the outcome is predicted to be gel formation.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;FisoGd is a 2′-fluoro analog of isoGd, which itself gels with LiCl. The isoguanine base supports Li⁺-templated quartet formation regardless of the 2′-substituent (OH in isoG or H in isoGd). The fluorine substitution is sterically and electronically tolerated and does not disrupt the supramolecular assembly that produces stable hydrogels under the stated heat–cool protocol.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7045</summary>
+              <pre>The target molecule (FisoGd) possesses an isoguanine nucleobase that is chemically and functionally analogous to the bases in both isoG and isoGd. These reference compounds reliably produce stable, transparent hydrogels via cation-templated self-assembly (quartet or higher-order stacks) when subjected to a heat–cool cycle in 0.2 M LiCl. The 2′-fluoro substituent alters sugar pucker and eliminates the 2′-OH hydrogen-bond donor relative to isoG, yet it does not abolish the key intermolecular interactions required for gelation; the deoxyisoguanosine analog (isoGd) itself forms long-lived gels under identical LiCl conditions despite lacking any 2′-oxygen functionality.  
+
+By contrast, the guanine-based deoxyguanosine (dG) crystallizes rather than gels in LiCl, underscoring that base identity—not the precise 2′-substituent—is the dominant determinant. Consequently, FisoGd is expected to undergo the same LiCl-mediated assembly and produce a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Isoguanine base enables LiCl-templated self-assembly as demonstrated by both isoG and isoGd references; 2′-F substitution preserves this behavior despite altered sugar pucker.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6917</summary>
+              <pre>The target molecule (FisoGd) is a close structural analog of isoguanosine and 2′-deoxyisoguanosine, both of which reliably produce stable, transparent hydrogels in 0.2 M LiCl via a simple heat–cool cycle. The isoguanine base enables the characteristic cation-templated self-assembly (quartet or higher-order stacks) that underlies gelation; the 2′-fluoro substituent is sterically compact and does not disrupt this hydrogen-bonding pattern or introduce competing crystallization pathways. In contrast, the non-isoguanine reference (dG) fails to gel under identical LiCl conditions, underscoring that the base identity—not the precise 2′-substituent—is decisive. Consequently, FisoGd is expected to form a stable hydrogel with LiCl.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The target is a 2′-fluoro analog of isoGd (and close to isoG). Both reference isoguanosine derivatives form stable transparent hydrogels in 0.2 M LiCl via heat–cool; the isoguanine base supports the required cation-mediated self-assembly, and the compact 2′-F substituent does not introduce crystallization or precipitation pathways observed for non-isoguanine nucleosides such as dG.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7125</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6958</summary>
+              <pre>The target molecule FisoGd is a close structural analog of isoGd (differing only by substitution of the 2′-H with 2′-F). Both compounds belong to the isoguanosine family, which reliably forms stable hydrogels via quartet/pentaplex self-assembly, cation templating, and fiber entanglement when LiCl is the additive.  
+
+IsoGd itself produces transparent, long-lived gels under essentially identical heat–cool conditions in 0.2 M LiCl. The 2′-fluoro substituent is expected to preserve (or modestly enhance) the hydrophobic contribution that drives assembly, while the isoguanine hydrogen-bonding face and Li⁺ coordination remain unchanged. Consequently, the same supramolecular pathway that yields a gel for isoGd + LiCl is operative for FisoGd + LiCl.  
+
+No experimental precedent in the reference set suggests that a 2′-F substitution would switch the outcome from gel to non-gel for this cation/solvent combination.  
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;FisoGd is a 2′-fluoro analog of isoGd, which itself forms stable hydrogels with LiCl via Li⁺-templated isoG quartets/pentaplexes that stack into an entangled fiber network. The isoguanine hydrogen-bonding pattern and Li⁺ coordination are unaffected by the 2′-F substitution; the fluoro group is expected to maintain or slightly increase the hydrophobic contribution that favors assembly. Hence the same gel-forming pathway observed for isoGd + LiCl applies directly to FisoGd + LiCl.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7104</summary>
+              <pre>The target molecule FisoGd is a close structural analog of isoGd (Reference 2), differing only by substitution of the 2′-H with a 2′-F atom. This is a minimal steric/electronic perturbation that preserves the core isoguanine hydrogen-bonding face, the ability of the nucleobase to form quartets/pentaplexes, and the cation-coordination behavior required for Li⁺ templating.  
+
+IsoGd itself forms stable, transparent hydrogels in 0.2 M LiCl via exactly this Li⁺-stabilized assembly pathway. The 2′-fluoro modification is known to maintain (or even enhance) the conformational preferences and hydrophobic contacts that favor fiber formation in related nucleosides; it does not introduce steric bulk that would block stacking or lateral fiber entanglement. Consequently, the same heat–cool protocol is expected to produce an interconnected supramolecular network and a macroscopic hydrogel, exactly as observed for isoGd/LiCl.  
+
+(The more distant deoxyguanosine reference is irrelevant here because the isoguanine scaffold, not the 2′-substituent, dictates Li⁺ selectivity.)
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;FisoGd is a minimal modification of isoGd, which gels with LiCl via Li⁺-templated quartets/pentaplexes that stack into fibers. The 2′-F substitution preserves the isoguanine recognition face and fiber-forming propensity, so gelation is expected under the same conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7313</summary>
+              <pre>The target molecule FisoGd is a close structural analog of isoGd (2′-deoxyisoguanosine), differing only by substitution of the 2′-H with a small, electronegative fluorine atom. Both molecules share the isoguanine nucleobase that is known to form stable quartets/pentaplexes via hydrogen-bonding patterns distinct from those of guanosine.  
+
+Reference data show that isoGd forms transparent, long-lived hydrogels with LiCl under essentially identical heat–cool conditions (1.4 mg/100 µL, 0.2 M LiCl). The same LiCl conditions also produce stable gels with the parent ribo compound isoG. In contrast, the guanosine series (dG) fails to gel with LiCl and instead crystallizes, underscoring that the isoguanine scaffold—not the precise 2′-substituent—is the dominant determinant of Li⁺-templated assembly.  
+
+The 2′-fluoro modification is sterically conservative and does not remove the key hydrogen-bonding or stacking elements required for quartet formation. It is therefore expected to preserve the Li⁺-coordination-driven stacking into helical fibers that ultimately percolate into a three-dimensional hydrogel network. Consequently, FisoGd is predicted to produce a stable gel with LiCl.  
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxy-2′-fluoroisoguanosine (FisoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1F&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL FisoGd in 0.2 M LiCl.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;FisoGd is a close analog of isoGd (and isoG), both of which form stable hydrogels with LiCl via Li⁺-templated isoG-quartet/pentaplex stacking. The 2′-F substituent is sterically conservative and does not disrupt the key supramolecular interactions that produce the fiber network; therefore gelation is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

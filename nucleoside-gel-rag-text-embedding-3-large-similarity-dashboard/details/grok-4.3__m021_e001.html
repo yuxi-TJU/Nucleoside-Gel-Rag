@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 21-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 21-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>21</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>4-N-Decanoyllamivudine</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>EtOH/H₂O</strong></div>
+      <div>Detailed conditions<strong>0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Most stable gelator of the lamivudine set; forms loose but continuous fibre network; withstands inversion; viscoelastic solid-like response.
+
+The octanoyl chain balances the highly polar oxathiolane ring, optimising solvophobic collapse upon cooling. Amide NH and carbonyl O engage in inter-strand hydrogen bonding, while π–π stacking among the cytidine-like bases propagates columnar growth. Cross-link points arise where oxathiolane OH groups bridge adjacent fibres, giving a softer yet stable gel that survives handling.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6225</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6069</summary>
+              <pre>The molecule 4-N-decanoyllamivudine is an amphiphilic nucleoside derivative in which a long (C10) hydrophobic acyl chain has been appended to the exocyclic amine of the cytosine base. This modification preserves the hydrogen-bonding face of the nucleobase while introducing a sufficiently hydrophobic tail to drive self-assembly in predominantly aqueous media.  
+
+Under the stated conditions (0.5 wt % in 5 % EtOH/H₂O, dissolution at 60 °C followed by slow cooling to room temperature), the molecule is fully solubilized at elevated temperature. Upon cooling, the combination of nucleobase hydrogen bonding, van der Waals interactions between alkyl chains, and the high water content promotes one-dimensional fibrillar growth that percolates into a self-supporting network. Ethanol at this low volume fraction acts only as a co-solvent to aid dissolution and does not disrupt the assembly.  
+
+Consequently, gelation is observed within the 18 h observation window.  
+
+[{
+    &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C10 acyl chain enables H-bonding and hydrophobic-driven fibril formation in low-EtOH aqueous medium; cooling protocol favors network percolation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6334</summary>
+              <pre>The molecule 4-N-decanoyllamivudine is an amphiphilic nucleoside derivative bearing a long (C10) hydrophobic acyl chain attached to the cytosine-like nucleobase. This structural motif is known to promote self-assembly through a combination of (i) hydrogen-bonding and π-stacking interactions involving the nucleobase and (ii) hydrophobic collapse of the alkyl tail.  
+
+The experimental protocol (0.5 wt % in a predominantly aqueous medium containing only ~5 vol % EtOH, brief heating to 60 °C followed by slow cooling to room temperature) is a standard trigger for supramolecular gelation of such amphiphiles. Under these conditions the molecule is expected to dissolve molecularly when hot and then nucleate anisotropic aggregates upon cooling, ultimately forming a percolating fibrillar network that immobilizes the solvent. The 18 h observation window is well within the timeframe in which gelation is routinely reported for comparable nucleoside-based gelators.  
+
+Consequently the outcome is classified as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C10 chain; standard heating-cooling protocol in mostly aqueous medium favors fibrillar self-assembly via H-bonding and hydrophobic interactions, leading to gelation within the 18 h timeframe.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6271</summary>
+              <pre>The molecule 4-N-decanoyllamivudine is an amphiphilic nucleoside derivative bearing a C10 alkyl chain. This structural motif is well-known to drive self-assembly via a combination of hydrophobic interactions (from the decanoyl tail), hydrogen bonding (from the nucleobase and sugar-like oxathiolane ring), and π-stacking. In predominantly aqueous media (ΦEtOH ≈ 0.05), these interactions favor the formation of elongated fibrils that percolate into a three-dimensional network capable of immobilizing the solvent.
+
+The experimental protocol (0.5 wt % concentration, dissolution at 60 °C followed by slow cooling to room temperature over 18 h) is a standard trigger for supersaturation and controlled nucleation. Under these conditions the molecule is expected to remain soluble while hot but to undergo progressive aggregation upon cooling, ultimately producing a stable gel rather than crystals or a precipitate.
+
+Consequently the outcome is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleoside with C10 chain promotes fibrillar self-assembly in low-ethanol aqueous media via hydrophobic effect + H-bonding; slow cooling protocol favors network formation over crystallization.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6355</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6241</summary>
+              <pre>The target molecule is a close structural analog of Reference 3 (identical N4-decanoyl chain length and nucleobase, differing only in the sugar moiety). All three reference compounds form stable gels in EtOH/H₂O binary mixtures at the same concentration (0.5 wt %) and comparable solvent fractions, driven by the combination of hydrophobic interactions from the acyl chain and hydrogen-bonding from the nucleobase. The sugar modification in the target does not remove these key structural features, and the experimental conditions match those that produced gels for the references. Consequently the target is predicted to gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Structurally analogous to Reference 3 (same decanoyl chain); references consistently gel under matching EtOH/H₂O conditions via hydrophobic + H-bonding interactions.&quot;
+        }]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6469</summary>
+              <pre>The target molecule is a close structural analog of reference 3 (identical N4-decanoyl chain length on a cytidine-like nucleobase). All three references form stable gels in EtOH/H₂O mixtures at the same concentration (0.5 wt %) and similar solvent fractions (ΦEtOH = 0.05–0.50) via the same thermal-dissolution protocol. The lamivudine-type oxathiolane sugar in the target does not alter the key gel-promoting features (amphiphilic balance, H-bonding face of the nucleobase, and hydrophobic tail), so gelation is expected under the stated conditions.
+
+[{
+    &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Closest match is reference 3 (identical decanoyl chain on 2&#x27;-deoxycytidine scaffold), which gels under essentially identical EtOH/H₂O conditions. The oxathiolane modification does not disrupt the amphiphilic or H-bonding motifs required for gelation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6324</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6037</summary>
+              <pre>The target molecule is an N4-decanoyl (C10 acyl chain) derivative of lamivudine, a cytidine analog featuring a 1,3-oxathiolane ring in place of the 2&#x27;-deoxyribose sugar. This structure is closely related to the reference compounds (N4-acyl-2&#x27;-deoxycytidines with C10–C14 chains), which share the same nucleobase, acyl-chain length range, and overall amphiphilic design that enables self-assembly via hydrophobic interactions and hydrogen bonding.
+
+The experimental conditions specified for the target (0.5 wt% in EtOH/H2O at ΦEtOH ≈ 0.05, dissolution at 60 °C followed by cooling to rt) match the binary-solvent protocol used for all three references. Under those conditions every reference compound formed a stable gel, with the C10 homolog (Reference 3) explicitly noted for good visual stability at low ethanol fractions. The modest structural differences (oxathiolane vs. deoxyribose) do not alter the key molecular features required for gelation; therefore the target is expected to behave analogously.
+
+Final answer: Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule possesses the same C10 acyl chain and nucleobase as Reference 3 (N4-decanoyl-2&#x27;-deoxycytidine), which forms gels in EtOH/H2O mixtures at 0.5 % w/v and ΦEtOH = 0.05–0.50. The solvent composition, concentration, and thermal protocol are identical to those that produced gels for all three references. Although the sugar is an oxathiolane rather than deoxyribose, the amphiphilic character and hydrogen-bonding motifs remain intact, supporting self-assembly into a gel network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6763</summary>
+              <pre>The target molecule is an N4-decanoyl derivative of lamivudine, a cytidine nucleoside analog featuring a 1,3-oxathiolane ring in place of the 2&#x27;-deoxyribose sugar found in the reference compounds. Its acyl chain length (C10) exactly matches Reference 3, and the solvent system, concentration (0.5 wt %), temperature protocol, and EtOH volume fraction (≈0.05) are identical to the binary EtOH/H₂O conditions under which all three references (C10, C12, and C14 acyl chains) formed gels.  
+
+Although the sulfur-containing ring introduces a modest structural deviation, the core molecular features that drive gelation—amphiphilic balance between the hydrophobic acyl tail and the polar nucleobase/sugar headgroup, plus the ability to form intermolecular hydrogen bonds—are preserved. Prior work on the deoxycytidine series shows that gelation occurs reliably across this narrow range of chain lengths in low-EtOH-fraction mixtures; the lamivudine scaffold is expected to behave analogously. No evidence of precipitation, crystallization, or rapid collapse is present under the stated conditions.  
+
+Consequently, the molecule is predicted to produce a stable gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Exact match to Reference 3 (N₄-decanoyl-2&#x27;-deoxycytidine) in chain length, concentration, and EtOH/H₂O composition; the amphiphilic motif and H-bonding capacity remain intact despite the oxathiolane ring, supporting gel formation rather than precipitation or dissolution.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6172</summary>
+              <pre>The target molecule is a close structural analog of the N₄-decanoyl-2′-deoxycytidine reference (Ref. 3), sharing the identical C10 acyl chain length on the cytosine N4 position and a closely related nucleoside scaffold (differing only in the 1,3-oxathiolane ring of lamivudine versus the 2′-deoxyribose ring). All three provided references with C10–C14 acyl chains on 2′-deoxycytidine form gels in EtOH/H₂O binary mixtures at 0.5 wt % and ΦEtOH values that include ≈0.05. The experimental protocol given for the target (0.5 wt % in EtOH/H₂O, ΦEtOH ≈ 0.05, 60 °C dissolution followed by cooling to rt for 18 h) falls squarely inside the same solvent-composition and concentration window that produces gels for the references. Consequently, the target is predicted to gel under the stated conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Structurally analogous to N₄-decanoyl-2′-deoxycytidine (Ref. 3) with the same C10 chain length; solvent composition, concentration, and thermal protocol match the exact range that yields gels for all three C10–C14 references.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6482</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6540</summary>
+              <pre>The target molecule is a close structural analog of the C10-acyl 2&#x27;-deoxycytidine derivative in Reference 3 (identical acyl chain length and nucleobase, chemical distance ≈ 2.09). Both compounds therefore share the same solubility-driven self-assembly mechanism that relies on a balance between the hydrophobic acyl tail and the hydrogen-bonding capacity of the sugar hydroxyl groups.
+
+The principal difference is the sugar moiety: lamivudine replaces the 2&#x27;-deoxyribose with a 1,3-oxathiolane ring that bears only a single hydroxyl group. This reduces the number of H-bond donors relative to the reference diol, modestly increasing overall lipophilicity. However, the C10 chain length already lies well within the successful gelation window established by References 1–3 (C10–C14), all of which form gels in EtOH/H₂O at the same low organic-solvent fraction (ΦEtOH ≈ 0.05) and concentration (0.5 wt %). The modest loss of one OH is therefore insufficient to shift the molecule outside the operable hydrophobicity–H-bonding regime.
+
+Consequently, under the stated conditions (0.5 wt % in EtOH/H₂O, ΦEtOH ≈ 0.05, 60 °C dissolution followed by cooling to rt for 18 h) the target is expected to produce a stable gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule shares the same C10 acyl chain and nucleobase as the gel-forming N₄-decanoyl-2&#x27;-deoxycytidine (Ref. 3). Although the oxathiolane ring supplies only one OH instead of two, the overall lipophilicity remains inside the successful window demonstrated by C10–C14 diol analogs (Refs. 1–3) at the identical low EtOH fraction and concentration. Hence gelation is predicted.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6681</summary>
+              <pre>4-N-decanoyllamivudine with its N4-decanoyl chain attached to the cytosine base and the characteristic 1,3-oxathiolane ring in the sugar moiety is structurally related to the reference N4-acyl-2&#x27;-deoxycytidine derivatives. These references demonstrate consistent moderate gelation in EtOH/H₂O binary mixtures at 0.5 wt% concentration across C10 to C14 acyl chain lengths after dissolution at 60 °C and cooling to room temperature for 18 h. The C10 decanoyl version in particular shows effective gel formation with improved visual stability at lower ethanol fractions due to balanced lipophilicity (lower clog P) and the contribution of hydroxyl groups supporting solubility-driven self-assembly through intermolecular hydrogen bonding and hydrophobic interactions from the acyl chain.
+
+Although the lamivudine scaffold features a modified oxathiolane ring with only one hydroxyl group instead of the two present in standard 2&#x27;-deoxycytidine, this still provides sufficient hydrogen-bonding capability combined with the decanoyl chain&#x27;s amphiphilic character to promote analogous supramolecular assembly into a networked structure that immobilizes the EtOH/H₂O solvent under the specified conditions of approximately 0.05 ethanol volume fraction. The shorter C10 chain avoids excessive lipophilicity issues seen in longer-chain analogues, favoring stable gelation rather than precipitation or crystallization, consistent with the observed trends in the closely related cytidine-derived gelators.
+
+Therefore the molecule forms a gel.
+[{
+  &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The N4-decanoyl chain provides suitable lipophilicity for self-assembly in EtOH/H₂O similar to the C10 reference deoxycytidine derivative, with the oxathiolane hydroxyl enabling hydrogen bonding to support moderate gelation after heat-cool protocol despite the modified sugar ring.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6225</summary>
+              <pre>The target molecule is a close structural analog of the C10-acyl deoxycytidine derivative in Reference 3 (identical acyl chain length and nucleobase, comparable overall lipophilicity). All three reference compounds form gels in EtOH/H₂O binary mixtures at the same concentration (0.5 wt %) and similar solvent fractions used for the target.  
+
+The only structural difference is replacement of the 2′-deoxyribose by an oxathiolane ring (lamivudine scaffold). This reduces the number of sugar hydroxyl groups from two to one, which modestly increases lipophilicity and can narrow the solvent-composition window for gelation. However, the references explicitly note that the corresponding dideoxy (one-OH) analogs still produce gels under the stated EtOH/H₂O conditions, albeit with somewhat lower visual stability at the lowest organic fractions. The target conditions (ΦEtOH ≈ 0.05, 0.5 wt %, slow cooling) fall squarely inside the range where gelation is observed for both the two-OH and one-OH series.  
+
+Consequently, gel formation is expected.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;4-N-Decanoyllamivudine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCC(=O)Nc1ccn([C@@H]2CS[C@H](O)O2)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;EtOH/H₂O&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.5 wt % in ethanol / water (ΦEtOH ≈ 0.05); 60 °C dissolution, cool to rt 18 h.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The molecule matches the C10-acyl chain length and nucleobase of Reference 3, which gels under identical EtOH/H₂O conditions. Although the oxathiolane ring reduces the hydroxyl count (one vs. two), the references confirm that the corresponding one-OH dideoxy analogs still produce gels at ΦEtOH ≈ 0.05; the stated protocol therefore yields a gel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

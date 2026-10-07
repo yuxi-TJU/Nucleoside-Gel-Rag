@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 5-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 5-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>5</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>2′-deoxyisoguanosine (isoGd)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>LiCl</strong></div>
+      <div>Detailed conditions<strong>1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Forms a transparent and stable hydrogel with a lifetime of approximately two months
+
+The 2′-deoxy modification increases hydrophobic interactions, promoting self-assembly into isoGd quartets or pentaplexes stabilized by hydrogen bonding and Li⁺ coordination. These assemblies stack into interconnected fiber networks that maintain gel stability.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7195</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7322</summary>
+              <pre>The target molecule is 2′-deoxyisoguanosine (isoGd), a nucleoside whose purine base is capable of forming hydrogen-bonded quartets (or higher-order assemblies) analogous to the well-known G-quartet motif. These assemblies are further stabilized by alkali-metal cations that occupy the central channel of the quartet stack, promoting one-dimensional fiber growth that ultimately leads to hydrogelation.
+
+Under the stated experimental conditions (14 mg mL⁻¹ isoGd in 0.2 M LiCl, heat–cool cycle, pH 3–10), Li⁺ ions are present at a concentration sufficient to template quartet formation. The heat–cool cycle supplies the necessary energy to dissolve the nucleoside and then allows supersaturation-driven self-assembly upon cooling. Within the broad pH window examined, the nucleobase remains predominantly in its neutral, hydrogen-bond-competent tautomer. Consequently, the molecules organize into an extended fibrillar network that immobilizes the solvent, producing a stable hydrogel.
+
+No competing processes (rapid crystallization, precipitation, or immediate collapse) are expected under these conditions; the cation-assisted quartet stacking pathway dominates.
+
+Final answer: Gel
+
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoGd forms cation-templated quartets that generate an extended fibrillar network; Li⁺ at 0.2 M, combined with the heat–cool cycle and permissive pH range, drives stable hydrogelation rather than precipitation or dissolution.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7068</summary>
+              <pre>The molecule 2′-deoxyisoguanosine (isoGd) is a well-documented nucleoside gelator whose self-assembly is driven by the formation of hydrogen-bonded isoG-quartets (or higher-order assemblies) that further organize into fibrillar networks capable of immobilizing water. The experimental protocol supplies a sufficiently high concentration (1.4 mg/100 µL ≈ 50 mM), employs a heat–cool cycle that transiently disrupts aggregates and allows controlled re-assembly upon cooling, and spans a broad pH window (3–10) that encompasses the neutral-to-slightly-basic regime in which the N1/O6 hydrogen-bonding face remains intact. Although Li⁺ is a small cation, it is still able to coordinate within the quartet cavity or stabilize the peripheral phosphate-like interactions under these conditions, thereby permitting gelation on the timescale of hours. Consequently the outcome is recorded as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;isoGd self-assembles via isoG-quartets whose formation is promoted by the heat–cool cycle at the stated concentration; Li⁺ provides sufficient stabilization for the resulting fibrillar network to immobilize the solvent, yielding a gel across the tested pH range.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6565</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6651</summary>
+              <pre>The target molecule (isoGd) is structurally most similar to reference molecule 1 (z8isoGd; chemical distance 0.775), which is an aza-modified variant of the same isoguanine nucleoside core. Both dG (reference 2) and z8isoGd exhibit identical behavior with LiCl under closely analogous conditions (1.4 mg/100 µL, 0.2 M salt, heat-cool cycle): the system either remains a free-flowing solution or forms a crystalline precipitate rather than a self-supporting hydrogel. The same pattern holds for the more distant reference 3.  
+
+Because Li+ lacks the ionic radius and coordination geometry needed to stabilize the G-quartet-like or isoguanine tetrad stacks that produce gels with K+, and because the experimental outcome is consistent across all three reference nucleosides, isoGd is predicted to behave identically.  
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Closest reference (z8isoGd) and next-nearest (dG) both fail to gel with LiCl under identical concentration/solvent/thermal protocols; Li+ cannot template the required tetrad stacks.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6514</summary>
+              <pre>The target molecule (isoGd) is the non-aza analogue of the gelator z8isoGd (Reference 1). Both molecules share the same isoguanine nucleobase that is known to support K+-selective G-quartet-like assemblies, but the ion selectivity is strict: stable hydrogels form only in the presence of K+ (or certain other larger cations).  
+
+Reference 1 explicitly shows that the closely related z8isoGd fails to gel in 0.2 M LiCl under identical heat-cool conditions, instead remaining a solution or forming a precipitate. Reference 2 demonstrates the same LiCl outcome for the canonical dG nucleoside. Because Li+ is too small and too strongly hydrated to stabilize the required quartet stacks, isoGd is expected to behave identically.  
+
+Consequently, the experiment with 0.2 M LiCl yields “No Gel.”
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd shares the isoguanine nucleobase that forms K+-selective quartets. Reference 1 shows the aza-analogue z8isoGd produces only solution or precipitate in 0.2 M LiCl under the same protocol; Reference 2 shows the same negative result for dG. Li+ is too small and hydrated to stabilize the assemblies, so isoGd likewise fails to gel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6529</summary>
+              <pre>The target molecule (isoGd) is a close structural analog of both dG (ref 2) and z8isoGd (ref 1). In both reference cases, the same experimental protocol with LiCl (1.4 mg/100 µL, 0.2 M salt, heat-cool) produces either crystallization or a non-gel precipitate/solution rather than a stable hydrogel. The same outcome is observed for the more distant analog z8Gd (ref 3).  
+
+Li⁺ is known to be too small and weakly coordinating to stabilize the G-quartet or isoguanine tetrad stacks that underpin hydrogel formation in this nucleoside family; only larger cations (K⁺, certain lanthanides) succeed. Because the target molecule shares the same core hydrogen-bonding motif and lacks any structural feature that would invert this selectivity, the identical LiCl conditions are predicted to yield no gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd is structurally closest to z8isoGd (chem. dist. 0.78) and dG (chem. dist. 1.39), both of which crystallize or precipitate rather than gel under identical LiCl heat-cool conditions. Li⁺ lacks the ionic radius and coordination geometry needed to stabilize the requisite tetrad stacks; only K⁺ (or certain lanthanides) succeed with these scaffolds. No structural feature of isoGd reverses this selectivity, so the outcome remains No Gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6574</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6692</summary>
+              <pre>The target molecule (isoGd) is structurally most similar to Reference 1 (z8isoGd, chemical distance 0.775), differing only by the absence of the 8-aza nitrogen substitution in the nucleobase. Both molecules share the isoguanine core that can support cation-templated quartet assembly, but experimental data for z8isoGd explicitly show that 0.2 M LiCl yields only a solution or precipitate after the heat-cool cycle; no hydrogel is obtained.  
+
+Reference 2 (dG) is the next-nearest analogue (distance 1.39) and likewise fails to gel in 0.2 M LiCl, instead crystallizing. Reference 3 (z8Gd) is more distant and also shows no gelation with LiCl.  
+
+Across all three reference nucleosides, Li⁺ consistently fails to stabilize the requisite supramolecular stacks or networks under the stated concentration and thermal protocol, whereas K⁺ succeeds for the isoguanine-type scaffolds. The target conditions (1.4 mg/100 µL isoGd, 0.2 M LiCl, heat-cool, pH 3–10) therefore map directly onto the non-gelling LiCl cases.  
+
+Consequently, isoGd does not form a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Closest analogue z8isoGd (Ref 1) yields only solution/precipitate in identical 0.2 M LiCl heat-cool conditions. dG (Ref 2) likewise crystallizes rather than gels with LiCl. Li⁺ does not stabilize the isoguanine quartet stacks required for hydrogelation, in contrast to K⁺.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6608</summary>
+              <pre>The target molecule (isoGd) is a close structural analog of the nucleosides in References 1 and 2 (chemical distances 0.78 and 1.39, respectively). Both of those analogs form stable hydrogels only in the presence of KCl; the same experimental protocol with LiCl instead produces either rapid crystallization or a non-viscous solution/precipitate. Reference 3 shows the same LiCl outcome for a more distant 8-aza-guanosine derivative.  
+
+The underlying supramolecular requirement is selective K+ coordination that stabilizes a G-quartet-like stack; Li+ lacks the appropriate ionic radius and hydration energy to support this assembly. Consequently the heat-cool cycle in 0.2 M LiCl (pH 3–10) is expected to yield the same non-gel macroscopic state observed for the reference compounds.
+
+Final answer:  
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd is structurally closest to z8isoGd (Ref 1) and dG (Ref 2), both of which crystallize or remain solutions with LiCl under identical heat-cool conditions. Li+ cannot stabilize the K+-selective quartet stacks required for gelation in this nucleoside family.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6422</summary>
+              <pre>The target molecule (isoGd) is structurally most similar to the z8isoGd reference (chemical distance 0.775585), differing only by the absence of the 8-aza nitrogen. Both molecules share the same isoguanine nucleobase core and 2′-deoxyribose sugar, which dictates their supramolecular assembly behavior via hydrogen-bonded G-quartet-like motifs.
+
+Across all provided references, LiCl consistently fails to induce gelation:
+- z8isoGd + 0.2 M LiCl yields only a precipitate or solution after the heat–cool cycle.
+- dG + 0.2 M LiCl likewise crystallizes rather than forming a stable hydrogel.
+- z8Gd + 0.2 M LiCl remains a non-viscous sol.
+
+This pattern arises because the smaller, more strongly hydrated Li⁺ cation does not effectively stabilize the requisite stacked quartet assemblies that larger alkali ions (especially K⁺) promote. The experimental conditions given for isoGd (1.4 mg/100 µL, 0.2 M LiCl, heat–cool, pH 3–10) match those used in the references exactly; therefore the same outcome—no hydrogel—is expected.
+
+**Final answer**  
+No Gel
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd is closest to z8isoGd (distance 0.775585). z8isoGd + LiCl produces only precipitate/solution; dG + LiCl crystallizes; z8Gd + LiCl remains a sol. Li⁺ is too strongly hydrated to stabilize the quartet stacks required for gelation under the stated heat–cool conditions.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6657</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6568</summary>
+              <pre>The target molecule (isoGd) is a close structural analog of both dG and z8isoGd, differing only by the absence of the 8-aza substitution. All three compounds share the same core ability to form cation-templated tetrads/pentads via Hoogsteen-type hydrogen bonding and π-stacking, but this assembly is highly sensitive to the identity of the alkali-metal cation.
+
+Reference data show that Li⁺ consistently fails to stabilize the required supramolecular columns:
+- In dG, Li⁺ favors crystallization over gelation because its small radius and high charge density do not match the carbonyl-O6 coordination geometry of the tetrad.
+- In z8isoGd (the closest analog), Li⁺ likewise yields only precipitation or solution; only K⁺ (optimal size) produces stable hydrogels.
+- The same pattern holds for z8Gd.
+
+Because isoGd lacks any structural feature that would reverse this Li⁺ selectivity, the same outcome is expected under the stated heat–cool protocol. The hydrogen-bonding and stacking interactions remain insufficient to generate a percolating nanofiber network when Li⁺ is the only cation present.
+
+Consequently the experiment produces “No Gel.”
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;isoGd is structurally analogous to dG and z8isoGd. In both reference compounds Li⁺ fails to template tetrad/pentad stacks because of its small ionic radius, leading only to crystallization or precipitation. The same coordination mismatch applies to isoGd, so no stable hydrogel network forms.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6626</summary>
+              <pre>The target molecule isoGd is a close structural analog of z8isoGd (chemical distance 0.775) and a somewhat more distant analog of dG (chemical distance 1.39). Both reference compounds form stable hydrogels only when the alkali-metal cation is large enough to template the requisite Hoogsteen-type hydrogen-bonded quartets/pentads (K⁺ works; Li⁺ does not).  
+
+Li⁺ possesses an ionic radius too small to coordinate the O6 carbonyl oxygens of the isoG or G bases in the geometry needed for discotic stacking. Consequently, the hydrogen-bonded assemblies remain too labile to produce the extended nanofibrillar network required for gelation; instead the solute either remains dissolved or precipitates. The same Li⁺-specific failure mode is observed for z8Gd, reinforcing that the outcome is independent of the 8-aza substitution.  
+
+The supplied conditions (0.2 M LiCl, heat–cool cycle, broad pH window) therefore match the reference experiments that uniformly yield “No Gel.”  
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Li⁺ is too small to template the carbonyl coordination geometry required for stable isoG-quartet/pentad stacking; the assemblies therefore remain soluble or precipitate rather than forming a percolating nanofibrillar hydrogel network. This outcome is identical to the LiCl experiments reported for the close analogs z8isoGd and dG.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6778</summary>
+              <pre>The target molecule isoGd is structurally analogous to dG (differing only by transposition of the exocyclic NH₂ and C=O groups) and to z8isoGd (differing only by the absence of the 8-aza nitrogen). In all three reference cases, Li⁺ fails to template the cyclic quartet/pentad assemblies required for hydrogelation because its ionic radius and coordination geometry are mismatched to the carbonyl-lined central cavity of those assemblies. Consequently, the molecules either remain soluble or crystallize/precipitate rather than forming an entangled nanofibrillar network. The experimental protocol supplied for isoGd (1.4 mg/100 µL, 0.2 M LiCl, heat–cool) is identical to the LiCl conditions that produced “No Gel” outcomes for the reference compounds; therefore the same result is expected.
+
+[{
+  &quot;chemical_description&quot;: &quot;2′-deoxyisoguanosine (isoGd)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1[nH]c(=O)nc2c1ncn2[C@H]1C[C@H](O)[C@@H](CO)O1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;LiCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;1.4 mg / 100 µL isoGd in 0.2 M LiCl; heat–cool cycle, pH 3–10.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Li⁺ is too small to stabilize the Hoogsteen-paired cyclic assemblies that isoGd would otherwise form; reference nucleosides of nearly identical structure (dG, z8isoGd, z8Gd) all crystallize or remain soluble under identical LiCl conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

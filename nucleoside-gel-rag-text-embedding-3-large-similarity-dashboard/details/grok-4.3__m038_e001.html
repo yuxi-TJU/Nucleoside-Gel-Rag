@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 38-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 38-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>38</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>8-Bromoguanosine (8BrG)</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>KCl + NaCl</strong></div>
+      <div>Detailed conditions<strong>5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Crystallises or precipitates on cooling; no gel observed.
+
+≈90 % syn population and poor solubility drive rapid crystallisation instead of controlled helical assembly, so no percolating network forms.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4330</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.4676</summary>
+              <pre>The molecule 8BrG is a halogenated guanosine derivative whose purine ring system readily supports Hoogsteen-type hydrogen bonding. In aqueous media containing alkali-metal cations, four such molecules therefore spontaneously organize into planar G-quartets; the 8-bromo substituent further biases the nucleoside toward the syn glycosidic torsion angle that is optimal for quartet stacking.  
+
+When a warm (100 °C) solution is cooled in the presence of 5 mM KCl, K⁺ ions template the stacking of these quartets into extended, fibrillar assemblies. The additional NaCl (100 mM) supplies ionic strength that screens residual electrostatic repulsion without competing for the central coordination site, thereby reinforcing the three-dimensional network. At the stated concentration (20 mg mL⁻¹) the resulting fibers entangle sufficiently to immobilize the solvent, producing a stable hydrogel.  
+
+Consequently the outcome under the listed conditions is gelation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;K⁺ ions template G-quartet formation; the 8-bromo substituent favors the syn conformation required for stacking. Cooling therefore produces an entangled fibrillar network that immobilizes the solvent.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.4173</summary>
+              <pre>The target molecule is 8-bromoguanosine (8BrG), a C8-halogenated derivative of the canonical nucleoside guanosine. Guanosine and its 8-substituted analogues are well-documented to self-assemble into G-quartets via Hoogsteen hydrogen bonding; these quartets further stack into columnar structures that, at sufficient concentration, produce a three-dimensional fibrillar network capable of immobilizing solvent (i.e., hydrogel formation).  
+
+The experimental conditions supplied—5 mM KCl + 100 mM NaCl, 20 mg mL⁻¹ nucleoside, thermal dissolution at 100 °C followed by cooling—precisely match the canonical protocol used to induce G-quartet gelation. Potassium cations are especially effective at stabilizing the central coordination site of each G-quartet, lowering the critical gelation concentration and accelerating network formation upon cooling. The modest ionic strength contributed by the added NaCl does not disrupt this process and may even assist by modulating solubility.  
+
+Consequently, under the stated conditions 8BrG is expected to produce a stable, thermoreversible hydrogel within minutes to hours after cooling.  
+
+[{
+    &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;8BrG forms G-quartets that are strongly stabilized by K+; the supplied salt mixture, concentration, and heating-cooling cycle are standard conditions known to yield a fibrillar hydrogel network.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.4141</summary>
+              <pre>The molecule 8BrG is a modified guanosine nucleoside whose purine core retains the Hoogsteen and Watson–Crick faces required for G-quartet formation. In aqueous solution the 8-bromo substituent biases the nucleoside toward the syn glycosidic torsion angle, which is precisely the conformation needed for stable G-quartet stacking.  
+
+Potassium ions (here supplied at 5 mM) coordinate the O6 carbonyls of four 8BrG molecules, templating a planar quartet; the additional NaCl merely adjusts ionic strength and does not compete with K⁺ binding. Upon cooling from 100 °C the quartets stack into long, entangled fibrils that immobilize the solvent, producing a self-supporting hydrogel at the stated concentration (20 mg mL⁻¹).  
+
+Thus the outcome under the listed conditions is gelation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+        &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;8BrG retains the Hoogsteen face needed for G-quartet assembly; the 8-bromo substituent favors the syn conformation required for quartet stacking. 5 mM K⁺ templates stable quartets that elongate into fibrils upon cooling, yielding a hydrogel at 20 mg mL⁻¹.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.3901</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.3968</summary>
+              <pre>The target molecule (8-bromoguanosine) is a close structural analog of reference 3 (8-aminoguanosine), differing only by substitution of Br for NH₂ at the C8 position of the purine. Both compounds share the same nucleoside scaffold, hydrogen-bonding pattern, and potential for self-assembly via guanine-type interactions.
+
+Reference 3 explicitly reports that 8-aminoguanosine produces no gel in the presence of KCl or NaCl (0.2 M salt, 100 mM nucleoside, heat–cool protocol). The salt conditions supplied for the target (5 mM KCl + 100 mM NaCl) are of comparable ionic strength and are applied under an analogous heat–cool cycle. No other reference shows gelation of a related nucleoside under simple alkali-metal chloride conditions; all such trials likewise return “No Gel.”
+
+Because the closest experimental precedent demonstrates that C8-substituted guanosines do not gelate in NaCl/KCl, the same outcome is expected for 8-bromoguanosine.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Closest analog (8-aminoguanosine) shows no gelation in KCl/NaCl; target conditions are of comparable ionic strength and thermal history, so no gel is predicted.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.4033</summary>
+              <pre>The target molecule (8BrG) is a C8-modified guanosine derivative. Among the supplied references, the closest structural analog is 8-aminoguanosine (Reference 3). That compound was explicitly tested with KCl/NaCl at comparable ionic strength and concentration; it remained a free-flowing solution and never produced a gel.  
+
+The other two references are more distant in structure (a long-chain 8-aza-7-deazaadenosine conjugate and 2-thiocytidine) and likewise showed no gelation in the presence of alkali-metal chloride salts. No reference compound that is chemically related to 8BrG forms a gel under simple chloride-salt conditions.  
+
+Consequently, under the stated conditions (5 mM KCl + 100 mM NaCl, 20 mg mL⁻¹, heat–cool) the target molecule is predicted to remain a solution.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Closest analog (8-aminoguanosine) shows no gelation with KCl/NaCl; other references likewise remain solutions in chloride salts.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.3702</summary>
+              <pre>The target molecule (8BrG) is a C8-modified guanosine derivative. Reference structures at comparable chemical distances are 8-aminoguanosine (ref. 3) and 2-thiocytidine (ref. 2). Both remain soluble (no gel) when treated with alkali-metal chloride salts (KCl, NaCl or their mixtures) under heat-cool protocols that are essentially identical to the target conditions.  
+
+8BrG shares the same nucleobase substitution pattern and hydrogen-bonding face as 8-aminoguanosine; the steric/electronic perturbation introduced by bromine is not expected to restore the K+-dependent G-quartet stacking that is suppressed in the amino analogue. Consequently the salt-only experiment yields a clear solution rather than a self-supporting gel.
+
+Final answer: No Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Closest analogue (8-aminoguanosine) shows no gelation with KCl/NaCl; bromine substitution does not restore the requisite G-quartet stacking.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4078</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.4292</summary>
+              <pre>The target molecule 8-bromoguanosine is a close structural analogue of guanosine itself (differing only by a single Br substituent at C8). Guanosine is well-established to form G-quartet-based hydrogels only when the K⁺ concentration is high enough to stabilize the central cation channel of the quartet stack (typically ≥0.2 M KCl). At the physiologically relevant, low-K⁺ condition supplied here (5 mM KCl + 100 mM NaCl), guanosine yields only transient or no gelation; the same outcome is observed for the related 8-aminoguanosine derivative under NaCl/KCl conditions.
+
+Because the supplied solvent-additive mixture and concentration regime are identical to the non-gelling KCl + NaCl entry for guanosine, and because the C8-Br substituent does not alter the fundamental requirement for high K⁺, the same result is expected: the nucleoside dissolves on heating but fails to produce a stable, self-supporting network on cooling.
+
+**Final answer**
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The exact solvent-additive combination and low K⁺ concentration match the non-gelling conditions reported for both guanosine and 8-aminoguanosine. 8-Bromoguanosine requires high K⁺ (or borate) to stabilize G-quartets; under these low-K⁺/high-Na⁺ conditions it therefore dissolves on heating but yields no stable hydrogel on cooling.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.4009</summary>
+              <pre>The target molecule 8-bromoguanosine is a close structural analog of guanosine (G), differing only by Br substitution at the C8 position. Reference 3 provides extensive data on G under a wide range of salt conditions. In particular, the exact solvent-additive combination listed for the target (5 mM KCl + 100 mM NaCl) is explicitly reported for G at comparable nucleoside concentration and yields “No Gel.” The reference states that this physiologically relevant, low-K⁺ mixture “does not gel,” whereas stable (albeit transient) hydrogels appear only at substantially higher KCl concentrations (≥0.2 M).  
+
+The same low-K⁺ / high-Na⁺ regime is also non-gelling for the more distant 8-aminoguanosine analog (Reference 2). No reference experiment shows gelation for any guanosine-type nucleoside when NaCl dominates and K⁺ remains at the 5 mM level. Although the C8-Br substituent can bias the nucleoside toward the syn glycosidic torsion that is compatible with G-quartet formation, the supplied experimental corpus contains no evidence that this substitution rescues gelation under the low-K⁺ conditions specified here.  
+
+Consequently the target is predicted to give the same macroscopic outcome reported for G under identical conditions.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;The queried salt mixture (5 mM KCl + 100 mM NaCl) is identical to a condition explicitly tested for guanosine (Reference 3), which produces no stable gel at low, physiologically relevant K⁺ levels. Higher KCl concentrations (≥0.2 M) are required for observable hydrogel formation with G; the same low-K⁺ regime is also non-gelling for 8-aminoguanosine (Reference 2). Although the 8-Br substituent may favor the syn conformation needed for G-quartets, the supplied reference data contain no indication that this substitution enables gelation under the stated low-K⁺ conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.3932</summary>
+              <pre>The target molecule 8-bromoguanosine (8BrG) is an 8-substituted guanosine derivative. Its core scaffold is therefore highly analogous to the guanosine reference (chemical distance ~5.6) and to 8-aminoguanosine (chemical distance ~5.5). Both reference compounds require either (i) sufficiently high K⁺ concentrations (≥0.2 M KCl or KB(OH)₄) or (ii) borate additives to stabilize G-quartet-based fibrillar networks that produce macroscopic gels.  
+
+Under the exact conditions supplied for the target—5 mM KCl + 100 mM NaCl—the guanosine reference explicitly fails to gel; the potassium level is too low to template stable quartets, and Na⁺ does not substitute effectively. The same salt combination likewise yields “No Gel” for 8-aminoguanosine. The 8-bromo substituent modulates glycosidic torsion but does not alter the fundamental dependence on adequate K⁺ or borate; consequently the low-K⁺/high-Na⁺ mixture is insufficient to drive hydrogelation.  
+
+Thus the predicted outcome is “No Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;8BrG is structurally closest to guanosine and 8-aminoguanosine. Both references require either ≥0.2 M K⁺ or borate additives to form stable G-quartet hydrogels. The supplied low-K⁺/high-Na⁺ mixture is explicitly insufficient for guanosine (and yields no gel for 8-aminoguanosine), so 8BrG is likewise predicted not to gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.4134</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.4221</summary>
+              <pre>The target molecule 8BrG is a close structural analog of guanosine (G), differing only by a bromine substituent at C8. Reference 3 shows that unmodified G itself fails to produce a stable hydrogel under precisely the supplied conditions (5 mM KCl + 100 mM NaCl). The low monovalent-cation concentration is insufficient to template and stabilize the requisite G-quartet stacks; the resulting assemblies remain too soluble and lack the lateral cross-links needed for network formation, leading instead to a free-flowing solution.  
+
+The C8-Br substitution does not alter the core hydrogen-bonding face or the ribose cis-diol geometry that would compensate for this salt deficit. Consequently, the same mechanistic limitation applies: insufficient quartet stabilization at physiologically relevant ionic strength precludes gelation.  
+
+Thus the experimental outcome for 8BrG is predicted to be identical to that recorded for G.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;8BrG is a close analog of guanosine (G). Reference 3 explicitly shows that G itself yields no stable gel at the identical low-salt condition (5 mM KCl + 100 mM NaCl) because the monovalent-cation concentration is insufficient to template G-quartet stacks and produce a percolating network. The C8-Br substituent does not restore the missing stabilization, so the same outcome is expected.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.4242</summary>
+              <pre>The target molecule 8BrG is a close structural analog of guanosine (Ref. 3), differing only by a single bromine substituent at C8. Guanosine itself is known to assemble via G-quartets that require high concentrations of K⁺ (or certain other monovalent cations) for stable stacking and subsequent hydrogel formation. At the physiologically relevant/low-salt regime specified in the query (5 mM KCl + 100 mM NaCl), guanosine fails to produce a persistent network and is therefore classified “No Gel.”  
+
+8-Aminoguanosine (Ref. 2), which likewise bears a C8 substituent, likewise shows no gelation under any salt-only conditions (KCl, NaCl, or their mixtures) and gels only when borate esters are present. 2-Thiocytidine (Ref. 1) is even less prone to quartet-type assembly and likewise yields no gels with alkali-metal salts.  
+
+Because the queried solvent/additive combination supplies only low K⁺ and high Na⁺—conditions already shown to be insufficient for the parent guanosine scaffold—the same outcome is expected for 8BrG. No borate or other covalent cross-linker is present that could compensate for the weak non-covalent interactions at this salt level. Consequently the experiment is predicted to produce no stable gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;8BrG is a C8-substituted analog of guanosine. Guanosine itself requires high K⁺ concentrations to stabilize G-quartets and form persistent hydrogels; at the low-salt mixture 5 mM KCl + 100 mM NaCl it yields only transient or no assemblies (Ref. 3). 8-Aminoguanosine, another C8-substituted congener, likewise fails to gel under any salt-only conditions (Ref. 2). The queried conditions therefore supply insufficient cationic stabilization for quartet stacking, producing the same negative result.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.3939</summary>
+              <pre>The target molecule 8BrG is a close structural analog of guanosine (G), differing only by a bromine substituent at C8. G itself is known to assemble via G-quartets that require high concentrations of suitable monovalent cations (especially K⁺) for stable stacking and subsequent hydrogel formation. At the physiologically relevant/low-salt regime specified in the query (5 mM KCl + 100 mM NaCl), G fails to produce a persistent network and is explicitly classified as “No Gel.”
+
+8BrG shares the same core hydrogen-bonding face and ribose cis-diol as G, yet the C8-Br substitution does not introduce any new borate- or metal-coordination capability that would compensate for the insufficient ionic strength. Reference data for the even more closely related 8-aminoguanosine likewise show “No Gel” under NaCl/KCl conditions. Consequently, the same low-salt mixture is predicted to leave 8BrG in a soluble or rapidly precipitating state rather than a self-supporting hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;8-Bromoguanosine (8BrG)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1nc2c(nc(Br)n2[C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KCl + NaCl&quot;,
+      &quot;detailed_conditions&quot;: &quot;5 mM KCl + 100 mM NaCl; 20 mg mL⁻¹; cool from 100 °C.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Guanosine and its 8-substituted analogs require high K⁺ concentrations to stabilize G-quartets and form persistent hydrogels. The supplied low-salt mixture (5 mM KCl + 100 mM NaCl) is below this threshold, producing only transient or soluble species, exactly as observed for G and 8-aminoguanosine under identical conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

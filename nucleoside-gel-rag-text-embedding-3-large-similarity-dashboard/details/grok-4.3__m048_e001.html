@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 48-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 48-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>48</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Cytidine (C)</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>B(OH)₃ + AgNO₃</strong></div>
+      <div>Detailed conditions<strong>50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Transparent, self-supporting hydrogel (G′ up to 10⁴ Pa) that remains intact and photostable for &gt; 1 year; thixotropic and printable; Ag⁺ confers broad-spectrum antibacterial activity.
+
+Gelation arises from two orthogonal interactions: (i) dynamic borate-diester cross-links between cis-2′,3′-diol groups on the ribose (C–B–C) provide covalent junctions, and (ii) Ag⁺-mediated C·Ag⁺·C base pairs stack into one-dimensional columns. Hydrogen bonding and electrostatic forces bundle these columns into entangled nanofibres, giving a robust, stimuli-responsive network whose stability and antibacterial function depend critically on Ag⁺ coordination.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6751</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6455</summary>
+              <pre>The target molecule is cytidine, a pyrimidine nucleoside bearing a ribose cis-diol. Under the stated aqueous conditions the cis-diol reversibly esterifies with borate to generate anionic cytidine–borate complexes. These complexes further coordinate Ag⁺ ions at N3 of the cytosine base, producing an extended, cross-linked supramolecular network. The resulting assemblies are known to immobilize water within minutes to hours at room temperature, satisfying the operational definition of gelation. Consequently the outcome is recorded as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Cytidine’s ribose cis-diol forms anionic borate esters; Ag⁺ coordinates N3 of cytosine, generating a cross-linked fibrillar network that immobilizes water.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6884</summary>
+              <pre>The provided conditions involve cytidine (which possesses a cis-1,2-diol on its ribose sugar plus Lewis-basic nitrogen atoms on the nucleobase) in basic aqueous solution together with borate and Ag(I). Borate rapidly forms reversible covalent esters with the ribose diol, generating anionic borate–nucleoside complexes that can act as cross-link nodes. Simultaneously, Ag(I) coordinates to N3 of the cytosine ring, furnishing additional non-covalent cross-links. The combination of these orthogonal interactions produces an extended, percolating supramolecular network that immobilizes water at room temperature, yielding a self-supporting hydrogel within minutes to hours.
+
+Consequently the outcome is recorded as Gel.
+
+[{
+    &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Borate esters the ribose cis-diol while Ag(I) coordinates cytosine N3; the dual cross-linking produces a percolating hydrogel network.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6914</summary>
+              <pre>The specified conditions involve cytidine in the presence of borate (from B(OH)₃ under basic conditions) together with Ag⁺. Borate readily forms reversible covalent esters with the cis-1,2-diol moiety of the ribose sugar, generating anionic complexes that increase water solubility while also providing a handle for further supramolecular assembly. Simultaneously, the cytosine nucleobase coordinates to Ag⁺ through the N3 nitrogen, creating directional metal–ligand cross-links. The combination of these two orthogonal interactions (borate–diol and Ag⁺–base) produces a three-dimensional fibrillar network that immobilizes water, resulting in hydrogelation at room temperature on the timescale of hours.  
+
+No rapid precipitation, crystallization, or collapse is expected under the stated concentrations and pH; therefore the outcome is gel formation.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Borate esters form reversibly with the ribose cis-diol while Ag⁺ coordinates to cytosine N3; the dual cross-linking produces a stable fibrillar hydrogel network.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5681</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5621</summary>
+              <pre>The target molecule is cytidine, which is a ribonucleoside that is nearly identical in structure to uridine (reference 3) except for a single exocyclic functional-group change on the nucleobase (NH₂ vs. O). Both molecules share the same ribose stereochemistry and the same 2′,3′-cis-diol motif that would be required for borate ester formation.
+
+Reference 3 explicitly tests uridine under the identical solvent-additive combination (B(OH)₃ + AgNO₃, basic pH, room temperature) and reports that the mixture remains a free-flowing liquid; no hydrogel is obtained. Reference 1 shows the same negative outcome for the close stereoisomer arabino-cytidine under the same additive pair. No reference experiment demonstrates gelation of any pyrimidine ribonucleoside with B(OH)₃ + AgNO₃; the only successful gelation examples involve either lanthanide salts (uridine + Tb³⁺/Eu³⁺) or a different nucleoside (5′-deoxy-5′-iodoguanosine) with KB(OH)₄ alone.
+
+Because the target conditions match the unsuccessful uridine experiment and no structural feature of cytidine supplies a compensating interaction that would enable network formation, the mixture is predicted to remain a solution.
+
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine is structurally analogous to uridine (differs only by NH₂ vs. O at C4 of the base) and shares the same ribose stereochemistry. Reference 3 shows that uridine itself yields no gel under identical B(OH)₃ + AgNO₃ conditions; the mixture remains a free-flowing liquid. Arabino-cytidine (reference 1) likewise fails to gel. No compensating structural feature exists that would enable network formation, so the outcome is No Gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.5693</summary>
+              <pre>The target molecule is cytidine, which is a canonical ribonucleoside that is structurally very similar to uridine (reference 3) and only a stereoisomer of arabino-cytidine (reference 1).  
+
+All three molecules share the same cis-2′,3′-diol motif that can in principle interact with borate, yet the experimental record for the exact additive combination B(OH)₃ + AgNO₃ (basic pH, room-temperature self-assembly) is uniformly negative: both uridine and arabino-cytidine remain free-flowing liquids. No literature precedent exists for cytidine forming a hydrogel under these conditions, and the structural analogy therefore predicts the same outcome.  
+
+Consequently the experiment is classified as “No Gel”.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine is a close structural analogue of uridine and arabino-cytidine; both of the latter remain free-flowing solutions under identical B(OH)₃ + AgNO₃ conditions (references 1 and 3). No literature precedent supports gelation of cytidine with this additive, so the outcome is predicted to be No Gel.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5731</summary>
+              <pre>The target molecule is cytidine, which features a standard ribose sugar with a 2′,3′-cis-diol. This structural motif is shared with the reference nucleosides uridine and arabino-cytidine.  
+
+Under the exact solvent-additive combination B(OH)₃ + AgNO₃ (basic pH, room-temperature self-assembly) both reference compounds remain free-flowing liquids; no hydrogel is obtained. The presence of KB(OH)₄ noted in the target conditions does not alter this outcome, because the decisive experimental variable is the B(OH)₃/AgNO₃ pair, which consistently fails to trigger gelation for these closely related nucleosides.  
+
+Consequently the target experiment is predicted to yield the same negative result.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+    &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)[nH]1&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+        &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Cytidine shares the same ribose 2′,3′-cis-diol as the reference nucleosides uridine and arabino-cytidine. Both references remain free-flowing solutions (no hydrogel) under identical B(OH)₃ + AgNO₃ conditions; the additional mention of KB(OH)₄ does not change the decisive additive pair that prevents gelation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="incorrect">Wrong prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.5957</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5575</summary>
+              <pre>The target molecule is cytidine, a canonical ribonucleoside that possesses a cis-2′,3′-diol on its ribose sugar and a cytosine nucleobase. The queried solvent system (50 mM nucleoside + 25 mM B(OH)₃ + 25 mM AgNO₃, basic pH, room temperature) is identical to the conditions reported for three chemically related reference compounds.
+
+- Arabino-cytidine (stereoisomer differing only at C2′) remains a free-flowing solution under these exact conditions; the borate–silver mixture does not induce the supramolecular cross-links required for hydrogelation.
+- Uridine, which shares the same ribose cis-diol motif and differs only in the nucleobase (uracil vs. cytosine), likewise fails to gel; the mixture stays liquid.
+- 2′,3′-Dideoxycytidine, lacking the vicinal diol entirely, predictably remains soluble as well.
+
+Because cytidine is structurally intermediate between arabino-cytidine and uridine, and because the same additive combination has been shown to be insufficient to produce a stable fibrillar network in all three cases, the identical experimental outcome is expected: the solution does not undergo gelation. No literature precedent or structural feature unique to cytidine reverses this trend under the stated conditions.
+
+Final answer: No Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine possesses the same cis-2′,3′-diol motif present in the reference nucleosides arabino-cytidine, uridine and ddC. All three references remain free-flowing liquids under identical B(OH)₃/AgNO₃ conditions; the borate–silver combination does not generate the requisite supramolecular cross-links for hydrogelation. No structural feature unique to cytidine reverses this established pattern.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6427</summary>
+              <pre>The target molecule is cytidine, a pyrimidine ribonucleoside whose sugar moiety contains a vicinal 2′,3′-diol. Gelation under the stated conditions (borate + Ag⁺, basic pH, ambient temperature) is known to require both (i) reversible borate–diol ester formation that creates a negatively charged, planar complex and (ii) subsequent Ag⁺-mediated cross-linking or coordination that produces an extended fibrous network.  
+
+Three close structural analogues have been examined experimentally under identical solvent-additive and concentration regimes:  
+- Uridine (identical ribose stereochemistry, only a uracil-for-cytosine base swap) remains a free-flowing solution.  
+- Arabino-cytidine (C2′ stereoisomer) likewise yields no hydrogel.  
+- 2′,3′-Dideoxycytidine (lacking the vicinal diol entirely) also fails to gel.  
+
+Because the target shares the same diol-bearing ribose as uridine and arabino-cytidine, yet differs only in the pyrimidine base, the same mechanistic requirements are unmet. Consequently the mixture stays liquid and no hydrogel is observed.
+
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine possesses the same ribose cis-diol as uridine and arabino-cytidine, both of which remain free-flowing liquids under identical borate–Ag⁺ conditions. The cytosine base does not furnish additional Ag⁺ coordination sufficient to drive network formation, so the mixture stays liquid.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.5870</summary>
+              <pre>The target molecule is cytidine, a pyrimidine nucleoside whose structure is closely related to the three reference compounds (differing from arabino-cytidine only by configuration at C2′, from uridine by the exocyclic amine versus carbonyl at C4, and from ddC by the presence of the 2′/3′-diol).  
+
+All three references were examined under the identical solvent-additive combination B(OH)₃ + AgNO₃ (basic pH, room-temperature self-assembly, comparable nucleoside and borate/silver concentrations). In every case the outcome was explicitly “No Gel”: the mixtures remained free-flowing liquids with no evidence of hydrogelation, fiber formation, or network elasticity.  
+
+Because the borate–silver system relies on reversible borate–diol esterification together with Ag⁺ coordination to the nucleobase, the absence of gelation in the stereoisomer (arabinoC), the 2′,3′-deoxy analogue (ddC), and the closely related uridine indicates that these interactions are insufficient to produce an extended supramolecular network for cytidine as well. No contradictory positive result is present in the reference set for this specific additive.  
+
+Consequently the prediction for the target experiment is No Gel.
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine differs from arabino-cytidine only at C2′ stereochemistry, from ddC by the presence of the 2′/3′-OH groups, and from uridine by the C4-NH₂ versus C4=O substitution. All three reference nucleosides were tested under identical B(OH)₃ + AgNO₃ conditions (basic pH, room temperature) and uniformly produced free-flowing solutions with no hydrogel, fibers, or elastic network. The borate–diol esterification and Ag⁺–nucleobase coordination therefore do not generate an extended supramolecular gel for cytidine either.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6388</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6241</summary>
+              <pre>The target molecule is cytidine, which possesses both a cytosine nucleobase and a cis-2′,3′-vicinal diol on the ribose ring.  
+
+- The cytosine moiety enables Ag⁺-mediated base pairing (C·Ag⁺·C), exactly as required for the metal-stabilized dimers that nucleate fiber growth.  
+- The cis-diol geometry permits reversible covalent borate-diester cross-links, furnishing the covalent junctions that convert the Ag⁺-paired stacks into a percolating network.  
+
+These two orthogonal interactions are simultaneously present only in cytidine; they are individually abolished in the reference compounds (arabinoC lacks the cis-diol, U lacks cytosine, ddC lacks both). Consequently the same solvent-additive combination that fails for the three reference nucleosides succeeds for cytidine, producing a hydrogel under the stated basic, room-temperature conditions.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine simultaneously satisfies both structural prerequisites for gelation: (i) a cytosine base that forms Ag⁺-bridged C·Ag⁺·C dimers and (ii) a cis-2′,3′-diol that forms covalent borate diester cross-links. These two orthogonal interactions together generate a percolating fiber network. The three reference nucleosides each lack one of the two features and therefore remain solutions; cytidine possesses both and therefore gels.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6610</summary>
+              <pre>The target molecule is cytidine, which possesses both a cytosine nucleobase and a ribose sugar bearing a cis-2′,3′-diol.  
+
+- The cis-diol geometry permits reversible covalent borate-diester formation, generating the covalent C–B–C cross-links that are required for network propagation (contrast with arabino-cytidine or ddC, both of which lack this geometry and therefore fail to gel).  
+- The cytosine base simultaneously enables Ag⁺-mediated C·Ag⁺·C base-pairing, which supplies the directional, non-covalent junctions that nucleate fibre growth (contrast with uridine, which can form borate esters but lacks the cytosine–Ag⁺ interaction and therefore also fails to gel).  
+
+Because cytidine supplies both structural prerequisites simultaneously under the stated basic, room-temperature conditions, a percolating supramolecular network is expected to assemble, producing a hydrogel.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine possesses both the cytosine base needed for Ag⁺-mediated C·Ag⁺·C pairing and the cis-2′,3′-diol needed for borate-diester cross-linking; both interactions are therefore available to drive fibre formation and macroscopic gelation.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6314</summary>
+              <pre>The target molecule is cytidine, which possesses both a cis-2′,3′-vicinal diol on the ribose and a cytosine nucleobase.  
+
+- The cis-diol geometry permits reversible covalent borate-diester formation, generating the C–B–C cross-links that are required for network propagation (contrast with arabino-cytidine, whose trans-diol geometry blocks this reaction, or with ddC, which lacks the diol entirely).  
+- The cytosine base simultaneously enables Ag⁺-mediated C·Ag⁺·C base-pairing, supplying the non-covalent dimerization motif that nucleates fiber growth (contrast with uridine, which can form borate esters but lacks the cytosine–Ag⁺ interaction).  
+
+Because both orthogonal interaction modes are simultaneously available under the stated basic, room-temperature conditions, the system assembles into a percolating fibrous hydrogel.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Cytidine (C)&quot;,
+  &quot;canonical_smiles&quot;: &quot;Nc1ccn([C@@H]2O[C@H](CO)[C@@H](O)[C@H]2O)c(=O)n1&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;B(OH)₃ + AgNO₃&quot;,
+      &quot;detailed_conditions&quot;: &quot;50 mM C + 25 mM B(OH)₃ + 25 mM AgNO₃ in water (basic, KB(OH)₄ present); room-temperature self-assembly.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;Cytidine simultaneously satisfies the two structural prerequisites demonstrated by the reference set: (i) a cis-2′,3′-diol that forms covalent borate diester cross-links and (ii) a cytosine base that forms Ag⁺-bridged C·Ag⁺·C pairs. Both interactions are therefore operative under the given conditions, enabling fiber nucleation and network percolation. The trans-diol isomer (arabinoC) and the diol-deficient analogue (ddC) each lack one of these motifs and fail to gel; uridine possesses the diol but lacks the cytosine–Ag⁺ motif and likewise remains a solution. Hence cytidine produces a hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

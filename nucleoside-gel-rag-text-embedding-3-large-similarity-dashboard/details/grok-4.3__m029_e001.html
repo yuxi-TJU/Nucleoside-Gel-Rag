@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 29-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 29-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>29</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>5&#x27;-O-Myristoyluridine</strong></div>
+      <div>Expected result<strong>Gel</strong></div>
+      <div>Solvent/additive<strong>NaOH</strong></div>
+      <div>Detailed conditions<strong>0.05 M NaOH.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">CGC 0.3 % w/v; reversible with pH/Na⁺.
+
+NaOH hydrolysis generates uridine carboxylate/fatty-acid salt pairs. Na⁺ bridges the anionic layers, while C14 chains interdigitate; uracil–uracil H-bonding and modest π-stacking create lamellar fibres that entangle, giving an elastic hydrogel albeit with slightly lower modulus than ribothymidine analogues.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6220</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.5812</summary>
+              <pre>The molecule 5&#x27;-O-myristoyluridine is an amphiphilic nucleolipid featuring a long hydrophobic C14 alkyl tail covalently attached to the 5&#x27;-position of the polar uridine head-group. In aqueous alkaline media the nucleobase can undergo partial deprotonation at N3 while the ribose hydroxyls remain available for hydrogen-bonding; together these interactions, augmented by hydrophobic collapse of the myristoyl chains, promote the formation of extended fibrillar networks that immobilize the solvent.  
+
+Consequently, under the stated conditions (0.05 M NaOH) the molecule is expected to produce a self-supporting hydrogel within hours.  
+
+[{
+    &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleolipid with C14 tail; alkaline conditions enable nucleobase deprotonation and H-bonding, driving fibril formation and gelation.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6628</summary>
+              <pre>The molecule 5&#x27;-O-myristoyluridine is an amphiphilic nucleolipid consisting of a polar uridine headgroup (with free 2&#x27;/3&#x27;-OH groups capable of hydrogen bonding and a nucleobase that can participate in stacking or H-bonding) covalently linked to a long hydrophobic C14 acyl chain. This architecture is known to promote self-assembly into fibrillar networks in aqueous media via a combination of hydrophobic collapse of the alkyl tails and directional intermolecular interactions from the nucleoside moiety.
+
+In 0.05 M NaOH the solution is mildly basic, which can partially deprotonate the uracil NH (pKa ≈ 9.5) and/or the ribose hydroxyls, thereby increasing aqueous solubility while still allowing the molecule to remain largely intact on laboratory timescales (ester hydrolysis is kinetically slow at this low hydroxide concentration and ambient temperature). The resulting balance of solubility and aggregation propensity favors formation of a self-supporting hydrogel rather than immediate precipitation or dissolution.
+
+Consequently the experimental outcome under the stated conditions is recorded as Gel.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Amphiphilic nucleolipid structure enables self-assembly via hydrophobic interactions of the C14 chain and H-bonding/stacking of the uridine headgroup; mild basic conditions improve solubility without rapid ester hydrolysis, permitting hydrogel formation.&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6206</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6182</summary>
+              <pre>The target molecule (5&#x27;-O-myristoyluridine) possesses a saturated C14 acyl chain attached at the 5&#x27;-position of uridine. This places it structurally between the two closest reference compounds:
+
+- 5&#x27;-O-lauroyluridine (C12) shows no hydrogel formation in 0.05 M NaOH even at 0.5 % w/v.  
+- 5&#x27;-O-palmitoyluridine (C16) readily forms a stable Na⁺ hydrogel at the same 0.5 % w/v threshold.
+
+The additional two methylene units relative to the C12 analogue increase hydrophobic surface area and van-der-Waals stabilization of the fibrillar network that underpins hydrogelation. Consequently the critical gelation concentration is expected to fall below the 0.5 % limit that defeats the C12 compound, allowing gelation under the stated alkaline conditions. (The modest chemical-distance values to the C12/C16 references further support that the behavior will be closer to the gel-forming palmitoyl case than to the non-gelating lauroyl case.)
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C14 chain length lies between the non-gelling C12 and gel-forming C16 uridine analogues; hydrophobic stabilization is therefore sufficient for Na⁺ hydrogelation at or below the 0.5 % w/v threshold used in the reference experiments.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6201</summary>
+              <pre>The target molecule (5&#x27;-O-myristoyluridine) is a close structural analog of the C16 palmitoyluridine hydrogelator in Reference 1 (only a 2-carbon difference in the acyl chain). That reference compound forms a stable Na+ hydrogel at 0.5 % w/v in 0.05 M NaOH.  
+
+The C12 lauroyluridine in Reference 2 does not form a hydrogel under identical conditions, establishing that a minimum acyl-chain length is required for hydrogelation in this series. Because the target C14 chain lies well above that threshold and is chemically nearer to the successful C16 case, the same NaOH conditions are expected to produce a hydrogel (most likely with a CGC between the values reported for C12 and C16).  
+
+No counter-examples appear among the other references that would override this chain-length trend.  
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C14 chain length is intermediate between the C12 (no hydrogel) and C16 (hydrogel at 0.5 % w/v) analogs; chemical similarity and chain-length trend therefore predict hydrogel formation under the stated NaOH conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6236</summary>
+              <pre>The target molecule (5&#x27;-O-myristoyluridine) is a close structural analogue of the C16 palmitoyluridine hydrogelator (Reference 1), differing only by two methylene units in the acyl chain. Reference 1 forms a stable Na⁺ hydrogel at 0.5 % w/v in 0.05 M NaOH, whereas the shorter C12 lauroyluridine congener (Reference 2) fails to gel under identical conditions.  
+
+Because the target C14 chain length lies between these two precedents but is chemically far closer to the gel-forming palmitoyl derivative (Tanimoto distance 0.226 vs. 0.273), the molecule is expected to retain sufficient amphiphilic balance and hydrophobic stabilization to produce a hydrogel. The nucleobase and ribose stereochemistry are identical to Reference 1, further supporting gelation in aqueous NaOH.  
+
+Thus the outcome is recorded as “Gel”.
+
+```json
+[{
+    &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+    &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+        &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+        &quot;results&quot;: &quot;Gel&quot;,
+        &quot;reasoning&quot;: &quot;Target C14 acyl chain is only two carbons shorter than the C16 palmitoyluridine hydrogelator (Ref. 1) that gels at 0.5 % w/v in 0.05 M NaOH; chemical similarity (distance 0.226) and identical nucleoside head-group strongly indicate hydrogel formation, in contrast to the non-gelling C12 analogue (Ref. 2).&quot;
+        }
+    ]
+}]
+```
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6415</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6465</summary>
+              <pre>The target molecule is 5′-O-myristoyluridine, a nucleolipid amphiphile that differs from the reference structures solely by the length of its saturated acyl chain at the 5′-position (C14).  
+
+Reference 1 (C16 palmitoyluridine) forms a stable Na⁺ hydrogel at 0.5 % w/v in 0.05 M NaOH because the longer hydrophobic tail provides sufficient van-der-Waals stabilization and appropriate hydrophilic–lipophilic balance once the uracil moiety is deprotonated and coordinated by Na⁺. Reference 2 (C12 lauroyluridine) fails to gel under identical conditions; the shorter chain reduces hydrophobic interactions below the threshold needed for self-assembly into a percolating network.  
+
+The target C14 chain lies only two methylene units below the successful C16 case and two units above the unsuccessful C12 case. Given that the chemical distance to the C16 reference (0.226) is smaller than to the C12 reference (0.273), and that the uracil head-group and stereochemistry are identical, the hydrophobic contribution remains adequate for hydrogel formation. Consequently the molecule is expected to produce a stable Na⁺ hydrogel at a comparable or slightly higher critical gelation concentration.  
+
+No other solvent or counter-ion is specified, so the prediction is restricted to the stated 0.05 M NaOH medium.  
+
+```json
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C14 acyl chain length is intermediate between C12 (no hydrogel) and C16 (stable Na+ hydrogel at 0.5 % w/v). Chemical distance is smaller to the gel-forming C16 reference; identical uracil head-group and stereochemistry preserve the required amphiphilic balance for Na+-mediated self-assembly into a hydrogel network.&quot;
+    }
+  ]
+}]
+```
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6229</summary>
+              <pre>The target molecule is 5′-O-myristoyluridine (C14 acyl chain). Reference compounds that differ by only two methylene units in the acyl chain provide the closest structural and property analogs:
+
+- The C16 palmitoyluridine congener (chemical distance 0.226) forms a stable Na⁺ hydrogel at 0.5 % w/v in 0.05 M NaOH.  
+- The C12 lauroyluridine congener (chemical distance 0.273) fails to produce a hydrogel up to the same concentration.  
+
+Because the target C14 chain length lies between these two limits and is structurally closer to the gelating C16 species, hydrophobic packing and fiber-forming propensity are expected to be adequate for hydrogelation. The uracil base and the 5′-ester linkage are identical to the successful C16 reference, preserving the hydrogen-bonding motif required for self-assembly in alkaline aqueous media. Consequently, gel formation is predicted under the stated conditions (0.05 M NaOH).
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;The C14 acyl chain is only two carbons shorter than the gelating C16 palmitoyluridine analog (chem. dist. 0.226) and two carbons longer than the non-gelating C12 lauroyluridine (chem. dist. 0.273). The preserved uracil hydrogen-bonding face and 5′-ester linkage support the same self-assembly pathway that produces a stable Na⁺ hydrogel at ~0.5 % w/v for the C16 parent; therefore gelation is expected under identical alkaline conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6549</summary>
+              <pre>The target molecule is a 5&#x27;-O-acyl uridine derivative bearing a saturated C14 (myristoyl) chain. This places it structurally between the two closest reference compounds: the C12 (lauroyl) analog (Ref. 2, chemical distance 0.273), which fails to produce a hydrogel in 0.05 M NaOH at concentrations up to 0.5 % w/v, and the C16 (palmitoyl) analog (Ref. 1, chemical distance 0.226), which forms a stable Na⁺ hydrogel at a critical gelation concentration (CGC) of 0.5 % w/v under identical basic aqueous conditions.
+
+Hydrogelation in this family relies on a balance between the hydrophilic nucleoside head-group (which is deprotonated and solubilized by NaOH) and the hydrophobic acyl tail that drives self-assembly into fibrillar networks. Each two-carbon increment in chain length measurably enhances hydrophobic interactions and lowers the CGC. Consequently, the C14 chain length is expected to cross the threshold for gelation, albeit possibly at a modestly higher concentration than the C16 compound. The additional reference compound bearing a C16 chain on a methylated nucleobase (Ref. 3) further supports that uridine-based amphiphiles with chains of 14–16 carbons reliably form Na⁺ hydrogels once the hydrophobic contribution is sufficient.
+
+Thus, under the stated conditions (0.05 M NaOH), the target molecule is predicted to produce a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C14 chain length lies between the non-gelling C12 analog and the gelling C16 analog; the small chemical distance (0.226) to the C16 compound that forms a stable Na⁺ hydrogel at 0.5 % w/v, combined with the known chain-length dependence of hydrophobic-driven self-assembly in these amphiphiles, indicates that gelation will occur (likely near or slightly above 0.5 % w/v).&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.6792</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.6775</summary>
+              <pre>The target molecule (5&#x27;-O-myristoyluridine) possesses a saturated C14 acyl chain attached at the 5&#x27;-position of uridine. This places its hydrophobicity squarely between the two closest reference structures (C12 lauroyluridine and C16 palmitoyluridine).
+
+In aqueous NaOH the dominant gel-driving forces are (i) deprotonation of the uracil N3, (ii) Na⁺-mediated bridging between nucleolipid head-groups, and (iii) hydrophobic collapse and interdigitation of the acyl tails that produce lamellar fibres capable of percolating into a hydrogel. Reference data show that a C12 tail supplies insufficient van-der-Waals stabilization for these fibres to reach the percolation threshold at 0.5 % w/v, whereas a C16 tail crosses that threshold and yields a stable Na⁺ hydrogel. Because the additional two methylene units in the C14 tail measurably strengthen the hydrophobic contribution relative to the C12 analogue (and the chemical distance to the C16 gelator is smaller than to the C12 non-gelator), the C14 derivative is expected to satisfy the same criteria and therefore form a hydrogel under the stated conditions.
+
+The outcome is therefore reported as “Gel”.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C14 chain length lies between the non-gelling C12 and gelling C16 uridine analogues; the added hydrophobicity relative to C12 is sufficient for Na⁺-bridged lamellar fibres to percolate at ~0.5 % w/v.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6810</summary>
+              <pre>The target molecule (5&#x27;-O-myristoyluridine) possesses a saturated C14 acyl chain attached at the 5&#x27;-position of uridine. This places its hydrophobic tail length squarely between the two closest reference structures: the C12 lauroyl analogue (Reference 2), which fails to gel in 0.05 M NaOH even at 0.5 % w/v, and the C16 palmitoyl analogue (Reference 1), which forms a stable Na⁺-bridged hydrogel at the same nominal concentration (CGC = 0.5 % w/v).
+
+Gelation in aqueous NaOH for this nucleolipid family is driven by a balance of three non-covalent contributions:
+- Na⁺ coordination to the deprotonated uracil ring and the 2&#x27;,3&#x27;-diol,
+- hydrophobic collapse and interdigitation of the acyl tails,
+- supplementary uracil–uracil hydrogen bonding that cross-links the resulting lamellar fibres.
+
+The C12 chain in Reference 2 supplies insufficient van der Waals surface to reach the percolation threshold under these ionic conditions, whereas the two additional methylene units in the C14 chain measurably strengthen the hydrophobic term. Consequently the critical aggregation concentration drops below the 0.5 % w/v threshold that defeats the C12 homologue, allowing the same Na⁺-stabilised lamellar network observed for the C16 compound to form. The chemical distance to the C16 reference (0.226) is also smaller than to the C12 reference (0.273), reinforcing the expectation that the C14 species will behave like the gel-forming palmitoyl derivative rather than the non-gelling lauroyl derivative.
+
+Thus, under the stated conditions (0.05 M NaOH), 5&#x27;-O-myristoyluridine is predicted to produce a hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;5&#x27;-O-Myristoyluridine&quot;,
+  &quot;canonical_smiles&quot;: &quot;CCCCCCCCCCCCCC(=O)OC[C@H]1O[C@@H](n2ccc(=O)[nH]c2=O)[C@H](O)[C@@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;NaOH&quot;,
+      &quot;detailed_conditions&quot;: &quot;0.05 M NaOH.&quot;,
+      &quot;results&quot;: &quot;Gel&quot;,
+      &quot;reasoning&quot;: &quot;C14 chain length is intermediate between non-gelling C12 (Ref 2) and gelling C16 (Ref 1) uridine analogues. The additional methylene units relative to C12 strengthen hydrophobic interdigitation enough for Na⁺-bridged lamellae to percolate, producing a hydrogel analogous to the C16 case.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>

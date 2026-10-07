@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>grok-4.3 | 51-1</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182033;
+      background: #f5f7fb;
+    }
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid #e1e6ef;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    a { color: #064B9B; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      color: #485368;
+      font-size: 14px;
+    }
+    .summary strong { display: block; color: #182033; font-size: 16px; margin-top: 3px; }
+    main { padding: 24px 32px 42px; }
+    .strategy-card {
+      background: white;
+      border: 1px solid #dfe4ee;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .reference-card {
+      background: white;
+      border: 1px solid #cdd8e8;
+      border-left: 5px solid #064B9B;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 10px rgba(20, 32, 54, 0.05);
+    }
+    .strategy-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .reference-card h2 { margin: 0 0 12px; font-size: 22px; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-grid div {
+      border: 1px solid #e3e8f1;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #fbfcff;
+    }
+    .meta-grid span {
+      display: block;
+      color: #647084;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .meta-grid strong { font-size: 15px; }
+    .correct { color: #064B9B; }
+    .incorrect { color: #A50021; }
+    .round {
+      border-top: 1px solid #e4e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .round summary {
+      cursor: pointer;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 14px;
+      max-height: 520px;
+      overflow: auto;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .reference-pre {
+      background: #f8fbff;
+      color: #182033;
+      border: 1px solid #dce5f2;
+      max-height: 360px;
+    }
+    .missing { color: #7a4350; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">Back to plots</a>
+    <h1>grok-4.3 | 51-1</h1>
+    <div class="summary">
+      <div>Molecule ID<strong>51</strong></div>
+      <div>Experiment ID<strong>1</strong></div>
+      <div>Chemical description<strong>Inosine</strong></div>
+      <div>Expected result<strong>No Gel</strong></div>
+      <div>Solvent/additive<strong>KB(OH)₄</strong></div>
+      <div>Detailed conditions<strong>36 mM inosine + 18 mM KB(OH)₄.</strong></div>
+    </div>
+  </header>
+  <main>
+    
+    <section class="reference-card">
+      <h2>Reference text used for semantic similarity</h2>
+      <pre class="reference-pre">Non-viscous solution; no gel.
+
+Although inosine can form borate esters, the absence of the guanine NH₂ group weakens hydrogen bonding within prospective G₄ quartets, so the assemblies cannot grow into stabilised fibres.</pre>
+    </section>
+    
+    
+                    <section class="strategy-card">
+                      <h2>Strategy 0</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7186</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7263</summary>
+              <pre>The target molecule is inosine, a purine nucleoside that possesses a ribose cis-diol capable of reversible borate ester formation. KB(OH)₄ supplies both borate anions (which can cross-link diols) and K⁺ cations (which can, in principle, stabilize stacked quartets). However, inosine lacks the exocyclic 2-amino group that guanosine uses to reinforce Hoogsteen-type hydrogen-bonding within G₄-quartets. Consequently, any putative I-quartets are far less stable and do not propagate into the extended, fibrillar networks required for macroscopic gelation.  
+
+At the stated concentrations (36 mM inosine + 18 mM KB(OH)₄) the system therefore forms only soluble borate–nucleoside complexes or, at best, transient aggregates that rapidly collapse or remain isotropic solutions. No persistent hydrogel is observed.
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine can form borate esters but cannot sustain stable I-quartet stacks without the 2-amino group; the mixture therefore remains a solution rather than a gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7242</summary>
+              <pre>The molecule inosine is structurally analogous to guanosine but lacks the exocyclic N2-amino group that stabilizes G-quartet (or I-quartet) stacking. Although the ribose cis-diol can in principle form a borate diester with KB(OH)₄, the resulting complex does not produce the extended, fibrillar assemblies required for gelation. At the stated concentrations (36 mM nucleoside + 18 mM borate) the system therefore remains a free-flowing solution that shows no macroscopic gelation on any experimentally relevant time scale.
+
+Final answer: No Gel
+
+[{
+    &quot;chemical_description&quot;: &quot;Inosine&quot;,
+    &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+    &quot;experiments&quot;: [
+        {
+        &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+        &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+        &quot;results&quot;: &quot;No Gel&quot;,
+        &quot;reasoning&quot;: &quot;Inosine lacks the N2-amino substituent needed for stable quartet stacking; borate complexation alone is insufficient to drive fibril formation at these concentrations.&quot;
+        }
+    ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7052</summary>
+              <pre>The target molecule is inosine, a purine nucleoside whose ribose moiety contains a cis-1,2-diol that can, in principle, form reversible borate esters with KB(OH)₄. However, stable hydrogelation in this class of compounds additionally requires a nucleobase capable of Hoogsteen-type hydrogen-bonded quartet assembly (as occurs with guanosine). Inosine lacks the exocyclic amino group at C2 that stabilizes such quartets; the resulting I-quartets are far less robust and do not produce a self-supporting network at the stated concentration (36 mM nucleoside + 18 mM borate). Consequently the mixture remains a free-flowing solution or yields only transient precipitates rather than a gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine possesses a ribose cis-diol that can form borate esters, yet its hypoxanthine base cannot sustain stable quartet stacking; the mixture therefore fails to produce a hydrogel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 1</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7136</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7211</summary>
+              <pre>The target molecule (inosine) is structurally analogous to guanosine but lacks the exocyclic N2 amino group. This substituent is essential for the Hoogsteen-edge hydrogen-bonding pattern that stabilizes K+-templated quartets (or related assemblies) in guanosine/borate systems. Without it, inosine cannot form the requisite supramolecular stacks or cross-links even when borate esters are possible.
+
+Reference experiments confirm that guanosine itself gels under the exact KB(OH)₄ conditions supplied (36 mM nucleoside + 18 mM KB(OH)₄), whereas molecules that cannot sustain quartet formation (e.g., guanosine at sub-stoichiometric borate or with non-quartet-promoting cations) do not. Consequently the same formulation with inosine yields only a free-flowing solution.
+
+Final answer: No Gel
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the N2 amino group required for stable quartet hydrogen bonding; borate esters alone are insufficient to produce a persistent network.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7315</summary>
+              <pre>The target molecule (inosine) is a close structural analogue of guanosine, sharing the same ribose cis-diol motif that permits borate ester formation. However, it lacks the exocyclic 2-amino substituent on the purine ring. This NH₂ group supplies two additional hydrogen-bond donors that stabilize G-quartet stacking and inter-quartet interactions; its absence in inosine produces markedly weaker I-quartets whose assemblies are insufficient to generate a percolating fibrillar network.
+
+The supplied experimental condition (36 mM nucleoside + 18 mM KB(OH)₄) is identical to the one that yields a long-lived, transparent hydrogel for guanosine. Because the only chemical difference is the missing 2-amino group, the same borate/K⁺ conditions are expected to produce only soluble borate esters or transient, non-gelling aggregates rather than a self-supporting gel. Consequently the outcome is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the 2-amino group of guanosine that stabilizes quartet stacking; the identical borate/K⁺ condition that gels guanosine therefore yields only soluble complexes or transient aggregates for inosine.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6882</summary>
+              <pre>The target molecule is inosine, which is structurally analogous to guanosine (reference 1) except that it lacks the exocyclic 2-amino substituent on the purine ring. This substituent is critical for the hydrogen-bonding pattern that stabilizes G-quartets (or borate-mediated assemblies) in aqueous salt solutions.  
+
+Reference 1 shows that guanosine itself forms long-lived, transparent hydrogels when treated with 0.5 equiv KB(OH)₄ (36 mM nucleoside + 18 mM KB(OH)₄, heat-cool protocol). In contrast, the same conditions with LiB(OH)₄ produce only a free-flowing solution, underscoring the necessity of K⁺ for quartet stabilization. Because inosine cannot satisfy the full hydrogen-bonding requirements of a quartet, the analogous KB(OH)₄ experiment is expected to fail to produce a self-supporting network.  
+
+No reference entry reports gelation of inosine under any salt or borate condition, reinforcing that the missing 2-amino group precludes stable assembly. Consequently the outcome is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the 2-amino group required for stable quartet hydrogen bonding; the KB(OH)₄ conditions that produce durable gels with guanosine therefore yield only a free-flowing solution.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 2</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7118</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7363</summary>
+              <pre>The target molecule is inosine, a guanosine analog that lacks the exocyclic 2-amino substituent on the purine ring. Gelation with KB(OH)₄ proceeds via reversible borate diester formation at the cis-2′,3′-diol, which generates anionic filaments that are subsequently cross-linked and stabilized by K⁺ templation into planar quartets.  
+
+Because inosine cannot form the full set of hydrogen bonds required for a stable quartet (only the single N1–O6 contact is available per interface, versus the two contacts per interface in guanosine), the resulting assemblies remain too labile to produce a persistent network. This prediction is corroborated by the closest inosine-based reference (inosine-5′-carboxylic acid), which likewise yields only a free-flowing solution under identical borate conditions.  
+
+Consequently, the experiment is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the 2-amino group of guanosine that supplies the second hydrogen bond in each G-quartet interface. Borate diester formation at the cis-diol therefore produces only transient filaments that cannot be stabilized by K⁺ templation into a persistent network. The outcome matches the no-gel result recorded for the closely related inosine-5′-carboxylic acid under identical borate conditions.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.7079</summary>
+              <pre>The target molecule is inosine, which is structurally analogous to guanosine (Reference 1) except that it lacks the exocyclic 2-amino substituent on the purine ring. That substituent participates directly in the Hoogsteen hydrogen-bonding pattern that stabilizes G-quartets; its absence therefore weakens quartet formation and reduces the lifetime/stability of any supramolecular network that might otherwise assemble.
+
+The specified conditions (36 mM nucleoside + 18 mM KB(OH)₄, 0.5 equiv) are identical to those that produce a long-lived, transparent hydrogel for guanosine. However, the same borate stoichiometry and concentration produce no gel for the closely related inosine-5′-carboxylic acid (Reference 2). The 5′-carboxylic acid versus 5′-CH₂OH difference is peripheral to the core hydrogen-bonding and borate-ester equilibria; consequently the lack of gelation observed for the carboxylic-acid derivative is expected to carry over to unmodified inosine.
+
+Borate esters can still form with the cis-2′,3′-diol of inosine, but without stable quartet stacking the resulting aggregates remain soluble or form only transient precipitates. Hence the outcome under the stated conditions is classified as “No Gel.”
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the C2-NH2 group required for stable Hoogsteen H-bonding in purine quartets. Reference 2 (inosine-5′-carboxylic acid) shows no gelation under essentially identical borate conditions; the peripheral 5′-substituent change does not restore quartet stability. Borate esters may form at the ribose diol, but without robust quartet stacking the aggregates remain soluble or precipitate transiently.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.6914</summary>
+              <pre>The target molecule is inosine (hypoxanthine nucleoside). Its structure is closely related to guanosine but lacks the exocyclic 2-amino substituent on the nucleobase. Standard G-quartet assembly relies on three Hoogsteen hydrogen bonds per monomer (N1–O6, N2–N7); removal of the N2 amino group reduces this to only two hydrogen bonds, markedly destabilizing the cyclic quartet and any higher-order fibrillar network that would be required for gelation.
+
+Reference data confirm the importance of the guanine N2 amino group for borate-mediated gelation:
+- Guanosine itself forms a long-lived, transparent hydrogel under the exact conditions given for the target (36 mM nucleoside + 18 mM KB(OH)₄).
+- 2′-Amino-2′-deoxyguanosine likewise gels with KB(OH)₄ or NaB(OH)₄.
+- In contrast, the inosine-5′-carboxylic acid derivative (which also lacks the N2 amino group) produces only a free-flowing solution with KB(OH)₄, NaB(OH)₄ or related borate additives.
+
+Because the target molecule possesses the same destabilizing structural feature as the non-gelling inosine derivative, and because the experimental conditions are otherwise identical to those that succeed only for guanine-based nucleosides, gelation is not expected. The mixture will remain a free-flowing solution or, at best, form a transient precipitate that collapses rapidly.
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the N2 amino group required for stable Hoogsteen quartet formation (only two H-bonds per monomer instead of three). Reference data show that guanine-containing nucleosides gel under identical borate/K+ conditions while the inosine-5′-carboxylic acid congener does not; the same outcome is therefore predicted for unmodified inosine.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+                    <section class="strategy-card">
+                      <h2>Strategy 3</h2>
+                      <div class="meta-grid">
+                        <div><span>Prediction</span><strong class="correct">Correct prediction</strong></div>
+                        <div><span>semantic_similarity</span><strong>0.7151</strong></div>
+                        <div><span>Selected rounds</span><strong>Round 1; Round 2; Round 3</strong></div>
+                      </div>
+                      
+            <details class="round" open>
+              <summary>Round 1 | score=0.7006</summary>
+              <pre>The target molecule (inosine) is structurally analogous to guanosine but lacks the exocyclic 2-amino substituent required for stable Hoogsteen-type hydrogen-bonded quartets. Reference 1 demonstrates that guanosine forms long-lived gels with KB(OH)₄ precisely because borate diester cross-links on the ribose cis-diol are reinforced by K⁺-templated G₄ stacking; removal of the 2-amino group eliminates this reinforcement.  
+
+Reference 2, whose chemical distance to inosine is only 2.60, shows that even a close derivative (inosine-5′-carboxylic acid) fails to gel under identical KB(OH)₄ conditions, confirming that the hypoxanthine base itself does not support the necessary supramolecular assembly. Reference 3 further underscores the importance of the 2-amino group: its presence (2′-amino-2′-deoxyguanosine) restores gelation with KB(OH)₄, while its absence correlates with failure.  
+
+Consequently, the 36 mM inosine + 18 mM KB(OH)₄ mixture is predicted to yield only a free-flowing solution or precipitate, never a self-supporting gel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the 2-amino group essential for stable quartet hydrogen bonding; borate diester formation alone is insufficient, as confirmed by the failure of the closely related inosine-5′-carboxylic acid (Ref. 2) and by the requirement for the 2-amino substituent seen in Refs. 1 and 3.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 2 | score=0.6971</summary>
+              <pre>The target molecule (inosine) is a close structural analogue of guanosine, differing only by the absence of the exocyclic 2-amino group on the purine ring. This modification reduces the number of hydrogen-bond donors available for quartet formation and weakens the stability of stacked I-quartets relative to G-quartets.  
+
+Reference 1 demonstrates that guanosine itself forms stable, long-lived hydrogels with KB(OH)₄ (0.5 equiv) because the borate diester cross-links the ribose cis-diols while K⁺ templates the G₄ stacks; both interactions are required. Reference 2 shows that even a modestly modified inosine derivative (inosine-5′-carboxylic acid) fails to gel under identical borate/K⁺ conditions, consistent with the poorer quartet-forming propensity of the hypoxanthine base. Reference 3 further illustrates that an amino-group modification on the sugar (2′-amino-2′-deoxyguanosine) restores gelation, underscoring the sensitivity of the assembly to both base and sugar features.  
+
+Consequently, plain inosine at 36 mM with 18 mM KB(OH)₄ is expected to produce only transient or soluble aggregates rather than a persistent three-dimensional network.  
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine lacks the 2-amino group required for robust quartet hydrogen-bonding; literature on closely related inosine derivatives shows that borate/K⁺ conditions produce only soluble or transient species, not stable gels.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+
+            <details class="round" open>
+              <summary>Round 3 | score=0.7476</summary>
+              <pre>The target molecule (inosine) shares the same ribose cis-diol motif as guanosine, allowing borate diester formation that can in principle produce covalent dimers. However, inosine lacks the C2-NH₂ group required for the canonical Watson–Crick edge hydrogen-bonding pattern that stabilizes G₄·K⁺ quartets. Without this additional stabilization, the stacked assemblies remain too weakly cohesive to produce an entangled nanofiber network.
+
+This structural limitation is directly corroborated by the closest experimental analogue (inosine-5’-carboxylic acid, chemical distance 2.60), which fails to gel under identical KB(OH)₄ conditions. The same outcome is observed for plain inosine in pure water or with other monovalent salts, confirming that borate-mediated dimerization alone is insufficient.
+
+Consequently, the 36 mM inosine + 18 mM KB(OH)₄ mixture yields only a free-flowing solution rather than a self-supporting hydrogel.
+
+[{
+  &quot;chemical_description&quot;: &quot;Inosine&quot;,
+  &quot;canonical_smiles&quot;: &quot;O=c1[nH]cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O&quot;,
+  &quot;experiments&quot;: [
+    {
+      &quot;solvent_additive&quot;: &quot;KB(OH)₄&quot;,
+      &quot;detailed_conditions&quot;: &quot;36 mM inosine + 18 mM KB(OH)₄.&quot;,
+      &quot;results&quot;: &quot;No Gel&quot;,
+      &quot;reasoning&quot;: &quot;Inosine can form borate diesters via its ribose cis-diol, but lacks the C2-amino group needed for stable G₄·K⁺ quartet hydrogen bonding. Reference data on the closely related inosine-5’-carboxylic acid (and on guanosine itself) show that this missing interaction prevents formation of a persistent nanofiber network, resulting in a free-flowing solution rather than a gel.&quot;
+    }
+  ]
+}]
+</pre>
+            </details>
+            
+                    </section>
+                    
+  </main>
+</body>
+</html>
